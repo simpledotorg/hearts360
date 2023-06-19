@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hypertension dashboard</title>
+    <meta name="description" content="Hypertension indicator dashboard" />
+    <meta name="author" content="Resolve to Save Lives" />
+
+    <!-- social cards -->
+    <meta property="og:title" content="A Basic HTML5 Template" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://www.sitepoint.com/a-basic-html5-template/"
+    />
+    <meta
+      property="og:description"
+      content="A simple HTML5 Template for new projects."
+    />
+    <meta property="og:image" content="image.png" />
+
+    <!-- faivcons -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="css/preflight.css?v=1.0" />
+    <link rel="stylesheet" href="css/template.css" />
+    <link rel="stylesheet" href="css/elements/card.css" />
+  </head>
+  <body>
+    <nav class="navigation">
+      <p class="heading">Facilities</p>
+      <select name="" id="region-select" onchange="this.form.submit()">
+        <option value="region 1">CC Derby</option>
+        <option value="region 1">CC Nottingham</option>
+        <option value="region 1">CC Birmingham</option>
+      </select>
+    </nav>
+    <main class="main">
+      <h1>CC Derby</h1>
+      <h2>Hypertension indicators</h2>
+      <div class="columns-2">
+        <div class="card">
+          <p class="heading">BP controlled</p>
+          <p>
+            Hypertension patients with BP &lt;140/90 at their last visit in the
+            last 3 months
+          </p>
+        </div>
+        <div class="card">
+          <p class="heading">Registrations</p>
+          <p>Monthly and total hypertension patients registered in CC Derby</p>
+        </div>
+        <div class="card">
+          <p class="heading">BP uncontrolled</p>
+          <p>
+            Hypertension patients with BP &ge;140/90 at their last visit in the
+            last 3 months
+          </p>
+        </div>
+        <div class="card">
+          <p class="heading">Missed visits</p>
+          <p>Hypertension patients with no visit in the last 3 months</p>
+        </div>
+      </div>
+      <h2>Details</h2>
+      <h2>Compare performance</h2>
+      <h2>Cohort reports</h2>
+    </main>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+.card {
+    padding: 16px;
+
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 16px;
+
+    .heading {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .description {
+
+    }
+}
+
