@@ -44,11 +44,29 @@
       <h2>Hypertension indicators</h2>
       <div class="columns-3">
         <div class="card">
-          <p class="heading">BP controlled</p>
+          <div class="heading">
+            <p>BP controlled</p>
+            <div class="tooltip">
+              ?
+              <div class="tooltiptext">
+          <p>
+                  <span>Numerator:</span> Patients with BP &lt;140/90 at their last visit in
+                  the last 3 months
+                </p>
+                <p>
+                  <span>Denominator:</span> Hypertension patients assigned, registered before
+                  the last 3 months. Dead and lost to follow-up patients are
+                  excluded.
+                </p>
+              </div>
+            </div>
+          </div>
           <p>
             Hypertension patients with BP &lt;140/90 at their last visit in the
             last 3 months
           </p>
+          <div class="chart">
+            <canvas id="bpcontrolled"></canvas>
         </div>
         <div class="card">
           <p class="heading">Registrations</p>
