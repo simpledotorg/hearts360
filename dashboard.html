@@ -49,7 +49,7 @@
             <div class="tooltip">
               ?
               <div class="tooltiptext">
-          <p>
+                <p>
                   <span>Numerator:</span> Patients with BP &lt;140/90 at their last visit in
                   the last 3 months
                 </p>
@@ -67,26 +67,86 @@
           </p>
           <div class="chart">
             <canvas id="bpcontrolled"></canvas>
+          </div>
         </div>
         <div class="card">
-          <p class="heading">Registrations</p>
-          <p>Monthly and total hypertension patients registered in CC Derby</p>
-        </div>
-        <div class="card">
-          <p class="heading">BP uncontrolled</p>
+          <div class="heading">
+            <p>BP uncontrolled</p>
+            <div class="tooltip">
+              ?
+              <div class="tooltiptext">
+                <p>
+                  <span>Numerator:</span> Patients with BP ≥140/90 at their last visit in the last 3 months
+                </p>
+                <p>
+                  <span>Denominator:</span> Hypertension patients assigned, registered before the last 3 months. Dead and lost to follow-up patients are excluded.
+                </p>
+              </div>
+            </div>
+          </div>
           <p>
             Hypertension patients with BP &ge;140/90 at their last visit in the
             last 3 months
           </p>
+          <div>
+            <canvas id="bpnotcontrolled"></canvas>
+          </div>
         </div>
         <div class="card">
-          <p class="heading">Missed visits</p>
+          <div class="heading">
+            <p>3 month lost to follow-up</p>
+          </div>
           <p>Hypertension patients with no visit in the last 3 months</p>
         </div>
+        <div class="card">
+          <div class="heading">
+            <p>Registrations</p>
+          </div>
+          <p>Monthly and total hypertension patients registered in CC Derby</p>
+        </div>
+        <div class="card">
+          <div class="heading">
+            <p>12 month lost to follow-up</p>
+          </div>
+          <p>Hypertension patients with no visit in the last 3 months</p>
+        </div>
+        <div class="card">
+          <div class="heading">
+            <p>Program details</p>
+          </div>
+          <p>All individuals and patients with Hypertension in Haryana</p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Total est. population with hypertension</th>
+                <td class="number">N/A</td>
+              </tr>
+              <tr>
+                <th>Total assigned patients</th>
+                <td class="number">1,460</td>
+              </tr>
+              <tr class="secondary">
+                <th>Patients under care</th>
+                <td class="number">1,379</td>
+              </tr>
+              <tr class="secondary">
+                <th>Lost to follow-up</th>
+                <td class="number">81</td>
+              </tr>
+              <tr class="secondary">
+                <th>Dead patients</th>
+                <td class="number">32</td>
+              </tr>
+              <tr>
+                <th>Total registered patients</th>
+                <td class="number">1,492</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <h2>Details</h2>
+      <h2>Cohort report</h2>
       <h2>Compare performance</h2>
-      <h2>Cohort reports</h2>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
     <script src="./js/reports.js"></script>
