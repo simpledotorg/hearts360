@@ -2,21 +2,67 @@
   min-width: 0;
   padding: 16px 20px;
 
-    background: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 16px;
 
-    .heading {
+  .heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
     > p {
-        font-weight: bold;
-        font-size: 1.2rem;
+      font-weight: bold;
+      font-size: 1.2rem;
     }
   }
 
-    .description {
+  .description {
+  }
+
+  .chart {
+    height: 260px;
+  }
+}
+table {
+  width: 100%;
+  margin-top: 12px;
+  > tbody {
+    /* background: #000; */
+    > tr {
+      border-top: 1px solid #eee;
+      &:first-child,
+      &.secondary ~ .secondary,
+      & ~ .secondary {
+        border-top: 0px;
+      }
+      /* {
+        border-bottom: 0px;
+      } */
+      > th {
+        text-align: left;
+        padding: 10px 0;
+      }
+      &.secondary {
+        > th {
+          font-weight: 500;
+          padding-left: 16px;
+          color: #888;
+        }
+        > td {
+          &.number {
+            color: #888;
+            font-weight: 500;
+          }
+        }
+      }
+      > td.number {
+        font-weight: 700;
+        text-align: right;
+        color: #000;
+      }
+    }
+  }
+}
 
 .tooltip {
   display: flex;
