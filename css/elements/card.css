@@ -7,12 +7,54 @@
     border-radius: 16px;
 
     .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > p {
         font-weight: bold;
         font-size: 1.2rem;
     }
+  }
 
     .description {
 
-    }
-}
+.tooltip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #999;
+  content: "?";
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 100px;
+  cursor: pointer;
 
+  .tooltiptext {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    position: absolute;
+    right: 24px;
+    background: #222;
+    width: 200px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: #eee;
+    > p > span {
+        font-weight: 800;
+        color: #fff;
+    }
+  }
+
+  &:hover {
+    .tooltiptext {
+      display: flex;
+    }
+  }
+}
