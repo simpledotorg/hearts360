@@ -1,5 +1,6 @@
 .card {
-    padding: 16px;
+  min-width: 0;
+  padding: 16px 20px;
 
     background: #ffffff;
     border: 1px solid #dddddd;
