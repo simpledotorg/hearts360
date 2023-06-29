@@ -1,10 +1,3 @@
-// const myChart =// new Chart(ctx, {...});
-
-const DATA_COUNT = 7;
-const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
-
-
-
 function dashboardReportsChartJSColors() {
   return {
     darkGreen: "rgba(0, 122, 49, 1)",
@@ -153,7 +146,12 @@ intersectDataVerticalLine = {
   },
 };
 
-const data = {
+function createChart(ctx, config) {
+  new Chart(ctx, config);
+}
+
+// BP Controlled
+const bpControlledData = {
   labels: [
     "Feb-2022",
     "Mar-2022",
@@ -184,8 +182,48 @@ const data = {
   ],
 };
 
-const config = baseLineChartConfig();
-config.data = data;
+const bpControlledConfig = baseLineChartConfig();
+bpControlledConfig.data = bpControlledData;
 
-const ctx = document.getElementById("bpcontrolled");
-new Chart(ctx, config);
+const bpControlledCanvas = document.getElementById("bpcontrolled");
+createChart(bpControlledCanvas, bpControlledConfig)
+
+// BP Uncontrolled
+// BP Controlled
+const bpUncontrolledData = {
+  labels: [
+    "Feb-2022",
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+  ],
+  datasets: [
+    {
+      label: "Dataset 1",
+      data: [60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18],
+      borderColor: dashboardReportsChartJSColors().mediumBlue,
+      backgroundColor: dashboardReportsChartJSColors().lightBlue,
+    },
+  ],
+};
+
+const bpUncontrolledConfig = baseLineChartConfig();
+bpUncontrolledConfig.data = bpUncontrolledData;
+
+const bpUncontrolledCanvas = document.getElementById("bpuncontrolled");
+console.log(bpUncontrolledCanvas);
+createChart(bpUncontrolledCanvas, bpUncontrolledConfig)
