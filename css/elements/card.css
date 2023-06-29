@@ -92,15 +92,31 @@ table {
     padding: 8px 10px;
     border-radius: 6px;
     color: #eee;
+    opacity: 0;
+    animation: fadeIn 190ms;
+
     > p > span {
-        font-weight: 800;
-        color: #fff;
+      font-weight: 800;
+      color: #fff;
     }
   }
 
   &:hover {
     .tooltiptext {
       display: flex;
+      opacity: 1;
     }
+  }
+}
+
+.fade-in {
+  animation: fadeIn 5s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
