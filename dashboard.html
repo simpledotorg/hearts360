@@ -32,15 +32,27 @@
   </head>
   <body>
     <nav class="navigation">
-      <p class="heading">Facilities</p>
-      <select name="" id="region-select" onchange="this.form.submit()">
-        <option value="region 1">CC Derby</option>
-        <option value="region 1">CC Nottingham</option>
-        <option value="region 1">CC Birmingham</option>
-      </select>
+      <div class="navigation-body">
+        <!-- <p class="heading">Select view</p> -->
+        <!-- <label for="region-select"> -->
+          <select name="region-select" id="region-select" class="navigation-select chevron-down-icon">
+            <option value="all" disabled>Region view</option>
+            <option value="all"selected>All facilities</option>
+            <option disabled>Facilities</option>
+            <option value="cc-derby">CC Derby</option>
+            <option value="cc-nottingham">CC Nottingham</option>
+            <option value="cc-birmingham">CC Birmingham</option>
+          </select>
+        <!-- </label> -->
+      </div>
     </nav>
+    <div class="breadcrumbs">
+      <div class="breadcrumbs-body">
+        <a>Derbyshire</a>
+      </div>
+    </div>
     <main class="main">
-      <h1>CC Derby</h1>
+      <h1>Derbyshire</h1>
       <h2>Hypertension indicators</h2>
       <div class="columns-3">
         <div class="card">

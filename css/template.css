@@ -60,12 +60,43 @@ main {
 }
 
 .navigation {
-  padding: 16px 24px;
-  background: #bed7ef;
-  border-bottom: 3px solid #77bbff;
+  /* padding: 24px 24px; */
+  background: #dfefff;
+  border-bottom: 2px solid #b7dbff;
+  .navigation-body {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+    padding: 16px 24px;
+  }
 
   .heading {
     font-weight: bold;
-    margin-bottom: 4px;
+    font-size: 1.5rem;
+  }
+}
+
+.navigation-select {
+  appearance: none;
+  padding: 8px 20px;
+  border-radius: 10px;
+  border: 2px solid #d8ecff;
+  min-width: 240px;
+  font-size: 1.2rem;
+}
+.chevron-down-icon { background: #fff url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgNkw4IDEwTDEyIDYiIHN0cm9rZT0iIzAwNzVFQiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==) no-repeat right 16px center }
+
+.breadcrumbs {
+  background: #ececec;
+  border-bottom: 1px solid #d7d7d7;
+
+  .breadcrumbs-body {
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+    padding: 16px 24px;
   }
 }
