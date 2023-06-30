@@ -1,20 +1,20 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
     <script>
       function callScriptFunction() {
         // Replace 'SCRIPT_URL' with the URL of your Google Apps Script web app
-        var scriptUrl = 'https://script.google.com/macros/s/AKfycbzhZvb85DvQf37xZopLurDFjzwlIdWMxkcPJN9yFUu2E7lga3c-7s-bu3EYHGsgJ4n7/exec';
-        
+        var scriptUrl =
+          "https://script.google.com/macros/s/AKfycbzhZvb85DvQf37xZopLurDFjzwlIdWMxkcPJN9yFUu2E7lga3c-7s-bu3EYHGsgJ4n7/exec";
+
         // Replace 'FUNCTION_NAME' with the name of your function in the Google Apps Script
-        var functionName = 'getDataFromGoogleSheets';
-        
+        var functionName = "getDataFromGoogleSheets";
+
         // Make a GET request to the Google Apps Script web app
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', scriptUrl + '?function=' + functionName, true);
-        xhr.onreadystatechange = function() {
+        xhr.open("GET", scriptUrl + "?function=" + functionName, true);
+        xhr.setRequestHeader("Content-Type", "text/plain");
+        xhr.onreadystatechange = function () {
           if (xhr.readyState === 4 && xhr.status === 200) {
             // Response from the Google Apps Script function
             var response = xhr.responseText;
@@ -28,12 +28,12 @@
   <body>
     <button onclick="callScriptFunction()">Call Script Function</button>
   </body>
-  <form 
-  method="POST" 
-  action="https://script.google.com/macros/s/AKfycbxPXn57RZx0p_OknOG6MT35gQ6GasjUPgnmqMgyMepD9oWp-PJAarB1WnRdwQUice33/exec"
->
-  <input name="Email" type="email" placeholder="Email" required>
-  <input name="Name" type="text" placeholder="Name" required>
-  <button type="submit">Send</button>
-</form>
+  <form
+    method="POST"
+    action="https://script.google.com/macros/s/AKfycbxPXn57RZx0p_OknOG6MT35gQ6GasjUPgnmqMgyMepD9oWp-PJAarB1WnRdwQUice33/exec"
+  >
+    <input name="Email" type="email" placeholder="Email" required />
+    <input name="Name" type="text" placeholder="Name" required />
+    <button type="submit">Send</button>
+  </form>
 </html>
