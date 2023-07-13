@@ -1,9 +1,9 @@
 .card {
   min-width: 0;
-  padding: 16px 20px;
+  padding: 16px 20px 20px;
 
   background: #ffffff;
-  border: 1px solid #dddddd;
+  border: 2px solid #e5e5e5;
   border-radius: 16px;
 
   .heading {
@@ -22,7 +22,33 @@
   .chart {
     height: 260px;
   }
+
+  & h3 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 6px 0 8px;
+  }
 }
+
+.figures {
+  /* display: flex; */
+  align-items: center;
+
+  & .large-num {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: green;
+    /* padding: 0 12px 0 8px; */
+    /* width: 100px; */
+    /* text-align: center; */
+  }
+
+  & .detail {
+    font-size: 0.85rem;
+  }
+}
+
 table {
   width: 100%;
   margin-top: 12px;
@@ -159,4 +185,8 @@ table {
   100% {
     opacity: 1;
   }
+}
+
+.text-grey {
+  color: #888;
 }
