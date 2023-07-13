@@ -26,42 +26,63 @@
 table {
   width: 100%;
   margin-top: 12px;
-  > tbody {
-    /* background: #000; */
-    > tr {
-      border-top: 1px solid #eee;
-      &:first-child,
-      &.secondary ~ .secondary,
-      & ~ .secondary {
-        border-top: 0px;
+  font-size: 0.9rem;
+
+  & tr {
+    border-bottom: 1px solid rgb(224, 224, 224);
+  }
+
+  & tbody {
+    & .totals {
+      background: #fff8d7;
+    }
+    & tr {
+      &:hover:not(.totals) {
+        background: #f8f8f8;
       }
-      /* {
-        border-bottom: 0px;
-      } */
-      > th {
-        text-align: left;
-        padding: 10px 0;
-      }
-      &.secondary {
-        > th {
-          font-weight: 500;
-          padding-left: 16px;
-          color: #888;
-        }
-        > td {
-          &.number {
-            color: #888;
-            font-weight: 500;
-          }
-        }
-      }
-      > td.number {
-        font-weight: 700;
-        text-align: right;
-        color: #000;
+      &:last-child {
+        border-bottom: none;
       }
     }
   }
+
+  & th,
+  & td {
+    text-align: left;
+    font-weight: 400;
+    padding: 6px 12px;
+    border-right: 1px solid rgb(224, 224, 224);
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  & th {
+    font-weight: 700;
+  }
+
+  & .link a {
+    color: #0075eb;
+    &:hover {
+      color: #004f9f;
+      text-decoration: underline;
+    }
+  }
+
+  & .head-bg {
+    background: #eee;
+  }
+
+  & .number {
+    text-align: right;
+  }
+}
+
+.text-center th {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
 }
 
 .tooltip {
