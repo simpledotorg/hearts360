@@ -5,13 +5,14 @@
 
 body {
   background: #f6f6f6;
+  background: #f8f8f8;
   font-family: var(--system-ui);
+  padding-top: 76px;
 }
 
 h1 {
   font-size: 3rem;
   font-weight: bold;
-  margin: 16px 0;
 }
 
 h2 {
@@ -69,7 +70,8 @@ main {
     width: 100%;
     max-width: 1600px;
     margin: auto;
-    padding: 16px 24px;
+    padding: 16px 20px;
+    position: relative;
   }
 
   .heading {
@@ -80,22 +82,49 @@ main {
 
 .navigation-select {
   appearance: none;
-  padding: 8px 20px;
+  padding: 6px 20px;
   border-radius: 10px;
-  border: 2px solid #d8ecff;
+  /* border: 2px solid #d8ecff; */
+  border: 2px solid #dce2eb;
   min-width: 240px;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  background: #fff;
 }
-.chevron-down-icon { background: #fff url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgNkw4IDEwTDEyIDYiIHN0cm9rZT0iIzAwNzVFQiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==) no-repeat right 16px center }
+
+.navigation-hover {
+  position: absolute;
+  top: 56px;
+  left: 18px;
+  display: none;
+  background: #fff;
+  border: 2px solid #dce2eb;
+  border-top: none;
+}
+
+.navigation-body:hover {
+  .navigation-hover {
+    display: block;
+  }
+}
+
+.chevron-down-icon {
+  background: #fff
+    url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgNkw4IDEwTDEyIDYiIHN0cm9rZT0iIzAwNzVFQiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==)
+    no-repeat right 16px center;
+}
+
 
 .breadcrumbs {
-  background: #ececec;
-  border-bottom: 1px solid #d7d7d7;
+  /* background: #ececec; */
+  /* background: #fff;
+  border-bottom: 1px solid #d7d7d7; */
 
   .breadcrumbs-body {
     width: 100%;
     max-width: 1600px;
     margin: auto;
-    padding: 16px 24px;
+    padding: 24px 24px 8px;
+    color: #808080;
   }
 }
