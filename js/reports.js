@@ -71,7 +71,9 @@ function baseLineChartConfig() {
           display: false,
         },
         tooltip: {
-          enabled: false,
+          // enabled: false,
+          displayColors: false,
+          caretPadding: 6,
         },
       },
       scales: {
@@ -174,10 +176,10 @@ const bpControlledData = {
   ],
   datasets: [
     {
-      label: "Dataset 1",
+      label: "Bp controlled",
       data: [22, 25, 20, 18, 18, 24, 28, 33, 55, 48, 50, 52, 55, 49, 37, 51, 62, 66],
-      borderColor: dashboardReportsChartJSColors().mediumBlue,
-      backgroundColor: dashboardReportsChartJSColors().lightBlue,
+      borderColor: '#3BB231',
+      backgroundColor: 'rgba(69, 205, 57, 0.1)',
     },
   ],
 };
@@ -215,8 +217,8 @@ const bpUncontrolledData = {
     {
       label: "Dataset 1",
       data: [60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18],
-      borderColor: dashboardReportsChartJSColors().mediumBlue,
-      backgroundColor: dashboardReportsChartJSColors().lightBlue,
+      borderColor: '#F6B100',
+      backgroundColor: 'rgba(255, 201, 63, 0.1)',
     },
   ],
 };
@@ -253,8 +255,10 @@ const ltfu3MonthData = {
     {
       label: "Dataset 1",
       data: [60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18],
-      borderColor: dashboardReportsChartJSColors().mediumBlue,
-      backgroundColor: dashboardReportsChartJSColors().lightBlue,
+      // borderColor: '#DE6C00',
+      // backgroundColor: 'rgba(222, 108, 0, 0.1)',
+      borderColor: '#E68946',
+      backgroundColor: 'rgba(230, 137, 70, 0.1)',
     },
   ],
 };
@@ -265,3 +269,78 @@ ltfu3MonthConfig.data = ltfu3MonthData;
 const ltfu3MonthCanvas = document.getElementById("ltfu3Month");
 console.log(bpUncontrolledCanvas);
 createChart(ltfu3MonthCanvas, ltfu3MonthConfig)
+
+const registrationsData = {
+  labels: [
+    "Feb-2022",
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+  ],
+  datasets: [
+    {
+      label: "Dataset 1",
+      data: [60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18],
+      borderColor: '#7B7F8A',
+      backgroundColor: 'rgba(163, 169, 184, 0.1)',
+    },
+  ],
+};
+
+const registrationsConfig = baseLineChartConfig();
+registrationsConfig.data = registrationsData;
+
+const registrationsCanvas = document.getElementById("registrations");
+createChart(registrationsCanvas, registrationsConfig)
+
+const ltfu12MonthsData = {
+  labels: [
+    "Feb-2022",
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+  ],
+  datasets: [
+    {
+      label: "Dataset 1",
+      data: [60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18],
+      borderColor: '#FF3355',
+      backgroundColor: 'rgba(255, 51, 85, 0.1)',
+    },
+  ],
+};
+
+const ltfu12MonthsConfig = baseLineChartConfig();
+ltfu12MonthsConfig.data = ltfu12MonthsData;
+
+const ltfu12MonthsCanvas = document.getElementById("ltfu12Months");
+console.log(bpUncontrolledCanvas);
+createChart(ltfu12MonthsCanvas, ltfu12MonthsConfig)

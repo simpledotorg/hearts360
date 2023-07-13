@@ -74,13 +74,13 @@
               ?
               <div class="tooltiptext">
                 <p>
-                  <span>Numerator:</span> Patients with BP &lt;140/90 at their last visit in
-                  the last 3 months
+                  <span>Numerator:</span> Patients with BP &lt;140/90 at their
+                  last visit in the last 3 months
                 </p>
                 <p>
-                  <span>Denominator:</span> Hypertension patients assigned, registered before
-                  the last 3 months. Dead and lost to follow-up patients are
-                  excluded.
+                  <span>Denominator:</span> Hypertension patients registered
+                  before the last 3 months. Dead and lost to follow-up patients
+                  are excluded.
                 </p>
               </div>
             </div>
@@ -89,6 +89,13 @@
             Hypertension patients with BP &lt;140/90 at their last visit in the
             last 3 months
           </p>
+          <div class="figures">
+            <p class="large-num">38%</p>
+            <div class="detail">
+              <p>6,904 patients with controlled BP from 1-May to 31-Jul</p>
+              <p class="text-grey">of 15,672 patients registered til 30-Apr</p>
+            </div>
+          </div>
           <div class="chart">
             <canvas id="bpcontrolled"></canvas>
           </div>
@@ -100,10 +107,13 @@
               ?
               <div class="tooltiptext">
                 <p>
-                  <span>Numerator:</span> Patients with BP ≥140/90 at their last visit in the last 3 months
+                  <span>Numerator:</span> Patients with BP ≥140/90 at their last
+                  visit in the last 3 months
                 </p>
                 <p>
-                  <span>Denominator:</span> Hypertension patients assigned, registered before the last 3 months. Dead and lost to follow-up patients are excluded.
+                  <span>Denominator:</span> Hypertension patients registered
+                  before the last 3 months. Dead and lost to follow-up patients
+                  are excluded.
                 </p>
               </div>
             </div>
@@ -119,6 +129,20 @@
         <div class="card">
           <div class="heading">
             <p>3 month lost to follow-up</p>
+            <div class="tooltip">
+              ?
+              <div class="tooltiptext">
+                <p>
+                  <span>Numerator:</span> Patients with no visit in the last 3
+                  months.
+                </p>
+                <p>
+                  <span>Denominator:</span> Hypertension patients registered
+                  before the last 3 months. Dead and lost to follow-up patients
+                  are excluded.
+                </p>
+              </div>
+            </div>
           </div>
           <p>Hypertension patients with no visit in the last 3 months</p>
           <div class="chart">
@@ -128,14 +152,47 @@
         <div class="card">
           <div class="heading">
             <p>Registrations</p>
+            <div class="tooltip">
+              ?
+              <div class="tooltiptext">
+                <p>
+                  <span>Total registered patients:</span> Total hypertension
+                  patients registered.
+                </p>
+                <p>
+                  <span>Monthly registered patients:</span> Hypertension
+                  patients registered each month.
+                </p>
+              </div>
+            </div>
           </div>
           <p>Monthly and total hypertension patients registered in CC Derby</p>
+          <div class="chart">
+            <canvas id="registrations"></canvas>
+          </div>
         </div>
         <div class="card">
           <div class="heading">
             <p>12 month lost to follow-up</p>
+            <div class="tooltip">
+              ?
+              <div class="tooltiptext">
+                <p>
+                  <span>Numerator:</span> Patients with no visit in the last 3
+                  months
+                </p>
+                <p>
+                  <span>Denominator:</span> Hypertension patients registered
+                  before the last 3 months. Dead and lost to follow-up patients
+                  are excluded.
+                </p>
+              </div>
+            </div>
           </div>
           <p>Hypertension patients with no visit in the last 3 months</p>
+          <div class="chart">
+            <canvas id="ltfu12Months"></canvas>
+          </div>
         </div>
         <div class="card">
           <div class="heading">
@@ -144,29 +201,25 @@
           <p>All individuals and patients with Hypertension in Haryana</p>
           <table>
             <tbody>
-              <tr>
-                <th>Total est. population with hypertension</th>
-                <td class="number">N/A</td>
-              </tr>
-              <tr>
-                <th>Total assigned patients</th>
-                <td class="number">1,460</td>
-              </tr>
-              <tr class="secondary">
+              <tr class="">
                 <th>Patients under care</th>
-                <td class="number">1,379</td>
+                <td class="number border-left">1,379</td>
               </tr>
-              <tr class="secondary">
-                <th>Lost to follow-up</th>
-                <td class="number">81</td>
+              <tr class="">
+                <th>12 month lost to follow-up</th>
+                <td class="number border-left">81</td>
               </tr>
-              <tr class="secondary">
+              <tr class="">
                 <th>Dead patients</th>
-                <td class="number">32</td>
+                <td class="number border-left">32</td>
               </tr>
               <tr>
-                <th>Total registered patients</th>
-                <td class="number">1,492</td>
+                <th>Cumulative registrations</th>
+                <td class="number border-top border-left">1,492</td>
+              </tr>
+              <tr class="border-top">
+                <th>Total est. population with hypertension</th>
+                <td class="number">25,800</td>
               </tr>
             </tbody>
           </table>
@@ -177,6 +230,15 @@
         </div>
       </div>
       <h2>Cohort report</h2>
+      <div class="card">
+        <div class="heading">
+          <p>Hypertension cohort report</p>
+        </div>
+        <p>
+          The result for all hypertensive patients registered in a quarter at
+          their follow-up visit in the following quarter
+        </p>
+      </div>
       <h2>Compare performance</h2>
       <div class="card">
         <div class="heading">
