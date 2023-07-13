@@ -130,6 +130,25 @@ table {
   }
 }
 
+.coverage {
+  width: 100%;
+  background: rgb(239, 239, 239);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 36px;
+  border: 2px solid rgba(209, 209, 209, 0.395);
+  padding: 1px;
+  .fill {
+    display: block;
+    background: purple;
+    height: 100%;
+    content: "";
+    /* border-right: 1px solid white; */
+    border-radius: 7px 0 0 7px;
+  }
+}
+
+/* animations */
 .fade-in {
   animation: fadeIn 5s;
 }
