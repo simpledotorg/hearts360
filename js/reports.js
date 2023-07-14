@@ -24,10 +24,6 @@ function dashboardReportsChartJSColors() {
     darkMaroon: "rgba(60,0,0,1)",
     orange: "rgb(223,104,15)",
     lightOrange: "rgba(255,156,8,0.15)",
-    overdueCalledChartLineDarkYellow: "rgba(228, 180, 57, 1)",
-    overdueCalledChartFillLightGreen: "rgba(41,181,0,0.2)",
-    overdueCalledChartFillLightYellow: "rgba(255,241,49,0.25)",
-    overdueCalledChartFillLightRed: "rgba(255,146,122,0.2)",
   };
 }
 
@@ -187,10 +183,10 @@ const bpControlledData = {
 
 const bpControlledConfig = baseLineChartConfig();
 bpControlledConfig.data = bpControlledData;
-const label = (context) => {
+const percentageLabel = (context) => {
   return `${context.dataset.label}: ${context.parsed.y}%`
 };
-bpControlledConfig.options.plugins.tooltip.callbacks = { label: label }
+bpControlledConfig.options.plugins.tooltip.callbacks = { label: percentageLabel }
 // tooltip: {
 //   callbacks: {
 //     afterBody: function(context) {
@@ -237,6 +233,7 @@ const bpUncontrolledData = {
 
 const bpUncontrolledConfig = baseLineChartConfig();
 bpUncontrolledConfig.data = bpUncontrolledData;
+bpUncontrolledConfig.options.plugins.tooltip.callbacks = { label: percentageLabel }
 
 const bpUncontrolledCanvas = document.getElementById("bpuncontrolled");
 console.log(bpUncontrolledCanvas);
@@ -275,6 +272,7 @@ const ltfu3MonthData = {
 
 const ltfu3MonthConfig = baseLineChartConfig();
 ltfu3MonthConfig.data = ltfu3MonthData;
+ltfu3MonthConfig.options.plugins.tooltip.callbacks = { label: percentageLabel }
 
 const ltfu3MonthCanvas = document.getElementById("ltfu3Month");
 console.log(bpUncontrolledCanvas);
@@ -303,7 +301,7 @@ const registrationsData = {
   ],
   datasets: [
     {
-      label: "Dataset 1",
+      label: "Registrations",
       data: [60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18],
       borderColor: '#7B7F8A',
       backgroundColor: 'rgba(163, 169, 184, 0.1)',
@@ -340,7 +338,7 @@ const ltfu12MonthsData = {
   ],
   datasets: [
     {
-      label: "Dataset 1",
+      label: "12 month lost to follow up",
       data: [0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 4, 6, 6, 7, 8, 9, 10],
       borderColor: '#FF3355',
       backgroundColor: 'rgba(255, 51, 85, 0.1)',
@@ -350,6 +348,7 @@ const ltfu12MonthsData = {
 
 const ltfu12MonthsConfig = baseLineChartConfig();
 ltfu12MonthsConfig.data = ltfu12MonthsData;
+ltfu12MonthsConfig.options.plugins.tooltip.callbacks = { label: percentageLabel }
 
 const ltfu12MonthsCanvas = document.getElementById("ltfu12Months");
 console.log(bpUncontrolledCanvas);
