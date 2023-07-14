@@ -41,6 +41,9 @@
       &.three-month-ltfu {
         color: #ed6300;
       }
+      &.twelve-month-ltfu {
+        color: #FF3355;
+      }
     }
 
     & .detail {
@@ -164,6 +167,19 @@ table {
 
   & .number {
     text-align: right;
+  }
+
+  &.relaxed {
+    & th, & td {
+      padding: 12px 0px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    & .secondary {
+      color: #717171;
+      padding-left: 12px;
+      border-top: 1px solid #eee;
+    }
   }
 }
 
