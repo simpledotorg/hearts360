@@ -7,7 +7,7 @@ body {
   background: #f6f6f6;
   background: #f8f8f8;
   font-family: var(--system-ui);
-  padding-top: 76px;
+  /* padding-top: 76px; */
 }
 
 h1 {
@@ -61,19 +61,19 @@ main {
 
 .navigation {
   /* padding: 24px 24px; */
-  background: #dfefff;
+  /* background: #dfefff; */
   background: #eff0f3;
   /* background: #e9e9e9; */
   /* border-bottom: 2px solid #b7dbff; */
   border-bottom: 2px solid #dce2eb;
   /* border-radius: 16px; */
-  position: fixed;
+  /* position: fixed; */
   /* top: 16px; */
-  top: 0;
+  /* top: 0; */
   width: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  /* z-index: 10; */
   /* box-shadow: rgba(0, 0, 0, 0.05) 0 6px 3px -1px; */
   .navigation-body {
     display: flex;
