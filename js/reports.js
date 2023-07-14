@@ -176,17 +176,29 @@ const bpControlledData = {
   ],
   datasets: [
     {
-      label: "Bp controlled",
-      data: [22, 25, 20, 18, 18, 24, 28, 33, 55, 48, 50, 52, 55, 49, 37, 51, 62, 66],
+      label: "BP controlled",
+      data: [24, 30, 25, 32, 34, 43, 38, 40, 44, 48, 46, 52, 57, 57, 60, 54, 60, 61],
       borderColor: '#3BB231',
       backgroundColor: 'rgba(69, 205, 57, 0.1)',
     },
   ],
 };
 
+
 const bpControlledConfig = baseLineChartConfig();
 bpControlledConfig.data = bpControlledData;
-
+const label = (context) => {
+  return `${context.dataset.label}: ${context.parsed.y}%`
+};
+bpControlledConfig.options.plugins.tooltip.callbacks = { label: label }
+// tooltip: {
+//   callbacks: {
+//     afterBody: function(context) {
+//       console.log(context);
+//       return context.element + '%'
+//     }
+//   }
+// }
 const bpControlledCanvas = document.getElementById("bpcontrolled");
 createChart(bpControlledCanvas, bpControlledConfig)
 
@@ -215,8 +227,8 @@ const bpUncontrolledData = {
   ],
   datasets: [
     {
-      label: "Dataset 1",
-      data: [60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18],
+      label: "BP uncontrolled",
+      data: [51, 58, 53, 46, 45, 45, 48, 35, 33, 40, 38, 30, 28, 24, 26, 17, 15, 17],
       borderColor: '#F6B100',
       backgroundColor: 'rgba(255, 201, 63, 0.1)',
     },
@@ -253,11 +265,9 @@ const ltfu3MonthData = {
   ],
   datasets: [
     {
-      label: "Dataset 1",
-      data: [60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18],
-      // borderColor: '#DE6C00',
-      // backgroundColor: 'rgba(222, 108, 0, 0.1)',
-      borderColor: '#E68946',
+      label: "3 month lost to follow up",
+      data: [25, 21, 28, 22, 21, 14, 21, 21, 21, 19, 20, 18, 15, 19, 17, 25, 20, 22],
+      borderColor: '#ed6300',
       backgroundColor: 'rgba(230, 137, 70, 0.1)',
     },
   ],
