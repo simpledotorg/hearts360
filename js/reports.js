@@ -341,7 +341,7 @@ const ltfu12MonthsData = {
   datasets: [
     {
       label: "Dataset 1",
-      data: [60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18],
+      data: [0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 4, 6, 6, 7, 8, 9, 10],
       borderColor: '#FF3355',
       backgroundColor: 'rgba(255, 51, 85, 0.1)',
     },
