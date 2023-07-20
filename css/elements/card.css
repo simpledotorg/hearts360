@@ -85,10 +85,10 @@
       color: #eee;
       opacity: 0;
       animation: fadeIn 190ms;
-  
+
       /* triangle */
       &:after {
-        content: "test";
+        content: "";
         position: absolute;
         top: 50%;
         right: -6px;
@@ -97,9 +97,9 @@
         height: 0;
         border-top: 6px solid transparent;
         border-bottom: 6px solid transparent;
-        border-left: 6px solid black;
+        border-left: 6px solid #222;
       }
-  
+
       > p > span {
         font-weight: 800;
         color: #fff;
