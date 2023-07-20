@@ -306,7 +306,7 @@ const registrationsData = {
         8731, 8834, 8974, 9244, 9563, 10213, 10593, 10873, 11143, 11452, 11814, 12071, 12575, 13095, 13695, 14660, 15703,
         16705,
       ],
-      borderColor: "#7B7F8A",
+      borderColor: "#afb2b9",
       backgroundColor: "transparent",
       yAxisID: "y",
     },
