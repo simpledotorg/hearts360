@@ -304,7 +304,7 @@ table {
   width: 2px;
   background: rgb(0, 116, 211);
   content: "";
-  transform: translateY(25%);
+  /* transform: translateY(25%); */
 }
 
 .coverage-fill-indicator-percentage {
@@ -314,13 +314,13 @@ table {
   border-radius: 6px;
   /* font-size: 0.85rem; */
   font-weight: 700;
-  /* transform: translateX(calc(50% - 1px)); */
+  transform: translateX(calc(50% - 1px));
   /* font-size: 1.75rem; */
-  color: #0074d3;
+  /* color: #0074d3; */
   /* color: #fff; */
-  /* position: absolute; */
-  /* right: 50%; */
-  /* bottom: 0; */
+  /* position: absolute;
+  right: 0;
+  top: 0; */
 }
 /* & .info {
   content: '',
