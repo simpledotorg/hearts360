@@ -13,6 +13,7 @@ body {
 h1 {
   font-size: 3rem;
   font-weight: bold;
+  margin-bottom: 32px;
 }
 
 h2 {
@@ -139,4 +140,9 @@ main {
     padding: 24px 24px 8px;
     color: #808080;
   }
+}
+
+.divider {
+  margin: 24px 0;
+  height: 12px;
 }
