@@ -302,18 +302,53 @@ const registrationsData = {
   datasets: [
     {
       label: "Registrations",
-      data: [60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18],
-      borderColor: '#7B7F8A',
-      backgroundColor: 'rgba(163, 169, 184, 0.1)',
+      data: [
+        8731, 8834, 8974, 9244, 9563, 10213, 10593, 10873, 11143, 11452, 11814, 12071, 12575, 13095, 13695, 14660, 15703,
+        16705,
+      ],
+      borderColor: "#7B7F8A",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+    },
+    {
+      label: "Patients under care",
+      data: [
+        60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18,
+      ],
+      borderColor: "#7B7F8A",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+    },
+    {
+      type: "bar",
+      label: "Monthly registrations",
+      data: [
+        119, 103, 140, 270, 319, 650, 380, 280, 270, 309, 362, 257, 504, 520,
+        600, 965, 1043, 1002,
+      ],
+      // borderColor: "#7B7F8A",
+      backgroundColor: "rgba(163, 169, 184, 0.4)",
+      yAxisID: "yMonthlyRegistrations",
     },
   ],
 };
 
 const registrationsConfig = baseLineChartConfig();
 registrationsConfig.data = registrationsData;
+console.log(registrationsConfig.options.scales.y);
+registrationsConfig.options.scales.y.grid = { drawTicks: false };
+registrationsConfig.options.scales.y.ticks.display = false;
+registrationsConfig.options.scales.y.ticks.count = 3;
+registrationsConfig.options.scales.y.max = 16705;
+
+registrationsConfig.options.scales.yMonthlyRegistrations = {
+  display: false,
+  beginAtZero: true,
+  max: 1043,
+};
 
 const registrationsCanvas = document.getElementById("registrations");
-createChart(registrationsCanvas, registrationsConfig)
+createChart(registrationsCanvas, registrationsConfig);
 
 const ltfu12MonthsData = {
   labels: [
