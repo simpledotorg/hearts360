@@ -33,16 +33,16 @@
       /* text-align: center; */
 
       &.bp-controlled {
-        color: #3BB231;
+        color: #3bb231;
       }
       &.bp-uncontrolled {
-        color: #F6B100;
+        color: #f6b100;
       }
       &.three-month-ltfu {
         color: #ed6300;
       }
       &.twelve-month-ltfu {
-        color: #FF3355;
+        color: #ff3355;
       }
     }
 
