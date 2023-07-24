@@ -270,16 +270,17 @@ table {
 }
 
 .coverage {
-  width: 100%;
+  /* width: 100%; */
   background: rgb(239, 239, 239);
   /* background: rgb(203, 232, 255); */
-  border-radius: 6px;
+  border-radius: 4px;
   /* overflow: hidden; */
-  margin: 64px 0 16px;
-  height: 36px;
-  border: 2px solid rgba(209, 209, 209, 0.395);
-  padding: 2px;
-  box-shadow: inset 0 0 0 2px #fff;
+  /* margin: 36px 0 24px; */
+  margin: 6px 0 4px;
+  height: 34px;
+  /* border: 2px solid rgba(209, 209, 209, 0.395); */
+  /* padding: 2px; */
+  /* box-shadow: inset 0 0 0 2px #fff; */
 }
 
 .coverage-bar {
@@ -294,9 +295,26 @@ table {
   /* border: 1px solid white; */
   border-radius: 3px 0 0 3px;
 }
+.coverage-fill-v2 {
+  position: relative;
+  display: block;
+  background: rgb(58, 167, 255);
+  height: 100%;
+  content: "";
+  /* border: 1px solid white; */
+  border-radius: 4px;
+  &.registrations {
+    background: #b51bdc;
+  }
+  &.under-care {
+  }
+  &.controlled {
+    background: #3bb231;
+  }
+}
 
 .coverage-fill-indicator {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   right: 0;
   display: flex;
@@ -306,19 +324,30 @@ table {
 }
 
 .coverage-fill-indicator-line {
-  height: 42px;
+  height: 34px;
   width: 2px;
-  background: rgb(0, 116, 211);
+  background: #0074d3;
   content: "";
   /* transform: translateY(25%); */
 }
+/* .coverage-fill-indicator-line-v2 {
+  height: 2px;
+  width: 6px;
+  background: rgb(0, 116, 211);
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  transform: translateY(25%);
+} */
 
 .coverage-fill-indicator-percentage {
   text-align: center;
   /* background: rgb(182, 242, 255);
   background: rgb(16, 158, 190); */
   border-radius: 6px;
-  /* font-size: 0.85rem; */
+  font-size: 0.9rem;
   font-weight: 700;
   transform: translateX(calc(50% - 1px));
   /* font-size: 1.75rem; */
@@ -328,6 +357,30 @@ table {
   right: 0;
   top: 0; */
 }
+.coverage-fill-indicator-percentage-v2 {
+  position: absolute;
+  left: 100%;
+  margin-left: 6px;
+  font-weight: 600;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  > p {
+    background: rgb(239, 239, 239);
+    border-radius: 6px;
+    padding: 1px 4px;
+  }
+  & .registrations {
+    color: #b51bdc;
+  }
+  & .under-care {
+    color: #0074d3;
+  }
+  & .controlled {
+    color: #3bb231;
+  }
+}
+
 /* & .info {
   content: '',
 } */
@@ -338,10 +391,25 @@ table {
   }
 } */
 
-.coverage-subtitle {
+.coverage-detail {
   text-align: right;
   font-size: 0.85rem;
   margin: 6px 0;
+  & .registrations {
+    color: #b51bdc;
+  }
+  & .under-care {
+    color: #0074d3;
+  }
+  & .controlled {
+    color: #3bb231;
+  }
+}
+
+.data-line {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
 }
 
 /* animations */
