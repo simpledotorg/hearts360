@@ -21,6 +21,12 @@
     margin-right: 24px;
   }
 
+  & h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 16px;
+  }
+
   .figures {
     margin: 12px 0;
 
