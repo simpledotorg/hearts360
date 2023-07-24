@@ -303,19 +303,24 @@ const registrationsData = {
     {
       label: "Registrations",
       data: [
-        8731, 8834, 8974, 9244, 9563, 10213, 10593, 10873, 11143, 11452, 11814, 12071, 12575, 13095, 13695, 14660, 15703,
-        16705,
+        8731, 8834, 8974, 9244, 9563, 10213, 10593, 10873, 11143, 11452, 11814,
+        12071, 12575, 13095, 13695, 14660, 15703, 16705,
       ],
-      borderColor: "#afb2b9",
+      // borderColor: "#afb2b9",
+      // borderColor: "rgba(0, 116, 211, 0.5)",
+      // purple
+      // borderColor: "#B51BDC",
+      borderColor: "rgba(187,27,220, 0.65)",
       backgroundColor: "transparent",
       yAxisID: "y",
     },
     {
       label: "Patients under care",
       data: [
-        60, 65, 47, 47, 42, 44, 51, 35, 36, 41, 29, 32, 36, 30, 15, 18, 24, 18,
+        8731, 8834, 8974, 9244, 9563, 10201, 9721, 9789, 9860, 9904, 9965, 10500, 10900, 11670,
+        12780, 13900, 14600, 15672,
       ],
-      borderColor: "#7B7F8A",
+      borderColor: "#0074d3",
       backgroundColor: "transparent",
       yAxisID: "y",
     },
@@ -327,7 +332,8 @@ const registrationsData = {
         600, 965, 1043, 1002,
       ],
       // borderColor: "#7B7F8A",
-      backgroundColor: "rgba(163, 169, 184, 0.4)",
+      // backgroundColor: "rgba(163, 169, 184, 0.4)",
+      backgroundColor: "#BEDFF9",
       yAxisID: "yMonthlyRegistrations",
     },
   ],
@@ -346,6 +352,8 @@ registrationsConfig.options.scales.yMonthlyRegistrations = {
   beginAtZero: true,
   max: 1043,
 };
+
+registrationsConfig.options.plugins.tooltip.displayColors = true;
 
 const registrationsCanvas = document.getElementById("registrations");
 createChart(registrationsCanvas, registrationsConfig);
