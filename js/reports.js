@@ -407,3 +407,72 @@ ltfu12MonthsConfig.options.plugins.tooltip.callbacks = {
 const ltfu12MonthsCanvas = document.getElementById("ltfu12Months");
 console.log(bpUncontrolledCanvas);
 createChart(ltfu12MonthsCanvas, ltfu12MonthsConfig);
+
+// Drug stock
+const drugStockData = {
+  labels: [
+    "Feb-2022",
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+  ],
+  datasets: [
+    {
+      label: "Facilities with Step 1 drugs",
+      data: [
+        96, 94, 90, 80, 70, 70, 71, 72, 73, 74, 75, 76, 78, 86, 96, 95, 94, 94,
+      ],
+      borderColor: "#222",
+      backgroundColor: "transparent",
+    },
+    {
+      label: "Facilities with Step 2 drugs",
+      data: [
+        86, 84, 80, 70, 40, 30, 31, 32, 33, 34, 30, 46, 48, 46, 56, 55, 64, 64,
+      ],
+      borderColor: "#999",
+      backgroundColor: "transparent",
+    },
+    {
+      label: "Facilities with Step 3 drugs",
+      data: [
+        90, 92, 92, 90, 90, 90, 91, 92, 93, 94, 90, 96, 98, 96, 96, 95, 94, 94,
+      ],
+      borderColor: "#CCC",
+      backgroundColor: "transparent",
+    },
+  ],
+};
+
+const drugStockConfig = baseLineChartConfig();
+drugStockConfig.data = drugStockData;
+const stockLabel = (context) => {
+  return `${context.dataset.label}: ${context.parsed.y}%`;
+};
+drugStockConfig.options.plugins.tooltip.callbacks = {
+  label: stockLabel,
+};
+// tooltip: {
+//   callbacks: {
+//     afterBody: function(context) {
+//       console.log(context);
+//       return context.element + '%'
+//     }
+//   }
+// }
+const drugStockCanvas = document.getElementById("drugstock");
+createChart(drugStockCanvas, drugStockConfig);

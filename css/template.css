@@ -130,8 +130,7 @@ main {
     & .large-num {
       font-size: 2rem;
       font-weight: 700;
-      color: grey;
-      color: #afb2b9;
+      color: #333;
 
       &.bp-controlled {
         color: #3bb231;
