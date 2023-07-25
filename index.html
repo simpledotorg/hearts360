@@ -165,14 +165,10 @@
               <div>
                 <p class="large-num under-care">10,539</p>
                 <div class="detail">
-                  <p>1,002 patients registered in Jul-2023</p>
+                  <p>1,002 patients registered in Jun-2023</p>
                   <p class="text-grey">of <span class="color-registrations">11,955 cumulative registered patients</span></p>
                 </div>
               </div>
-              <!-- <div>
-                <p>Jul-2023</p>
-                <p class="large-num">+1002</p>
-              </div> -->
             </div>
             <div class="chart">
               <canvas id="registrations"></canvas>
@@ -268,7 +264,9 @@
           </div>
         </div>
       </div>
+      
       <div class="divider"></div>
+      
       <div class="card">
         <div class="heading">
           <h3>Quarterly cohort report</h3>
@@ -411,9 +409,9 @@
               <th colspan="2" scope="colgroup">3 month lost to follow-up</th>
             </tr>
             <tr class="head-bg">
-              <th>Regions</th>
+              <th></th>
               <th class="text-right">Total</th>
-              <th class="text-right">Jul-2023</th>
+              <th class="text-right">Jun-2023</th>
               <th class="text-right">Total</th>
               <th>Percent</th>
               <th class="text-right">Total</th>
@@ -659,7 +657,7 @@
           </div>
           <div class="body">
             <div class="figures">
-              <p class="large-num">100%</p>
+              <p class="large-num">98%</p>
               <div class="detail">
                 <p>157 facilities with a BP monitor</p>
                 <p class="text-grey">
@@ -670,7 +668,7 @@
           </div>
           <div class="chart" style="padding: 24px 0 0 8px;">
             Facilities without a functioning BP monitor:
-            <ul>
+            <ul class="facility-list">
               <li>❌ PHC Lightfoot</li>
               <li>❌ PHC Dylan</li>
               <li>❌ PHC Mitchell</li>
@@ -679,6 +677,296 @@
         </div>
       </div>
       
+      <div class="divider"></div>
+      
+      <div class="card">
+        <div class="heading">
+          <h3>Stock reporting by facility</h3>
+          <p>
+            Jun-2023 reports
+          </p>
+          
+          <table>
+          <colgroup>
+            <col span="2" />
+            <col span="2" />
+            <col span="2" />
+            <col />
+          </colgroup>
+          <thead>
+            <tr class="text-center">
+              <td></td>
+              <th colspan="2" scope="colgroup">Step 1 drugs</th>
+              <th colspan="2" scope="colgroup">Step 2 drugs</th>
+              <th colspan="2" scope="colgroup">Step 3 drugs</th>
+              <th scope="colgroup">BP monitors</th>
+            </tr>
+            <tr class="head-bg">
+              <th></th>
+              <th class="text-right">Total</th>
+              <th class="text-left">Patient days</th>
+              <th class="text-right">Total</th>
+              <th class="text-left">Patient days</th>
+              <th class="text-right">Total</th>
+              <th class="text-left">Patient days</th>
+              <th class="text-right">Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="totals">
+              <th class="link"><b>River District</b></th>
+              <td class="number">600,600</td>
+              <td>54</td>
+              <td class="number">180,100</td>
+              <td>60</td>
+              <td class="number">210,400</td>
+              <td>45</td>
+              <td class="number">140</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">CHC Apple Orchard</a></th>
+              <td class="number">5,000</td>
+              <td>90</td>
+              <td class="number">16,000</td>
+              <td>120</td>
+              <td class="number">14,000</td>
+              <td>180</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">CHC Riverside</a></th>
+              <td class="number">10,539</td>
+              <td>40</td>
+              <td class="number">10,539</td>
+              <td class="warning">14 ⚠️</td>
+              <td class="number">10,539</td>
+              <td class="warning">22 ⚠️</td>
+              <td class="number">2</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">CHC Treehouse</a></th>
+              <td class="number">5,000</td>
+              <td>90</td>
+              <td class="number">16,000</td>
+              <td>120</td>
+              <td class="number">14,000</td>
+              <td>180</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">CHC Village View</a></th>
+              <td class="number">—</td>
+              <td>—</td>
+              <td class="number">—</td>
+              <td>—</td>
+              <td class="number">—</td>
+              <td>—</td>
+              <td class="number">—</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">DH Granite District</a></th>
+              <td class="number">15,000</td>
+              <td>80</td>
+              <td class="number">12,000</td>
+              <td>100</td>
+              <td class="number">14,000</td>
+              <td>90</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">DH Hammer House</a></th>
+              <td class="number">14,000</td>
+              <td>80</td>
+              <td class="number">10,500</td>
+              <td>100</td>
+              <td class="number">12,000</td>
+              <td>100</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">PHC Appleton</a></th>
+              <td class="number">5,000</td>
+              <td>70</td>
+              <td class="number">2,000</td>
+              <td>100</td>
+              <td class="number">4,000</td>
+              <td>60</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">PHC Blueberry Fields</a></th>
+              <td class="number">1,000</td>
+              <td>30</td>
+              <td class="number">1,000</td>
+              <td>80</td>
+              <td class="number">4,000</td>
+              <td>40</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">PHC Curryville</a></th>
+              <td class="number">1,000</td>
+              <td>30</td>
+              <td class="number">1,000</td>
+              <td>80</td>
+              <td class="number">4,000</td>
+              <td>40</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">PHC Durian River</a></th>
+              <td class="number">1,000</td>
+              <td>30</td>
+              <td class="number">1,000</td>
+              <td>80</td>
+              <td class="number">4,000</td>
+              <td>40</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">PHC Elderflower Downs</a></th>
+              <td class="number">1,000</td>
+              <td>30</td>
+              <td class="number">1,000</td>
+              <td>80</td>
+              <td class="number">4,000</td>
+              <td>40</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">PHC Eggplant Peak</a></th>
+              <td class="number">1,000</td>
+              <td>30</td>
+              <td class="number">1,000</td>
+              <td>80</td>
+              <td class="number">4,000</td>
+              <td>40</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">PHC Fiddlehead Fields</a></th>
+              <td class="number">1,000</td>
+              <td>30</td>
+              <td class="number">1,000</td>
+              <td>80</td>
+              <td class="number">4,000</td>
+              <td>40</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">PHC Valley Forge</a></th>
+              <td class="number">1,000</td>
+              <td>90</td>
+              <td class="number">800</td>
+              <td>200</td>
+              <td class="number">400</td>
+              <td class="warning">29 ⚠️</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">PHC Willow Grove</a></th>
+              <td class="number">5,000</td>
+              <td>70</td>
+              <td class="number">2,000</td>
+              <td>100</td>
+              <td class="number">4,000</td>
+              <td>60</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">PHC Yellow River Flats</a></th>
+              <td class="number">0</td>
+              <td class="warning">0 ⚠️</td>
+              <td class="number">140</td>
+              <td class="warning">10 ⚠️</td>
+              <td class="number">600</td>
+              <td>32</td>
+              <td class="number warning">0 ⚠️</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">UPHC Avocado Hill</a></th>
+              <td class="number">1,000</td>
+              <td>30</td>
+              <td class="number">1,000</td>
+              <td>80</td>
+              <td class="number">4,000</td>
+              <td>40</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">UPHC Brown Butter</a></th>
+              <td class="number">1,000</td>
+              <td>90</td>
+              <td class="number">800</td>
+              <td>200</td>
+              <td class="number">400</td>
+              <td class="warning">12 ⚠️</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">UPHC Carrot Cake</a></th>
+              <td class="number">5,000</td>
+              <td>70</td>
+              <td class="number">2,000</td>
+              <td>100</td>
+              <td class="number">4,000</td>
+              <td>60</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">UPHC Dandelion Wine</a></th>
+              <td class="number">4,400</td>
+              <td>140</td>
+              <td class="number">500</td>
+              <td>40</td>
+              <td class="number">500</td>
+              <td>30</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">UPHC Eagle View</a></th>
+              <td class="number">1,000</td>
+              <td>30</td>
+              <td class="number">1,000</td>
+              <td>80</td>
+              <td class="number">4,000</td>
+              <td>40</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">UPHC Feather</a></th>
+              <td class="number">1,000</td>
+              <td>90</td>
+              <td class="number">800</td>
+              <td>200</td>
+              <td class="number">400</td>
+              <td class="warning">22 ⚠️</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">UPHC Garden View</a></th>
+              <td class="number">5,000</td>
+              <td>70</td>
+              <td class="number">2,000</td>
+              <td>100</td>
+              <td class="number">4,000</td>
+              <td>60</td>
+              <td class="number">1</td>
+            </tr>
+            <tr>
+              <th class="link"><a href="#">UPHC Heather</a></th>
+              <td class="number">4,400</td>
+              <td>140</td>
+              <td class="number">500</td>
+              <td>40</td>
+              <td class="number">500</td>
+              <td>30</td>
+              <td class="number">1</td>
+            </tr>
+          </tbody>
+          </table>
+        </div>
+      </div>
       <div class="divider"></div>
       
       <h2>Definitions</h2>

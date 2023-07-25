@@ -271,6 +271,11 @@ table {
   & .number {
     text-align: right;
   }
+  
+  & .warning {
+    color: #ff3355;
+    background: rgba(255, 51, 85, 0.1);
+  }
 
   &.relaxed {
     & th,
@@ -360,6 +365,7 @@ table {
   align-items: center;
   gap: 16px;
   margin-top: 12px;
+  font-size: 0.9em;
   & div {
     display: flex;
     align-items: center;
@@ -383,9 +389,16 @@ table {
   }
 }
 
+.facility-list {
+  & li {
+    padding: 6px 0 0 0;
+  }
+}
+
 .text-center th {
   text-align: center;
 }
+
 .text-right {
   text-align: right;
 }

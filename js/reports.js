@@ -432,7 +432,7 @@ const drugStockData = {
   ],
   datasets: [
     {
-      label: "Facilities with Step 1 drugs",
+      label: "Facilities with >30 days of Step 1 drugs",
       data: [
         96, 94, 90, 80, 70, 70, 71, 72, 73, 74, 75, 76, 78, 86, 96, 95, 94, 94,
       ],
@@ -440,7 +440,7 @@ const drugStockData = {
       backgroundColor: "transparent",
     },
     {
-      label: "Facilities with Step 2 drugs",
+      label: "Facilities with >30 days of Step 2 drugs",
       data: [
         86, 84, 80, 70, 40, 30, 31, 32, 33, 34, 30, 46, 48, 46, 56, 55, 64, 64,
       ],
@@ -448,7 +448,7 @@ const drugStockData = {
       backgroundColor: "transparent",
     },
     {
-      label: "Facilities with Step 3 drugs",
+      label: "Facilities with >30 days of Step 3 drugs",
       data: [
         90, 92, 92, 90, 90, 90, 91, 92, 93, 94, 90, 96, 98, 96, 96, 95, 94, 94,
       ],
