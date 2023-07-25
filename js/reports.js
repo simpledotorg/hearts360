@@ -269,7 +269,7 @@ const ltfu3MonthData = {
   ],
   datasets: [
     {
-      label: "3 month lost to follow up",
+      label: "3 month lost to follow-up",
       data: [
         25, 21, 28, 22, 21, 14, 21, 21, 21, 19, 20, 18, 15, 19, 17, 25, 20, 22,
       ],
@@ -390,7 +390,7 @@ const ltfu12MonthsData = {
   ],
   datasets: [
     {
-      label: "12 month lost to follow up",
+      label: "12 month lost to follow-up",
       data: [0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 4, 6, 6, 7, 8, 9, 10],
       borderColor: "#FF3355",
       backgroundColor: "rgba(255, 51, 85, 0.1)",
