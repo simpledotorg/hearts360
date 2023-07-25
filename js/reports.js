@@ -310,7 +310,7 @@ const registrationsData = {
   ],
   datasets: [
     {
-      label: "Registrations",
+      label: "Cumulative registrations",
       data: [
         2288, 3074, 3719, 3989, 4308, 4958, 5338, 5705, 5975, 6284, 6762, 7019,
         7523, 8043, 8941, 9906, 11062, 12105,
