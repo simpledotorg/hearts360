@@ -441,13 +441,6 @@ table {
   color: #888;
 }
 
-.dead-patients {
-  font-size: 0.9rem;
-  /* text-align: right; */
-  margin-top: 8px;
-  display: block;
-}
-
 .color-registrations {
   color: #b51bdc;
 }
