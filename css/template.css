@@ -150,8 +150,8 @@ main {
       }
     }
 
-    & .detail {
-      font-size: 1rem;
+    & .detail p {
+      font-size: 0.9rem;
     }
   }
 
