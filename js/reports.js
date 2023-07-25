@@ -173,20 +173,23 @@ const bpControlledData = {
   datasets: [
     {
       label: "BP controlled",
-      data: [24, 30, 25, 32, 34, 43, 38, 40, 44, 48, 46, 52, 57, 57, 60, 54, 60, 61],
-      borderColor: '#3BB231',
-      backgroundColor: 'rgba(69, 205, 57, 0.1)',
+      data: [
+        24, 30, 25, 32, 34, 43, 38, 40, 44, 48, 46, 52, 57, 57, 60, 54, 60, 61,
+      ],
+      borderColor: "#3BB231",
+      backgroundColor: "rgba(69, 205, 57, 0.1)",
     },
   ],
 };
 
-
 const bpControlledConfig = baseLineChartConfig();
 bpControlledConfig.data = bpControlledData;
 const percentageLabel = (context) => {
-  return `${context.dataset.label}: ${context.parsed.y}%`
+  return `${context.dataset.label}: ${context.parsed.y}%`;
 };
-bpControlledConfig.options.plugins.tooltip.callbacks = { label: percentageLabel }
+bpControlledConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
 // tooltip: {
 //   callbacks: {
 //     afterBody: function(context) {
@@ -196,7 +199,7 @@ bpControlledConfig.options.plugins.tooltip.callbacks = { label: percentageLabel 
 //   }
 // }
 const bpControlledCanvas = document.getElementById("bpcontrolled");
-createChart(bpControlledCanvas, bpControlledConfig)
+createChart(bpControlledCanvas, bpControlledConfig);
 
 // BP Uncontrolled
 // BP Controlled
@@ -224,20 +227,24 @@ const bpUncontrolledData = {
   datasets: [
     {
       label: "BP uncontrolled",
-      data: [51, 58, 53, 46, 45, 45, 48, 35, 33, 40, 38, 30, 28, 24, 26, 17, 15, 17],
-      borderColor: '#F6B100',
-      backgroundColor: 'rgba(255, 201, 63, 0.1)',
+      data: [
+        51, 58, 53, 46, 45, 45, 48, 35, 33, 40, 38, 30, 28, 24, 26, 17, 15, 17,
+      ],
+      borderColor: "#F6B100",
+      backgroundColor: "rgba(255, 201, 63, 0.1)",
     },
   ],
 };
 
 const bpUncontrolledConfig = baseLineChartConfig();
 bpUncontrolledConfig.data = bpUncontrolledData;
-bpUncontrolledConfig.options.plugins.tooltip.callbacks = { label: percentageLabel }
+bpUncontrolledConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
 
 const bpUncontrolledCanvas = document.getElementById("bpuncontrolled");
 console.log(bpUncontrolledCanvas);
-createChart(bpUncontrolledCanvas, bpUncontrolledConfig)
+createChart(bpUncontrolledCanvas, bpUncontrolledConfig);
 
 const ltfu3MonthData = {
   labels: [
@@ -263,20 +270,22 @@ const ltfu3MonthData = {
   datasets: [
     {
       label: "3 month lost to follow up",
-      data: [25, 21, 28, 22, 21, 14, 21, 21, 21, 19, 20, 18, 15, 19, 17, 25, 20, 22],
-      borderColor: '#ed6300',
-      backgroundColor: 'rgba(230, 137, 70, 0.1)',
+      data: [
+        25, 21, 28, 22, 21, 14, 21, 21, 21, 19, 20, 18, 15, 19, 17, 25, 20, 22,
+      ],
+      borderColor: "#ed6300",
+      backgroundColor: "rgba(230, 137, 70, 0.1)",
     },
   ],
 };
 
 const ltfu3MonthConfig = baseLineChartConfig();
 ltfu3MonthConfig.data = ltfu3MonthData;
-ltfu3MonthConfig.options.plugins.tooltip.callbacks = { label: percentageLabel }
+ltfu3MonthConfig.options.plugins.tooltip.callbacks = { label: percentageLabel };
 
 const ltfu3MonthCanvas = document.getElementById("ltfu3Month");
 console.log(bpUncontrolledCanvas);
-createChart(ltfu3MonthCanvas, ltfu3MonthConfig)
+createChart(ltfu3MonthCanvas, ltfu3MonthConfig);
 
 const registrationsData = {
   labels: [
@@ -303,8 +312,8 @@ const registrationsData = {
     {
       label: "Registrations",
       data: [
-        8731, 8834, 8974, 9244, 9563, 10213, 10593, 10873, 11143, 11452, 11814,
-        12071, 12575, 13095, 13695, 14660, 15703, 16705,
+        2288, 3074, 3719, 3989, 4308, 4958, 5338, 5705, 5975, 6284, 6762, 7019,
+        7523, 8043, 8941, 9906, 11062, 12105,
       ],
       // borderColor: "#afb2b9",
       // borderColor: "rgba(0, 116, 211, 0.5)",
@@ -317,8 +326,8 @@ const registrationsData = {
     {
       label: "Patients under care",
       data: [
-        8731, 8834, 8974, 9244, 9563, 10201, 9721, 9789, 9860, 9904, 9965, 10500, 10900, 11670,
-        12780, 13900, 14600, 15672,
+        2280, 3063, 3716, 3984, 4301, 4903, 5217, 5505, 5678, 5895, 6223, 6438,
+        6768, 7146, 7882, 8649, 9648, 10539,
       ],
       borderColor: "#0074d3",
       backgroundColor: "transparent",
@@ -328,8 +337,8 @@ const registrationsData = {
       type: "bar",
       label: "Monthly registrations",
       data: [
-        119, 103, 140, 270, 319, 650, 380, 280, 270, 309, 362, 257, 504, 520,
-        600, 965, 1043, 1002,
+        572, 786, 303, 270, 319, 650, 380, 285, 270, 309, 362, 257, 504, 520,
+        604, 965, 1156, 1043,
       ],
       // borderColor: "#7B7F8A",
       // backgroundColor: "rgba(163, 169, 184, 0.4)",
@@ -345,12 +354,12 @@ console.log(registrationsConfig.options.scales.y);
 registrationsConfig.options.scales.y.grid = { drawTicks: false };
 registrationsConfig.options.scales.y.ticks.display = false;
 registrationsConfig.options.scales.y.ticks.count = 3;
-registrationsConfig.options.scales.y.max = 16705;
+registrationsConfig.options.scales.y.max = 12105;
 
 registrationsConfig.options.scales.yMonthlyRegistrations = {
   display: false,
   beginAtZero: true,
-  max: 1043,
+  max: 1156,
 };
 
 registrationsConfig.options.plugins.tooltip.displayColors = true;
@@ -383,16 +392,18 @@ const ltfu12MonthsData = {
     {
       label: "12 month lost to follow up",
       data: [0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 4, 6, 6, 7, 8, 9, 10],
-      borderColor: '#FF3355',
-      backgroundColor: 'rgba(255, 51, 85, 0.1)',
+      borderColor: "#FF3355",
+      backgroundColor: "rgba(255, 51, 85, 0.1)",
     },
   ],
 };
 
 const ltfu12MonthsConfig = baseLineChartConfig();
 ltfu12MonthsConfig.data = ltfu12MonthsData;
-ltfu12MonthsConfig.options.plugins.tooltip.callbacks = { label: percentageLabel }
+ltfu12MonthsConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
 
 const ltfu12MonthsCanvas = document.getElementById("ltfu12Months");
 console.log(bpUncontrolledCanvas);
-createChart(ltfu12MonthsCanvas, ltfu12MonthsConfig)
+createChart(ltfu12MonthsCanvas, ltfu12MonthsConfig);

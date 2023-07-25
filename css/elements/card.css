@@ -10,6 +10,12 @@
   border: 2px solid #e5e5e5;
   border-radius: 16px;
 
+  /* .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  } */
+
   .chart {
     height: 260px;
     margin: -8px;
@@ -30,10 +36,15 @@
   .figures {
     margin: 12px 0;
 
+    &.flex {
+      display: flex;
+    }
+
     & .large-num {
       font-size: 2rem;
       font-weight: 700;
       color: grey;
+      color: #afb2b9;
       /* padding: 0 12px 0 8px; */
       /* width: 100px; */
       /* text-align: center; */
@@ -49,6 +60,9 @@
       }
       &.twelve-month-ltfu {
         color: #ff3355;
+      }
+      &.under-care {
+        color: #0074d3;
       }
     }
 
@@ -75,7 +89,7 @@
     &::before {
       content: "?";
     }
-  
+
     .info-hover-text {
       display: none;
       flex-direction: column;
@@ -111,7 +125,7 @@
         color: #fff;
       }
     }
-  
+
     &:hover {
       .info-hover-text {
         display: flex;
@@ -176,7 +190,8 @@ table {
   }
 
   &.relaxed {
-    & th, & td {
+    & th,
+    & td {
       padding: 12px 0px;
       font-size: 1rem;
       font-weight: 600;
@@ -216,12 +231,13 @@ table {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 3em;
   }
 
   color: #fff;
   font-weight: 700;
   text-align: center;
-  min-width: 3em;
+
 
   & .bp-controlled {
     background: #3bb231;
