@@ -92,10 +92,17 @@
             <div class="figures">
               <p class="large-num bp-controlled">61%</p>
               <div class="detail">
-                <p>10,542 patients with controlled BP from 1-May to 31-Jul</p>
-                <p class="text-grey">
+                <p>10,542  with controlled BP from 1-May to 31-Jul</p>
+                <!-- <p class="text-grey">
                   of 15,674 patients registered til 30-Apr
+                </p> -->
+                <!-- <p class="text-grey">
+                  of 15,674 under care registered up to 30-Apr
+                </p> -->
+                <p class="text-grey">
+                  of 7,882 patients under care registered before 1-May
                 </p>
+
               </div>
             </div>
             <div class="chart">
@@ -130,7 +137,7 @@
               <div class="detail">
                 <p>2,664 patients with uncontrolled BP from 1-May to 31-Jul</p>
                 <p class="text-grey">
-                  of 15,674 patients registered til 30-Apr
+                  of 7,882 patients registered til 30-Apr
                 </p>
               </div>
             </div>
@@ -165,7 +172,7 @@
                   3,448 patients with no visit in 3 months from 1-May to 31-Jul
                 </p>
                 <p class="text-grey">
-                  of 15,674 patients registered til 30-Apr
+                  of 7,882 patients registered til 30-Apr
                 </p>
               </div>
             </div>
@@ -201,18 +208,25 @@
           </div>
           <div class="body">
             <div class="figures">
-              <p class="large-num under-care">15,674</p>
-              <div class="detail">
-                <p>16705 cumulative patient registrations</p>
-                <p class="text-grey">+1,043 registrations in Jul-2023</p>
-                <p class="text-grey">205 dead patients</p>
+              <div>
+                <p class="large-num under-care">10,539</p>
+                <div class="detail">
+                  <p>1,002 registrations in Jul-2023</p>
+                  <p class="text-grey">of <span class="color-registrations">11,955</span> cumulative registrations</p>
+                  <p class="dead-patients">205 dead patients</p>
+                </div>
               </div>
+              <!-- <div>
+                <p>Jul-2023</p>
+                <p class="large-num">+1002</p>
+              </div> -->
             </div>
             <div class="chart">
               <canvas id="registrations"></canvas>
             </div>
           </div>
         </div>
+
         <div class="card">
           <div class="heading">
             <h3>12 month lost to follow-up</h3>
@@ -234,9 +248,9 @@
             <div class="figures">
               <p class="large-num twelve-month-ltfu">10%</p>
               <div class="detail">
-                <p>1638 patients with no visit since Jul-2022</p>
+                <p>1,562 patients with no visit since Jul-2022</p>
                 <p class="text-grey">
-                  of 16,705 patients registered til 31-Jul
+                  of 11,955 patients registered til 31-Jul
                 </p>
               </div>
             </div>
