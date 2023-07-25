@@ -146,7 +146,7 @@ main {
         color: #ff3355;
       }
       &.under-care {
-        color: #0074d3;
+        color: #b51bdc;
       }
     }
 
@@ -304,7 +304,7 @@ table {
     font-weight: bold;
   }
   .under-care {
-    color: #0074d3;
+    color: #b51bdc;
     font-weight: bold;
   }
   
@@ -402,11 +402,11 @@ table {
 .coverage-fill {
   position: relative;
   display: block;
-  background: #007ee5;
+  background: #b51bdc;
   height: 100%;
   content: "";
   &.registrations {
-    background: #b51bdc;
+    background: #007ee4;
   }
   &.under-care {
   }
@@ -427,7 +427,7 @@ table {
 .coverage-fill-indicator-line {
   height: 34px;
   width: 2px;
-  background: #007ee5;
+  background: #b51bdc;
   content: "";
 }
 
@@ -444,10 +444,10 @@ table {
   border-radius: 6px;
   padding: 1px 4px;
   &.registrations {
-    color: #b51bdc;
+    color: #007ee4;
   }
   &.under-care {
-    color: #007ee5;
+    color: #b51bdc;
   }
   &.controlled {
     color: #3bb231;
@@ -482,10 +482,10 @@ table {
   font-size: 0.85rem;
   margin: 6px 0;
   & .registrations {
-    color: #b51bdc;
+    color: #007ee4;
   }
   & .under-care {
-    color: #0074d3;
+    color: #b51bdc
   }
   & .controlled {
     color: #3bb231;
@@ -516,8 +516,8 @@ table {
 }
 
 .color-registrations {
-  color: #b51bdc;
+  color: #007ee4;
 }
 .bg-registrations {
-  background: #b51bdc;
+  background: #007ee4;
 }

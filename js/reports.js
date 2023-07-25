@@ -319,7 +319,7 @@ const registrationsData = {
       // borderColor: "rgba(0, 116, 211, 0.5)",
       // purple
       // borderColor: "#B51BDC",
-      borderColor: "rgba(187,27,220, 0.65)",
+      borderColor: "rgba(0,126,228, 0.65)",
       backgroundColor: "transparent",
       yAxisID: "y",
     },
@@ -329,7 +329,7 @@ const registrationsData = {
         2280, 3063, 3716, 3984, 4301, 4903, 5217, 5505, 5678, 5895, 6223, 6438,
         6768, 7146, 7882, 8649, 9648, 10539,
       ],
-      borderColor: "#0074d3",
+      borderColor: "#b51bdc",
       backgroundColor: "transparent",
       yAxisID: "y",
     },
