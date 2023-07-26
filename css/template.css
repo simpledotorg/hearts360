@@ -240,9 +240,55 @@ main {
   background: transparent;
 }
 
+.table-container {
+  position: relative;
+  margin: 0 -20px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 0) 
+    );
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 1) 
+    );
+  }
+  /* padding-top: 24px; */
+}
+.table-wrap {
+  overflow-y: scroll;
+}
+
+.table-scroll {
+  text-align: right;
+  margin: 24px 0 8px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
 table {
-  width: 100%;
-  margin-top: 24px;
+  width: calc(100% - 20px);
+  margin: 0 20px;
   font-size: 0.9rem;
 
   & tr {
@@ -615,3 +661,8 @@ th[role="columnheader"]:not(.no-sort):hover:after {
   }
 }
 
+.mobile-only {
+  @media screen and (min-width: 880px) {
+    display: none;
+  }
+}
