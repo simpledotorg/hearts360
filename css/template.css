@@ -567,12 +567,11 @@ th[role="columnheader"]:not(.no-sort):hover:after {
 }
 
 .bp-uncontrolled {
-  /* color: #d4a11c; */
-  color: #f6b100;
+  color: #eeab00;
 }
 .bp-uncontrolled-bg {
-  /* background: #d4a11c; */
-  background: #f6b100;
+  /* background: #f6b100; */
+  background: #eeab00;
 }
 
 .three-month-ltfu {
@@ -607,8 +606,8 @@ th[role="columnheader"]:not(.no-sort):hover:after {
   background: #222;
 }
 .step-two-drugs {
-  background: #D8DB56;
+  background: #d8db56;
 }
 .step-three-drugs {
-  background: #18D6A8;
+  background: #18d6a8;
 }
