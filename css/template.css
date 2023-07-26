@@ -10,7 +10,6 @@ body {
 h1 {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 32px;
 }
 
 h2 {
@@ -78,13 +77,9 @@ main {
 .date-updated {
   width: 100%;
   max-width: 1600px;
-  margin: auto;
-  padding: 0 24px 0 0;
+  margin: 6px 0 24px;
+  text-align: right;
   font-size: 0.9em;
-  
-  & div {
-    float: right;
-  }
 }
 
 .breadcrumbs {
