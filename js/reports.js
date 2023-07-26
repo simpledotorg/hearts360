@@ -357,13 +357,7 @@ const registrationsData = {
       borderColor: "rgba(0,126,228, 0.65)",
       backgroundColor: "transparent",
       yAxisID: "y",
-      segment: {
-        borderDash: (ctx) =>
-          dynamicChartSegementDashed(
-            ctx,
-            18 // number of data elements
-            ),
-      },
+
 
     },
     {
@@ -375,13 +369,7 @@ const registrationsData = {
       borderColor: "#b51bdc",
       backgroundColor: "transparent",
       yAxisID: "y",
-      segment: {
-        borderDash: (ctx) =>
-          dynamicChartSegementDashed(
-            ctx,
-            18 // number of data elements
-            ),
-      },
+
 
     },
     {
