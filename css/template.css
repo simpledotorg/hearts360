@@ -461,15 +461,6 @@ table {
   text-align: right;
   font-size: 0.85rem;
   margin: 6px 0;
-  & .registrations {
-    color: #007ee4;
-  }
-  & .under-care {
-    color: #b51bdc;
-  }
-  & .controlled {
-    color: #3bb231;
-  }
 }
 
 .data-line {
@@ -491,16 +482,7 @@ table {
   }
 }
 
-.text-grey {
-  color: #888;
-}
 
-.color-registrations {
-  color: #007ee4;
-}
-.bg-registrations {
-  background: #007ee4;
-}
 
 /*****************
 Table Sort
@@ -546,7 +528,9 @@ th[role="columnheader"]:not(.no-sort):hover:after {
   font-weight: 700;
 }
 
-/* Colors */
+.text-grey {
+  color: #888;
+}
 
 .bp-controlled {
   color: #3bb231;
