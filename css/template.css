@@ -606,3 +606,12 @@ th[role="columnheader"]:not(.no-sort):hover:after {
 .step-three-drugs {
   background: #18d6a8;
 }
+
+
+/* Display options */
+.desktop-only {
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
+}
+
