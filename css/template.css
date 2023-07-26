@@ -284,11 +284,6 @@ table {
     text-align: right;
   }
 
-  & .warning {
-    color: #ff3355;
-    background: rgba(255, 51, 85, 0.1);
-  }
-
   &.relaxed {
     & th,
     & td {
@@ -301,6 +296,16 @@ table {
       padding-left: 12px;
       border-top: 1px solid #eee;
     }
+  }
+}
+
+.warning {
+  color: #ff3355;
+  background: rgba(255, 51, 85, 0.1);
+  border-top: 1px solid rgba(255, 51, 85, 0.3);
+  border-bottom: 1px solid rgba(255, 51, 85, 0.3);
+  &.warning-key {
+    border: 1px solid rgba(255, 51, 85, 0.3);
   }
 }
 
@@ -360,18 +365,21 @@ table {
 }
 
 .key-color-box {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
+  display: flex;
+  width: 18px;
+  height: 18px;
   content: "";
   border-radius: 2px;
-  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
   position: relative;
   top: -1px;
+  text-align: center;
+  line-height: 16px;
 }
 
 .key-text {
-  font-size: 0.9em;
+  font-size: 0.92em;
 }
 
 .facility-list {
