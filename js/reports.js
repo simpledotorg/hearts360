@@ -451,7 +451,7 @@ const drugStockData = {
     {
       label: "Facilities with >30 days of Step 3 drugs",
       data: [
-        90, 92, 92, 90, 90, 90, 91, 92, 93, 94, 90, 96, 98, 96, 96, 95, 94, 94,
+        90, 92, 92, 90, 90, 90, 91, 92, 93, 94, 90, 96, 98, 92, 94, 92, 92, 90,
       ],
       borderColor: "#18D6A8",
       backgroundColor: "transparent",

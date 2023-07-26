@@ -365,28 +365,37 @@ table {
   align-items: center;
   gap: 16px;
   margin-top: 12px;
-  font-size: 0.9em;
   & div {
     display: flex;
     align-items: center;
     gap: 6px;
   }
-  & .key-color-box {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    content: "";
-    border-radius: 2px;
-  }
-  & .bp-controlled {
+}
+
+.key-color-box {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  content: "";
+  border-radius: 2px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  
+  &.bp-controlled {
     background: #3bb231;
   }
-  & .bp-uncontrolled {
+  &.bp-uncontrolled {
     background: #f6b100;
   }
-  & .three-month-ltfu {
+  &.three-month-ltfu {
     background: #ed6300;
   }
+  
+}
+
+.key-text {
+  font-size: 0.9em;
 }
 
 .facility-list {
