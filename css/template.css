@@ -408,7 +408,8 @@ table {
 }
 
 .coverage {
-  background: rgb(239, 239, 239);
+  background: rgb(241, 241, 241);
+  box-shadow: inset 0 1px 3px -1px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   margin: 10px 0 4px;
   height: 36px;
@@ -457,6 +458,8 @@ table {
   Used to move the % figure inside the color block when the % is > 88% 
   Without this the % figure will be hidden by the overflow setting 
 */
+.coverage-fill-indicator-percentage[data-percentage="87"],
+.coverage-fill-indicator-percentage[data-percentage="88"],
 .coverage-fill-indicator-percentage[data-percentage="89"],
 .coverage-fill-indicator-percentage[data-percentage="90"],
 .coverage-fill-indicator-percentage[data-percentage="91"],
