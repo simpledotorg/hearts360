@@ -10,12 +10,18 @@ Please feel free to copy any of the code or ideas that you see in this hypertens
 [View a live example](https://simpledotorg.github.io/hypertension-dashboard/)
 
 ## Data & definitions
+
+### Basic Data
 A very good public health hypertension dashboard only requires a small number of longitudinal patient data as building blocks:
 * `Enrolled patients diagnosed with hypertension` with `Enrollment date` and `Enrollment facility`
 * `Patients who had a BP measure in the last 3 months` and was the BP measure ≥140/90 or <140/90?
 * `Patients who had a BP measure in the last 12 months`
 * `Patient status as living or died`
 
+### Useful Data
+Data that shows how much of a region's population has lowered blood pressure is also very helpful. If a region does public health surveys, including the `Estimated population with hypertension` allows you to easily report coverage metrics.
+
+### Inventory data
 Adding data on drug stock and functioning BP devices helps round out the dashboard to make it even more useful.
 
 ## License
