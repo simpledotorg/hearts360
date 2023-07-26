@@ -1,4 +1,4 @@
-# Generic Hypertension Dashboard
+# Hypertension Dashboard
 ![hypertension dashboard](dashboard.png)
 
 ## About
