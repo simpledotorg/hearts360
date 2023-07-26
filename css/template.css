@@ -58,6 +58,10 @@ main {
   font-size: 0.9em;
 
   .navigation-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
     width: 100%;
     max-width: 1600px;
     margin: auto;
@@ -67,6 +71,11 @@ main {
     & a {
       color: #ccc;
     }
+  }
+
+  & .section {
+    display: flex;
+    gap: 16px;
   }
 
   .navigation-title-image {
