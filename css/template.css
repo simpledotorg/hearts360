@@ -75,6 +75,18 @@ main {
   }
 }
 
+.date-updated {
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+  padding: 0 24px 0 0;
+  font-size: 0.9em;
+  
+  & div {
+    float: right;
+  }
+}
+
 .breadcrumbs {
 
   .breadcrumbs-body {
