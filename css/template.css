@@ -304,6 +304,9 @@ table {
   background: rgba(255, 51, 85, 0.1);
   border-top: 1px solid rgba(255, 51, 85, 0.3);
   border-bottom: 1px solid rgba(255, 51, 85, 0.3);
+  &::before {
+    content: '⚠️ ';
+  }
   &.warning-key {
     border: 1px solid rgba(255, 51, 85, 0.3);
   }
