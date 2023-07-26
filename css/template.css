@@ -52,9 +52,8 @@ main {
 }
 
 .navigation {
-  background: #eff0f3;
+  background: #333;
   margin-bottom: 2em;
-  border-bottom: 2px solid #dce2eb;
   width: 100%;
 
   .navigation-body {
@@ -66,6 +65,11 @@ main {
     margin: auto;
     padding: 16px 20px;
     position: relative;
+  }
+  
+  .navigation-title-image {
+    margin-left: 4px;
+    margin-right: -4px;
   }
 
   .heading {
