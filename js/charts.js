@@ -1,3 +1,6 @@
+// This charts file is code to set up the interactive charts using 
+// the chartJS package - https://www.chartjs.org/
+
 // [plugin] vertical instersect line
 const dynamicChartSegementDashed = (
   ctx,
