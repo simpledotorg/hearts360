@@ -7,6 +7,15 @@ body {
   font-family: var(--system-ui);
 }
 
+a {
+  color: #0075eb;
+  &:hover {
+    color: #004f9f;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
 h1 {
   font-size: 3rem;
   font-weight: bold;
@@ -82,7 +91,6 @@ main {
     margin: -2px 8px 0 8px;
     display: inline-block;
   }
-
 }
 
 .date-updated {
@@ -106,6 +114,8 @@ main {
     margin: auto;
     padding: 24px 24px 8px;
     color: #808080;
+    display: flex;
+    gap: 12px;
   }
 }
 
