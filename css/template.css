@@ -362,10 +362,16 @@ table {
     align-items: center;
     gap: 6px;
   }
+
+  &.key-per-row {
+    flex-direction: column;
+    align-items: start;
+    gap: 4px;
+  }
 }
 
 .key-color-box {
-  display: flex;
+  display: inline-flex;
   width: 18px;
   height: 18px;
   content: "";
@@ -582,4 +588,14 @@ th[role="columnheader"]:not(.no-sort):hover:after {
 }
 .registrations-bg {
   background: #007ee4;
+}
+
+.step-one-drugs {
+  background: #222;
+}
+.step-two-drugs {
+  background: #D8DB56;
+}
+.step-three-drugs {
+  background: #18D6A8;
 }
