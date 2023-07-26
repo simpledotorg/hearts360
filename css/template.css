@@ -78,8 +78,14 @@ main {
   width: 100%;
   max-width: 1600px;
   margin: 6px 0 24px;
-  text-align: right;
   font-size: 0.9em;
+}
+
+@media screen and (min-width: 880px) {
+  .date-updated {
+    text-align: right;
+    margin-top: -1.5em; 
+  }
 }
 
 .breadcrumbs {
@@ -176,6 +182,7 @@ main {
     font-weight: 700;
     border-radius: 100px;
     cursor: pointer;
+    text-align: left;
     &::before {
       content: "?";
     }
@@ -225,9 +232,14 @@ main {
   }
 }
 
+.card-empty {
+  border-style: dotted;
+  background: transparent;
+}
+
 table {
   width: 100%;
-  margin-top: 12px;
+  margin-top: 24px;
   font-size: 0.9rem;
 
   & tr {
