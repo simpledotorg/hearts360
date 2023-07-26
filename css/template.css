@@ -66,7 +66,7 @@ main {
     padding: 16px 20px;
     position: relative;
   }
-  
+
   .navigation-title-image {
     margin-left: 4px;
     margin-right: -4px;
@@ -88,12 +88,11 @@ main {
 @media screen and (min-width: 880px) {
   .date-updated {
     text-align: right;
-    margin-top: -1.5em; 
+    margin-top: -1.5em;
   }
 }
 
 .breadcrumbs {
-
   .breadcrumbs-body {
     width: 100%;
     max-width: 1600px;
@@ -147,23 +146,6 @@ main {
     & .large-num {
       font-size: 2rem;
       font-weight: 700;
-      color: #333;
-
-      &.bp-controlled {
-        color: #3bb231;
-      }
-      &.bp-uncontrolled {
-        color: #D4A11C;
-      }
-      &.three-month-ltfu {
-        color: #ed6300;
-      }
-      &.twelve-month-ltfu {
-        color: #ff3355;
-      }
-      &.under-care {
-        color: #b51bdc;
-      }
     }
 
     & .detail p {
@@ -294,7 +276,7 @@ table {
   & .number {
     text-align: right;
   }
-  
+
   & .warning {
     color: #ff3355;
     background: rgba(255, 51, 85, 0.1);
@@ -312,27 +294,6 @@ table {
       padding-left: 12px;
       border-top: 1px solid #eee;
     }
-  }
-  
-  .bp-controlled {
-    color: #3bb231;
-    font-weight: bold;
-  }
-  .bp-uncontrolled {
-    color: #D4A11C;
-    font-weight: bold;
-  }
-  .three-month-ltfu {
-    color: #ed6300;
-    font-weight: bold;
-  }
-  .twelve-month-ltfu {
-    color: #ff3355;
-    font-weight: bold;
-  }
-  .under-care {
-    color: #b51bdc;
-    font-weight: bold;
   }
 }
 
@@ -358,6 +319,7 @@ table {
   min-width: 300px;
   font-size: 0.9rem;
 }
+
 .cohort-bar {
   display: flex;
   border-radius: 8px;
@@ -365,27 +327,18 @@ table {
   overflow: hidden;
   gap: 2px;
   min-height: 40px;
+
   & .segment {
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 3em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 
   color: #fff;
   font-weight: 700;
   text-align: center;
-
-
-  & .bp-controlled {
-    background: #3bb231;
-  }
-  & .bp-uncontrolled {
-    background: #f6b100;
-  }
-  & .three-month-ltfu {
-    background: #ed6300;
-  }
 }
 .key {
   display: flex;
@@ -409,17 +362,6 @@ table {
   vertical-align: middle;
   position: relative;
   top: -1px;
-  
-  &.bp-controlled {
-    background: #3bb231;
-  }
-  &.bp-uncontrolled {
-    background: #f6b100;
-  }
-  &.three-month-ltfu {
-    background: #ed6300;
-  }
-  
 }
 
 .key-text {
@@ -451,17 +393,9 @@ table {
 .coverage-fill {
   position: relative;
   display: block;
-  background: #b51bdc;
+  background: #363636;
   height: 100%;
   content: "";
-  &.registrations {
-    background: #007ee4;
-  }
-  &.under-care {
-  }
-  &.controlled {
-    background: #3bb231;
-  }
 }
 
 .coverage-fill-indicator {
@@ -492,15 +426,6 @@ table {
   /* background: rgb(239, 239, 239); */
   border-radius: 6px;
   padding: 1px 4px;
-  &.registrations {
-    color: #007ee4;
-  }
-  &.under-care {
-    color: #b51bdc;
-  }
-  &.controlled {
-    color: #3bb231;
-  }
 }
 
 /* 
@@ -534,7 +459,7 @@ table {
     color: #007ee4;
   }
   & .under-care {
-    color: #b51bdc
+    color: #b51bdc;
   }
   & .controlled {
     color: #3bb231;
@@ -575,12 +500,12 @@ table {
 Table Sort
 *****************/
 
-th[role=columnheader]:not(.no-sort) {
+th[role="columnheader"]:not(.no-sort) {
   cursor: pointer;
 }
 
-th[role=columnheader]:not(.no-sort):after {
-  content: '';
+th[role="columnheader"]:not(.no-sort):after {
+  content: "";
   float: right;
   margin-top: 7px;
   border-width: 0 4px 4px;
@@ -594,7 +519,7 @@ th[role=columnheader]:not(.no-sort):after {
   user-select: none;
 }
 
-th[aria-sort=ascending]:not(.no-sort):after {
+th[aria-sort="ascending"]:not(.no-sort):after {
   border-bottom: none;
   border-width: 4px 4px 0;
 }
@@ -604,7 +529,59 @@ th[aria-sort]:not(.no-sort):after {
   opacity: 0.4;
 }
 
-th[role=columnheader]:not(.no-sort):hover:after {
+th[role="columnheader"]:not(.no-sort):hover:after {
   visibility: visible;
   opacity: 1;
+}
+
+/* Text */
+
+.bold {
+  font-weight: 700;
+}
+
+/* Colors */
+
+.bp-controlled {
+  color: #3bb231;
+}
+.bp-controlled-bg {
+  background: #3bb231;
+}
+
+.bp-uncontrolled {
+  /* color: #d4a11c; */
+  color: #f6b100;
+}
+.bp-uncontrolled-bg {
+  /* background: #d4a11c; */
+  background: #f6b100;
+}
+
+.three-month-ltfu {
+  color: #ed6300;
+}
+.three-month-ltfu-bg {
+  background: #ed6300;
+}
+
+.twelve-month-ltfu {
+  color: #ff3355;
+}
+.twelve-month-ltfu-bg {
+  background: #ff3355;
+}
+
+.under-care {
+  color: #b51bdc;
+}
+.under-care-bg {
+  background: #b51bdc;
+}
+
+.registrations {
+  color: #007ee4;
+}
+.registrations-bg {
+  background: #007ee4;
 }
