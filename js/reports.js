@@ -1,3 +1,18 @@
+// [plugin] vertical instersect line
+const dynamicChartSegementDashed = (
+  ctx,
+  numberOfXAxisTicks,
+  numberOfDashedSegments = 1
+) => {
+  const dashStyle = [4, 3]
+  const segmentStartIndex = ctx.p0DataIndex
+  return isSegmentDashed(segmentStartIndex, numberOfXAxisTicks, numberOfDashedSegments) ? dashStyle : undefined;
+};
+
+function isSegmentDashed(segmentStartIndex, numberOfXAxisTicks, segmentsToDashFromEnd) {
+  return segmentStartIndex >= numberOfXAxisTicks - (segmentsToDashFromEnd + 1)
+};
+
 function dashboardReportsChartJSColors() {
   return {
     darkGreen: "rgba(0, 122, 49, 1)",
@@ -178,6 +193,14 @@ const bpControlledData = {
       ],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+            ),
+      },
+
     },
   ],
 };
@@ -232,6 +255,14 @@ const bpUncontrolledData = {
       ],
       borderColor: "#F6B100",
       backgroundColor: "rgba(255, 201, 63, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+            ),
+      },
+
     },
   ],
 };
@@ -275,6 +306,14 @@ const ltfu3MonthData = {
       ],
       borderColor: "#ed6300",
       backgroundColor: "rgba(230, 137, 70, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+            ),
+      },
+
     },
   ],
 };
@@ -315,13 +354,17 @@ const registrationsData = {
         2288, 3074, 3719, 3989, 4308, 4958, 5338, 5705, 5975, 6284, 6762, 7019,
         7523, 8043, 8941, 9906, 11062, 12105,
       ],
-      // borderColor: "#afb2b9",
-      // borderColor: "rgba(0, 116, 211, 0.5)",
-      // purple
-      // borderColor: "#B51BDC",
       borderColor: "rgba(0,126,228, 0.65)",
       backgroundColor: "transparent",
       yAxisID: "y",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+            ),
+      },
+
     },
     {
       label: "Patients under care",
@@ -332,6 +375,14 @@ const registrationsData = {
       borderColor: "#b51bdc",
       backgroundColor: "transparent",
       yAxisID: "y",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+            ),
+      },
+
     },
     {
       type: "bar",
@@ -340,10 +391,9 @@ const registrationsData = {
         572, 786, 303, 270, 319, 650, 380, 285, 270, 309, 362, 257, 504, 520,
         604, 965, 1156, 1043,
       ],
-      // borderColor: "#7B7F8A",
-      // backgroundColor: "rgba(163, 169, 184, 0.4)",
       backgroundColor: "#BEDFF9",
       yAxisID: "yMonthlyRegistrations",
+
     },
   ],
 };
@@ -394,6 +444,15 @@ const ltfu12MonthsData = {
       data: [0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 4, 6, 6, 7, 8, 9, 10],
       borderColor: "#FF3355",
       backgroundColor: "rgba(255, 51, 85, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+            ),
+      },
+
+    
     },
   ],
 };
@@ -439,6 +498,13 @@ const drugStockData = {
       ],
       borderColor: "#222",
       backgroundColor: "transparent",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+            ),
+      },
     },
     {
       label: "Facilities with >30 days of Step 2 drugs",
@@ -447,6 +513,13 @@ const drugStockData = {
       ],
       borderColor: "#D8DB56",
       backgroundColor: "transparent",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+            ),
+      },
     },
     {
       label: "Facilities with >30 days of Step 3 drugs",
@@ -455,6 +528,13 @@ const drugStockData = {
       ],
       borderColor: "#18D6A8",
       backgroundColor: "transparent",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+            ),
+      },
     },
   ],
 };
@@ -472,3 +552,8 @@ drugStockConfig.options.plugins.tooltip.displayColors = true;
 
 const drugStockCanvas = document.getElementById("drugstock");
 createChart(drugStockCanvas, drugStockConfig);
+
+
+
+
+
