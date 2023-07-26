@@ -3,12 +3,8 @@
 ## About
 This dashboard is a template that can be used by any team working on a hypertension control project. Our team has learned many lessons while developing the Simple.org project and we want to share our best practices with the world. A similar dashboard has been used in India, Bangladesh, Sri Lanka, Ethiopia, and Nigeria to successfully manage over 4 million patients with hypertension. Please feel free to copy any of the code or ideas that you see in this hypertension dashboard.
 
-## Getting started
-To get started...
-
-* Step 1
-
-* Step 2
+## See a live example
+[View a live example]([https://www.example.com](https://simpledotorg.github.io/hypertension-dashboard/))
 
 ## License
 The generic dashboard is licensed under an MIT License. Please take this code and use it for your own project in any way.
