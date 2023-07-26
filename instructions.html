@@ -17,23 +17,58 @@
       <div class="navigation-body text-grey">
         <div>
           <img
-            src="favicon.png"
-            alt=""
-            width="24"
-            height="24"
-            class="navigation-title-image"
+          src="favicon.png"
+          alt=""
+          width="24"
+          height="24"
+          class="navigation-title-image"
           />
           Example Hypertension Dashboard (Free and
           <a href="https://github.com/simpledotorg/hypertension-dashboard"
-            >open source</a
+          >open source</a
           >)
         </div>
         <a href="index.html">Return to dashboard</a>
       </div>
     </nav>
+    <div class="breadcrumbs">
+      <div class="breadcrumbs-body">
+        <a href="#">Example Dashboard</a> &rsaquo; <a class="text-grey">Setup instructions</a>
+      </div>
+    </div>
     <main class="main">
       <h1>Instructions</h1>
       <p>This page explains how to setup the dashboard.</p>
+      <article>
+        <h3>Patient</h3>
+        <p>The patient should have the following data points attached to them:</p>
+        <p class=""><span class="definition">enrollment date</span></p>
+        <p><span class="definition">enrollment facility</span></p>
+        Enrolled patients diagnosed with hypertension
+      </article>
     </main>
   </body>
+  <style>
+    h1, h2, h3 {
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 1.2rem;
+      margin: 8px 0;
+    }
+
+    article {
+      margin: 16px 0;
+    }
+
+    .definition {
+      background: #ffb2d0;
+      padding: 1px 6px;
+      color: #000;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+  </style>
 </html>
