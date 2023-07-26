@@ -334,19 +334,24 @@ table {
     color: #b51bdc;
     font-weight: bold;
   }
-  
 }
 
 .cohort {
   margin: 24px 0;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .cohort-row {
   display: flex;
   width: 100%;
+  flex-direction: column;
+  gap: 8px;
+  @media screen and (min-width: 740px) {
+    flex-direction: row;
+    gap: 0px;
+  }
 }
 .cohort-detail {
   width: 30%;
@@ -359,7 +364,7 @@ table {
   width: 100%;
   overflow: hidden;
   gap: 2px;
-
+  min-height: 40px;
   & .segment {
     display: flex;
     align-items: center;
