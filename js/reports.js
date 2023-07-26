@@ -4,14 +4,24 @@ const dynamicChartSegementDashed = (
   numberOfXAxisTicks,
   numberOfDashedSegments = 1
 ) => {
-  const dashStyle = [4, 3]
-  const segmentStartIndex = ctx.p0DataIndex
-  return isSegmentDashed(segmentStartIndex, numberOfXAxisTicks, numberOfDashedSegments) ? dashStyle : undefined;
+  const dashStyle = [4, 3];
+  const segmentStartIndex = ctx.p0DataIndex;
+  return isSegmentDashed(
+    segmentStartIndex,
+    numberOfXAxisTicks,
+    numberOfDashedSegments
+  )
+    ? dashStyle
+    : undefined;
 };
 
-function isSegmentDashed(segmentStartIndex, numberOfXAxisTicks, segmentsToDashFromEnd) {
-  return segmentStartIndex >= numberOfXAxisTicks - (segmentsToDashFromEnd + 1)
-};
+function isSegmentDashed(
+  segmentStartIndex,
+  numberOfXAxisTicks,
+  segmentsToDashFromEnd
+) {
+  return segmentStartIndex >= numberOfXAxisTicks - (segmentsToDashFromEnd + 1);
+}
 
 function dashboardReportsChartJSColors() {
   return {
@@ -166,7 +176,6 @@ function createChart(ctx, config) {
 // BP Controlled
 const bpControlledData = {
   labels: [
-    "Feb-2022",
     "Mar-2022",
     "Apr-2022",
     "May-2022",
@@ -184,12 +193,13 @@ const bpControlledData = {
     "May-2023",
     "Jun-2023",
     "Jul-2023",
+    "Aug-2023",
   ],
   datasets: [
     {
       label: "BP controlled",
       data: [
-        24, 30, 25, 32, 34, 43, 38, 40, 44, 48, 46, 52, 57, 57, 60, 54, 60, 61,
+        30, 25, 32, 34, 43, 38, 40, 44, 48, 46, 52, 57, 57, 60, 54, 60, 61, 54,
       ],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
@@ -198,9 +208,8 @@ const bpControlledData = {
           dynamicChartSegementDashed(
             ctx,
             18 // number of data elements
-            ),
+          ),
       },
-
     },
   ],
 };
@@ -228,7 +237,6 @@ createChart(bpControlledCanvas, bpControlledConfig);
 // BP Controlled
 const bpUncontrolledData = {
   labels: [
-    "Feb-2022",
     "Mar-2022",
     "Apr-2022",
     "May-2022",
@@ -246,12 +254,13 @@ const bpUncontrolledData = {
     "May-2023",
     "Jun-2023",
     "Jul-2023",
+    "Aug-2023",
   ],
   datasets: [
     {
       label: "BP uncontrolled",
       data: [
-        51, 58, 53, 46, 45, 45, 48, 35, 33, 40, 38, 30, 28, 24, 26, 17, 15, 17,
+        58, 53, 46, 45, 45, 48, 35, 33, 40, 38, 30, 28, 24, 26, 17, 15, 17, 20,
       ],
       borderColor: "#F6B100",
       backgroundColor: "rgba(255, 201, 63, 0.1)",
@@ -260,9 +269,8 @@ const bpUncontrolledData = {
           dynamicChartSegementDashed(
             ctx,
             18 // number of data elements
-            ),
+          ),
       },
-
     },
   ],
 };
@@ -279,7 +287,6 @@ createChart(bpUncontrolledCanvas, bpUncontrolledConfig);
 
 const ltfu3MonthData = {
   labels: [
-    "Feb-2022",
     "Mar-2022",
     "Apr-2022",
     "May-2022",
@@ -297,12 +304,13 @@ const ltfu3MonthData = {
     "May-2023",
     "Jun-2023",
     "Jul-2023",
+    "Aug-2023",
   ],
   datasets: [
     {
       label: "3 month lost to follow-up",
       data: [
-        25, 21, 28, 22, 21, 14, 21, 21, 21, 19, 20, 18, 15, 19, 17, 25, 20, 22,
+        21, 28, 22, 21, 14, 21, 21, 21, 19, 20, 18, 15, 19, 17, 25, 20, 22, 25,
       ],
       borderColor: "#ed6300",
       backgroundColor: "rgba(230, 137, 70, 0.1)",
@@ -311,9 +319,8 @@ const ltfu3MonthData = {
           dynamicChartSegementDashed(
             ctx,
             18 // number of data elements
-            ),
+          ),
       },
-
     },
   ],
 };
@@ -328,7 +335,6 @@ createChart(ltfu3MonthCanvas, ltfu3MonthConfig);
 
 const registrationsData = {
   labels: [
-    "Feb-2022",
     "Mar-2022",
     "Apr-2022",
     "May-2022",
@@ -346,42 +352,38 @@ const registrationsData = {
     "May-2023",
     "Jun-2023",
     "Jul-2023",
+    "Aug-2023",
   ],
   datasets: [
     {
       label: "Cumulative registrations",
       data: [
-        2288, 3074, 3719, 3989, 4308, 4958, 5338, 5705, 5975, 6284, 6762, 7019,
-        7523, 8043, 8941, 9906, 11062, 12105,
+        3074, 3719, 3989, 4308, 4958, 5338, 5705, 5975, 6284, 6762, 7019, 7523,
+        8043, 8941, 9906, 11062, 12105, 12213,
       ],
       borderColor: "rgba(0,126,228, 0.65)",
       backgroundColor: "transparent",
       yAxisID: "y",
-
-
     },
     {
       label: "Patients under care",
       data: [
-        2280, 3063, 3716, 3984, 4301, 4903, 5217, 5505, 5678, 5895, 6223, 6438,
-        6768, 7146, 7882, 8649, 9648, 10539,
+        3063, 3716, 3984, 4301, 4903, 5217, 5505, 5678, 5895, 6223, 6438, 6768,
+        7146, 7882, 8649, 9648, 10539, 10632,
       ],
       borderColor: "#b51bdc",
       backgroundColor: "transparent",
       yAxisID: "y",
-
-
     },
     {
       type: "bar",
       label: "Monthly registrations",
       data: [
-        572, 786, 303, 270, 319, 650, 380, 285, 270, 309, 362, 257, 504, 520,
-        604, 965, 1156, 1043,
+        786, 303, 270, 319, 650, 380, 285, 270, 309, 362, 257, 504, 520, 604,
+        965, 1156, 1043, 236,
       ],
       backgroundColor: "#BEDFF9",
       yAxisID: "yMonthlyRegistrations",
-
     },
   ],
 };
@@ -407,7 +409,6 @@ createChart(registrationsCanvas, registrationsConfig);
 
 const ltfu12MonthsData = {
   labels: [
-    "Feb-2022",
     "Mar-2022",
     "Apr-2022",
     "May-2022",
@@ -425,11 +426,12 @@ const ltfu12MonthsData = {
     "May-2023",
     "Jun-2023",
     "Jul-2023",
+    "Aug-2023"
   ],
   datasets: [
     {
       label: "12 month lost to follow-up",
-      data: [0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 4, 6, 6, 7, 8, 9, 10],
+      data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 4, 6, 6, 7, 8, 9, 10, 10],
       borderColor: "#FF3355",
       backgroundColor: "rgba(255, 51, 85, 0.1)",
       segment: {
@@ -437,10 +439,8 @@ const ltfu12MonthsData = {
           dynamicChartSegementDashed(
             ctx,
             18 // number of data elements
-            ),
+          ),
       },
-
-    
     },
   ],
 };
@@ -459,7 +459,6 @@ createChart(ltfu12MonthsCanvas, ltfu12MonthsConfig);
 
 const drugStockData = {
   labels: [
-    "Feb-2022",
     "Mar-2022",
     "Apr-2022",
     "May-2022",
@@ -477,6 +476,7 @@ const drugStockData = {
     "May-2023",
     "Jun-2023",
     "Jul-2023",
+    "Aug-2023",
   ],
   datasets: [
     {
@@ -491,7 +491,7 @@ const drugStockData = {
           dynamicChartSegementDashed(
             ctx,
             18 // number of data elements
-            ),
+          ),
       },
     },
     {
@@ -506,7 +506,7 @@ const drugStockData = {
           dynamicChartSegementDashed(
             ctx,
             18 // number of data elements
-            ),
+          ),
       },
     },
     {
@@ -521,7 +521,7 @@ const drugStockData = {
           dynamicChartSegementDashed(
             ctx,
             18 // number of data elements
-            ),
+          ),
       },
     },
   ],
@@ -540,8 +540,3 @@ drugStockConfig.options.plugins.tooltip.displayColors = true;
 
 const drugStockCanvas = document.getElementById("drugstock");
 createChart(drugStockCanvas, drugStockConfig);
-
-
-
-
-
