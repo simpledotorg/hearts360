@@ -445,7 +445,7 @@ const drugStockData = {
       data: [
         86, 84, 80, 70, 40, 30, 31, 32, 33, 34, 30, 46, 48, 46, 56, 55, 64, 64,
       ],
-      borderColor: "#999",
+      borderColor: "#D8DB56",
       backgroundColor: "transparent",
     },
     {
@@ -453,7 +453,7 @@ const drugStockData = {
       data: [
         90, 92, 92, 90, 90, 90, 91, 92, 93, 94, 90, 96, 98, 96, 96, 95, 94, 94,
       ],
-      borderColor: "#CCC",
+      borderColor: "#18D6A8",
       backgroundColor: "transparent",
     },
   ],
