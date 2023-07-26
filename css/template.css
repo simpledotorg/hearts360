@@ -278,14 +278,6 @@ table {
     font-weight: 700;
   }
 
-  & .link a {
-    color: #0075eb;
-    &:hover {
-      color: #004f9f;
-      text-decoration: underline;
-    }
-  }
-
   & .head-bg {
     background: #eee;
   }
