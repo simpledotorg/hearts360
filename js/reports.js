@@ -353,7 +353,7 @@ registrationsConfig.data = registrationsData;
 console.log(registrationsConfig.options.scales.y);
 registrationsConfig.options.scales.y.grid = { drawTicks: false };
 registrationsConfig.options.scales.y.ticks.display = false;
-registrationsConfig.options.scales.y.ticks.count = 3;
+registrationsConfig.options.scales.y.ticks.count = 5;
 registrationsConfig.options.scales.y.max = 12105;
 
 registrationsConfig.options.scales.yMonthlyRegistrations = {
@@ -409,6 +409,7 @@ console.log(bpUncontrolledCanvas);
 createChart(ltfu12MonthsCanvas, ltfu12MonthsConfig);
 
 // Drug stock
+
 const drugStockData = {
   labels: [
     "Feb-2022",
@@ -466,13 +467,8 @@ const stockLabel = (context) => {
 drugStockConfig.options.plugins.tooltip.callbacks = {
   label: stockLabel,
 };
-// tooltip: {
-//   callbacks: {
-//     afterBody: function(context) {
-//       console.log(context);
-//       return context.element + '%'
-//     }
-//   }
-// }
+
+drugStockConfig.options.plugins.tooltip.displayColors = true;
+
 const drugStockCanvas = document.getElementById("drugstock");
 createChart(drugStockCanvas, drugStockConfig);
