@@ -55,27 +55,25 @@ main {
   background: #333;
   margin-bottom: 2em;
   width: 100%;
+  font-size: 0.9em;
 
   .navigation-body {
-    display: flex;
-    align-items: center;
-    gap: 16px;
     width: 100%;
     max-width: 1600px;
     margin: auto;
     padding: 16px 20px;
     position: relative;
+    
+    & a {
+      color: #ccc;
+    }
   }
 
   .navigation-title-image {
-    margin-left: 4px;
-    margin-right: -4px;
+    margin: -2px 8px 0 8px;
+    display: inline-block;
   }
 
-  .heading {
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
 }
 
 .date-updated {
@@ -322,23 +320,22 @@ table {
 
 .cohort-bar {
   display: flex;
-  border-radius: 8px;
+  border-radius: 4px;
   width: 100%;
   overflow: hidden;
   gap: 2px;
-  min-height: 40px;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
 
   & .segment {
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 3em;
+    font-size: 0.9em;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
-
-  color: #fff;
-  font-weight: 700;
-  text-align: center;
 }
 .key {
   display: flex;
