@@ -326,7 +326,7 @@ table {
   margin: 24px 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .cohort-row {
@@ -354,7 +354,7 @@ table {
   color: #fff;
   font-weight: 700;
   text-align: center;
-
+  min-height: 40px;
   & .segment {
     display: flex;
     align-items: center;
