@@ -279,9 +279,9 @@ main {
   overflow-y: scroll;
 }
 
-.table-scroll {
+.table-scroll-message {
   text-align: right;
-  margin: 24px 0 8px;
+  margin: 24px 20px 8px 0;
   font-size: 0.8rem;
   text-transform: uppercase;
 }
