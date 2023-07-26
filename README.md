@@ -1,5 +1,5 @@
 # Generic Hypertension Dashboard
-![hypertension dashboard](https://github.com/simpledotorg/hypertension-dashboard/blob/master/dashboard-screenshot.jpg?raw=true)
+![hypertension dashboard](https://github.com/simpledotorg/hypertension-dashboard/blob/master/dashboard-screenshot.png?raw=true)
 
 ## About
 This dashboard is a template that can be used by any team working on a hypertension control project. Our team has learned many lessons while developing the [Simple.org](https://simple.org/) project and we want to share our best practices with the world. A similar dashboard has been used in India, Bangladesh, Sri Lanka, Ethiopia, and Nigeria to successfully manage over 4 million patients with hypertension.
