@@ -34,6 +34,7 @@ main {
   margin: auto;
   padding: 0 24px 16px;
 
+  .columns-2,
   .columns-3 {
     display: grid;
     grid-gap: 20px;
@@ -44,6 +45,7 @@ main {
 
 @media screen and (min-width: 880px) {
   main {
+    .columns-2,
     .columns-3 {
       flex: 0 0 50%;
       grid-template-columns: 1fr 1fr;
