@@ -242,7 +242,7 @@ main {
 
 .table-container {
   position: relative;
-  margin: 0 -20px;
+  margin: 24px -20px;
   &::before {
     content: "";
     position: absolute;
