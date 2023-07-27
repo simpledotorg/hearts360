@@ -549,6 +549,9 @@ const stockLabel = (context) => {
 drugStockConfig.options.plugins.tooltip.callbacks = {
   label: stockLabel,
 };
+drugStockConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
 
 drugStockConfig.options.plugins.tooltip.displayColors = true;
 
