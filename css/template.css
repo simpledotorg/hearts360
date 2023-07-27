@@ -364,41 +364,47 @@ table {
 .cohort {
   margin: 24px 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row wrap;
   gap: 24px;
 }
 
-.cohort-row {
+.cohort-quarter {
   display: flex;
-  width: 100%;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 8px;
-  @media screen and (min-width: 740px) {
-    flex-direction: row;
-    gap: 0px;
-  }
+  width: 120px;
 }
 .cohort-detail {
-  width: 30%;
-  min-width: 300px;
   font-size: 0.9rem;
+  
+  & b {
+    display: block;
+  }
+  
+  & .text-grey {
+    margin-top: 1em;
+    font-size: 0.85em;
+  }
 }
 
 .cohort-bar {
   display: flex;
-  border-radius: 4px;
-  width: 100%;
+  border-radius: 0;
   overflow: hidden;
   gap: 2px;
   color: #fff;
   font-weight: 700;
-  text-align: center;
-  min-height: 40px;
+  flex-direction: column;
+  height: 420px;
+  border-radius: 3px;
+  margin: 0 0 8px 0;
   & .segment {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 3em;
+    width: 3.5em;
     font-size: 0.9em;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
