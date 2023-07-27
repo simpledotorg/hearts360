@@ -378,7 +378,7 @@ table {
 h4.warning {
   background: none;
   border: none;
-
+  font-weight: 400;
 }
 
 .cohort {
