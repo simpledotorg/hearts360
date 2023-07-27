@@ -367,6 +367,12 @@ table {
   &.warning-key {
     border: 1px solid rgba(255, 51, 85, 0.3);
   }
+
+  &.warning-box {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 51, 85, 0.3);
+  }
 }
 
 .cohort {
@@ -562,6 +568,24 @@ table {
   }
   100% {
     opacity: 1;
+  }
+}
+
+.block-list {
+  margin: 8px 0;
+  & span {
+    background: #eeeeee;
+    border: 1px solid #cfcfcf;
+    padding: 4px 8px;
+    font-size: 0.85rem;
+    margin-right: 6px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  & span::before {
+    content: '';
   }
 }
 
