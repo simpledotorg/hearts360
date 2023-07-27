@@ -239,10 +239,7 @@ main {
 
 /* 
   If you want to use an empty card as a place holder use the following html
-  
-  HTML
   <div class="card card-empty desktop-only"></div> 
-  
   Also, uncomment the '.card-empty' css class (below)
 */
 
