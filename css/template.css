@@ -375,6 +375,12 @@ table {
   }
 }
 
+h4.warning {
+  background: none;
+  border: none;
+
+}
+
 .cohort {
   margin: 24px 0;
   display: flex;
@@ -574,8 +580,8 @@ table {
 .block-list {
   margin: 8px 0;
   & span {
-    background: #eeeeee;
-    border: 1px solid #cfcfcf;
+    background: #f4f4f4;
+    /* border: 1px solid #dcdcdc; */
     padding: 4px 8px;
     font-size: 0.85rem;
     margin-right: 6px;
