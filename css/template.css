@@ -237,10 +237,19 @@ main {
   }
 }
 
-.card-empty {
+/* 
+  If you want to use an empty card as a place holder use the following html
+  
+  HTML
+  <div class="card card-empty desktop-only"></div> 
+  
+  Also, uncomment the '.card-empty' css class (below)
+*/
+
+/* .card-empty {
   border-style: dotted;
   background: transparent;
-}
+} */
 
 .table-container {
   position: relative;
@@ -257,7 +266,7 @@ main {
       90deg,
       rgba(255, 255, 255, 1),
       rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0) 
+      rgba(255, 255, 255, 0)
     );
   }
   &::after {
@@ -272,7 +281,7 @@ main {
       90deg,
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 1) 
+      rgba(255, 255, 255, 1)
     );
   }
   /* padding-top: 24px; */
@@ -380,11 +389,11 @@ table {
 }
 .cohort-detail {
   font-size: 0.9rem;
-  
+
   & b {
     display: block;
   }
-  
+
   & .text-grey {
     margin-top: 1em;
     font-size: 0.85em;
@@ -621,7 +630,6 @@ table {
 .step-three-drugs {
   background: #18d6a8;
 }
-
 
 /* Display options */
 .desktop-only {
