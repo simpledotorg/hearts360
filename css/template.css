@@ -315,7 +315,7 @@ table {
     font-weight: 400;
     padding: 6px 12px;
     border-right: 1px solid rgb(224, 224, 224);
-    /* white-space: nowrap; */
+    white-space: nowrap;
     &:last-child {
       border-right: none;
     }
