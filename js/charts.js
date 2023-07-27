@@ -1,4 +1,4 @@
-// This charts file is code to set up the interactive charts using 
+// This charts file is code to set up the interactive charts using
 // the chartJS package - https://www.chartjs.org/
 
 // [plugin] vertical instersect line
@@ -222,6 +222,9 @@ bpControlledConfig.data = bpControlledData;
 const percentageLabel = (context) => {
   return `${context.dataset.label}: ${context.parsed.y}%`;
 };
+bpControlledConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
 bpControlledConfig.options.plugins.tooltip.callbacks = {
   label: percentageLabel,
 };
@@ -283,7 +286,9 @@ bpUncontrolledConfig.data = bpUncontrolledData;
 bpUncontrolledConfig.options.plugins.tooltip.callbacks = {
   label: percentageLabel,
 };
-
+bpUncontrolledConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
 const bpUncontrolledCanvas = document.getElementById("bpuncontrolled");
 console.log(bpUncontrolledCanvas);
 createChart(bpUncontrolledCanvas, bpUncontrolledConfig);
@@ -331,6 +336,9 @@ const ltfu3MonthData = {
 const ltfu3MonthConfig = baseLineChartConfig();
 ltfu3MonthConfig.data = ltfu3MonthData;
 ltfu3MonthConfig.options.plugins.tooltip.callbacks = { label: percentageLabel };
+ltfu3MonthConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
 
 const ltfu3MonthCanvas = document.getElementById("ltfu3Month");
 console.log(bpUncontrolledCanvas);
@@ -429,7 +437,7 @@ const ltfu12MonthsData = {
     "May-2023",
     "Jun-2023",
     "Jul-2023",
-    "Aug-2023"
+    "Aug-2023",
   ],
   datasets: [
     {
@@ -452,6 +460,9 @@ const ltfu12MonthsConfig = baseLineChartConfig();
 ltfu12MonthsConfig.data = ltfu12MonthsData;
 ltfu12MonthsConfig.options.plugins.tooltip.callbacks = {
   label: percentageLabel,
+};
+ltfu12MonthsConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
 };
 
 const ltfu12MonthsCanvas = document.getElementById("ltfu12Months");
