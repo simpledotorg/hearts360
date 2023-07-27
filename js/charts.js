@@ -202,7 +202,7 @@ const bpControlledData = {
     {
       label: "BP controlled",
       data: [
-        30, 25, 32, 34, 43, 38, 40, 44, 48, 46, 52, 57, 57, 60, 54, 60, 61, 54,
+        28, 23, 32, 34, 43, 34, 43, 44, 46, 43, 52, 57, 57, 59, 56, 60, 61, 55,
       ],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
@@ -263,7 +263,7 @@ const bpUncontrolledData = {
     {
       label: "BP uncontrolled",
       data: [
-        58, 53, 46, 45, 45, 48, 35, 33, 40, 38, 30, 28, 24, 26, 17, 15, 17, 20,
+        54, 51, 46, 45, 44, 47, 37, 33, 36, 37, 30, 28, 24, 24, 18, 17, 17, 20,
       ],
       borderColor: "#F6B100",
       backgroundColor: "rgba(255, 201, 63, 0.1)",
@@ -313,7 +313,7 @@ const ltfu3MonthData = {
     {
       label: "3 month lost to follow-up",
       data: [
-        21, 28, 22, 21, 14, 21, 21, 21, 19, 20, 18, 15, 19, 17, 25, 20, 22, 25,
+        18, 26, 22, 21, 13, 19, 20, 23, 18, 20, 18, 15, 19, 17, 26, 21, 22, 25,
       ],
       borderColor: "#ed6300",
       backgroundColor: "rgba(230, 137, 70, 0.1)",
