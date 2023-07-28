@@ -140,13 +140,7 @@ main {
   height: 12px;
 }
 
-.card-wrapper {
-  border: 2px dashed rgb(211, 211, 211);
-  border-radius: 10px;
-  padding: 20px;
-  margin: 0 -20px 20px;
-  gap: 20px;
-}
+
 
 .wrapper-detail {
   display: flex;
@@ -272,6 +266,43 @@ main {
       }
     }
   }
+}
+
+.card-wrapper {
+  border: 2px dashed rgb(211, 211, 211);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 -20px 20px;
+  gap: 20px;
+  background: #f5f5f5;
+  border: 2px solid #e5e5e5;
+  position: relative;
+  .description {
+    position: absolute;
+    font-size: 0.8rem;
+    top: 0;
+    left: 20px;
+    transform: translateY(calc(-50% - 2px));
+    background-color: #f8f8f8;
+    padding: 2px 4px;
+  }
+  & .card {
+    border: none;
+    position:relative;
+  }
+  /* & .card::before {
+    content:"";
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+    right:-12px;
+    height:100%;
+    width:2px;
+    background:#c9c9c9;
+    &::last-child {
+      display: none;
+    }
+  } */
 }
 
 /* 
