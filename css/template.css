@@ -257,7 +257,7 @@ main {
 
 .table-wrap {
   overflow-y: scroll;
-} 
+}
 
 .table-scroll-message {
   text-align: right;
@@ -656,44 +656,56 @@ table {
 
 /* Table sort */
 
-th[role=columnheader]:not(.no-sort) {
-  cursor: pointer;
+th[role="columnheader"] div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
 }
 
-th[role=columnheader]:not(.no-sort):after {
-  content: '';
-  float: right;
+th[role="columnheader"] div:not(.no-sort) {
+  cursor: pointer;
+  /* white-space: nowrap; */
+  
+}
+
+th[role="columnheader"] div:not(.no-sort):after {
+  content: "";
+  /* float: right; */
   margin-top: 9px;
   border-bottom: none;
   border-width: 4px 4px 0;
-  border-color:#404040 transparent ;
+  border-color: #404040 transparent;
   opacity: 0.25;
   -ms-user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+
 }
 
-th.text-right[role=columnheader]:not(.no-sort):after {
-  float: left;
+th.text-right[role="columnheader"] div {
+  flex-direction: row-reverse;
 }
 
-th[aria-sort="ascending"]:not(.no-sort):after {
+th.text-right[role="columnheader"] div:not(.no-sort):after {
+  /* float: left; */
+}
+
+th[aria-sort="ascending"] div:not(.no-sort):after {
   border-width: 0 4px 4px;
   border-style: solid;
   border-color: #0035bc transparent;
   opacity: 1;
 }
 
-th[aria-sort="descending"]:not(.no-sort):after {
+th[aria-sort="descending"] div:not(.no-sort):after {
   border-bottom: none;
   border-width: 4px 4px 0;
   border-color: transparent #0035bc;
   opacity: 1;
 }
 
-
-th[aria-sort]:not(.no-sort):after {
+th[aria-sort]:not(.no-sort) div:after {
   visibility: visible;
   opacity: 0.8;
   border-color: #0035bc transparent;
@@ -707,7 +719,7 @@ th[aria-sort]:not(.no-sort) {
   outline-offset: -1px;
 }
 
-th[role=columnheader]:not(.no-sort):hover:after {
+th[role="columnheader"] div:not(.no-sort):hover:after {
   visibility: visible;
   opacity: 1;
 }
