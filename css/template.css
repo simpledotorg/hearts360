@@ -69,6 +69,13 @@ main {
   }
 }
 
+.col-span-3 {
+  grid-column: span 1;
+  @media screen and (min-width: 1200px) {
+    grid-column: span 3;
+  }
+}
+
 .navigation {
   background: #333;
   margin-bottom: 2em;
@@ -131,6 +138,29 @@ main {
 .divider {
   margin: 24px 0;
   height: 12px;
+}
+
+.card-wrapper {
+  border: 2px dashed rgb(211, 211, 211);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 -20px 20px;
+  gap: 20px;
+}
+
+.wrapper-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 0.9rem;
+  text-align: center;
+  & span {
+    font-size: 1.25rem;
+    display: block;
+    font-weight: 700;
+  }
 }
 
 .card {
@@ -250,14 +280,14 @@ main {
   Also, uncomment the '.card-empty' css class (below)
 */
 
-/* .card-empty {
+.card-empty {
   border-style: dotted;
   background: transparent;
-} */
+}
 
 .table-wrap {
   overflow-y: scroll;
-} 
+}
 
 .table-scroll-message {
   text-align: right;
@@ -472,6 +502,10 @@ table {
   text-align: center;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .text-right {
   text-align: right;
 }
@@ -655,12 +689,12 @@ table {
 
 /* Table sort */
 
-th[role=columnheader]:not(.no-sort) {
+th[role="columnheader"]:not(.no-sort) {
   cursor: pointer;
 }
 
-th[role=columnheader]:not(.no-sort):after {
-  content: '';
+th[role="columnheader"]:not(.no-sort):after {
+  content: "";
   float: right;
   margin-top: 7px;
   border-width: 0 4px 4px;
@@ -673,11 +707,11 @@ th[role=columnheader]:not(.no-sort):after {
   user-select: none;
 }
 
-th.text-right[role=columnheader]:not(.no-sort):after {
+th.text-right[role="columnheader"]:not(.no-sort):after {
   float: left;
 }
 
-th[aria-sort=ascending]:not(.no-sort):after {
+th[aria-sort="ascending"]:not(.no-sort):after {
   border-bottom: none;
   border-width: 4px 4px 0;
 }
@@ -692,7 +726,7 @@ th[aria-sort]:not(.no-sort) {
   color: white;
 }
 
-th[role=columnheader]:not(.no-sort):hover:after {
+th[role="columnheader"]:not(.no-sort):hover:after {
   visibility: visible;
   opacity: 1;
 }
