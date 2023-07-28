@@ -329,40 +329,6 @@ table {
   }
 }
 
-.warning {
-  color: #ff3355;
-  background: rgba(255, 51, 85, 0.1);
-  border-top: 1px solid rgba(255, 51, 85, 0.3);
-  border-bottom: 1px solid rgba(255, 51, 85, 0.3);
-  &::before {
-    content: "⚠️ ";
-    color: #ff3355;
-  }
-
-  &.warning-key {
-    border: 1px solid rgba(255, 51, 85, 0.3);
-  }
-
-  &.warning-box {
-    padding: 4px 8px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 51, 85, 0.3);
-  }
-
-  &.expiry {
-    background: #ffffe8;
-    color: #caa800;
-    border-top: 1px solid rgba(255, 221, 51, 0.5);
-    border-bottom: 1px solid rgba(255, 221, 51, 0.5);
-    /* display: flex; */
-    justify-content: space-between;
-    &::before {
-      color: #d7ba27; 
-      content: '⚠️ Risk of expiring '
-    }
-  }
-}
-
 .cohort {
   margin: 24px 0;
   display: flex;
@@ -446,6 +412,54 @@ table {
 
 .key-text {
   font-size: 0.92em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warning {
+  color: #ff3355;
+  background: rgba(255, 51, 85, 0.1);
+  border: 1px solid rgba(255, 51, 85, 0.3);
+  border-left-width: 0px;
+  border-right-width: 0px;
+  &::before {
+    content: "⚠️ ";
+    color: #ff3355;
+  }
+
+  &.warning-key {
+    border-width: 1px;
+  }
+
+  &.warning-box {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 51, 85, 0.3);
+  }
+}
+
+.expiry {
+  background: #ffffe8;
+  color: #caa800;
+  border: 1px solid rgba(255, 221, 51, 0.75);
+  border-width: 1px 0;
+  /* display: flex; */
+  gap: 8px;
+  justify-content: space-between;
+  content: "Risk of expiring meds";
+  &.expiry-key {
+    color: #d7ba27;
+    border-width: 1px;
+  }
+}
+
+.expiry-text {
+  display: flex;
+  justify-content: space-between;
+  &::before {
+    content: "Risk of expiring meds";
+  }
 }
 
 .facility-list {
