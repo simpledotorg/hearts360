@@ -482,8 +482,8 @@ table {
   color: #ff3355;
   background: rgba(255, 51, 85, 0.1);
   border: 1px solid rgba(255, 51, 85, 0.3);
+  border-right: 1px solid rgb(224, 224, 224);
   border-left-width: 0px;
-  border-right-width: 0px;
   &::before {
     content: "⚠️ ";
     color: #ff3355;
@@ -504,7 +504,8 @@ table {
   background: #ffffe8;
   color: #caa800;
   border: 1px solid rgba(255, 221, 51, 0.75);
-  border-width: 1px 0;
+  border-right: 1px solid rgb(224, 224, 224);
+  border-left-width: 0;
   /* display: flex; */
   gap: 8px;
   justify-content: space-between;
