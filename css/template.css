@@ -255,44 +255,9 @@ main {
   background: transparent;
 } */
 
-.table-container {
-  position: relative;
-  margin: 24px -20px;
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 100%;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0)
-    );
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20px;
-    height: 100%;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 1)
-    );
-  }
-  /* padding-top: 24px; */
-}
 .table-wrap {
   overflow-y: scroll;
-}
+} 
 
 .table-scroll-message {
   text-align: right;
@@ -302,8 +267,8 @@ main {
 }
 
 table {
-  width: calc(100% - 20px);
-  margin: 0 20px;
+  /* width: calc(100% - 20px); */
+  /* margin: 0 20px; */
   font-size: 0.9rem;
 
   & tr {
@@ -388,8 +353,11 @@ table {
     color: #caa800;
     border-top: 1px solid rgba(255, 221, 51, 0.5);
     border-bottom: 1px solid rgba(255, 221, 51, 0.5);
+    /* display: flex; */
+    justify-content: space-between;
     &::before {
-      color: #caa800; 
+      color: #d7ba27; 
+      content: '⚠️ Risk of expiring '
     }
   }
 }
