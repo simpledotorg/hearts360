@@ -261,12 +261,13 @@ main {
 
 .table-scroll-message {
   text-align: right;
-  margin: 24px 20px 8px 0;
+  margin: 24px 0 8px;
   font-size: 0.8rem;
   text-transform: uppercase;
 }
 
 table {
+  width: 100%;
   /* width: calc(100% - 20px); */
   /* margin: 0 20px; */
   font-size: 0.9rem;
