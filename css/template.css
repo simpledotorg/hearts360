@@ -48,7 +48,7 @@ main {
     .columns-2,
     .columns-3 {
       flex: 0 0 50%;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
 }
@@ -59,6 +59,13 @@ main {
       flex: 0 0 50%;
       grid-template-columns: 1fr 1fr 1fr;
     }
+  }
+}
+
+.col-span-2 {
+  grid-column: span 1;
+  @media screen and (min-width: 1200px) {
+    grid-column: span 2;
   }
 }
 
