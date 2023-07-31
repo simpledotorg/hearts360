@@ -11,6 +11,13 @@
 
     <link rel="stylesheet" href="css/preflight.css?v=1.0" />
     <link rel="stylesheet" href="css/template.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"
+      integrity="sha512-Ya9H+OPj8NgcQk34nCrbehaA0atbzGdZCI2uCbqVRELgnlrh8vQ2INMnkadVMSniC54HChLIh5htabVuKJww8g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <nav class="navigation">
@@ -37,22 +44,124 @@
         <a class="text-grey">Setup instructions</a>
       </div>
     </div>
-    <main class="main">
-      <h1>Instructions</h1>
-      <p>This page details the data required to setup a working dashboard.</p>
-      <article>
-        <h3>Patient</h3>
+    <main class="main menu">
+      <div class="markdown-body">
+        <h1>Instructions</h1>
+        <p>This page details the data required to setup a working dashboard.</p>
+        <h2 id="numerators-and-denominators">Numerators and denominators</h2>
         <p>
-          The patient should have the following data points attached to them:
+          <b>Numerators</b> and <b>denominators</b> are common descriptors in
+          epidemiology and will be used throught this document and the
+          dashboard.
         </p>
-        <p class=""><span class="definition">enrollment date</span></p>
-        <p><span class="definition">enrollment facility</span></p>
-        Enrolled patients diagnosed with hypertension
-      </article>
+        <p>
+          The <b>denominator</b> indicates to pool of patients being explored
+          while the <b>numerator</b> is a subset of the denominator.
+        </p>
+        <p>Eg. [numerator] / [deonminator] - where 150 / 200 is 75%</p>
+        <h2 id="patient">Patient</h2>
+        <p>A patient requires the following data points:</p>
+        <!-- <h3 style="display: flex; align-items: center; gap: 16px;">Enrollment date <span class="definition">enrollment_date</span></h3> -->
+        <h3>Enrollment date</h3>
+        <p><span class="definition">enrollment_date</span></p>
+        <p>The date the patient was registered into the hypertension program</p>
+
+        <h3>Facility</h3>
+        <p><span class="definition">facility</span></p>
+        <p>Facility visited by the patient for blood pressure monitoring</p>
+
+        <h3>Patient status</h3>
+        <p><span class="definition">dead</span></p>
+        <p>Is this patient dead</p>
+        <p class="note">
+          Dead patients are removed from the dashboard figures and are only show
+          in the tooltips.
+        </p>
+
+        <h2>Patient visits</h2>
+        <h3 id="most-recent-visit-date">Most recent visit date</h3>
+        <p><span class="definition">latest_visit_date</span></p>
+        <p>The date of the patients most recent visit</p>
+
+        <h3>Most recent visit outcome</h3>
+        <p><span class="definition">latest_visit_bp_controlled</span></p>
+        <p>The blood pressure control status - controlled or uncontrolled.</p>
+        <p>
+          Blood pressure is controlled if systolic reading is below 140 and the
+          diastolic reading is below 90
+        </p>
+        <p>[systolic] / [diastolic] (eg 120/80)</p>
+        <p>
+          <b>Controlled</b>: BP reading where systolic &lt;140
+          <b>AND</b> diastolic &lt;90
+        </p>
+        <p>
+          <b>Uncontrolled</b>: BP reading where systolic &ge;140
+          <b>OR</b> diastolic &ge;90
+        </p>
+
+        <h2>Definitions</h2>
+        <h3 class="block">
+          Patients under care
+          <span class="definition">patients_under_care</span>
+        </h3>
+        <p>
+          The number of patients that have received at least one blood pressure
+          reading in the last 3 months
+        </p>
+        <p>All patients where:</p>
+        <ul>
+          <li><span class="definition">dead</span> is 'FALSE'</li>
+          <li><span class="definition">ltfu_12month</span> is 'FALSE'</li>
+        </ul>
+
+        <h2 id="bp-control">BP controlled</h2>
+        <h3>Numerator</h3>
+
+        <h3>Denominator</h3>
+        <p><span class="definition">patients_under_care</span> with:</p>
+        <ul>
+          <li>
+            <span class="definition">enrollment_date</span> at least 3 months
+            from today
+          </li>
+          <li><span class="definition">ltfu_3month</span> is 'FALSE'</li>
+          <li>
+            <span class="definition">latest_visit_bp_controlled</span> is
+            'controlled'
+          </li>
+        </ul>
+        <p class="note">
+          Patients registered for less than 3 months are excluded to allow
+          healthcare workers time to get a patients blood pressure under
+          control.
+        </p>
+      </div>
+      <aside >
+        <h2>Navigation</h2>
+        <ul class="nav-jump-links"></ul>
+      </aside>
     </main>
   </body>
   <style>
-    h1,
+    .menu {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 36px;
+      margin-top: 6px;
+      margin-bottom: 48px;
+    }
+
+    a {
+      position: relative;
+    }
+
+    a::before {
+      position: absolute;
+      top: -30px;
+    }
+
+    /* h1,
     h2,
     h3 {
       font-weight: 700;
@@ -64,6 +173,46 @@
 
     article {
       margin: 16px 0;
+    } */
+    .markdown-body {
+      background: none;
+      & h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+      }
+      & h1 {
+        font-size: 3rem;
+      }
+      & h2 {
+        text-transform: none;
+      }
+      & p {
+        font-size: 1rem;
+      }
+
+      & h3.block {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .note {
+        color: #616161;
+        font-style: italic;
+      }
+      .note::before {
+        content: "Note";
+        background: #e2e2e2;
+        color: #4e4e4e;
+        padding: 3px 6px;
+        font-size: 0.9rem;
+        margin-right: 8px;
+        border-radius: 3px;
+      }
     }
 
     .definition {
@@ -76,5 +225,80 @@
       font-weight: 500;
       font-size: 1rem;
     }
+
+    .nav-jump-links {
+      & li {
+        margin: 8px 0;
+
+        &.parent {
+          font-weight: 600;
+          font-size: 1.1rem;
+        }
+      }
+    }
   </style>
+  <script>
+    function kebabToSentenceCase(kebabCaseString) {
+      // Split the string by hyphens to get individual words
+      const words = kebabCaseString.split("-");
+
+      // Capitalize the first letter of the first word and make the rest lowercase
+      const sentenceCaseWords = words.map((word, index) => {
+        if (index === 0) {
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        } else {
+          return word.toLowerCase();
+        }
+      });
+
+      // Join the words back to form the sentence case string
+      const sentenceCaseString = sentenceCaseWords.join(" ");
+
+      return sentenceCaseString.replace(/bp/gi, "BP");
+    }
+
+    function findIds() {
+      // Find all elements with an 'id' attribute
+      const elementsWithIds = document.querySelectorAll("[id]");
+      console.log(elementsWithIds);
+      // Create a list of jump links from the anchor tags
+      const jumpLinks = [];
+      for (const element of elementsWithIds) {
+        const tag = element.localName;
+        const id = element.id;
+        jumpLinks.push({ tag, id });
+      }
+      return jumpLinks;
+    }
+
+    const jumpLinks = findIds();
+
+    if (jumpLinks.length > 0) {
+      console.log("List of Jump Links:");
+      console.log(jumpLinks);
+    } else {
+      console.log("No jump links found.");
+    }
+
+    function buildNavList(arrayOfLinks) {
+      let html = "";
+      arrayOfLinks.forEach((element) => {
+        html += `
+                <li ${element.tag === "h2" ? 'class="parent"' : ""}>
+                  <p>
+                    <a href="#${element.id}">
+                      ${element.tag === "h3" ? '<span class="definition">' : ""}
+                        ${element.tag === "h2" ? kebabToSentenceCase(element.id) : element.id}
+                      ${element.tag === "h3" ? '</span>' : ""}
+                    </a>
+                  </p>
+                </li>
+        `;
+      });
+      console.log(html);
+      return html;
+    }
+    document.getElementsByClassName("nav-jump-links")[0].innerHTML =
+      buildNavList(jumpLinks);
+  </script>
 </html>
