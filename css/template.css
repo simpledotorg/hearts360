@@ -696,6 +696,7 @@ th[aria-sort="ascending"] div:not(.no-sort):after {
   border-style: solid;
   border-color: #0035bc transparent;
   opacity: 1;
+  margin-bottom: 8px;
 }
 
 th[aria-sort="descending"] div:not(.no-sort):after {
