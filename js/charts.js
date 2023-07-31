@@ -393,6 +393,7 @@ const registrationsData = {
         786, 303, 270, 319, 650, 380, 285, 270, 309, 362, 257, 504, 520, 604,
         965, 1156, 1043, 236,
       ],
+      borderColor: "#BEDFF9",
       backgroundColor: "#BEDFF9",
       yAxisID: "yMonthlyRegistrations",
     },
@@ -414,7 +415,15 @@ registrationsConfig.options.scales.yMonthlyRegistrations = {
 };
 
 registrationsConfig.options.plugins.tooltip.displayColors = true;
-
+registrationsConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
 const registrationsCanvas = document.getElementById("registrations");
 createChart(registrationsCanvas, registrationsConfig);
 
@@ -554,6 +563,15 @@ drugStockConfig.options.scales.y.ticks.callback = (val) => {
 };
 
 drugStockConfig.options.plugins.tooltip.displayColors = true;
+drugStockConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
 
 const drugStockCanvas = document.getElementById("drugstock");
 createChart(drugStockCanvas, drugStockConfig);
