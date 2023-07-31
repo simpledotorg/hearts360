@@ -45,10 +45,25 @@
       </div>
     </div>
     <main class="main menu">
+      <h1 class="span-2-col">Instructions</h1>
       <div class="markdown-body">
-        <h1>Instructions</h1>
-        <p>This page details the data required to setup a working dashboard.</p>
-        <h2 id="numerators-and-denominators">Numerators and denominators</h2>
+        <p>This page details the data required to setup a working version of this <a href="index.html">dashboard</a></p>
+        <h2 id="background">Background</h2>
+        <h3 id="Blood pressure reading">Blood pressure reading</h3>
+        <p>A blood pressure reading is made up of 2 measurements, systolic pressure and diastolic pressure. This is commonly written as [systolic] / [diastolic] (eg 120/80)</p>
+        <p>
+          Blood pressure is classed as controlled when a systolic reading is below 140 <b>AND</b> the
+          diastolic reading is below 90. The <b>AND</b> is important, both statements must be for blood pressure control
+        </p>
+        <p>
+          <b>Controlled</b>: BP reading where systolic &lt;140
+          <b>AND</b> diastolic &lt;90
+        </p>
+        <p>
+          <b>Uncontrolled</b>: BP reading where systolic &ge;140
+          <b>OR</b> diastolic &ge;90
+        </p>
+        <h3 id="numerators-and-denominators">Numerators and denominators</h3>
         <p>
           <b>Numerators</b> and <b>denominators</b> are common descriptors in
           epidemiology and will be used throught this document and the
@@ -86,21 +101,18 @@
         <h3>Most recent visit outcome</h3>
         <p><span class="definition">latest_visit_bp_controlled</span></p>
         <p>The blood pressure control status - controlled or uncontrolled.</p>
-        <p>
-          Blood pressure is controlled if systolic reading is below 140 and the
-          diastolic reading is below 90
-        </p>
-        <p>[systolic] / [diastolic] (eg 120/80)</p>
-        <p>
-          <b>Controlled</b>: BP reading where systolic &lt;140
-          <b>AND</b> diastolic &lt;90
-        </p>
-        <p>
-          <b>Uncontrolled</b>: BP reading where systolic &ge;140
-          <b>OR</b> diastolic &ge;90
-        </p>
 
         <h2>Definitions</h2>
+        <h3 class="block">
+          Registered patients
+          <span class="definition">registered_patients</span>
+        </h3>
+          <p>All patients registered on the hypertension program that are not dead</p>
+          <p>All patients where:</p>
+          <ul>
+            <li><span class="definition">dead</span> is 'FALSE'</li>
+          </ul>
+
         <h3 class="block">
           Patients under care
           <span class="definition">patients_under_care</span>
@@ -115,8 +127,35 @@
           <li><span class="definition">ltfu_12month</span> is 'FALSE'</li>
         </ul>
 
+        <h3 id="bp-controlled" class="block">
+          Controlled blood pressure 
+          <!-- <span class="definition">bp_controlled</span> -->
+        </h3>
+        <p>A blood pressure reading where systolic &lt;140 <b><u>AND</u></b> diastolic &lt;90 </p>
+        
+        <h3 id="bp-uncontrolled" class="block">
+          Uncontrolled blood pressure 
+          <!-- <span class="definition">bp_controlled</span> -->
+        </h3>
+        <p>A blood pressure reading where systolic &ge;140 <b><u>OR</u></b> diastolic &ge;90 </p>
+
+        <h3 class="block">
+          3 month lost to follow up
+          <span class="definition">three_month_lost_to_follow_up</span>
+        </h3>
+        <p>A patient with no blood pressure recording in a last 3 months</p>
+
+        <h3 class="block">
+          12 month lost to follow up
+          <span class="definition">twelve_month_lost_to_follow_up</span>
+        </h3>
+        <p>A patient with no blood pressure recording in last 12 months</p>
+
+ 
+
         <h2 id="bp-control">BP controlled</h2>
         <h3>Numerator</h3>
+        <p>Patients from denominator with <span class="definition">bp_controlled</span></p>
 
         <h3>Denominator</h3>
         <p><span class="definition">patients_under_care</span> with:</p>
@@ -136,6 +175,17 @@
           healthcare workers time to get a patients blood pressure under
           control.
         </p>
+
+        <h2 id="bp-uncontrolled">BP uncontrolled</h2>
+        <h2 id="3-month-lost-to-follow-up">3 month lost to follow up</h2>
+        <h2 id="12-month-lost-to-follow-up">12 month lost to follow up</h2>
+        <h2 id="patients-under-care">Patients under care</h2>
+        <h2 id="population-coverage">Population coverage</h2>
+        <h2 id="quarterly-cohort-report">Quarterly cohort report</h2>
+        <h2 id="compare-sub--regions">Compare sub-regions</h2>
+        <h2 id="anti--hypertensive-drug-stock">Anti-hypertensive drug stock</h2>
+        <h2 id="blood-pressure-monitors">Blood pressure monitors</h2>
+        <h2 id="stock-by-reporting-facility">Stock reporting by facility</h2>
       </div>
       <aside >
         <h2>Navigation</h2>
@@ -148,8 +198,12 @@
       display: grid;
       grid-template-columns: 3fr 1fr;
       gap: 36px;
-      margin-top: 6px;
+      margin-top: 0px;
       margin-bottom: 48px;
+    }
+
+    .span-2-col {
+      grid-column: span 2;
     }
 
     a {
@@ -175,7 +229,9 @@
       margin: 16px 0;
     } */
     .markdown-body {
-      background: none;
+      /* background: none; */
+      padding: 24px;
+
       & h1,
       h2,
       h3,
@@ -228,11 +284,20 @@
 
     .nav-jump-links {
       & li {
-        margin: 8px 0;
+        margin: 8px 0 8px 8px;
 
         &.parent {
-          font-weight: 600;
-          font-size: 1.1rem;
+          font-weight: 700;
+          /* font-size: 1.1rem; */
+          margin-left: 0;
+        }
+
+        &:not(.parent) p::before {
+          content: '⎣';
+          margin-right: 4px;
+          color: #a9a9a9;
+          font-size: 0.5rem;
+          vertical-align: text-top;
         }
       }
     }
@@ -287,13 +352,14 @@
                 <li ${element.tag === "h2" ? 'class="parent"' : ""}>
                   <p>
                     <a href="#${element.id}">
-                      ${element.tag === "h3" ? '<span class="definition">' : ""}
-                        ${element.tag === "h2" ? kebabToSentenceCase(element.id) : element.id}
-                      ${element.tag === "h3" ? '</span>' : ""}
+                      ${kebabToSentenceCase(element.id)}
                     </a>
                   </p>
                 </li>
         `;
+        // ${element.tag === "h3" ? '<span class="definition">' : ""}
+        //                 ${element.tag === "h2" ? kebabToSentenceCase(element.id) : element.id}
+        //               ${element.tag === "h3" ? '</span>' : ""}
       });
       console.log(html);
       return html;
