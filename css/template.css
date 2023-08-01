@@ -117,6 +117,7 @@ main {
   display: block;
   width: 100%;
   font-size: 0.9em;
+  margin-top: 12px;
   margin-bottom: 2em;
   color: rgba(0,0,0,0.2);
   
@@ -125,7 +126,7 @@ main {
     width: 100%;
     max-width: 1600px;
     margin: auto;
-    padding: 12px 20px;
+    padding: 12px 24px;
     position: relative;
   }
   
@@ -137,7 +138,7 @@ main {
   & select {
     padding: 4px 32px 4px 8px;
     margin: 0 2px;
-    outline: 1px solid rgba(0,0,255,0.1);
+    border: 1px solid rgba(0,0,255,0.1);
     border-radius: 4px;
     /** for the dropdown indicator */
     appearance: none;
@@ -150,7 +151,7 @@ main {
       background-color: #d9e3ff;
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='Blue' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
       color: #0035bc;
-      outline: 1px solid #4b7eff;
+      border: 1px solid #4b7eff;
       font-weight: bold;
     }
   }
