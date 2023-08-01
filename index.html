@@ -31,137 +31,106 @@
     <main class="main">
       <h1>River District</h1>
       <div class="date-updated">Data last updated: 5-Aug-2023</div>
+      
+      <div class="columns-1">
+        <div class="card">
+        <div class="heading">
+          <h3>Recent outcomes for patients on treatment for hypertension</h3>
+          <div class="info">
+            <div class="info-hover-text">
+              <p>
+                <span>Numerator 1:</span> Patients with BP &lt;140/90 at their
+                latest visit in the past 3 months
+              </p>
+              <p>
+                <span>Numerator 2:</span> Patients with BP &ge;140/90 at their
+                latest visit in the past 3 months
+              </p>
+              <p>
+                <span>Numerator 3:</span> Patients with no visit in the past 3
+                months.
+              </p>
+              <p>
+                <span>Denominator:</span> Patients with hypertension registered
+                before the past 3 months. Dead patients (205) and 12 month lost to follow-up
+                patients (1,562) are excluded.
+              </p>
+            </div>
+          </div>
+          <p>
+            Treatment outcomes for 7,882 patients under care (registered before 1-May-2023) at their latest visit in the past 3 months (1-May-2023 to 31-Jul-2023)
+          </p>
+          
+          <div class="body columns-3">
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="bp-controlled">BP controlled</h4>
+                <p class="large-num bp-controlled">61%</p>
+                <div class="detail">
+                  <p>
+                    4,808 patients with BP &lt;140/90
+                  </p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="bpcontrolled"></canvas>
+              </div>
+            </div>
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="bp-uncontrolled">BP uncontrolled</h4>
+                <p class="large-num bp-uncontrolled">17%</p>
+                <div class="detail">
+                  <p>
+                    1,340 patients with BP &ge;140/90
+                  </p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="bpuncontrolled"></canvas>
+              </div>
+            </div>
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="three-month-ltfu">No visit in past 3 months</h4>
+                <p class="large-num three-month-ltfu">22%</p>
+                <div class="detail">
+                  <p>
+                    1,734 patients with no visit
+                  </p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="ltfu3Month"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div class="columns-3">
-        <div class="card">
-          <div class="heading">
-            <h3>BP controlled</h3>
-            <div class="info">
-              <div class="info-hover-text">
-                <p>
-                  <span>Numerator:</span> Patients with BP &lt;140/90 at their
-                  last visit in the last 3 months
-                </p>
-                <p>
-                  <span>Denominator:</span> Hypertension patients registered
-                  before the last 3 months. Dead patients (205) and 12 month lost to follow-up
-                  patients (1,562) are excluded.
-                </p>
-              </div>
-            </div>
-            <p>
-              Hypertension patients with BP &lt;140/90 at their last visit in
-              the last 3 months
-            </p>
-          </div>
-          <div class="body">
-            <div class="figures">
-              <p class="large-num bp-controlled">61%</p>
-              <div class="detail">
-                <p>4,808 patients with controlled BP from 1-May to 31-Jul</p>
-                <p class="text-grey">
-                  of 7,882 patients under care, registered before 1-May
-                </p>
-              </div>
-            </div>
-            <div class="chart">
-              <canvas id="bpcontrolled"></canvas>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="heading">
-            <h3>BP uncontrolled</h3>
-            <div class="info">
-              <div class="info-hover-text">
-                <p>
-                  <span>Numerator:</span> Patients with BP ≥140/90 at their last
-                  visit in the last 3 months
-                </p>
-                <p>
-                  <span>Denominator:</span> Hypertension patients registered
-                  before the last 3 months. Dead patients (205) and 12 month lost to follow-up
-                  patients (1,562) are excluded.
-                </p>
-              </div>
-            </div>
-            <p>
-              Hypertension patients with BP &ge;140/90 at their last visit in
-              the last 3 months
-            </p>
-          </div>
-          <div class="body">
-            <div class="figures">
-              <p class="large-num bp-uncontrolled">17%</p>
-              <div class="detail">
-                <p>1,340 patients with uncontrolled BP from 1-May to 31-Jul</p>
-                <p class="text-grey">
-                  of 7,882 patients under care, registered before 1-May
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="chart">
-            <canvas id="bpuncontrolled"></canvas>
-          </div>
-        </div>
-        <div class="card">
-          <div class="heading">
-            <h3>3 month lost to follow-up</h3>
-            <div class="info">
-              <div class="info-hover-text">
-                <p>
-                  <span>Numerator:</span> Patients with no visit in the last 3
-                  months.
-                </p>
-                <p>
-                  <span>Denominator:</span> Hypertension patients registered
-                  before the last 3 months. Dead patients (205) and 12 month lost to follow-up
-                  patients (1,562) are excluded.
-                </p>
-              </div>
-            </div>
-            <p>Hypertension patients with no visit in the last 3 months</p>
-          </div>
-          <div class="body">
-            <div class="figures">
-              <p class="large-num three-month-ltfu">22%</p>
-              <div class="detail">
-                <p>
-                  1,734 patients with no visit from 1-May to 31-Jul
-                </p>
-                <p class="text-grey">
-                  of 7,882 patients under care, registered before 1-May
-                </p>
-              </div>
-            </div>
-            <div class="chart">
-              <canvas id="ltfu3Month"></canvas>
-            </div>
-          </div>
-        </div>
-
         <div class="card">
           <div class="heading">
             <h3>Patients under care</h3>
             <div class="info">
               <div class="info-hover-text">
                 <p>
-                  <span>Patients under care:</span> Registered hypertension
-                  patients with at least 1 visit in the last 12 months. Dead patients (205) and
+                  <span>Patients under care:</span> Registered patients with hypertension
+                  with at least 1 visit in the past 12 months. Dead patients (205) and
                   12 month lost to follow-up patients (1,562) are excluded.
                 </p>
                 <p>
-                  <span>Cumulative registered patients:</span> All hypertension
-                  patients registered. Dead patients (205) are excluded.
+                  <span>Cumulative registered patients:</span> All patients with hypertension
+                  registered. Dead patients (205) are excluded.
                 </p>
                 <p>
-                  <span>Monthly registered patients:</span> Hypertension
-                  patients registered each month.
+                  <span>Monthly registered patients:</span> Patients with hypertension 
+                  registered each month.
                 </p>
               </div>
             </div>
             <p>
-              Hypertension patients with at least 1 visit in the last
+              Patients with hypertension with at least 1 visit in the past
               12 months
             </p>
           </div>
@@ -187,16 +156,16 @@
             <div class="info">
               <div class="info-hover-text">
                 <p>
-                  <span>Numerator:</span> Patients with no visit in the last 12
+                  <span>Numerator:</span> Patients with no visit in the past 12
                   month
                 </p>
                 <p>
-                  <span>Denominator:</span> Hypertension patients registered.
+                  <span>Denominator:</span> Registered patients with hypertension.
                   Dead patients (205) are excluded.
                 </p>
               </div>
             </div>
-            <p>Hypertension patients with no visit in the last 12 months</p>
+            <p>Patients with hypertension with no visit in the past 12 months</p>
           </div>
           <div class="body">
             <div class="figures">
@@ -213,13 +182,13 @@
         </div>
         <div class="card">
           <div class="body">
-            <h3>Population coverage</h3>
+            <h3>Estimated treatment coverage</h3>
             <div class="data-line">
-              <p>Estimated population with hypertension:</p>
+              <p>Estimated number of people in area with hypertension:</p>
               <p>250,800</p>
             </div>
 
-            <h4>Population registered</h4>
+            <h4>% of patients registered</h4>
             <div class="coverage">
               <div class="coverage-fill registrations-bg" style="width: 5%">
                 <p
@@ -235,7 +204,7 @@
               of 250,800
             </p>
 
-            <h4>Population under care</h4>
+            <h4>% of patients under care</h4>
             <div class="coverage">
               <div class="coverage-fill under-care-bg" style="width: 4%">
                 <p
@@ -251,7 +220,7 @@
               250,800
             </p>
 
-            <h4>Population with BP controlled</h4>
+            <h4>% of patients with BP controlled</h4>
             <div class="coverage">
               <div class="coverage-fill bp-controlled-bg" style="width: 2%">
                 <p
@@ -269,14 +238,12 @@
         </div>
       </div>
       
-      <div class="divider"></div>
-      
       <div class="card">
         <div class="heading">
           <h3>Quarterly cohort report</h3>
           <p>
             The result for all hypertensive patients registered in a quarter at
-            their last follow-up visit in the following quarter
+            their past follow-up visit in the following quarter
           </p>
         </div>
         <div class="body">
@@ -296,7 +263,7 @@
               <div class="cohort-detail">
                 <b>Q4-2021 cohort</b>
                 1,006 patients
-                <p class="text-grey">Result from last visit in Q1-2022</p>
+                <p class="text-grey">Result from past visit in Q1-2022</p>
               </div>
             </div>
             <div class="cohort-quarter">
@@ -314,7 +281,7 @@
               <div class="cohort-detail">
                 <b>Q1-2022 cohort</b>
                 600 patients
-                <p class="text-grey">Result from last visit in Q2-2022</p>
+                <p class="text-grey">Result from latest visit in Q2-2022</p>
               </div>
             </div>
             <div class="cohort-quarter">
@@ -332,7 +299,7 @@
               <div class="cohort-detail">
                 <b>Q2-2022 cohort</b>
                 892 patients
-                <p class="text-grey">Result from last visit in Q3-2023</p>
+                <p class="text-grey">Result from latest visit in Q3-2023</p>
               </div>
             </div>
             <div class="cohort-quarter">
@@ -350,7 +317,7 @@
               <div class="cohort-detail">
                 <b>Q3-2022 cohort</b>
                 1,315 patients
-                <p class="text-grey">Result from last visit in Q4-2023</p>
+                <p class="text-grey">Result from latest visit in Q4-2023</p>
               </div>
             </div>
             <div class="cohort-quarter">
@@ -368,7 +335,7 @@
               <div class="cohort-detail">
                 <b>Q4-2022 cohort</b>
                 941 patients
-                <p class="text-grey">Result from last visit in Q1-2023</p>
+                <p class="text-grey">Result from latest visit in Q1-2023</p>
               </div>
             </div>
             <div class="cohort-quarter">
@@ -386,7 +353,7 @@
               <div class="cohort-detail">
                 <b>Q1-2023 cohort</b>
                 1,281 patients
-                <p class="text-grey">Result from last visit in Q2-2023</p>
+                <p class="text-grey">Result from latest visit in Q2-2023</p>
               </div>
             </div>
             <div class="cohort-quarter">
@@ -417,15 +384,13 @@
           </div>
         </div>
       </div>
-      
-      <div class="divider"></div>
 
       <div class="card">
         <div class="heading">
           <h3>Compare sub-regions</h3>
           <p>
-            Outcomes for hypertension patients at their last visit from 1-May to
-            31-Jul
+            Outcomes for patients with hypertension at their latest visit from 1-May-2023 to
+            31-Jul-2023
           </p>
         </div>
         <div class="table-container">
@@ -445,7 +410,7 @@
                 <tr class="text-center">
                   <td></td>
                   <th scope="colgroup">Patients under care</th>
-                  <th scope="colgroup">Monthly registrations</th>
+                  <th scope="colgroup">Monthly new patients registered</th>
                   <th colspan="2" scope="colgroup">BP controlled</th>
                   <th colspan="2" scope="colgroup">BP uncontrolled</th>
                   <th colspan="2" scope="colgroup">3 month lost to follow-up</th>
@@ -644,8 +609,6 @@
           </div>
         </div>
       </div>
-
-      <div class="divider"></div>
       
       <div class="columns-3">
         <div class="card col-span-2">
@@ -712,8 +675,6 @@
           <!-- <div class="chart">&nbsp;</div> -->
         </div>
       </div>
-
-      <div class="divider"></div>
       
       <div class="card">
         <div class="heading">

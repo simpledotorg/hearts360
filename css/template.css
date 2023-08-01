@@ -34,10 +34,11 @@ main {
   margin: auto;
   padding: 0 24px 16px;
 
+  .columns-1,
   .columns-2,
   .columns-3 {
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 24px;
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
   }
