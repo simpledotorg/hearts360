@@ -122,12 +122,14 @@ main {
   
   & a {
     display: inline-block;
-    padding: 4px 8px;
+    padding: 4px 2px;
   }
   
   & select {
     padding: 4px 32px 4px 8px;
-    margin: 0 8px;
+    margin: 0 2px;
+    outline: 1px solid rgba(0,0,255,0.1);
+    border-radius: 4px;
     /** for the dropdown indicator */
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='LightGray' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -402,14 +404,13 @@ table {
 
 .cohort-bar {
   display: flex;
-  border-radius: 0;
   overflow: hidden;
   gap: 2px;
   color: #fff;
   font-weight: 700;
   flex-direction: column;
   height: 420px;
-  border-radius: 3px;
+  border-radius: 4px;
   margin: 0 0 8px 0;
   & .segment {
     display: flex;
@@ -474,12 +475,6 @@ table {
   &.warning-key {
     border-width: 1px;
   }
-
-  &.warning-box {
-    padding: 4px 8px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 51, 85, 0.3);
-  }
 }
 
 .expiry {
@@ -523,7 +518,7 @@ table {
 .coverage {
   background: rgb(241, 241, 241);
   box-shadow: inset 0 1px 3px -1px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
+  border-radius: 4px;
   margin: 10px 0 4px;
   height: 36px;
   overflow: hidden;
@@ -563,7 +558,7 @@ table {
   display: flex;
   justify-content: center;
   /* background: rgb(239, 239, 239); */
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 1px 4px;
 }
 
