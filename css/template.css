@@ -177,22 +177,6 @@ main {
   }
 }
 
-.breadcrumbs {
-  padding: 16px 24px 13px;
-  margin-bottom: 2em;
-
-  .breadcrumbs-body {
-    width: 100%;
-    max-width: 1600px;
-    margin: auto;
-    padding: 0 24px;
-    color: #808080;
-    display: flex;
-    gap: 12px;
-    font-size: 0.9em;
-  }
-}
-
 .divider {
   margin: 24px 0;
   height: 12px;
