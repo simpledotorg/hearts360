@@ -74,9 +74,10 @@ main {
 }
 
 .navigation {
-  background: #fff;
-  border-bottom: 1px solid rgba(0,0,0,0.15);
+  /* background: #fff; */
+  border-bottom: 1px dashed rgba(0,0,0,0.15);
   width: 100%;
+  font-size: 0.85em;
 
   .navigation-body {
     display: flex;
@@ -86,7 +87,7 @@ main {
     width: 100%;
     max-width: 1600px;
     margin: auto;
-    padding: 16px 20px;
+   padding: 12px 20px;
     position: relative;
     color: #AD2E38;
     font-weight: bold;
@@ -100,6 +101,11 @@ main {
   .navigation-title-image {
     margin: -2px 8px 0 8px;
     display: inline-block;
+  }
+
+  & .link-list {
+    display: flex;
+    gap: 16px;
   }
 }
 
