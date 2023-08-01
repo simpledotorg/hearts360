@@ -124,7 +124,7 @@ main {
   width: 100%;
   font-size: 0.9em;
   margin-top: 12px;
-  margin-bottom: 2em;
+  margin-bottom: 1rem;
   color: rgba(0, 0, 0, 0.2);
 
   & form {
