@@ -7,13 +7,16 @@ body {
   font-family: var(--system-ui);
 }
 
-a {
+a, select {
   color: #0075eb;
   &:hover {
     color: #004f9f;
-    text-decoration: underline;
-    text-underline-offset: 2px;
   }
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 h1 {
@@ -72,7 +75,6 @@ main {
 
 .navigation {
   background: #333;
-  margin-bottom: 2em;
   width: 100%;
   font-size: 0.9em;
 
@@ -100,6 +102,47 @@ main {
   .navigation-title-image {
     margin: -2px 8px 0 8px;
     display: inline-block;
+  }
+}
+
+.sub-navigation {
+  display: block;
+  background: rgba(0,0,0,0.05);
+  width: 100%;
+  font-size: 0.9em;
+  margin-bottom: 2em;
+  color: rgba(0,0,0,0.2);
+  
+  & form {
+    display: block;
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+    padding: 12px 20px;
+    position: relative;
+  }
+  
+  & a {
+    display: inline-block;
+    padding: 4px 8px;
+  }
+  
+  & select {
+    padding: 4px 16px 4px 8px;
+    border-radius: 5px;
+    margin: 0 8px;
+    /** for the dropdown indicator */
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 1em;
+    
+    &.active {
+      background-color: #d9e3ff;
+      color: #0035bc;
+      outline: 1px solid #4b7eff;
+    }
   }
 }
 
