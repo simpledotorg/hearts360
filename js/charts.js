@@ -405,7 +405,7 @@ registrationsConfig.data = registrationsData;
 console.log(registrationsConfig.options.scales.y);
 registrationsConfig.options.scales.y.grid = { drawTicks: false };
 registrationsConfig.options.scales.y.ticks.display = false;
-registrationsConfig.options.scales.y.ticks.count = 5;
+registrationsConfig.options.scales.y.ticks.count = 3;
 registrationsConfig.options.scales.y.max = 12105;
 
 registrationsConfig.options.scales.yMonthlyRegistrations = {
