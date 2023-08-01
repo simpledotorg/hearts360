@@ -7,7 +7,8 @@ body {
   font-family: var(--system-ui);
 }
 
-a, select {
+a,
+select {
   color: #0075eb;
   &:hover {
     color: #004f9f;
@@ -75,7 +76,7 @@ main {
 
 .banner {
   /* background: #fff; */
-  border-bottom: 1px dashed rgba(0,0,0,0.15);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
   width: 100%;
   font-size: 0.85em;
 
@@ -87,10 +88,10 @@ main {
     width: 100%;
     max-width: 1600px;
     margin: auto;
-   padding: 12px 20px;
+    padding: 12px 20px;
     position: relative;
-    color: #AD2E38;
-    font-weight: bold;
+    color: #ad2e38;
+    font-weight: 600;
   }
 
   & .section {
@@ -110,6 +111,11 @@ main {
 
   .secondary-link {
     color: #7b7b7b;
+    font-weight: 400;
+    &::after {
+      content: '↗';
+      margin-left: 4px;
+    }
   }
 }
 
@@ -119,8 +125,8 @@ main {
   font-size: 0.9em;
   margin-top: 12px;
   margin-bottom: 2em;
-  color: rgba(0,0,0,0.2);
-  
+  color: rgba(0, 0, 0, 0.2);
+
   & form {
     display: block;
     width: 100%;
@@ -129,16 +135,16 @@ main {
     padding: 12px 24px;
     position: relative;
   }
-  
+
   & a {
     display: inline-block;
     padding: 4px 2px;
   }
-  
+
   & select {
     padding: 4px 32px 4px 8px;
     margin: 0 2px;
-    border: 1px solid rgba(0,0,255,0.1);
+    border: 1px solid rgba(0, 0, 255, 0.1);
     border-radius: 4px;
     /** for the dropdown indicator */
     appearance: none;
@@ -146,7 +152,7 @@ main {
     background-repeat: no-repeat;
     background-position: right 6px center;
     background-size: 0.9em;
-    
+
     &.active {
       background-color: #d9e3ff;
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='Blue' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -184,7 +190,6 @@ main {
     display: flex;
     gap: 12px;
     font-size: 0.9em;
-
   }
 }
 
@@ -718,7 +723,6 @@ th[role="columnheader"] div {
 th[role="columnheader"] div:not(.no-sort) {
   cursor: pointer;
   /* white-space: nowrap; */
-  
 }
 
 th[role="columnheader"] div:not(.no-sort):after {
@@ -733,7 +737,6 @@ th[role="columnheader"] div:not(.no-sort):after {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-
 }
 
 th.text-right[role="columnheader"] div {
