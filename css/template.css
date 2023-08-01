@@ -127,7 +127,7 @@ main {
   margin-bottom: 1rem;
   color: rgba(0, 0, 0, 0.2);
 
-  & form {
+  & form, ul {
     display: block;
     width: 100%;
     max-width: 1600px;
