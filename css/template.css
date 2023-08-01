@@ -73,13 +73,13 @@ main {
   }
 }
 
-.navigation {
+.banner {
   /* background: #fff; */
   border-bottom: 1px dashed rgba(0,0,0,0.15);
   width: 100%;
   font-size: 0.85em;
 
-  .navigation-body {
+  .banner-body {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -107,9 +107,13 @@ main {
     display: flex;
     gap: 16px;
   }
+
+  .secondary-link {
+    color: #7b7b7b;
+  }
 }
 
-.sub-navigation {
+.navigation {
   display: block;
   width: 100%;
   font-size: 0.9em;
@@ -167,14 +171,19 @@ main {
 }
 
 .breadcrumbs {
+  padding: 16px 24px 13px;
+  margin-bottom: 2em;
+
   .breadcrumbs-body {
     width: 100%;
     max-width: 1600px;
     margin: auto;
-    padding: 24px 24px 8px;
+    padding: 0 24px;
     color: #808080;
     display: flex;
     gap: 12px;
+    font-size: 0.9em;
+
   }
 }
 
