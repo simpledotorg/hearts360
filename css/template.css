@@ -21,8 +21,12 @@ a:hover {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
+  @media screen and (min-width: 880px) {
+    font-size: 3rem;  
+  }
+  
 }
 
 h2 {
@@ -677,7 +681,7 @@ table {
 
 /* Display options */
 .desktop-only {
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 880px) {
     display: none;
   }
 }
