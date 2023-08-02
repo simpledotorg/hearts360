@@ -211,10 +211,6 @@ main {
   .figures {
     margin: 12px 0;
 
-    &.flex {
-      display: flex;
-    }
-
     & .large-num {
       font-size: 2rem;
       font-weight: 700;
