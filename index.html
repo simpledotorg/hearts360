@@ -21,7 +21,7 @@
         <div class="desktop-only">
           <div class="link-list">
             <a href="instructions.html">Setup instructions</a>
-            <a class="secondary-link" href="https://github.com/simpledotorg/hypertension-dashboard">GitHub</a>
+            <a class="external-link" href="https://github.com/simpledotorg/hypertension-dashboard">GitHub</a>
           </div>
         </div>
       </div>
@@ -118,10 +118,11 @@
       </div>
     </nav>
     <main class="main">
+      <div>
       <h1>River District</h1>
       <div class="date-updated">Data last updated: 5-Aug-2023</div>
+      </div>
       
-      <div class="columns-1">
         <div class="card">
         <div class="heading">
           <h3>Past 3 month outcomes for patients on treatment for hypertension</h3>
@@ -1198,14 +1199,13 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
     <script src="./js/charts.js"></script>
-    
-    <!-- Tablesort.js -->
-    <script src='js/tablesort.js'></script>
-    <script src='js/tablesort.number.js'></script>
-    <script>
-      new Tablesort(document.getElementById('table-regions'));
-      new Tablesort(document.getElementById('table-stock-inventory'));
-    </script>
 
+    <!-- Tablesort.js -->
+    <script src="js/tablesort.js"></script>
+    <script src="js/tablesort.number.js"></script>
+    <script>
+      new Tablesort(document.getElementById("table-regions"));
+      new Tablesort(document.getElementById("table-stock-inventory"));
+    </script>
   </body>
 </html>
