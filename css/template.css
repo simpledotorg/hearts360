@@ -109,7 +109,7 @@ main {
     gap: 16px;
   }
 
-  .secondary-link {
+  .external-link {
     &::after {
       content: ' ↗';
     }
