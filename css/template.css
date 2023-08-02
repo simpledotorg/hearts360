@@ -33,12 +33,14 @@ h2 {
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
   max-width: 1600px;
   margin: auto;
   padding: 0 24px 16px;
 
-  .columns-1,
   .columns-2,
   .columns-3 {
     display: grid;
@@ -161,8 +163,7 @@ main {
 
 .date-updated {
   width: 100%;
-  max-width: 1600px;
-  margin: 6px 0 24px;
+  margin-top: 6px;
   font-size: 0.9em;
 }
 
