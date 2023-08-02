@@ -316,7 +316,7 @@ const ltfu3MonthData = {
   ],
   datasets: [
     {
-      label: "3 month lost to follow-up",
+      label: "No visit in past 3 months",
       data: [
         18, 26, 22, 21, 13, 19, 20, 23, 18, 20, 18, 15, 19, 17, 26, 21, 22, 25,
       ],
