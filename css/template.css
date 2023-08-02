@@ -154,6 +154,10 @@ main {
     background-repeat: no-repeat;
     background-position: right 6px center;
     background-size: 0.9em;
+    
+    @media screen and (max-width: 880px) {
+      width: 100%;
+    }
 
     &.active {
       background-color: #d9e3ff;
@@ -384,6 +388,7 @@ table {
 
   & b {
     display: block;
+    white-space: nowrap;
   }
 
   & .text-grey {
