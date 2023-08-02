@@ -110,8 +110,6 @@ main {
   }
 
   .secondary-link {
-    color: #7b7b7b;
-    font-weight: 400;
     &::after {
       content: '↗';
       margin-left: 4px;
@@ -173,7 +171,7 @@ main {
 @media screen and (min-width: 880px) {
   .date-updated {
     text-align: right;
-    margin-top: -1.5em;
+    margin-top: -2.5em;
   }
 }
 
