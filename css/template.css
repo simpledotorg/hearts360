@@ -178,7 +178,8 @@ main {
 @media screen and (min-width: 880px) {
   .date-updated {
     text-align: right;
-    margin-top: -2.5em;
+    margin-top: -3em;
+    padding-bottom: 1.5rem;
   }
 }
 
@@ -404,7 +405,7 @@ table {
   color: #fff;
   font-weight: 700;
   flex-direction: column;
-  height: 420px;
+  height: 340px;
   border-radius: 4px;
   margin: 0 0 8px 0;
   & .segment {
