@@ -411,11 +411,15 @@ table {
   }
 }
 .key {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
   gap: 16px;
   margin-top: 12px;
+  
+  @media screen and (min-width: 880px) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
   & div {
     display: flex;
     align-items: center;
@@ -445,9 +449,12 @@ table {
 
 .key-text {
   font-size: 0.92em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
+  @media screen and (min-width: 880px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .warning {
