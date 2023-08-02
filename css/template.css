@@ -76,7 +76,7 @@ main {
 
 .banner {
   /* background: #fff; */
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   width: 100%;
   font-size: 0.85em;
 
@@ -288,17 +288,6 @@ main {
     }
   }
 }
-
-/* 
-  If you want to use an empty card as a place holder use the following html
-  <div class="card card-empty desktop-only"></div> 
-  Also, uncomment the '.card-empty' css class (below)
-*/
-
-/* .card-empty {
-  border-style: dotted;
-  background: transparent;
-} */
 
 .table-wrap {
   overflow-y: scroll;
