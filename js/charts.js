@@ -111,6 +111,7 @@ function baseLineChartConfig() {
             color: colors.darkGrey,
             font: {
               // family: "var(--system-ui)",
+              size: 11,
             },
             padding: 6,
             showLabelBackdrop: true,
