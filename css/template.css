@@ -111,8 +111,7 @@ main {
 
   .secondary-link {
     &::after {
-      content: '↗';
-      margin-left: 4px;
+      content: ' ↗';
     }
   }
 }
