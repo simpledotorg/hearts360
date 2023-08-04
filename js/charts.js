@@ -428,6 +428,83 @@ registrationsConfig.options.plugins.tooltip.callbacks = {
 const registrationsCanvas = document.getElementById("registrations");
 createChart(registrationsCanvas, registrationsConfig);
 
+const screeningsData = {
+  labels: [
+  "Mar-2022",
+  "Apr-2022",
+  "May-2022",
+  "Jun-2022",
+  "Jul-2022",
+  "Aug-2022",
+  "Sep-2022",
+  "Oct-2022",
+  "Nov-2022",
+  "Dec-2022",
+  "Jan-2023",
+  "Feb-2023",
+  "Mar-2023",
+  "Apr-2023",
+  "May-2023",
+  "Jun-2023",
+  "Jul-2023",
+  "Aug-2023",
+  ],
+  datasets: [
+  {
+    label: "% of patients screened",
+    data: [
+    10, 15, 16, 12, 11, 10, 9, 11, 14, 20, 22, 23,
+    23, 24, 23, 24, 23, 23,
+    ],
+    borderColor: "#C625BF",
+    backgroundColor: "transparent",
+    yAxisID: "y",
+  },
+  {
+    type: "bar",
+    label: "Monthly screenings",
+    data: [
+    2000, 2200, 2300, 2200, 1600, 1800, 3400, 3600, 3900, 5800, 5700, 5600, 6600, 6200,
+    6000, 6500, 6900, 500,
+    ],
+    borderColor: "#EABEF9",
+    backgroundColor: "#EABEF9",
+    yAxisID: "yMonthlyscreenings",
+  },
+  ],
+};
+
+const screeningsConfig = baseLineChartConfig();
+screeningsConfig.data = screeningsData;
+console.log(screeningsConfig.options.scales.y);
+screeningsConfig.options.scales.y.grid = { drawTicks: false };
+screeningsConfig.options.scales.y.ticks.display = false;
+screeningsConfig.options.scales.y.ticks.count = 5;
+screeningsConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+screeningsConfig.options.scales.y.max = 100;
+
+
+screeningsConfig.options.scales.yMonthlyscreenings = {
+  display: false,
+  beginAtZero: true,
+  max: 7000,
+};
+
+screeningsConfig.options.plugins.tooltip.displayColors = true;
+screeningsConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+  return {
+    borderColor: "#fff",
+    backgroundColor: context.dataset.borderColor,
+    borderWidth: 1,
+  };
+  },
+};
+const screeningsCanvas = document.getElementById("screenings");
+createChart(screeningsCanvas, screeningsConfig);
+
 const ltfu12MonthsData = {
   labels: [
     "Mar-2022",
