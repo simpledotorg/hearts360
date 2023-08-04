@@ -5,6 +5,7 @@
 body {
   background: #f8f8f8;
   font-family: var(--system-ui);
+  padding-bottom: 100px;
 }
 
 a,
@@ -24,16 +25,16 @@ h1 {
   font-size: 2rem;
   font-weight: bold;
   @media screen and (min-width: 880px) {
-    font-size: 3rem;  
+    font-size: 3rem;
   }
-  
 }
 
 h2 {
-  text-transform: uppercase;
-  font-size: 0.92rem;
+  /* text-transform: uppercase; */
+  /* font-size: 0.92rem; */
+  font-size: 1.3rem;
   font-weight: bold;
-  margin: 32px 0 16px;
+  margin: 32px 0 0;
 }
 
 main {
@@ -117,7 +118,7 @@ main {
 
   .external-link {
     &::after {
-      content: ' ↗';
+      content: " ↗";
     }
   }
 }
@@ -129,7 +130,8 @@ main {
   margin-bottom: 1rem;
   color: rgba(0, 0, 0, 0.2);
 
-  & form, ul {
+  & form,
+  ul {
     display: block;
     width: 100%;
     max-width: 1600px;
@@ -155,7 +157,7 @@ main {
     background-repeat: no-repeat;
     background-position: right 6px center;
     background-size: 0.9em;
-    
+
     @media screen and (max-width: 880px) {
       width: 100%;
     }
@@ -424,13 +426,13 @@ table {
 .key {
   gap: 16px;
   margin-top: 12px;
-  
+
   @media screen and (min-width: 880px) {
     display: flex;
     justify-content: flex-end;
     align-items: center;
   }
-  
+
   & div {
     display: flex;
     align-items: center;
@@ -460,7 +462,7 @@ table {
 
 .key-text {
   font-size: 0.92em;
-  
+
   @media screen and (min-width: 880px) {
     display: flex;
     align-items: center;
@@ -766,4 +768,17 @@ th[aria-sort]:not(.no-sort) {
 th[role="columnheader"] div:not(.no-sort):hover:after {
   visibility: visible;
   opacity: 1;
+}
+
+.definitions {
+  max-width: 700px;
+  /* font-size: 0.95rem; */
+  & h3 {
+    font-weight: 700;
+    margin-bottom: 4px;
+    margin-top: 32px;
+  }
+  & p {
+    color: #555
+  }
 }
