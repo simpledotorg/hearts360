@@ -185,8 +185,21 @@ main {
 }
 
 .divider {
-  margin: 24px 0;
-  height: 12px;
+  margin: 3rem 0 -2rem 0;
+  padding: 1rem 0;
+  text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  
+  & .divider-title {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.2rem;
+    background: #f8f8f8;
+    display: inline-block;
+    padding: 1rem 1rem 0 1rem;
+    position: relative;
+    top: -2.5rem;
+  }
 }
 
 .card {

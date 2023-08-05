@@ -26,7 +26,7 @@
             height="24"
             class="navigation-title-image"
           />
-          Hypertension Dashboard v1.0
+          Hypertension Dashboard v1.1
         </div>
         <div class="desktop-only">
           <div class="link-list">
@@ -241,7 +241,7 @@
               <div>
                 <p class="large-num under-care">10,632</p>
                 <div class="detail">
-                  <p>1,043 patients registered in Jul-2023</p>
+                  <p>1,043 new patients registered in Jul-2023</p>
                   <p class="text-grey">
                     of
                     <span class="registrations"
@@ -353,6 +353,11 @@
           </div>
         </div>
       </div>
+      
+      <div class="divider">
+        <div class="divider-title">Cohorts &amp; Screening</div>
+      </div>
+      
       <div class="columns-3">
         <div class="card col-span-2">
           <div class="heading">
@@ -367,24 +372,6 @@
             </p>
             <div class="table-wrap">
               <div class="cohort">
-                <div class="cohort-quarter">
-                  <div class="cohort-bar">
-                    <div class="segment bp-controlled-bg" style="height: 63%">
-                      63%
-                    </div>
-                    <div class="segment bp-uncontrolled-bg" style="height: 18%">
-                      18%
-                    </div>
-                    <div class="segment three-month-ltfu-bg" style="height: 21%">
-                      21%
-                    </div>
-                  </div>
-                  <div class="cohort-detail">
-                    <b>Q4-2021 cohort</b>
-                    1,006 patients
-                    <p class="text-grey">Result from past visit in Q1-2022</p>
-                  </div>
-                </div>
                 <div class="cohort-quarter">
                   <div class="cohort-bar">
                     <div class="segment bp-controlled-bg" style="height: 66%">
@@ -532,6 +519,10 @@
         </div>
       </div>
       
+      <div class="divider">
+        <div class="divider-title">Compare</div>
+      </div>
+      
       <div class="card">
         <div class="heading">
           <h3>Compare sub-regions</h3>
@@ -557,7 +548,7 @@
                 <tr class="text-center">
                   <td></td>
                   <th scope="colgroup">Patients under care</th>
-                  <th scope="colgroup">Monthly new patients registered</th>
+                  <th colspan="2" scope="colgroup">July-2023 registrations &amp; screening</th>
                   <th colspan="2" scope="colgroup">BP controlled</th>
                   <th colspan="2" scope="colgroup">BP uncontrolled</th>
                   <th colspan="2" scope="colgroup">
@@ -567,7 +558,8 @@
                 <tr class="head-bg">
                   <th><div>Sub-regions</div></th>
                   <th class="text-right"><div>Total</div></th>
-                  <th class="text-right"><div>Jul-2023</div></th>
+                  <th class="text-right"><div>New registrations</div></th>
+                  <th class="text-right"><div>Screenings</div></th>
                   <th class="text-right"><div>Total</div></th>
                   <th data-sort-default><div>Percent</div></th>
                   <th class="text-right"><div>Total</div></th>
@@ -581,6 +573,7 @@
                   <th class="link"><b>River District</b></th>
                   <td class="number under-care bold">10,539</td>
                   <td class="number">1,043</td>
+                  <td class="number">6,900</td>
                   <td class="number">4,808</td>
                   <td class="bp-controlled bold">61%</td>
                   <td class="number">1,340</td>
@@ -592,6 +585,7 @@
                   <th class="link"><a href="#">Cherry Blossom County</a></th>
                   <td class="number under-care bold">1,100</td>
                   <td class="number">139</td>
+                  <td class="number">820</td>
                   <td class="number">450</td>
                   <td class="bp-controlled bold">50%</td>
                   <td class="number">145</td>
@@ -603,6 +597,7 @@
                   <th class="link"><a href="#">Fern Grove County</a></th>
                   <td class="number under-care bold">505</td>
                   <td class="number">106</td>
+                  <td class="number">600</td>
                   <td class="number">245</td>
                   <td class="bp-controlled bold">84%</td>
                   <td class="number">12</td>
@@ -614,6 +609,7 @@
                   <th class="link"><a href="#">Grasslands County</a></th>
                   <td class="number under-care bold">321</td>
                   <td class="number">6</td>
+                  <td class="number">40</td>
                   <td class="number">120</td>
                   <td class="bp-controlled bold">39%</td>
                   <td class="number">21</td>
@@ -625,6 +621,7 @@
                   <th class="link"><a href="#">Hillside County</a></th>
                   <td class="number under-care bold">3,203</td>
                   <td class="number">305</td>
+                  <td class="number">900</td>
                   <td class="number">1,802</td>
                   <td class="bp-controlled bold">69%</td>
                   <td class="number">291</td>
@@ -636,6 +633,7 @@
                   <th class="link"><a href="#">Ice Caps County</a></th>
                   <td class="number under-care bold">867</td>
                   <td class="number">65</td>
+                  <td class="number">304</td>
                   <td class="number">500</td>
                   <td class="bp-controlled bold">68%</td>
                   <td class="number">100</td>
@@ -647,6 +645,7 @@
                   <th class="link"><a href="#">Mangrove County</a></th>
                   <td class="number under-care bold">345</td>
                   <td class="number">100</td>
+                  <td class="number">300</td>
                   <td class="number">72</td>
                   <td class="bp-controlled bold">50%</td>
                   <td class="number">22</td>
@@ -658,6 +657,7 @@
                   <th class="link"><a href="#">Mountain County</a></th>
                   <td class="number under-care bold">900</td>
                   <td class="number">56</td>
+                  <td class="number">190</td>
                   <td class="number">240</td>
                   <td class="bp-controlled bold">30%</td>
                   <td class="number">108</td>
@@ -669,6 +669,7 @@
                   <th class="link"><a href="#">Oceanside County</a></th>
                   <td class="number under-care bold">123</td>
                   <td class="number">106</td>
+                  <td class="number">220</td>
                   <td class="number">4</td>
                   <td class="bp-controlled bold">24%</td>
                   <td class="number">2</td>
@@ -680,6 +681,7 @@
                   <th class="link"><a href="#">Peaks County</a></th>
                   <td class="number under-care bold">2,104</td>
                   <td class="number">120</td>
+                  <td class="number">280</td>
                   <td class="number">972</td>
                   <td class="bp-controlled bold">52%</td>
                   <td class="number">421</td>
@@ -691,6 +693,7 @@
                   <th class="link"><a href="#">Rain Forest County</a></th>
                   <td class="number under-care bold">56</td>
                   <td class="number">0</td>
+                  <td class="number">2</td>
                   <td class="number">20</td>
                   <td class="bp-controlled bold">36%</td>
                   <td class="number">6</td>
@@ -702,6 +705,7 @@
                   <th class="link"><a href="#">Rivers Edge County</a></th>
                   <td class="number under-care bold">145</td>
                   <td class="number">10</td>
+                  <td class="number">30</td>
                   <td class="number">45</td>
                   <td class="bp-controlled bold">36%</td>
                   <td class="number">19</td>
@@ -713,6 +717,7 @@
                   <th class="link"><a href="#">Sunshine Coast County</a></th>
                   <td class="number under-care bold">203</td>
                   <td class="number">5</td>
+                  <td class="number">20</td>
                   <td class="number">103</td>
                   <td class="bp-controlled bold">53%</td>
                   <td class="number">21</td>
@@ -724,6 +729,7 @@
                   <th class="link"><a href="#">Tree Top County</a></th>
                   <td class="number under-care bold">32</td>
                   <td class="number">6</td>
+                  <td class="number">12</td>
                   <td class="number">10</td>
                   <td class="bp-controlled bold">50%</td>
                   <td class="number">4</td>
@@ -735,6 +741,7 @@
                   <th class="link"><a href="#">Vineland County</a></th>
                   <td class="number under-care bold">221</td>
                   <td class="number">11</td>
+                  <td class="number">25</td>
                   <td class="number">120</td>
                   <td class="bp-controlled bold">60%</td>
                   <td class="number">20</td>
@@ -746,6 +753,7 @@
                   <th class="link"><a href="#">Wind Canyon County</a></th>
                   <td class="number under-care bold">414</td>
                   <td class="number">8</td>
+                  <td class="number">20</td>
                   <td class="number">105</td>
                   <td class="bp-controlled bold">26%</td>
                   <td class="number">100</td>
@@ -757,6 +765,10 @@
             </table>
           </div>
         </div>
+      </div>
+      
+      <div class="divider">
+        <div class="divider-title">Drug stock</div>
       </div>
 
       <div class="columns-3">
@@ -1316,6 +1328,11 @@
           </div>
         </div>
       </div>
+      
+      <div class="divider">
+        <div class="divider-title">Disaggregation</div>
+      </div>
+      
       <div class="columns-1">
         
         <div class="card">
@@ -1331,9 +1348,9 @@
                 <thead>
                   <tr>
                     <th style="width: 10%; border-right: 0;">Age</th>
-                    <th style="width: 45%;" class="text-right">Female (64%)</th>
-                    <th style="width: 45%; border-right: 0;">Male (36%)</th>
-                    <th style="width: 5%; border-left: 0;">Both</th>
+                    <th style="width: 40%;" class="text-right">Female (64%)</th>
+                    <th style="width: 40%; border-right: 0;">Male (36%)</th>
+                    <th style="width: 10%; border-left: 0;">Both</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -1385,7 +1402,10 @@
           </div>
         </div>
       </div>
-      <div class="divider"></div>
+      
+      <div class="divider">
+        <div class="divider-title">Footnotes</div>
+      </div>
 
       <h2>Definitions</h2>
       <div
