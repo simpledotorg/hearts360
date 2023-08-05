@@ -409,7 +409,7 @@ table {
   color: #fff;
   font-weight: 700;
   flex-direction: column;
-  height: 340px;
+  height: 260px;
   border-radius: 4px;
   margin: 0 0 8px 0;
   & .segment {
