@@ -96,7 +96,6 @@ main {
     margin: auto;
     padding: 12px 20px;
     position: relative;
-    color: #ad2e38;
     font-weight: 600;
   }
 
@@ -108,6 +107,15 @@ main {
   .navigation-title-image {
     margin: -2px 8px 0 8px;
     display: inline-block;
+  }
+  
+  & .link-dashboards {
+    & a {
+      color: #ad2e38;
+    }
+    & a:hover {
+      text-decoration: none;
+    }
   }
 
   & .link-list {
