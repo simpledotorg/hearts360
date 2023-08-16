@@ -111,10 +111,15 @@ main {
   
   & .link-dashboards {
     & a {
-      color: #ad2e38;
+      color: #333;
+      padding: 12px;
+      margin-right: 8px;
     }
     & a:hover {
       text-decoration: none;
+    }
+    & a.active {
+      border-bottom: 3px solid #333;
     }
   }
 
@@ -134,7 +139,7 @@ main {
   display: block;
   width: 100%;
   font-size: 0.9em;
-  margin-bottom: 1rem;
+  margin: 1rem 0 2rem 0;
   color: rgba(0, 0, 0, 0.2);
 
   & form, ul {
