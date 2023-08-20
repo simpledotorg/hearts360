@@ -213,6 +213,11 @@ main {
   background: #ffffff;
   border: 2px solid #e5e5e5;
   border-radius: 8px;
+  
+  &&.blank {
+    background: rgba(0,0,0,0.05);
+    border: none;
+  }
 
   .chart {
     height: 260px;

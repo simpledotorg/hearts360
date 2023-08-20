@@ -229,19 +229,11 @@ bpControlledConfig.options.scales.y.ticks.callback = (val) => {
 bpControlledConfig.options.plugins.tooltip.callbacks = {
   label: percentageLabel,
 };
-// tooltip: {
-//   callbacks: {
-//     afterBody: function(context) {
-//       console.log(context);
-//       return context.element + '%'
-//     }
-//   }
-// }
+
 const bpControlledCanvas = document.getElementById("bpcontrolled");
 createChart(bpControlledCanvas, bpControlledConfig);
 
 // BP Uncontrolled
-// BP Controlled
 const bpUncontrolledData = {
   labels: [
     "Mar-2022",
@@ -294,6 +286,8 @@ const bpUncontrolledCanvas = document.getElementById("bpuncontrolled");
 console.log(bpUncontrolledCanvas);
 createChart(bpUncontrolledCanvas, bpUncontrolledConfig);
 
+
+// No visit in 3 months
 const ltfu3MonthData = {
   labels: [
     "Mar-2022",
@@ -345,6 +339,7 @@ const ltfu3MonthCanvas = document.getElementById("ltfu3Month");
 console.log(bpUncontrolledCanvas);
 createChart(ltfu3MonthCanvas, ltfu3MonthConfig);
 
+// Registrations
 const registrationsData = {
   labels: [
     "Mar-2022",

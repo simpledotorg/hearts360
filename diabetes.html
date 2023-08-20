@@ -139,7 +139,7 @@
       <div class="card">
         <div class="heading">
           <h3>
-            Diabetes treatment outcomes
+            DM treatment outcomes
           </h3>
           
           <p>
@@ -148,10 +148,45 @@
           </p>
 
           <div class="body columns-3">
-            <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 160px 0; text-align: center; margin: 32px 0 0 0; border-radius: 5px;">Coming soon...</div>
-            <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 160px 0; text-align: center; margin: 32px 0 0 0; border-radius: 5px;">Coming soon...</div>
-            <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 146px 0; text-align: center; margin: 32px 0 0 0; border-radius: 5px;">Coming soon...</div>
-          </div>
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="bp-controlled">DM controlled at latest visit</h4>
+                <p class="large-num bp-controlled">20%</p>
+                <div class="detail">
+                  <p>700 patients with FBS &lt;126 mg/dl or HbA1c &lt;7% in past 3 months</p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="diabetescontrolled"></canvas>
+              </div>
+            </div>
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="bp-uncontrolled">DM not controlled at latest visit</h4>
+                <!--p class="large-num bp-uncontrolled">46%</p-->
+                <div class="detail">
+                  <p><b class="bp-uncontrolled">16%</b> &nbsp; 560 patients with BS &ge;300 mg/dL in  past 3 months</p>
+                  <p><b class="bp-uncontrolled">20%</b> &nbsp; 700 patients with BS 200-299 mg/dL in  past 3 months</p>
+                  <p><b class="bp-uncontrolled">10%</b> &nbsp; 350 patients with BS &lt;200 mg/dL in  past 3 months</p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="bpuncontrolled"></canvas>
+              </div>
+            </div>
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="three-month-ltfu">No visit in past 3 months</h4>
+                <p class="large-num three-month-ltfu">34%</p>
+                <div class="detail">
+                  <p>1,200 patients with no visit</p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="ltfu3Month"></canvas>
+              </div>
+            </div>
+          </div> 
         </div>
       </div>
 
@@ -194,6 +229,22 @@
           </div>
         </div>
       </div>
+      
+      <div class="columns-3">
+        <div class="card">
+          <div class="heading">
+            <h3>Patients prescribed statins</h3>
+            <p>
+              Patients under care for diabetes who were prescribed statins at their last visit
+            </p>
+          </div>
+          <div class="body">
+            <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 146px 0; text-align: center; margin: 16px 0 0 0; border-radius: 5px;">Coming soon...</div>
+          </div>
+        </div>
+        <div class="card blank"></div>
+        <div class="card blank"></div>
+      </div>
 
       <div class="card">
         <div class="heading">
@@ -221,70 +272,591 @@
       </div>
 
       <div class="card">
-        <div class="heading">
-          <h3>Stock reporting by facility</h3>
-          <p>Jul-2023 reports</p>
-          
-          <div class="body">
-            <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 400px 0; text-align: center; margin: 16px 0 0 0; border-radius: 5px;">Coming soon...</div>
-          </div>
-
-          <div class="key">
-            <div class="key-text">
-              <span class="key-color-box expiry expiry-key"></span> &gt;180 days
-              drug supply
-            </div>
-            <div class="key-text">
-              <span class="key-color-box warning warning-key"></span> &lt;30
-              days drug supply or no BP monitor
-            </div>
+      <div class="heading">
+        <h3>Stock reporting by facility</h3>
+        <p>Jul-2023 reports</p>
+        <div class="table-container">
+          <p class="table-scroll-message text-grey mobile-only">
+            scroll table &rarr;
+          </p>
+          <div class="table-wrap">
+            <table id="table-stock-inventory-dm">
+              <colgroup>
+                <col />
+                <col />
+                <col />
+                <col />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th><div>Facility</div></th>
+                  <th><div>Sub-region</div></th>
+                  <th class="text-right">
+                    <div>Step 1 drugs<br>in patient days</div>
+                  </th>
+                  <th class="text-right">
+                    <div>Step 2 drugs<br>in patient days</div>
+                  </th>
+                  <th class="text-right">
+                    <div>Step 3 drugs<br>in patient days</div>
+                  </th>
+                  <th class="text-right">
+                    <div>Blood glucose monitors</div>
+                  </th>
+                  <th class="text-right">
+                    <div>Glucometer test strips</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="totals" data-sort-method="none">
+                  <th class="link"><b>River District</b></th>
+                  <td></td>
+                  <td class="number">54</td>
+                  <td class="number">60</td>
+                  <td class="number">45</td>
+                  <td class="number">210</td>
+                  <td class="number">60,000</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Apple Orchard</a></th>
+                  <td>Wind Canyon County</td>
+                  <td class="number">54</td>
+                  <td class="number">68</td>
+                  <td class="number">90</td>
+                  <td class="number">1</td>
+                  <td class="number">2,000</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Bramble River</a></th>
+                  <td>Tree Top County</td>
+                  <td class="number">34</td>
+                  <td class="number warning">6</td>
+                  <td class="number">67</td>
+                  <td class="number">2</td>
+                  <td class="number">300</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Bumpy Hill</a></th>
+                  <td>Fern Grove County</td>
+                  <td class="number">33</td>
+                  <td class="number">92</td>
+                  <td class="number">120</td>
+                  <td class="number">1</td>
+                  <td class="number">400</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Carrot Peak</a></th>
+                  <td>Cherry Blossom County</td>
+                  <td class="number">134</td>
+                  <td class="number warning">0</td>
+                  <td class="number">180</td>
+                  <td class="number">2</td>
+                  <td class="number">2,400</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Cumin Creek</a></th>
+                  <td>Oceanside County</td>
+                  <td class="number">46</td>
+                  <td class="number">48</td>
+                  <td class="number">78</td>
+                  <td class="number">1</td>
+                  <td class="number">2,000</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Dandelion Wine</a></th>
+                  <td>Vineland County</td>
+                  <td class="number">44</td>
+                  <td class="number">103</td>
+                  <td class="number warning">12</td>
+                  <td class="number">1</td>
+                  <td class="number warning">30</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Elderflower Ridge</a></th>
+                  <td>Riverside County</td>
+                  <td class="number">90</td>
+                  <td class="number warning">21</td>
+                  <td class="number">180</td>
+                  <td class="number">1</td>
+                  <td class="number">300</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Riverside</a></th>
+                  <td>Grasslands County</td>
+                  <td class="number">40</td>
+                  <td class="number warning">14</td>
+                  <td class="number warning">22</td>
+                  <td class="number">2</td>
+                  <td class="number">300</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Rhubarb Hills</a></th>
+                  <td>Mangrove County</td>
+                  <td class="number">65</td>
+                  <td class="number">50</td>
+                  <td class="number">90</td>
+                  <td class="number">1</td>
+                  <td class="number">300</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Turnip</a></th>
+                  <td>Rain Forest County</td>
+                  <td class="number">45</td>
+                  <td class="number">109</td>
+                  <td class="number">33</td>
+                  <td class="number warning">0</td>
+                  <td class="number warning">0</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Ugly Fruit Bay</a></th>
+                  <td>Wind Canyon County</td>
+                  <td class="number">54</td>
+                  <td class="number">68</td>
+                  <td class="number">90</td>
+                  <td class="number">1</td>
+                  <td class="number warning">0</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Vine Bay</a></th>
+                  <td>Tree Top County</td>
+                  <td class="number">34</td>
+                  <td class="number warning">6</td>
+                  <td class="number">67</td>
+                  <td class="number">2</td>
+                  <td class="number">3,000</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Watermelon Cove</a></th>
+                  <td>Fern Grove County</td>
+                  <td class="number">33</td>
+                  <td class="number">92</td>
+                  <td class="number">120</td>
+                  <td class="number">1</td>
+                  <td class="number">2,600</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Weather Top</a></th>
+                  <td>Cherry Blossom County</td>
+                  <td class="number">134</td>
+                  <td class="number">180</td>
+                  <td class="number warning">0</td>
+                  <td class="number">2</td>
+                  <td class="number">400</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Yellow Melon</a></th>
+                  <td>Oceanside County</td>
+                  <td class="number">102</td>
+                  <td class="number">90</td>
+                  <td class="number">80</td>
+                  <td class="number">1</td>
+                  <td class="number warning">20</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Young Potato</a></th>
+                  <td>Vineland County</td>
+                  <td class="number expiry">
+                    <p class="expiry-text">365</p>
+                  </td>
+                  <td class="number warning">12</td>
+                  <td class="number">103</td>
+                  <td class="number">1</td>
+                  <td class="number">300</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">CHC Zucchiniville</a></th>
+                  <td>Riverside County</td>
+                  <td class="number warning">21</td>
+                  <td class="number">45</td>
+                  <td class="number">99</td>
+                  <td class="number warning">0</td>
+                  <td class="number">600</td>
+                </tr>
+                <tr>
+                  <th class="link">
+                    <a href="#">District Hospital Strawberry</a>
+                  </th>
+                  <td>Oceanside County</td>
+                  <td class="number">102</td>
+                  <td class="number">90</td>
+                  <td class="number">80</td>
+                  <td class="number">1</td>
+                  <td class="number">300</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Apricot Island</a></th>
+                  <td>Grasslands County</td>
+                  <td class="number warning">14</td>
+                  <td class="number">40</td>
+                  <td class="number">44</td>
+                  <td class="number">2</td>
+                  <td class="number warning">20</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Azalea Hills</a></th>
+                  <td>Mangrove County</td>
+                  <td class="number">65</td>
+                  <td class="number">50</td>
+                  <td class="number">90</td>
+                  <td class="number">1</td>
+                  <td class="number warning">0</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Bumblebee</a></th>
+                  <td>Rain Forest County</td>
+                  <td class="number">45</td>
+                  <td class="number">109</td>
+                  <td class="number">33</td>
+                  <td class="number">1</td>
+                  <td class="number warning">0</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Capital Town</a></th>
+                  <td>Wind Canyon County</td>
+                  <td class="number">54</td>
+                  <td class="number">68</td>
+                  <td class="number">90</td>
+                  <td class="number">1</td>
+                  <td class="number">100</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Copperville</a></th>
+                  <td>Tree Top County</td>
+                  <td class="number">34</td>
+                  <td class="number warning">6</td>
+                  <td class="number">67</td>
+                  <td class="number">1</td>
+                  <td class="number">200</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Cupola</a></th>
+                  <td>Fern Grove County</td>
+                  <td class="number">33</td>
+                  <td class="number">92</td>
+                  <td class="number">120</td>
+                  <td class="number">1</td>
+                  <td class="number warning">0</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Dartboard Hill</a></th>
+                  <td>Cherry Blossom County</td>
+                  <td class="number">134</td>
+                  <td class="number warning">0</td>
+                  <td class="number">180</td>
+                  <td class="number">1</td>
+                  <td class="number warning">10</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Deck Town</a></th>
+                  <td>Oceanside County</td>
+                  <td class="number">46</td>
+                  <td class="number">48</td>
+                  <td class="number">78</td>
+                  <td class="number">1</td>
+                  <td class="number">200</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Dune Hill</a></th>
+                  <td>Vineland County</td>
+                  <td class="number">44</td>
+                  <td class="number">103</td>
+                  <td class="number warning">12</td>
+                  <td class="number">1</td>
+                  <td class="number">200</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Eagle Hill</a></th>
+                  <td>Riverside County</td>
+                  <td class="number">90</td>
+                  <td class="number warning">21</td>
+                  <td class="number">180</td>
+                  <td class="number">1</td>
+                  <td class="number">1,000</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Eggplant Mountain</a></th>
+                  <td>Grasslands County</td>
+                  <td class="number warning">12</td>
+                  <td class="number">40</td>
+                  <td class="number warning">24</td>
+                  <td class="number">2</td>
+                  <td class="number">600</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC El Toro</a></th>
+                  <td>Mangrove County</td>
+                  <td class="number">65</td>
+                  <td class="number">50</td>
+                  <td class="number">90</td>
+                  <td class="number">1</td>
+                  <td class="number">990</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Fang Cove</a></th>
+                  <td>Rain Forest County</td>
+                  <td class="number">45</td>
+                  <td class="number">109</td>
+                  <td class="number">33</td>
+                  <td class="number">1</td>
+                  <td class="number">900</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Grapefruit Hill</a></th>
+                  <td>Wind Canyon County</td>
+                  <td class="number">54</td>
+                  <td class="number">68</td>
+                  <td class="number">90</td>
+                  <td class="number warning">0</td>
+                  <td class="number warning">0</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Gumdrop Cove</a></th>
+                  <td>Tree Top County</td >
+                  <td class="number">34</td>
+                  <td class="number warning">6</td>
+                  <td class="number">67</td>
+                  <td class="number">1</td>
+                  <td class="number">200</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Happy Street</a></th>
+                  <td>Fern Grove County</td>
+                  <td class="number">33</td>
+                  <td class="number">92</td>
+                  <td class="number">120</td>
+                  <td class="number">1</td>
+                  <td class="number">500</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Hilltop Station</a></th>
+                  <td>Cherry Blossom County</td>
+                  <td class="number">134</td>
+                  <td class="number">180</td>
+                  <td class="number warning">0</td>
+                  <td class="number">1</td>
+                  <td class="number">400</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Iceberg</a></th>
+                  <td>Oceanside County</td>
+                  <td class="number">102</td>
+                  <td class="number">90</td>
+                  <td class="number">80</td>
+                  <td class="number">1</td>
+                  <td class="number">200</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Idaho Hills</a></th>
+                  <td>Vineland County</td>
+                  <td class="number expiry">
+                    <p class="expiry-text">365</p>
+                  </td>
+                  <td class="number warning">12</td>
+                  <td class="number">103</td>
+                  <td class="number">1</td>
+                  <td class="number">500</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Jackfruit</a></th>
+                  <td>Riverside County</td>
+                  <td class="number warning">21</td>
+                  <td class="number">45</td>
+                  <td class="number">99</td>
+                  <td class="number">1</td>
+                  <td class="number">200</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Juniperberry</a></th>
+                  <td>Grasslands County</td>
+                  <td class="number warning">14</td>
+                  <td class="number">40</td>
+                  <td class="number">44</td>
+                  <td class="number">2</td>
+                  <td class="number warning">0</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Lard Lane</a></th>
+                  <td>Mangrove County</td>
+                  <td class="number">65</td>
+                  <td class="number">50</td>
+                  <td class="number">90</td>
+                  <td class="number">1</td>
+                  <td class="number">200</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">PHC Lobby Mountain</a></th>
+                  <td>Rain Forest County</td>
+                  <td class="number">45</td>
+                  <td class="number">109</td>
+                  <td class="number">33</td>
+                  <td class="number">3</td>
+                  <td class="number">200</td>
+                </tr>
+                <tr>
+                  <th class="link">
+                    <a href="#">Subdistrict Hospital Grape</a>
+                  </th>
+                  <td>Mangrove County</td>
+                  <td class="number">32</td>
+                  <td class="number">40</td>
+                  <td class="number">50</td>
+                  <td class="number">1</td>
+                  <td class="number">200</td>
+                </tr>
+                <tr>
+                  <th class="link">
+                    <a href="#">Subdistrict Hospital Juniper</a>
+                  </th>
+                  <td>Oceanside County</td>
+                  <td class="number">202</td>
+                  <td class="number">290</td>
+                  <td class="number">280</td>
+                  <td class="number">1</td>
+                  <td class="number">500</td>
+                </tr>
+                <tr>
+                  <th class="link">
+                    <a href="#">Subdistrict Hospital Grasslands</a>
+                  </th>
+                  <td>Grasslands County</td>
+                  <td class="number">100</td>
+                  <td class="number">106</td>
+                  <td class="number">109</td>
+                  <td class="number">1</td>
+                  <td class="number">800</td>
+                </tr>
+                <tr>
+                  <th class="link">
+                    <a href="#">UPHC Cinnamon Hill</a>
+                  </th>
+                  <td>Mangrove County</td>
+                  <td class="number warning">19</td>
+                  <td class="number">66</td>
+                  <td class="number">150</td>
+                  <td class="number">1</td>
+                  <td class="number">220</td>
+                </tr>
+                <tr>
+                  <th class="link">
+                    <a href="#">UPHC Dandelion Mountain</a>
+                  </th>
+                  <td>Oceanside County</td>
+                  <td class="number">52</td>
+                  <td class="number warning">12</td>
+                  <td class="number">100</td>
+                  <td class="number">1</td>
+                  <td class="number">250</td>
+                </tr>
+                <tr>
+                  <th class="link">
+                    <a href="#">UPHC Dill Weed</a>
+                  </th>
+                  <td>Grasslands County</td>
+                  <td class="number">80</td>
+                  <td class="number">90</td>
+                  <td class="number">45</td>
+                  <td class="number">1</td>
+                  <td class="number">800</td>
+                </tr>
+                <tr>
+                  <th class="link">
+                    <a href="#">UPHC Dry Marjoram</a>
+                  </th>
+                  <td>Mangrove County</td>
+                  <td class="number">100</td>
+                  <td class="number warning">12</td>
+                  <td class="number">90</td>
+                  <td class="number">1</td>
+                  <td class="number">100</td>
+                </tr>
+                <tr>
+                  <th class="link">
+                    <a href="#">UPHC Dry Mustard</a>
+                  </th>
+                  <td>Oceanside County</td>
+                  <td class="number">90</td>
+                  <td class="number warning">0</td>
+                  <td class="number">87</td>
+                  <td class="number">1</td>
+                  <td class="number">120</td>
+                </tr>
+                <tr>
+                  <th class="link">
+                    <a href="#">UPHC Dry Nutmeg</a>
+                  </th>
+                  <td>Grasslands County</td>
+                  <td class="number">90</td>
+                  <td class="number">90</td>
+                  <td class="number">90</td>
+                  <td class="number">1</td>
+                  <td class="number">90</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
+      </div>
       
-      <div class="card">
-        <div class="heading">
-          <h3>Hypertension and diabetes comorbidity</h3>
-          <p>All patients registered in the hypertension and/or diabetes programs
-        </div>
-        <div class="body">
-          <table>
-            <tr>
-              <th></th>
-              <th class="text-right">Patients under care</th>
-              <th class="text-right">Cumulative registered patients</th>
-              <th class="text-right">Died<sup>*</sup></th>
-            </tr>
-            <tr>
-              <th>Hypertension-only</th>
-              <td class="text-right">8,632</td>
-              <td class="text-right">10,000</td>
-              <td class="text-right">105</td>
-            </tr>
-            <tr>
-              <th>Both hypertension and diabetes</th>
-              <td class="text-right">2,000</td>
-              <td class="text-right">2,213</td>
-              <td class="text-right">100</td>
-            </tr>
-            <tr>
-              <th>Diabetes-only</th>
-              <td class="text-right">1,500</td>
-              <td class="text-right">2,100</td>
-              <td class="text-right">50</td>
-            </tr>
-            <tr class="totals">
-              <th>TOTAL</th>
-              <td class="text-right">12,132</td>
-              <td class="text-right">14,313</td>
-              <td class="text-right">255</td>
-            </tr>
-          </table>
-          <div class="key">
-            <div class="key-text">
-              <sup>*</sup>Deaths may be undercounted.
+      <div class="columns-3">
+        <div class="card col-span-2" style="justify-content: start;">
+          <div class="heading">
+            <h3>Hypertension and diabetes comorbidity</h3>
+            <p>All patients registered in the hypertension and/or diabetes programs
+          </div>
+          <div class="body">
+            <table>
+              <tr>
+                <th></th>
+                <th class="text-right">Patients under care</th>
+                <th class="text-right">Cumulative registered patients</th>
+                <th class="text-right">Died<sup>*</sup></th>
+              </tr>
+              <tr>
+                <th>Hypertension-only</th>
+                <td class="text-right">8,632</td>
+                <td class="text-right">10,000</td>
+                <td class="text-right">105</td>
+              </tr>
+              <tr>
+                <th>Both hypertension and diabetes</th>
+                <td class="text-right">2,000</td>
+                <td class="text-right">2,213</td>
+                <td class="text-right">100</td>
+              </tr>
+              <tr>
+                <th>Diabetes-only</th>
+                <td class="text-right">1,500</td>
+                <td class="text-right">2,100</td>
+                <td class="text-right">50</td>
+              </tr>
+              <tr class="totals">
+                <th>TOTAL</th>
+                <td class="text-right">12,132</td>
+                <td class="text-right">14,313</td>
+                <td class="text-right">255</td>
+              </tr>
+            </table>
+            <div class="key">
+              <div class="key-text">
+                <sup>*</sup>Deaths may be undercounted.
+              </div>
             </div>
           </div>
+        </div>
+        <div class="card">
+          <h3>Comorbid patients with BP controlled</h3>
+          <p>Patients with both hypertension and diabetes with BP controlled at latest visit</p>
+          <div class="figures">
+            <p class="large-num bp-controlled">61%</p>
+              <div class="detail">
+                <p>4,808 patients with BP &lt;140/90 in past 3 months</p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="bpcontrolled"></canvas>
+            </div>
         </div>
       </div>
       
