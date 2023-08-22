@@ -177,6 +177,62 @@ function createChart(ctx, config) {
   new Chart(ctx, config);
 }
 
+// DM Controlled
+const dmControlledData = {
+  labels: [
+  "Mar-2022",
+  "Apr-2022",
+  "May-2022",
+  "Jun-2022",
+  "Jul-2022",
+  "Aug-2022",
+  "Sep-2022",
+  "Oct-2022",
+  "Nov-2022",
+  "Dec-2022",
+  "Jan-2023",
+  "Feb-2023",
+  "Mar-2023",
+  "Apr-2023",
+  "May-2023",
+  "Jun-2023",
+  "Jul-2023",
+  "Aug-2023",
+  ],
+  datasets: [
+  {
+    label: "Blood sugar controlled",
+    data: [
+    28, 23, 32, 34, 43, 34, 43, 44, 46, 43, 52, 57, 57, 59, 56, 60, 61, 55,
+    ],
+    borderColor: "#3BB231",
+    backgroundColor: "rgba(69, 205, 57, 0.1)",
+    segment: {
+    borderDash: (ctx) =>
+      dynamicChartSegementDashed(
+      ctx,
+      18 // number of data elements
+      ),
+    },
+  },
+  ],
+};
+
+const dmControlledConfig = baseLineChartConfig();
+dmControlledConfig.data = dmControlledData;
+const dmControlledLabel = (context) => {
+  return `${context.dataset.label}: ${context.parsed.y}%`;
+};
+dmControlledConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+dmControlledConfig.options.plugins.tooltip.callbacks = {
+  label: dmControlledLabel,
+};
+
+const dmControlledCanvas = document.getElementById("dmControlled");
+createChart(dmControlledCanvas, dmControlledConfig);
+
 // BP Controlled
 const bpControlledData = {
   labels: [
@@ -229,14 +285,7 @@ bpControlledConfig.options.scales.y.ticks.callback = (val) => {
 bpControlledConfig.options.plugins.tooltip.callbacks = {
   label: percentageLabel,
 };
-// tooltip: {
-//   callbacks: {
-//     afterBody: function(context) {
-//       console.log(context);
-//       return context.element + '%'
-//     }
-//   }
-// }
+
 const bpControlledCanvas = document.getElementById("bpcontrolled");
 createChart(bpControlledCanvas, bpControlledConfig);
 
