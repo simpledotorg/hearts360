@@ -150,19 +150,19 @@
           <div class="body columns-3">
             <div class="inner-card">
               <div class="figures">
-                <h4 class="bp-controlled">DM controlled at latest visit</h4>
+                <h4 class="bp-controlled">Blood sugar controlled at latest visit</h4>
                 <p class="large-num bp-controlled">20%</p>
                 <div class="detail">
                   <p>700 patients with FBS &lt;126 mg/dl or HbA1c &lt;7% in past 3 months</p>
                 </div>
               </div>
               <div class="chart">
-                <canvas id="diabetescontrolled"></canvas>
+                <canvas id="bpcontrolled"></canvas>
               </div>
             </div>
             <div class="inner-card">
               <div class="figures">
-                <h4 class="bp-uncontrolled">DM not controlled at latest visit</h4>
+                <h4 class="bp-uncontrolled">Blood sugar not controlled at latest visit</h4>
                 <!--p class="large-num bp-uncontrolled">46%</p-->
                 <div class="detail">
                   <p><b class="bp-uncontrolled">16%</b> &nbsp; 560 patients with BS &ge;300 mg/dL in  past 3 months</p>
@@ -216,19 +216,64 @@
           </div>
         </div>
         <div class="card">
-          <div class="body">
-            <h3>Treatment coverage</h3>
-            <div class="data-line">
-              <p>Estimated number of people in area with diabetes:</p>
-              <p>60,000</p>
-            </div>
-
             <div class="body">
-              <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 146px 0; text-align: center; margin: 16px 0 0 0; border-radius: 5px;">Coming soon...</div>
+              <h3>Treatment coverage for DM</h3>
+              <div class="data-line">
+                <p>Estimated number of adults in Granite State with diabetes:</p>
+                <p>60,800</p>
+              </div>
+        
+              <h4>% of patients registered</h4>
+              <div class="coverage">
+                <div class="coverage-fill registrations-bg" style="width: 7%">
+                  <p
+                    class="coverage-fill-indicator-percentage registrations"
+                    data-percentage="5"
+                  >
+                    7%
+                  </p>
+                </div>
+              </div>
+              <p class="coverage-detail text-grey">
+                <span class="registrations"
+                  >Cumulative registrations: 4,313</span
+                >
+                of 60,800
+              </p>
+        
+              <h4>% of patients under care</h4>
+              <div class="coverage">
+                <div class="coverage-fill under-care-bg" style="width: 6%">
+                  <p
+                    class="coverage-fill-indicator-percentage under-care"
+                    data-percentage="4"
+                  >
+                    6%
+                  </p>
+                </div>
+              </div>
+              <p class="coverage-detail text-grey">
+                <span class="under-care">Patients under care: 3,500</span> 
+                of 60,800
+              </p>
+        
+              <h4>% of patients with blood sugar controlled</h4>
+              <div class="coverage">
+                <div class="coverage-fill bp-controlled-bg" style="width: 1%">
+                  <p
+                    class="coverage-fill-indicator-percentage bp-controlled"
+                    data-percentage="2"
+                  >
+                    1%
+                  </p>
+                </div>
+              </div>
+              <p class="coverage-detail text-grey">
+                <span class="bp-controlled">Blood sugar controlled: 700</span> of 60,800
+              </p>
             </div>
           </div>
         </div>
-      </div>
       
       <div class="columns-3">
         <div class="card">
@@ -262,12 +307,226 @@
         <div class="heading">
           <h3>Compare sub-regions</h3>
           <p>
-            Treatment outcomes for patients with diabetes at their latest visit from
+            Treatment outcomes for patients with hypertension at their latest visit from
             1-May-2023 to 31-Jul-2023
           </p>
         </div>
-        <div class="body">
-          <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 400px 0; text-align: center; margin: 16px 0 0 0; border-radius: 5px;">Coming soon...</div>
+        <div class="table-container">
+          <p class="table-scroll-message text-grey mobile-only">
+            scroll table &rarr;
+          </p>
+          <div class="table-wrap">
+            <table id="table-regions">
+              <colgroup>
+                <col />
+                <col span="2" />
+                <col span="2" />
+                <col span="2" />
+                <col span="2" />
+              </colgroup>
+              <thead>
+                <tr class="text-center">
+                  <td></td>
+                  <th scope="colgroup">Patients under care</th>
+                  <th scope="colgroup">Monthly new patients registered</th>
+                  <th colspan="2" scope="colgroup">BS &ge;300 mg/dL in  past 3 months</th>
+                  <th colspan="2" scope="colgroup">BS 200-299 mg/dL in  past 3 months</th>
+                  <th colspan="2" scope="colgroup">
+                    No visit in past 3 months
+                  </th>
+                </tr>
+                <tr class="head-bg">
+                  <th><div>Sub-regions</div></th>
+                  <th class="text-right"><div>Total</div></th>
+                  <th class="text-right"><div>Jul-2023</div></th>
+                  <th class="text-right"><div>Total</div></th>
+                  <th data-sort-default><div>Percent</div></th>
+                  <th class="text-right"><div>Total</div></th>
+                  <th><div>Percent</div></th>
+                  <th class="text-right"><div>Total</div></th>
+                  <th><div>Percent</div></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="totals" data-sort-method="none">
+                  <th class="link"><b>River District</b></th>
+                  <td class="number under-care bold">10,539</td>
+                  <td class="number">1,043</td>
+                  <td class="number">4,808</td>
+                  <td class="bp-controlled bold">61%</td>
+                  <td class="number">1,340</td>
+                  <td class="bp-uncontrolled bold">17%</td>
+                  <td class="number">1,734</td>
+                  <td class="three-month-ltfu bold">22%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Cherry Blossom County</a></th>
+                  <td class="number under-care bold">1,100</td>
+                  <td class="number">139</td>
+                  <td class="number">450</td>
+                  <td class="bp-controlled bold">50%</td>
+                  <td class="number">145</td>
+                  <td class="bp-uncontrolled bold">16%</td>
+                  <td class="number">212</td>
+                  <td class="three-month-ltfu bold">34%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Fern Grove County</a></th>
+                  <td class="number under-care bold">505</td>
+                  <td class="number">106</td>
+                  <td class="number">245</td>
+                  <td class="bp-controlled bold">84%</td>
+                  <td class="number">12</td>
+                  <td class="bp-uncontrolled bold">4%</td>
+                  <td class="number">56</td>
+                  <td class="three-month-ltfu bold">12%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Grasslands County</a></th>
+                  <td class="number under-care bold">321</td>
+                  <td class="number">6</td>
+                  <td class="number">120</td>
+                  <td class="bp-controlled bold">39%</td>
+                  <td class="number">21</td>
+                  <td class="bp-uncontrolled bold">7%</td>
+                  <td class="number">120</td>
+                  <td class="three-month-ltfu bold">54%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Hillside County</a></th>
+                  <td class="number under-care bold">3,203</td>
+                  <td class="number">305</td>
+                  <td class="number">1,802</td>
+                  <td class="bp-controlled bold">69%</td>
+                  <td class="number">291</td>
+                  <td class="bp-uncontrolled bold">11%</td>
+                  <td class="number">245</td>
+                  <td class="three-month-ltfu bold">19%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Ice Caps County</a></th>
+                  <td class="number under-care bold">867</td>
+                  <td class="number">65</td>
+                  <td class="number">500</td>
+                  <td class="bp-controlled bold">68%</td>
+                  <td class="number">100</td>
+                  <td class="bp-uncontrolled bold">14%</td>
+                  <td class="number">70</td>
+                  <td class="three-month-ltfu bold">19%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Mangrove County</a></th>
+                  <td class="number under-care bold">345</td>
+                  <td class="number">100</td>
+                  <td class="number">72</td>
+                  <td class="bp-controlled bold">50%</td>
+                  <td class="number">22</td>
+                  <td class="bp-uncontrolled bold">15%</td>
+                  <td class="number">15</td>
+                  <td class="three-month-ltfu bold">35%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Mountain County</a></th>
+                  <td class="number under-care bold">900</td>
+                  <td class="number">56</td>
+                  <td class="number">240</td>
+                  <td class="bp-controlled bold">30%</td>
+                  <td class="number">108</td>
+                  <td class="bp-uncontrolled bold">14%</td>
+                  <td class="number">289</td>
+                  <td class="three-month-ltfu bold">56%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Oceanside County</a></th>
+                  <td class="number under-care bold">123</td>
+                  <td class="number">106</td>
+                  <td class="number">4</td>
+                  <td class="bp-controlled bold">24%</td>
+                  <td class="number">2</td>
+                  <td class="bp-uncontrolled bold">12%</td>
+                  <td class="number">70</td>
+                  <td class="three-month-ltfu bold">65%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Peaks County</a></th>
+                  <td class="number under-care bold">2,104</td>
+                  <td class="number">120</td>
+                  <td class="number">972</td>
+                  <td class="bp-controlled bold">52%</td>
+                  <td class="number">421</td>
+                  <td class="bp-uncontrolled bold">23%</td>
+                  <td class="number">320</td>
+                  <td class="three-month-ltfu bold">25%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Rain Forest County</a></th>
+                  <td class="number under-care bold">56</td>
+                  <td class="number">0</td>
+                  <td class="number">20</td>
+                  <td class="bp-controlled bold">36%</td>
+                  <td class="number">6</td>
+                  <td class="bp-uncontrolled bold">11%</td>
+                  <td class="number">30</td>
+                  <td class="three-month-ltfu bold">54%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Rivers Edge County</a></th>
+                  <td class="number under-care bold">145</td>
+                  <td class="number">10</td>
+                  <td class="number">45</td>
+                  <td class="bp-controlled bold">36%</td>
+                  <td class="number">19</td>
+                  <td class="bp-uncontrolled bold">15%</td>
+                  <td class="number">50</td>
+                  <td class="three-month-ltfu bold">49%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Sunshine Coast County</a></th>
+                  <td class="number under-care bold">203</td>
+                  <td class="number">5</td>
+                  <td class="number">103</td>
+                  <td class="bp-controlled bold">53%</td>
+                  <td class="number">21</td>
+                  <td class="bp-uncontrolled bold">11%</td>
+                  <td class="number">45</td>
+                  <td class="three-month-ltfu bold">36%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Tree Top County</a></th>
+                  <td class="number under-care bold">32</td>
+                  <td class="number">6</td>
+                  <td class="number">10</td>
+                  <td class="bp-controlled bold">50%</td>
+                  <td class="number">4</td>
+                  <td class="bp-uncontrolled bold">20%</td>
+                  <td class="number">5</td>
+                  <td class="three-month-ltfu bold">30%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Vineland County</a></th>
+                  <td class="number under-care bold">221</td>
+                  <td class="number">11</td>
+                  <td class="number">120</td>
+                  <td class="bp-controlled bold">60%</td>
+                  <td class="number">20</td>
+                  <td class="bp-uncontrolled bold">10%</td>
+                  <td class="number">47</td>
+                  <td class="three-month-ltfu bold">30%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Wind Canyon County</a></th>
+                  <td class="number under-care bold">414</td>
+                  <td class="number">8</td>
+                  <td class="number">105</td>
+                  <td class="bp-controlled bold">26%</td>
+                  <td class="number">100</td>
+                  <td class="bp-uncontrolled bold">25%</td>
+                  <td class="number">160</td>
+                  <td class="three-month-ltfu bold">48%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
