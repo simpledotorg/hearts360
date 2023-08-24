@@ -1,7 +1,7 @@
 // This charts file is code to set up the interactive charts using
 // the chartJS package - https://www.chartjs.org/
 
-// [plugin] vertical instersect line
+// [plugin] vertical intersect line
 const dynamicChartSegementDashed = (
   ctx,
   numberOfXAxisTicks,
@@ -230,10 +230,11 @@ bpControlledConfig.options.plugins.tooltip.callbacks = {
   label: percentageLabel,
 };
 const bpControlledCanvas = document.getElementById("bpcontrolled");
-console.log(bpControlledCanvas);
-createChart(bpControlledCanvas, bpControlledConfig);
+if (bpControlledCanvas) {
+  createChart(bpControlledCanvas, bpControlledConfig);
+}
 
-// BP Uncontrolled
+// Hypertension: BP Uncontrolled
 const bpUncontrolledData = {
   labels: [
     "Mar-2022",
@@ -283,10 +284,11 @@ bpUncontrolledConfig.options.scales.y.ticks.callback = (val) => {
   return val + "%";
 };
 const bpUncontrolledCanvas = document.getElementById("bpuncontrolled");
-console.log(bpUncontrolledCanvas);
-createChart(bpUncontrolledCanvas, bpUncontrolledConfig);
+if (bpUncontrolledCanvas) {
+  createChart(bpUncontrolledCanvas, bpUncontrolledConfig);
+}
 
-// No visit in 3 months
+// Hypertension: No visit in 3 months
 const ltfu3MonthData = {
   labels: [
     "Mar-2022",
@@ -335,10 +337,11 @@ ltfu3MonthConfig.options.scales.y.ticks.callback = (val) => {
 };
 
 const ltfu3MonthCanvas = document.getElementById("ltfu3Month");
-console.log(ltfu3MonthCanvas);
-createChart(ltfu3MonthCanvas, ltfu3MonthConfig);
+if (ltfu3MonthCanvas) {
+  createChart(ltfu3MonthCanvas, ltfu3MonthConfig);
+}
 
-// Registrations
+// Hypertension: Registrations
 const registrationsData = {
   labels: [
     "Mar-2022",
@@ -420,7 +423,9 @@ registrationsConfig.options.plugins.tooltip.callbacks = {
   },
 };
 const registrationsCanvas = document.getElementById("registrations");
-createChart(registrationsCanvas, registrationsConfig);
+if (registrationsCanvas) {
+  createChart(registrationsCanvas, registrationsConfig);
+}
 
 const ltfu12MonthsData = {
   labels: [
@@ -470,8 +475,9 @@ ltfu12MonthsConfig.options.scales.y.ticks.callback = (val) => {
 };
 
 const ltfu12MonthsCanvas = document.getElementById("ltfu12Months");
-console.log(ltfu12MonthsCanvas);
-createChart(ltfu12MonthsCanvas, ltfu12MonthsConfig);
+if (ltfu12MonthsCanvas) {
+  createChart(ltfu12MonthsCanvas, ltfu12MonthsConfig);
+}
 
 // Drug stock
 
@@ -569,7 +575,9 @@ drugStockConfig.options.plugins.tooltip.callbacks = {
 };
 
 const drugStockCanvas = document.getElementById("drugstock");
-createChart(drugStockCanvas, drugStockConfig);
+if (drugStockCanvas) {
+  createChart(drugStockCanvas, drugStockConfig);
+}
 
 // DM Controlled
 const dmControlledData = {
@@ -595,9 +603,9 @@ const dmControlledData = {
   ],
   datasets: [
     {
-      label: "DM controlled",
+      label: "Blood sugar controlled",
       data: [
-        28, 23, 32, 34, 43, 34, 43, 44, 46, 43, 52, 57, 57, 59, 56, 60, 61, 55,
+        12, 18, 19, 14, 10, 12, 13, 14, 16, 18, 20, 22, 20, 16, 14, 17, 18, 20,
       ],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
@@ -621,5 +629,59 @@ dmControlledConfig.options.plugins.tooltip.callbacks = {
   label: percentageLabel,
 };
 const dmControlledCanvas = document.getElementById("dmcontrolled");
-console.log(dmControlledCanvas);
-createChart(dmControlledCanvas, bpControlledConfig);
+if (dmControlledCanvas) {
+  createChart(dmControlledCanvas, dmControlledConfig);
+}
+
+// Diabetes: No visit in 3 months
+const dmLtfu3MonthData = {
+  labels: [
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+  ],
+  datasets: [
+    {
+      label: "No visit in past 3 months",
+      data: [
+        38, 36, 32, 30, 28, 27, 26, 22, 23, 22, 24, 22, 20, 26, 22, 21, 22, 22,
+      ],
+      borderColor: "#ed6300",
+      backgroundColor: "rgba(230, 137, 70, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+
+const dmLtfu3MonthConfig = baseLineChartConfig();
+dmLtfu3MonthConfig.data = dmLtfu3MonthData;
+dmLtfu3MonthConfig.options.plugins.tooltip.callbacks = { label: percentageLabel };
+dmLtfu3MonthConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+
+const dmLtfu3MonthCanvas = document.getElementById("dmLtfu3Month");
+if (dmLtfu3MonthCanvas) {
+  createChart(dmLtfu3MonthCanvas, dmLtfu3MonthConfig);
+}
