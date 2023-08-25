@@ -822,7 +822,7 @@ dmRegistrationsConfig.options.scales.y.max = 4150;
 dmRegistrationsConfig.options.scales.yMonthlyRegistrations = {
   display: false,
   beginAtZero: true,
-  max: 600,
+  max: 500,
 };
 
 dmRegistrationsConfig.options.plugins.tooltip.displayColors = true;
