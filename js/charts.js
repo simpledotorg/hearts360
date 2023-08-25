@@ -262,7 +262,7 @@ const bpUncontrolledData = {
       data: [
         54, 51, 46, 45, 44, 47, 37, 33, 36, 37, 30, 28, 24, 24, 18, 17, 17, 20,
       ],
-      borderColor: "#F6B100",
+      borderColor: "#D19600",
       backgroundColor: "rgba(255, 201, 63, 0.1)",
       segment: {
         borderDash: (ctx) =>
@@ -404,6 +404,7 @@ registrationsConfig.options.scales.y.grid = { drawTicks: false };
 registrationsConfig.options.scales.y.ticks.display = false;
 registrationsConfig.options.scales.y.ticks.count = 3;
 registrationsConfig.options.scales.y.max = 12105;
+registrationsConfig.options.scales.y.ticks.stepSize = 6052;
 
 registrationsConfig.options.scales.yMonthlyRegistrations = {
   display: false,
@@ -661,8 +662,25 @@ const dmUncontrolledData = {
       data: [
         50, 46, 49, 56, 62, 61, 61, 64, 61, 60, 56, 56, 60, 58, 64, 62, 58, 56,
       ],
-      borderColor: "#9F7300",
+      borderColor: "#D19600",
       backgroundColor: "transparent",
+      yAxisID: "y",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+    {
+      type: "bar",
+      label: "FBS ≥200 mg/dL or HbA1c ≥9%",
+      data: [
+        15, 14, 15, 17, 19, 18, 18, 19, 18, 18, 17, 17, 18, 17, 19, 19, 17, 17,
+      ],
+      borderColor: "#FFCD4F",
+      backgroundColor: "#FFCD4F",
       yAxisID: "y",
     },
     {
@@ -675,16 +693,6 @@ const dmUncontrolledData = {
       backgroundColor: "#FFE8AD",
       yAxisID: "y",
     },
-    {
-      type: "bar",
-      label: "FBS ≥200 mg/dL or HbA1c ≥9%",
-      data: [
-        15, 14, 15, 17, 19, 18, 18, 19, 18, 18, 17, 17, 18, 17, 19, 19, 17, 17,
-      ],
-      borderColor: "#FFCD4F",
-      backgroundColor: "#FFCD4F",
-      yAxisID: "y",
-    },
   ],
 };
 
@@ -693,11 +701,21 @@ dmUncontrolledConfig.data = dmUncontrolledData;
 dmUncontrolledConfig.options.scales.y.ticks.callback = (val) => {
   return val + "%";
 };
-dmUncontrolledConfig.options.plugins.tooltip.callbacks = {
-  label: percentageLabel,
-};
+
 dmUncontrolledConfig.options.scales.x.stacked = true
 dmUncontrolledConfig.options.scales.y.stacked = true
+
+dmUncontrolledConfig.options.plugins.tooltip.displayColors = true;
+dmUncontrolledConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
 
 const dmUncontrolledCanvas = document.getElementById("dmuncontrolled");
 if (dmUncontrolledCanvas) {
@@ -817,7 +835,8 @@ dmRegistrationsConfig.data = dmRegistrationsData;
 dmRegistrationsConfig.options.scales.y.grid = { drawTicks: false };
 dmRegistrationsConfig.options.scales.y.ticks.display = false;
 dmRegistrationsConfig.options.scales.y.max = 4150;
-dmRegistrationsConfig.options.scales.y.ticks.count = 4;
+dmRegistrationsConfig.options.scales.y.ticks.count = 3;
+dmRegistrationsConfig.options.scales.y.ticks.stepSize = 2075;
 
 dmRegistrationsConfig.options.scales.yMonthlyRegistrations = {
   display: false,
