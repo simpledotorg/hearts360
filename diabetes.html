@@ -150,10 +150,10 @@
           <div class="body columns-3">
             <div class="inner-card">
               <div class="figures">
-                <h4 class="bp-controlled">Blood sugar controlled at latest visit</h4>
+                <h4 class="bp-controlled">Blood sugar controlled at latest visit in past 3 months</h4>
                 <p class="large-num bp-controlled">20%</p>
                 <div class="detail">
-                  <p>700 patients with FBS &lt;126 mg/dl or HbA1c &lt;7% in past 3 months</p>
+                  <p>700 patients with FBS &lt;126 mg/dl or HbA1c &lt;7%</p>
                 </div>
               </div>
               <div class="chart">
@@ -162,22 +162,22 @@
             </div>
             <div class="inner-card">
               <div class="figures">
-                <h4 class="bp-uncontrolled">Blood sugar not controlled at latest visit</h4>
+                <h4 class="bp-uncontrolled">Blood sugar not controlled at latest visit in past 3 months</h4>
                 <!--p class="large-num bp-uncontrolled">46%</p-->
                 <div class="detail">
-                  <p><b class="bp-uncontrolled">16%</b> &nbsp; 560 patients with BS &ge;300 mg/dL in  past 3 months</p>
-                  <p><b class="bp-uncontrolled">20%</b> &nbsp; 700 patients with BS 200-299 mg/dL in  past 3 months</p>
-                  <p><b class="bp-uncontrolled">10%</b> &nbsp; 350 patients with BS &lt;200 mg/dL in  past 3 months</p>
+                  <p style="padding-top: 1rem; font-size: 0.8rem;"><b class="bp-uncontrolled">17%</b>: 560 patients w/ FBS &ge;200 mg/dL or HbA1c &ge;9%</p>
+                  <p style="padding-top: 1rem; font-size: 0.8rem;"><b class="bp-uncontrolled">41%</b>: 700 patients w/ FBS 126-199 mg/dL or HbA1c 7-8.9%</p>
+                  <!--p><b class="bp-uncontrolled">10%</b> &nbsp; 350 patients with BS &lt;200 mg/dL in  past 3 months</p-->
                 </div>
               </div>
               <div class="chart">
-                <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 100px 0; text-align: center; margin: 16px 0 0 0; border-radius: 5px;">Coming soon...</div>
+                <canvas id="dmuncontrolled"></canvas>
               </div>
             </div>
             <div class="inner-card">
               <div class="figures">
                 <h4 class="three-month-ltfu">No visit in past 3 months</h4>
-                <p class="large-num three-month-ltfu">34%</p>
+                <p class="large-num three-month-ltfu">22%</p>
                 <div class="detail">
                   <p>1,200 patients with no visit</p>
                 </div>
@@ -194,27 +194,88 @@
         <div class="card">
           <div class="heading">
             <h3>Patients under care</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Patients under care:</span> Registered patients with
+                  hypertension with at least 1 visit in the past 12 months. Dead
+                  patients (205) and 12 month lost to follow-up patients (1,562)
+                  are excluded.
+                </p>
+                <p>
+                  <span>Cumulative registered patients:</span> All patients with
+                  hypertension registered. Dead patients (205) are excluded.
+                </p>
+                <p>
+                  <span>Monthly registered patients:</span> Patients with
+                  hypertension registered each month.
+                </p>
+              </div>
+            </div>
             <p>
-              Patients with diabetes with at least 1 visit in the past 12
+              Patients with hypertension with at least 1 visit in the past 12
               months
             </p>
           </div>
           <div class="body">
-            <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 146px 0; text-align: center; margin: 16px 0 0 0; border-radius: 5px;">Coming soon...</div>
+            <div class="figures">
+              <div>
+                <p class="large-num under-care">3,500</p>
+                <div class="detail">
+                  <p>50 patients registered in Jul-2023</p>
+                  <p class="text-grey">
+                    of
+                    <span class="registrations"
+                      >4,100 cumulative registered patients</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="dmregistrations"></canvas>
+            </div>
           </div>
         </div>
 
         <div class="card">
           <div class="heading">
             <h3>12 month lost to follow-up</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients with no visit in the past 12
+                  month
+                </p>
+                <p>
+                  <span>Denominator:</span> Registered patients with
+                  diabetes. Dead patients (205) are excluded.
+                </p>
+              </div>
+            </div>
             <p>
               Patients with diabetes with no visit in the past 12 months
             </p>
           </div>
           <div class="body">
-            <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 146px 0; text-align: center; margin: 16px 0 0 0; border-radius: 5px;">Coming soon...</div>
+            <div class="figures">
+              <p class="large-num twelve-month-ltfu">15%</p>
+              <div class="detail">
+                <p>600 patients with no visit from Jul-2022 to Jul-2023</p>
+                <p class="text-grey">
+                  of
+                  <span class="registrations"
+                    >4,100 cumulative registered patients</span
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="dmltfu12months"></canvas>
+            </div>
           </div>
         </div>
+        
         <div class="card">
             <div class="body">
               <h3>Treatment coverage for DM</h3>

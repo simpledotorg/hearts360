@@ -400,7 +400,6 @@ const registrationsData = {
 
 const registrationsConfig = baseLineChartConfig();
 registrationsConfig.data = registrationsData;
-console.log(registrationsConfig.options.scales.y);
 registrationsConfig.options.scales.y.grid = { drawTicks: false };
 registrationsConfig.options.scales.y.ticks.display = false;
 registrationsConfig.options.scales.y.ticks.count = 3;
@@ -427,6 +426,7 @@ if (registrationsCanvas) {
   createChart(registrationsCanvas, registrationsConfig);
 }
 
+// Hypertension: Lost to follow-up
 const ltfu12MonthsData = {
   labels: [
     "Mar-2022",
@@ -479,7 +479,7 @@ if (ltfu12MonthsCanvas) {
   createChart(ltfu12MonthsCanvas, ltfu12MonthsConfig);
 }
 
-// Drug stock
+// Anti-hypertensive drug stock
 
 const drugStockData = {
   labels: [
@@ -605,7 +605,7 @@ const dmControlledData = {
     {
       label: "Blood sugar controlled",
       data: [
-        12, 18, 19, 14, 10, 12, 13, 14, 16, 18, 20, 22, 20, 16, 14, 17, 18, 20,
+        12, 18, 19, 14, 10, 12, 13, 14, 16, 18, 20, 22, 20, 16, 14, 17, 20, 22,
       ],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
@@ -633,7 +633,78 @@ if (dmControlledCanvas) {
   createChart(dmControlledCanvas, dmControlledConfig);
 }
 
-// Diabetes: No visit in 3 months
+//DM: Uncontrolled
+const dmUncontrolledData = {
+  labels: [
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+  ],
+  datasets: [
+    {
+      label: "Blood sugar not controlled (total)",
+      data: [
+        50, 46, 49, 56, 62, 61, 61, 64, 61, 60, 56, 56, 60, 58, 64, 62, 58, 56,
+      ],
+      borderColor: "#9F7300",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+    },
+    {
+      type: "bar",
+      label: "FBS 126-199 mg/dL or HbA1c 7-8.9%",
+      data: [
+        35, 32, 34, 39, 43, 43, 43, 45, 43, 42, 39, 39, 42, 41, 45, 43, 41, 39,
+      ],
+      borderColor: "#FFE8AD",
+      backgroundColor: "#FFE8AD",
+      yAxisID: "y",
+    },
+    {
+      type: "bar",
+      label: "FBS ≥200 mg/dL or HbA1c ≥9%",
+      data: [
+        15, 14, 15, 17, 19, 18, 18, 19, 18, 18, 17, 17, 18, 17, 19, 19, 17, 17,
+      ],
+      borderColor: "#FFCD4F",
+      backgroundColor: "#FFCD4F",
+      yAxisID: "y",
+    },
+  ],
+};
+
+const dmUncontrolledConfig = baseLineChartConfig();
+dmUncontrolledConfig.data = dmUncontrolledData;
+dmUncontrolledConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+dmUncontrolledConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
+dmUncontrolledConfig.options.scales.x.stacked = true
+dmUncontrolledConfig.options.scales.y.stacked = true
+
+const dmUncontrolledCanvas = document.getElementById("dmuncontrolled");
+if (dmUncontrolledCanvas) {
+  createChart(dmUncontrolledCanvas, dmUncontrolledConfig);
+}
+
+// DM: No visit in 3 months
 const dmLtfu3MonthData = {
   labels: [
     "Mar-2022",
@@ -684,4 +755,140 @@ dmLtfu3MonthConfig.options.scales.y.ticks.callback = (val) => {
 const dmLtfu3MonthCanvas = document.getElementById("dmLtfu3Month");
 if (dmLtfu3MonthCanvas) {
   createChart(dmLtfu3MonthCanvas, dmLtfu3MonthConfig);
+}
+
+//DM: Registrations
+
+const dmRegistrationsData = {
+  labels: [
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+  ],
+  datasets: [
+    {
+      label: "Cumulative registrations",
+      data: [
+        900, 1000, 1100, 1200, 1400, 1500, 2000, 2500, 2750, 3000, 3200, 3500, 3750, 3900, 4000, 4050, 4100, 4150,
+      ],
+      borderColor: "#007ee4",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+    },
+    {
+      label: "Patients under care",
+      data: [
+        720, 810, 900, 990, 1180, 1250, 1700, 2150, 2350, 2580, 2750, 3030, 3250, 3380, 3440, 3470, 3500, 3500,
+      ],
+      borderColor: "#b51bdc",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+    },
+    {
+      type: "bar",
+      label: "Monthly registrations",
+      data: [
+        150, 100, 100, 100, 200, 100, 500, 500, 250, 250, 200, 300, 250, 150, 100, 50, 50, 50,
+      ],
+      borderColor: "#BEDFF9",
+      backgroundColor: "#BEDFF9",
+      yAxisID: "yMonthlyRegistrations",
+    },
+  ],
+};
+
+const dmRegistrationsConfig = baseLineChartConfig();
+dmRegistrationsConfig.data = dmRegistrationsData;
+dmRegistrationsConfig.options.scales.y.grid = { drawTicks: false };
+dmRegistrationsConfig.options.scales.y.ticks.display = false;
+dmRegistrationsConfig.options.scales.y.ticks.count = 3;
+dmRegistrationsConfig.options.scales.y.max = 4150;
+
+dmRegistrationsConfig.options.scales.yMonthlyRegistrations = {
+  display: false,
+  beginAtZero: true,
+  max: 600,
+};
+
+dmRegistrationsConfig.options.plugins.tooltip.displayColors = true;
+dmRegistrationsConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
+const dmRegistrationsCanvas = document.getElementById("dmregistrations");
+if (dmRegistrationsCanvas) {
+  createChart(dmRegistrationsCanvas, dmRegistrationsConfig);
+}
+
+// DM: Lost to follow-up
+const dmLtfu12MonthsData = {
+  labels: [
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+  ],
+  datasets: [
+    {
+      label: "12 month lost to follow-up",
+      data: [20, 19, 18, 18, 18, 16, 17, 15, 14, 15, 14, 14, 13, 13, 13, 14, 14, 15, 16],
+      borderColor: "#FF3355",
+      backgroundColor: "rgba(255, 51, 85, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+
+const dmLtfu12MonthsConfig = baseLineChartConfig();
+dmLtfu12MonthsConfig.data = dmLtfu12MonthsData;
+dmLtfu12MonthsConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
+dmLtfu12MonthsConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+
+const dmLtfu12MonthsCanvas = document.getElementById("dmltfu12months");
+if (dmLtfu12MonthsCanvas) {
+  createChart(dmLtfu12MonthsCanvas, dmLtfu12MonthsConfig);
 }
