@@ -816,8 +816,8 @@ const dmRegistrationsConfig = baseLineChartConfig();
 dmRegistrationsConfig.data = dmRegistrationsData;
 dmRegistrationsConfig.options.scales.y.grid = { drawTicks: false };
 dmRegistrationsConfig.options.scales.y.ticks.display = false;
-dmRegistrationsConfig.options.scales.y.ticks.count = 3;
 dmRegistrationsConfig.options.scales.y.max = 4150;
+dmRegistrationsConfig.options.scales.y.ticks.count = 4;
 
 dmRegistrationsConfig.options.scales.yMonthlyRegistrations = {
   display: false,
