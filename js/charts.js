@@ -679,8 +679,8 @@ const dmUncontrolledData = {
       data: [
         15, 14, 15, 17, 19, 18, 18, 19, 18, 18, 17, 17, 18, 17, 19, 19, 17, 17,
       ],
-      borderColor: "#FFCD4F",
-      backgroundColor: "#FFCD4F",
+      borderColor: "rgba(249, 191, 45, 0.8)",
+      backgroundColor: "rgba(249, 191, 45, 0.8)",
       yAxisID: "y",
     },
     {
@@ -689,8 +689,8 @@ const dmUncontrolledData = {
       data: [
         35, 32, 34, 39, 43, 43, 43, 45, 43, 42, 39, 39, 42, 41, 45, 43, 41, 39,
       ],
-      borderColor: "#FFE8AD",
-      backgroundColor: "#FFE8AD",
+      borderColor: "rgba(244, 212, 128, 0.6)",
+      backgroundColor: "rgba(244, 212, 128, 0.6)",
       yAxisID: "y",
     },
   ],
@@ -910,4 +910,57 @@ dmLtfu12MonthsConfig.options.scales.y.ticks.callback = (val) => {
 const dmLtfu12MonthsCanvas = document.getElementById("dmltfu12months");
 if (dmLtfu12MonthsCanvas) {
   createChart(dmLtfu12MonthsCanvas, dmLtfu12MonthsConfig);
+}
+
+// DM: Statins
+const dmStatinsData = {
+  labels: [
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+  ],
+  datasets: [
+    {
+      label: "Prescribed statins",
+      data: [
+        30, 32, 35, 42, 38, 36, 37, 38, 40, 36, 40, 42, 50, 45, 60, 64, 66, 64,
+      ],
+      borderColor: "#666666",
+      backgroundColor: "rgba(100, 100, 100, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+
+const dmStatinsConfig = baseLineChartConfig();
+dmStatinsConfig.data = dmStatinsData;
+dmStatinsConfig.options.plugins.tooltip.callbacks = { label: percentageLabel };
+dmStatinsConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+
+const dmStatinsCanvas = document.getElementById("dmstatins");
+if (dmStatinsCanvas) {
+  createChart(dmStatinsCanvas, dmStatinsConfig);
 }

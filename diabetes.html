@@ -165,8 +165,8 @@
                 <h4 class="bp-uncontrolled">Blood sugar not controlled at latest visit in past 3 months</h4>
                 <!--p class="large-num bp-uncontrolled">46%</p-->
                 <div class="detail">
-                  <p style="padding-top: 0.8rem;"><b class="bp-uncontrolled">41%</b>: 1435 patients w/ FBS 126-199 mg/dL or HbA1c 7-8.9%</p>
-                  <p style="padding-top: 0.8rem;"><b class="bp-uncontrolled" style="color: #C08B00;">17%</b>: 595 patients w/ FBS &ge;200 mg/dL or HbA1c &ge;9%</p>
+                  <p style="padding-top: 0.8rem;"><b class="bp-uncontrolled">41%</b> &nbsp; 1,435 patients with FBS 126-199 mg/dL or HbA1c 7-8.9%</p>
+                  <p style="padding-top: 0.8rem;"><b class="bp-uncontrolled" style="color: #C08B00;">17%</b> &nbsp; 595 patients with FBS &ge;200 mg/dL or HbA1c &ge;9%</p>
                   <!--p><b class="bp-uncontrolled">10%</b> &nbsp; 350 patients with BS &lt;200 mg/dL in  past 3 months</p-->
                 </div>
               </div>
@@ -199,12 +199,12 @@
                 <p>
                   <span>Patients under care:</span> Registered patients with
                   diabetes with at least 1 visit in the past 12 months. Dead
-                  patients (205) and 12 month lost to follow-up patients (1,562)
+                  patients (60) and 12 month lost to follow-up patients (600)
                   are excluded.
                 </p>
                 <p>
                   <span>Cumulative registered patients:</span> All patients with
-                  diabetes registered. Dead patients (205) are excluded.
+                  diabetes registered. Dead patients (60) are excluded.
                 </p>
                 <p>
                   <span>Monthly registered patients:</span> Patients with
@@ -245,11 +245,11 @@
               <div class="info-hover-text">
                 <p>
                   <span>Numerator:</span> Patients with no visit in the past 12
-                  month
+                  months
                 </p>
                 <p>
                   <span>Denominator:</span> Registered patients with
-                  diabetes. Dead patients (205) are excluded.
+                  diabetes. Dead patients (60) are excluded.
                 </p>
               </div>
             </div>
@@ -340,16 +340,40 @@
         <div class="card">
           <div class="heading">
             <h3>Patients prescribed statins</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients from the denominator who were prescribed statins at their most recent visit
+                </p>
+                <p>
+                  <span>Denominator:</span> Registered patients with
+                  diabetes with at least 1 visit in the past 12 months. Dead
+                  patients (60) and 12 month lost to follow-up patients (600)
+                  are excluded.
+                </p>
+              </div>
+            </div>
             <p>
-              Patients under care for diabetes who were prescribed statins at their last visit
+              Patients under care for diabetes who were prescribed statins at latest visit in the past 12 months
             </p>
           </div>
           <div class="body">
-            <div style="background: #f6f6f6; width: 100%; color: rgba(0,0,0,0.4); padding: 146px 0; text-align: center; margin: 16px 0 0 0; border-radius: 5px;">Coming soon...</div>
+            <div class="figures">
+              <p class="large-num">66%</p>
+              <div class="detail">
+                <p>2,300 patients prescribed statins at latest visit in past 12 months</p>
+                <p class="text-grey">
+                  of
+                  <span class="under-care">3,500 patients under care</span
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="dmstatins"></canvas>
+            </div>
           </div>
         </div>
-        <div class="card blank"></div>
-        <div class="card blank"></div>
       </div>
 
       <div class="card">
