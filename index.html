@@ -6,7 +6,7 @@
     <title>Hypertension dashboard</title>
     <meta
       name="description"
-      content="A free, open source, template for creating a very useful hypertension dashboard to support public health projects."
+      content="A free, open source, template for creating a very useful hypertension and diabetes dashboard to support public health projects."
     />
     <meta name="author" content="Resolve to Save Lives" />
 
@@ -41,7 +41,7 @@
     </div>
     <nav class="navigation">
       <div class="mobile-only">
-        <form>
+        <form id="navigation">
           <select>
             <option>Navigation...</option>
             <option>National Dashboard</option>
@@ -170,10 +170,10 @@
           <div class="body columns-3">
             <div class="inner-card">
               <div class="figures">
-                <h4 class="bp-controlled">BP controlled at latest visit</h4>
+                <h4 class="bp-controlled">BP controlled at latest visit in past 3 months</h4>
                 <p class="large-num bp-controlled">61%</p>
                 <div class="detail">
-                  <p>4,808 patients with BP &lt;140/90 in past 3 months</p>
+                  <p>4,808 patients with BP &lt;140/90</p>
                 </div>
               </div>
               <div class="chart">
@@ -182,10 +182,10 @@
             </div>
             <div class="inner-card">
               <div class="figures">
-                <h4 class="bp-uncontrolled">BP not controlled at latest visit</h4>
+                <h4 class="bp-uncontrolled">BP not controlled at latest visit in past 3 months</h4>
                 <p class="large-num bp-uncontrolled">17%</p>
                 <div class="detail">
-                  <p>1,340 patients with BP &ge;140/90 in past 3 months</p>
+                  <p>1,340 patients with BP &ge;140/90</p>
                 </div>
               </div>
               <div class="chart">
@@ -263,7 +263,7 @@
               <div class="info-hover-text">
                 <p>
                   <span>Numerator:</span> Patients with no visit in the past 12
-                  month
+                  months
                 </p>
                 <p>
                   <span>Denominator:</span> Registered patients with
@@ -295,9 +295,9 @@
         </div>
         <div class="card">
           <div class="body">
-            <h3>Treatment coverage</h3>
+            <h3>Treatment coverage for hypertension</h3>
             <div class="data-line">
-              <p>Estimated number of people in area with hypertension:</p>
+              <p>Estimated number of adults in River District with hypertension:</p>
               <p>250,800</p>
             </div>
 
@@ -1290,49 +1290,64 @@
         </div>
       </div>
       
-      <div class="card">
-        <div class="heading">
-          <h3>Hypertension and diabetes comorbidity</h3>
-          <p>All patients registered in the hypertension and/or diabetes programs
-        </div>
-        <div class="body">
-          <table>
-            <tr>
-              <th></th>
-              <th class="text-right">Patients under care</th>
-              <th class="text-right">Cumulative registered patients</th>
-              <th class="text-right">Died<sup>*</sup></th>
-            </tr>
-            <tr>
-              <th>Hypertension-only</th>
-              <td class="text-right">8,632</td>
-              <td class="text-right">10,000</td>
-              <td class="text-right">105</td>
-            </tr>
-            <tr>
-              <th>Both hypertension and diabetes</th>
-              <td class="text-right">2,000</td>
-              <td class="text-right">2,213</td>
-              <td class="text-right">100</td>
-            </tr>
-            <tr>
-              <th>Diabetes-only</th>
-              <td class="text-right">1,500</td>
-              <td class="text-right">2,100</td>
-              <td class="text-right">50</td>
-            </tr>
-            <tr class="totals">
-              <th>TOTAL</th>
-              <td class="text-right">12,132</td>
-              <td class="text-right">14,313</td>
-              <td class="text-right">255</td>
-            </tr>
-          </table>
-          <div class="key">
-            <div class="key-text">
-              <sup>*</sup>Deaths may be undercounted.
+      <div class="columns-3">
+        <div class="card col-span-2" style="justify-content: start;">
+          <div class="heading">
+            <h3>Hypertension and diabetes comorbidity</h3>
+            <p>All patients registered in the hypertension and/or diabetes programs
+          </div>
+          <div class="body">
+            <table>
+              <tr>
+                <th></th>
+                <th class="text-right">Patients under care</th>
+                <th class="text-right">Cumulative registered patients</th>
+                <th class="text-right">Died<sup>*</sup></th>
+              </tr>
+              <tr>
+                <th>Hypertension-only</th>
+                <td class="text-right">8,632</td>
+                <td class="text-right">10,000</td>
+                <td class="text-right">105</td>
+              </tr>
+              <tr>
+                <th>Both hypertension and diabetes</th>
+                <td class="text-right">2,000</td>
+                <td class="text-right">2,213</td>
+                <td class="text-right">100</td>
+              </tr>
+              <tr>
+                <th>Diabetes-only</th>
+                <td class="text-right">1,500</td>
+                <td class="text-right">2,100</td>
+                <td class="text-right">50</td>
+              </tr>
+              <tr class="totals">
+                <th>TOTAL</th>
+                <td class="text-right">12,132</td>
+                <td class="text-right">14,313</td>
+                <td class="text-right">255</td>
+              </tr>
+            </table>
+            <div class="key">
+              <div class="key-text">
+                <sup>*</sup>Deaths may be undercounted.
+              </div>
             </div>
           </div>
+        </div>
+        <div class="card">
+          <h3>Comorbid patients with BP controlled</h3>
+          <p>Patients with both hypertension and diabetes with BP controlled at latest visit in past 3 months</p>
+          <div class="figures">
+            <p class="large-num bp-controlled">50%</p>
+              <div class="detail">
+                <p>1,000 patients with BP &lt;140/90 in past 3 months</p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="comodrbidcontrolled"></canvas>
+            </div>
         </div>
       </div>
       
