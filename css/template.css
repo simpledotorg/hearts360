@@ -615,7 +615,7 @@ table {
 .coverage-detail {
   text-align: right;
   font-size: 0.85rem;
-  margin: 6px 0;
+  margin: 0;
 }
 
 .data-line {
@@ -664,6 +664,13 @@ table {
 .bp-uncontrolled-bg {
   /* background: #f6b100; */
   background: #eeab00;
+}
+.bp-uncontrolled-dark {
+  color: #C08B00;
+}
+
+.bp-uncontrolled-dark-bg {
+  background: #C08B00;
 }
 
 .three-month-ltfu {
