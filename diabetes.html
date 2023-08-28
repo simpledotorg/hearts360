@@ -832,6 +832,81 @@
           </div>
         </div>
       </div>
+      
+      <div class="columns-3">
+        <div class="card">
+          <div class="heading">
+            <h3>Diabetes drug stock</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Facilities with &gt;30 days protocol
+                  drugs in stock.
+                </p>
+                <p>
+                  <span>Denominator:</span> All facilities in the diabetes
+                  program.
+                </p>
+              </div>
+            </div>
+            <p>Facilities with &gt;30 days of diabetes protocol drugs in stock</p>
+          </div>
+          <div class="body">
+            <div class="key key-per-row">
+              <div class="key-text">
+                <span class="key-color-box step-one-drugs"></span
+                ><b>Step 1 drugs</b> — 94% in Jul-2023
+              </div>
+              <div class="key-text">
+                <span class="key-color-box step-two-drugs"></span
+                ><b>Step 2 drugs</b> — 64% in Jul-2023
+              </div>
+              <div class="key-text">
+                <span class="key-color-box step-three-drugs"></span
+                ><b>Step 3 drugs</b> — 90% in Jul-2023
+              </div>
+            </div>
+            <div>&nbsp;</div>
+            <div class="chart">
+              <canvas id="dmdrugstock"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <h3>Glucometers</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Facilities with 1 or more functioning
+                  glucometers.
+                </p>
+                <p>
+                  <span>Denominator:</span> All facilities in the diabetes
+                  program.
+                </p>
+              </div>
+            </div>
+            <p>Facilities with a functioning glucometer</p>
+            <div class="figures" style="margin-top: 2em">
+              <p class="large-num">98%</p>
+              <div class="detail">
+                <p>157 facilities with a functioning glucometer</p>
+                <p class="text-grey">of 160 facilities reporting in Jul-2023</p>
+              </div>
+            </div>
+            <div
+              class="text-grey facilities-without-bp-monitor"
+              style="margin-top: 2em"
+            >
+              3 facilities without a functioning glucometer:
+            </div>
+            <div class="text-grey facilities-without-bp-monitor">
+              <a href="#">CHC Turnip</a>, <a href="#">CHC Zucchiniville</a>, <a href="#">PHC Grapefruit Hill</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="card">
       <div class="heading">
@@ -863,7 +938,7 @@
                     <div>Step 3 drugs<br>in patient days</div>
                   </th>
                   <th class="text-right">
-                    <div>Blood glucose monitors</div>
+                    <div>Glucometers</div>
                   </th>
                   <th class="text-right">
                     <div>Glucometer test strips</div>
@@ -1413,7 +1488,7 @@
           <div class="figures">
             <p class="large-num bp-controlled">50%</p>
               <div class="detail">
-                <p>1,000 patients with BP &lt;140/90 in past 3 months</p>
+                <p>1,000 patients with BP &lt;140/90</p>
               </div>
             </div>
             <div class="chart">
