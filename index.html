@@ -1447,19 +1447,61 @@
       
       <div class="divider"></div>
 
-      <h2>Definitions</h2>
-      <div
-        style="
-          background: rgba(0, 0, 0, 0.06);
-          border-radius: 8px;
-          text-align: center;
-          margin: 0 0 100px 0;
-          padding: 400px 20px;
-          color: #999;
-        "
-      >
-        Clear definitions for all indicators will be included here
+      <div class="notes">
+        
+        <h2>Data building blocks</h2>
+        <p>The dashboard requires just a handful of core data building blocks to generate the key indicator charts and tables.</p>
+        <ol>
+          <li>
+            <code>Cumulative registered patients</code>
+            <p>All patients diagnosed with hypertension who are enrolled in the program.</p>
+          </li>
+          <li>
+            <code>Patients under care</code>
+            <p>All patients with a "visit" recorded in the last 12 months. A visit can have a simplified definition: the patient had a BP measure recorded in the last 12 months.</p>
+          </li>
+          <li>
+            <code>12 month lost to follow-up patients</code>
+            <p>All patients with no "visit" recorded in the last 12 months. A visit can have a simplified definition: the patient had no BP measures recorded in the last 12 months. Note: Some of the key indicators exclude 12-month lost to follow-up patients (i.e. the indicators only use "Patients under care") because these patients become a drag on the health system at scale and muddy the view of progress being made improving hypertension control.</p>
+          </li>
+          <li>
+            <code>Died</code>
+            <p>Patients who have died are excluded from most indicators.</p>
+          </li>
+          <li>
+            <p><code>Patients with controlled blood pressure</code> and <code>Patients with uncontrolled blood pressure</code> in a month</p>
+          </li>
+          <li>
+            <p><code>Screened patients</code> (Aggregate data)</p>
+          </li>
+          <li>
+            <p><code>Estimated monthly adult OPD patients</code> (Aggregate data)</p>
+          </li>
+        </ol>
       </div>
+      <div class="notes">
+        <h2>Data definitions</h2>
+        <ol>
+          <li>
+            <h6>Hypertension treatment outcomes</h6>
+            <ol>
+              <li>
+                <h6 class="bp-controlled">BP controlled at latest visit in past 3 months</h6>
+                <p>The number of <code>patients under care</code> <i>registered before the last 3 months</i>, where the patient is <code>diagnosed with hypertension</code>, <code>not dead</code>, and has a <code>Controlled blood pressure (&lt;140 and &lt;90)</code> recorded at their most recent visit within the last 3 months.</p>
+                
+                <blockquote>
+                  <p><b>Why are patients registered within the last 3 months excluded?</b> Three months gives patients time to take their hypertension medication and to get their BP controlled. Most newly registered patients have uncontrolled blood pressure and including them would not reflect an accurate picture of actual controlled patients.</p>
+                  
+                  <p><b>Why is this important?</b> BP controlled reflects the overall health of a hypertension control program and is the most important hypertension control indicator.</p>
+                </blockquote>
+              </li>
+            </ol>
+          </li>
+        </ol>
+        <p>More definitions coming....</p>
+      </div>
+      
+      <div class="divider"></div>
     </main>
 
     <!-- Chart.js -->

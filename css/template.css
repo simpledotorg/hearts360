@@ -30,10 +30,81 @@ h1 {
 }
 
 h2 {
-  text-transform: uppercase;
-  font-size: 0.92rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin: 32px 0 16px;
+  margin: 0;
+}
+
+h6 {
+  font-weight: bold;
+  margin: 0 0 0.4rem 0;
+}
+
+.notes {
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+  
+  & h3 {
+    text-transform: uppercase;
+    font-size: 0.92rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  & p {
+    margin-bottom: 1rem;
+  }
+  
+  & i {
+      font-size: 1rem;
+      background: white;
+      padding: 0 4px;
+      font-family: monospace;
+      border-radius: 4px;
+      color: darkgoldenrod;
+      font-style: normal;
+      white-space: nowrap;
+  }
+  
+  & blockquote {
+    background: rgba(0,0,0,0.1);
+    padding: 20px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    color: rgba(0,0,0,0.6);
+  }
+}
+
+code {
+  font-size: 1rem;
+  background: white;
+  padding: 0 4px;
+  border-radius: 4px;
+  color: cadetblue;
+  white-space: nowrap;
+}
+
+ol {
+  list-style-type: decimal-leading-zero;
+  list-style-size: 3rem;
+  margin: 1.5rem 0 1.5rem 16px;
+  
+  & li {
+    padding-left: 12px;
+    margin: 0.5rem 0 1.5rem 32px;
+  }
+  
+  & ol {
+    list-style-type: lower-alpha;
+  }
+}
+
+hr {
+  margin: 3rem 0;
+  border-color: rgba(0,0,0,0.2);
 }
 
 main {
