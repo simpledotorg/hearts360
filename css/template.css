@@ -70,11 +70,27 @@ h6 {
   }
   
   & blockquote {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.8);
     padding: 20px;
     font-size: 0.9rem;
     border-radius: 5px;
-    color: rgba(0,0,0,0.6);
+    color: rgba(255,255,255,0.85);
+    margin: 1rem 0;
+    
+    & code {
+      font-size: 0.9rem;
+    }
+    
+    & i {
+      font-size: 0.9rem;
+    }
+    
+    & h6 {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      color: steelblue;
+    }
   }
 }
 
@@ -99,6 +115,10 @@ ol {
   
   & ol {
     list-style-type: lower-alpha;
+  }
+  
+  & p {
+    font-size: 0.9rem;
   }
 }
 
