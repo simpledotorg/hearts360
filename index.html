@@ -1466,7 +1466,7 @@
           </li>
           <li>
             <code>Died</code>
-            <p>Patients who have died are excluded from most indicators.</p>
+            <p>Dead patients are excluded from most indicators.</p>
           </li>
           <li>
             <code>Patients with controlled blood pressure</code> and <code>Patients with uncontrolled blood pressure</code> in a month
@@ -1482,9 +1482,10 @@
       </div>
       <div class="notes">
         <h2>Data definitions</h2>
+        <p>Many of the data definitions are based on the <a href="https://apps.who.int/iris/bitstream/handle/10665/260423/WHO-NMH-NVI-18.5-eng.pdf">WHO HEARTS</a> technical package.</p>
         <ol>
           <li>
-            <h6>Hypertension treatment outcomes</h6>
+            <h5>Hypertension treatment outcomes</h5>
             <p>The 3 treatment outcome indicators show whether patients in the hypertension control program are visiting health facilities regularly. Blood pressure control is the best indicator to know if patients under treatment are being treated effectively.</p>
             <p>All 3 indicators have the same denominator.</p>
             <ol>
@@ -1530,6 +1531,42 @@
                 
               </li>
             </ol>
+          </li>
+          <li>
+            <h5>Registered patients</h5>
+            <p>It is useful to know how many patients are enrolled in a hypertension control program and how many of those patients are "under care" (i.e. have visited at least once in the past 12 months).</p>
+            <ol>
+              <li>
+                <h6 class="under-care">Patients under care</h6>
+                <p>Track the patients who have visited in the last 12 months and can be considered to be under care in the hypertension control program.</p>
+                <blockquote>
+                  <code>Cumulative registrations</code> in the hypertension program excluding <code>12 month lost to follow-up</code> and <code>Dead</code> patients.</code>
+                </blockquote>
+              </li>
+              <li>
+                <h6 class="registrations">Cumulative registrations</h6>
+                <p>Track all of the patients who have been registered in the hypertension program. Over time, the cumulative registrations will be a larger number than <code>Patients under care</code>.</p>
+                <blockquote>
+                  <code>Cumulative registrations</code> in the hypertension program excluding <code>Dead</code> patients.</code>
+                </blockquote>
+              </li>
+              <li>
+                <h6 class="registrations">Monthly new patients registered</h6>
+                <p>Monthly registrations give visibility into activity on-the-ground by health facility staff.</p>
+                <blockquote>
+                  New patients enrolled in the hypertension program in a month who are diagnosed with hypertension (diagnosis could have happened on any date).
+                </blockquote>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <h5>12 month lost to follow-up patients</h5>
+          </li>
+          <li>
+            <h5>Treatment coverage for hypertension</h5>
+          </li>
+          <li>
+            <h5>Opportunistic screening</h5>
           </li>
         </ol>
       </div>

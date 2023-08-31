@@ -35,13 +35,19 @@ h2 {
   margin: 0;
 }
 
+h5 {
+  font-weight: bold;
+  margin: 0 0 0.4rem 0;
+  font-size: 1.2rem;
+}
+
 h6 {
   font-weight: bold;
   margin: 0 0 0.4rem 0;
 }
 
 .notes {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.04);
   border-radius: 8px;
   margin: 0;
   padding: 20px;
@@ -70,11 +76,12 @@ h6 {
   }
   
   & blockquote {
-    background: rgba(0,0,0,0.8);
+    background: #FCF3DD;
+    border-top: 2px solid rgba(0,0,0,0.1);
     padding: 20px;
     font-size: 0.9rem;
     border-radius: 5px;
-    color: rgba(255,255,255,0.85);
+    color: #666;
     margin: 1rem 0;
     
     & code {
@@ -89,7 +96,7 @@ h6 {
       font-size: 0.6rem;
       text-transform: uppercase;
       letter-spacing: 0.1rem;
-      color: steelblue;
+      color: darkgoldenrod;
     }
   }
 }
@@ -110,7 +117,7 @@ ol {
   
   & li {
     padding-left: 12px;
-    margin: 0.5rem 0 1.5rem 32px;
+    margin: 0.5rem 0 2.5rem 32px;
   }
   
   & ol {
