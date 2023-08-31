@@ -76,27 +76,31 @@ h6 {
   }
   
   & blockquote {
-    background: #FCF3DD;
+    background: #283336;
     border-top: 2px solid rgba(0,0,0,0.1);
     padding: 20px;
     font-size: 0.9rem;
     border-radius: 5px;
-    color: #666;
+    color: rgba(255,255,255,0.6);;
     margin: 1rem 0;
     
     & code {
       font-size: 0.9rem;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
     }
     
     & i {
       font-size: 0.9rem;
+      background: rgba(255,255,255,0.2);
+      color: aquamarine;
     }
     
     & h6 {
       font-size: 0.6rem;
       text-transform: uppercase;
       letter-spacing: 0.1rem;
-      color: darkgoldenrod;
+      color: slategrey;
     }
   }
 }
@@ -117,11 +121,19 @@ ol {
   
   & li {
     padding-left: 12px;
-    margin: 0.5rem 0 2.5rem 32px;
+    margin: 5rem 0 2.5rem 32px;
   }
   
   & ol {
     list-style-type: lower-alpha;
+    margin-left: 0;
+    padding-left: 0;
+    
+    & li {
+      padding-left: 0;
+      margin-left: 0;
+      margin-top: 1.5rem;
+    }
   }
   
   & p {
