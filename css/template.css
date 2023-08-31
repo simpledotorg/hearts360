@@ -121,12 +121,13 @@ ol {
   
   & li {
     padding-left: 12px;
-    margin: 5rem 0 2.5rem 32px;
+    margin: 1.5rem 0 2.5rem 32px;
   }
   
   & ol {
     list-style-type: lower-alpha;
     margin-left: 0;
+    margin-bottom: 6em;
     padding-left: 0;
     
     & li {
