@@ -855,15 +855,11 @@
             <div class="key key-per-row">
               <div class="key-text">
                 <span class="key-color-box step-one-drugs"></span
-                ><b>Step 1 drugs</b> — 94% in Jul-2023
+                ><b>Metformin</b> — 94% in Jul-2023
               </div>
               <div class="key-text">
                 <span class="key-color-box step-two-drugs"></span
-                ><b>Step 2 drugs</b> — 64% in Jul-2023
-              </div>
-              <div class="key-text">
-                <span class="key-color-box step-three-drugs"></span
-                ><b>Step 3 drugs</b> — 90% in Jul-2023
+                ><b>Glimeperide</b> — 64% in Jul-2023
               </div>
             </div>
             <div>&nbsp;</div>
@@ -874,12 +870,11 @@
         </div>
         <div class="card">
           <div class="body">
-            <h3>Glucometers</h3>
+            <h3>Availability of blood glucose testing</h3>
             <div class="info">
               <div class="info-hover-text">
                 <p>
-                  <span>Numerator:</span> Facilities with 1 or more functioning
-                  glucometers.
+                  <span>Numerator:</span> Facilities with point-of-care glucometers or lab testing available.
                 </p>
                 <p>
                   <span>Denominator:</span> All facilities in the diabetes
@@ -887,11 +882,11 @@
                 </p>
               </div>
             </div>
-            <p>Facilities with a functioning glucometer</p>
+            <p>Facilities with point-of-care glucometers or lab testing available.</p>
             <div class="figures" style="margin-top: 2em">
-              <p class="large-num">98%</p>
+              <p class="large-num">99%</p>
               <div class="detail">
-                <p>157 facilities with a functioning glucometer</p>
+                <p>159 facilities with blood glucose testing</p>
                 <p class="text-grey">of 160 facilities reporting in Jul-2023</p>
               </div>
             </div>
@@ -899,10 +894,43 @@
               class="text-grey facilities-without-bp-monitor"
               style="margin-top: 2em"
             >
-              3 facilities without a functioning glucometer:
+              1 facility without a blood glucose testing:
             </div>
             <div class="text-grey facilities-without-bp-monitor">
-              <a href="#">CHC Turnip</a>, <a href="#">CHC Zucchiniville</a>, <a href="#">PHC Grapefruit Hill</a>
+              <a href="#">CHC Weather Top</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <h3>Availability of HbA1c testing</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Facilities with HbA1c lab test available
+                </p>
+                <p>
+                  <span>Denominator:</span> All facilities in the diabetes
+                  program.
+                </p>
+              </div>
+            </div>
+            <p>Facilities with HbA1c lab test available</p>
+            <div class="figures" style="margin-top: 2em">
+              <p class="large-num">4%</p>
+              <div class="detail">
+                <p>7 facilities with HbA1c testing</p>
+                <p class="text-grey">of 160 facilities reporting in Jul-2023</p>
+              </div>
+            </div>
+            <div
+              class="text-grey facilities-without-bp-monitor"
+              style="margin-top: 2em"
+            >
+              153 facility without a blood glucose testing:
+            </div>
+            <div class="text-grey facilities-without-bp-monitor">
+              <a href="#">CHC Apple Orchard</a>, <a href="#">CHC Carrot Peak</a>, <a href="#">CHC Cumin Creek</a>, <a href="#">CHC Dandelion Wine</a>, <a href="#">CHC Elderflower Ridge</a>, and 148 others (see table)
             </div>
           </div>
         </div>
@@ -923,25 +951,25 @@
                 <col />
                 <col />
                 <col />
+                <col />
+                <col />
+                <col />
               </colgroup>
               <thead>
                 <tr>
                   <th><div>Facility</div></th>
                   <th><div>Sub-region</div></th>
-                  <th class="text-right">
-                    <div>Step 1 drugs<br>in patient days</div>
+                  <th>
+                    <div>Metformin<br>in patient days</div>
                   </th>
-                  <th class="text-right">
-                    <div>Step 2 drugs<br>in patient days</div>
+                  <th>
+                    <div>Glimeperide<br>in patient days</div>
                   </th>
-                  <th class="text-right">
-                    <div>Step 3 drugs<br>in patient days</div>
+                  <th>
+                    <div>Availability of<br>blood glucose testing</div>
                   </th>
-                  <th class="text-right">
-                    <div>Glucometers</div>
-                  </th>
-                  <th class="text-right">
-                    <div>Glucometer test strips</div>
+                  <th>
+                    <div>Availability of<br>HbA1c testing</div>
                   </th>
                 </tr>
               </thead>
@@ -951,144 +979,128 @@
                   <td></td>
                   <td class="number">54</td>
                   <td class="number">60</td>
-                  <td class="number">45</td>
-                  <td class="number">210</td>
-                  <td class="number">60,000</td>
+                  <td class="number"></td>
+                  <td class="number"></td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Apple Orchard</a></th>
                   <td>Wind Canyon County</td>
                   <td class="number">54</td>
                   <td class="number">68</td>
-                  <td class="number">90</td>
-                  <td class="number">1</td>
-                  <td class="number">2,000</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Bramble River</a></th>
                   <td>Tree Top County</td>
                   <td class="number">34</td>
                   <td class="number warning">6</td>
-                  <td class="number">67</td>
-                  <td class="number">2</td>
-                  <td class="number">300</td>
+                  <td class="">Yes</td>
+                  <td class="">Yes</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Bumpy Hill</a></th>
                   <td>Fern Grove County</td>
                   <td class="number">33</td>
-                  <td class="number">92</td>
                   <td class="number">120</td>
-                  <td class="number">1</td>
-                  <td class="number">400</td>
+                  <td class="">Yes</td>
+                  <td class="">Yes</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Carrot Peak</a></th>
                   <td>Cherry Blossom County</td>
                   <td class="number">134</td>
-                  <td class="number warning">0</td>
                   <td class="number">180</td>
-                  <td class="number">2</td>
-                  <td class="number">2,400</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Cumin Creek</a></th>
                   <td>Oceanside County</td>
                   <td class="number">46</td>
                   <td class="number">48</td>
-                  <td class="number">78</td>
-                  <td class="number">1</td>
-                  <td class="number">2,000</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Dandelion Wine</a></th>
                   <td>Vineland County</td>
                   <td class="number">44</td>
                   <td class="number">103</td>
-                  <td class="number warning">12</td>
-                  <td class="number">1</td>
-                  <td class="number warning">30</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Elderflower Ridge</a></th>
                   <td>Riverside County</td>
                   <td class="number">90</td>
                   <td class="number warning">21</td>
-                  <td class="number">180</td>
-                  <td class="number">1</td>
-                  <td class="number">300</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Riverside</a></th>
                   <td>Grasslands County</td>
                   <td class="number">40</td>
                   <td class="number warning">14</td>
-                  <td class="number warning">22</td>
-                  <td class="number">2</td>
-                  <td class="number">300</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Rhubarb Hills</a></th>
                   <td>Mangrove County</td>
                   <td class="number">65</td>
                   <td class="number">50</td>
-                  <td class="number">90</td>
-                  <td class="number">1</td>
-                  <td class="number">300</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Turnip</a></th>
                   <td>Rain Forest County</td>
                   <td class="number">45</td>
                   <td class="number">109</td>
-                  <td class="number">33</td>
-                  <td class="number warning">0</td>
-                  <td class="number warning">0</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Ugly Fruit Bay</a></th>
                   <td>Wind Canyon County</td>
                   <td class="number">54</td>
                   <td class="number">68</td>
-                  <td class="number">90</td>
-                  <td class="number">1</td>
-                  <td class="number warning">0</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Vine Bay</a></th>
                   <td>Tree Top County</td>
                   <td class="number">34</td>
                   <td class="number warning">6</td>
-                  <td class="number">67</td>
-                  <td class="number">2</td>
-                  <td class="number">3,000</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Watermelon Cove</a></th>
                   <td>Fern Grove County</td>
                   <td class="number">33</td>
                   <td class="number">92</td>
-                  <td class="number">120</td>
-                  <td class="number">1</td>
-                  <td class="number">2,600</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Weather Top</a></th>
                   <td>Cherry Blossom County</td>
                   <td class="number">134</td>
-                  <td class="number">180</td>
                   <td class="number warning">0</td>
-                  <td class="number">2</td>
-                  <td class="number">400</td>
+                  <td class="warning">No</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Yellow Melon</a></th>
                   <td>Oceanside County</td>
                   <td class="number">102</td>
                   <td class="number">90</td>
-                  <td class="number">80</td>
-                  <td class="number">1</td>
-                  <td class="number warning">20</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Young Potato</a></th>
@@ -1097,18 +1109,16 @@
                     <p class="expiry-text">365</p>
                   </td>
                   <td class="number warning">12</td>
-                  <td class="number">103</td>
-                  <td class="number">1</td>
-                  <td class="number">300</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">CHC Zucchiniville</a></th>
                   <td>Riverside County</td>
                   <td class="number warning">21</td>
                   <td class="number">45</td>
-                  <td class="number">99</td>
-                  <td class="number warning">0</td>
-                  <td class="number">600</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link">
@@ -1117,171 +1127,152 @@
                   <td>Oceanside County</td>
                   <td class="number">102</td>
                   <td class="number">90</td>
-                  <td class="number">80</td>
-                  <td class="number">1</td>
-                  <td class="number">300</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Apricot Island</a></th>
                   <td>Grasslands County</td>
                   <td class="number warning">14</td>
                   <td class="number">40</td>
-                  <td class="number">44</td>
-                  <td class="number">2</td>
-                  <td class="number warning">20</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Azalea Hills</a></th>
                   <td>Mangrove County</td>
                   <td class="number">65</td>
                   <td class="number">50</td>
-                  <td class="number">90</td>
-                  <td class="number">1</td>
-                  <td class="number warning">0</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Bumblebee</a></th>
                   <td>Rain Forest County</td>
                   <td class="number">45</td>
                   <td class="number">109</td>
-                  <td class="number">33</td>
-                  <td class="number">1</td>
-                  <td class="number warning">0</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Capital Town</a></th>
                   <td>Wind Canyon County</td>
                   <td class="number">54</td>
                   <td class="number">68</td>
-                  <td class="number">90</td>
-                  <td class="number">1</td>
-                  <td class="number">100</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Copperville</a></th>
                   <td>Tree Top County</td>
                   <td class="number">34</td>
                   <td class="number warning">6</td>
-                  <td class="number">67</td>
-                  <td class="number">1</td>
-                  <td class="number">200</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Cupola</a></th>
                   <td>Fern Grove County</td>
                   <td class="number">33</td>
                   <td class="number">92</td>
-                  <td class="number">120</td>
-                  <td class="number">1</td>
-                  <td class="number warning">0</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Dartboard Hill</a></th>
                   <td>Cherry Blossom County</td>
                   <td class="number">134</td>
                   <td class="number warning">0</td>
-                  <td class="number">180</td>
-                  <td class="number">1</td>
-                  <td class="number warning">10</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Deck Town</a></th>
                   <td>Oceanside County</td>
                   <td class="number">46</td>
                   <td class="number">48</td>
-                  <td class="number">78</td>
-                  <td class="number">1</td>
-                  <td class="number">200</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Dune Hill</a></th>
                   <td>Vineland County</td>
                   <td class="number">44</td>
-                  <td class="number">103</td>
                   <td class="number warning">12</td>
-                  <td class="number">1</td>
-                  <td class="number">200</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Eagle Hill</a></th>
                   <td>Riverside County</td>
                   <td class="number">90</td>
                   <td class="number warning">21</td>
-                  <td class="number">180</td>
-                  <td class="number">1</td>
-                  <td class="number">1,000</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Eggplant Mountain</a></th>
                   <td>Grasslands County</td>
                   <td class="number warning">12</td>
                   <td class="number">40</td>
-                  <td class="number warning">24</td>
-                  <td class="number">2</td>
-                  <td class="number">600</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC El Toro</a></th>
                   <td>Mangrove County</td>
                   <td class="number">65</td>
                   <td class="number">50</td>
-                  <td class="number">90</td>
-                  <td class="number">1</td>
-                  <td class="number">990</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Fang Cove</a></th>
                   <td>Rain Forest County</td>
                   <td class="number">45</td>
                   <td class="number">109</td>
-                  <td class="number">33</td>
-                  <td class="number">1</td>
-                  <td class="number">900</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Grapefruit Hill</a></th>
                   <td>Wind Canyon County</td>
                   <td class="number">54</td>
                   <td class="number">68</td>
-                  <td class="number">90</td>
-                  <td class="number warning">0</td>
-                  <td class="number warning">0</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Gumdrop Cove</a></th>
                   <td>Tree Top County</td >
                   <td class="number">34</td>
                   <td class="number warning">6</td>
-                  <td class="number">67</td>
-                  <td class="number">1</td>
-                  <td class="number">200</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Happy Street</a></th>
                   <td>Fern Grove County</td>
                   <td class="number">33</td>
                   <td class="number">92</td>
-                  <td class="number">120</td>
-                  <td class="number">1</td>
-                  <td class="number">500</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Hilltop Station</a></th>
                   <td>Cherry Blossom County</td>
                   <td class="number">134</td>
-                  <td class="number">180</td>
                   <td class="number warning">0</td>
-                  <td class="number">1</td>
-                  <td class="number">400</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Iceberg</a></th>
                   <td>Oceanside County</td>
                   <td class="number">102</td>
                   <td class="number">90</td>
-                  <td class="number">80</td>
-                  <td class="number">1</td>
-                  <td class="number">200</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Idaho Hills</a></th>
@@ -1290,45 +1281,40 @@
                     <p class="expiry-text">365</p>
                   </td>
                   <td class="number warning">12</td>
-                  <td class="number">103</td>
-                  <td class="number">1</td>
-                  <td class="number">500</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Jackfruit</a></th>
                   <td>Riverside County</td>
                   <td class="number warning">21</td>
                   <td class="number">45</td>
-                  <td class="number">99</td>
-                  <td class="number">1</td>
-                  <td class="number">200</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Juniperberry</a></th>
                   <td>Grasslands County</td>
                   <td class="number warning">14</td>
-                  <td class="number">40</td>
                   <td class="number">44</td>
-                  <td class="number">2</td>
-                  <td class="number warning">0</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Lard Lane</a></th>
                   <td>Mangrove County</td>
                   <td class="number">65</td>
                   <td class="number">50</td>
-                  <td class="number">90</td>
-                  <td class="number">1</td>
-                  <td class="number">200</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">PHC Lobby Mountain</a></th>
                   <td>Rain Forest County</td>
                   <td class="number">45</td>
                   <td class="number">109</td>
-                  <td class="number">33</td>
-                  <td class="number">3</td>
-                  <td class="number">200</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link">
@@ -1337,9 +1323,8 @@
                   <td>Mangrove County</td>
                   <td class="number">32</td>
                   <td class="number">40</td>
-                  <td class="number">50</td>
-                  <td class="number">1</td>
-                  <td class="number">200</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link">
@@ -1348,9 +1333,8 @@
                   <td>Oceanside County</td>
                   <td class="number">202</td>
                   <td class="number">290</td>
-                  <td class="number">280</td>
-                  <td class="number">1</td>
-                  <td class="number">500</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link">
@@ -1359,9 +1343,8 @@
                   <td>Grasslands County</td>
                   <td class="number">100</td>
                   <td class="number">106</td>
-                  <td class="number">109</td>
-                  <td class="number">1</td>
-                  <td class="number">800</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link">
@@ -1370,9 +1353,8 @@
                   <td>Mangrove County</td>
                   <td class="number warning">19</td>
                   <td class="number">66</td>
-                  <td class="number">150</td>
-                  <td class="number">1</td>
-                  <td class="number">220</td>
+                  <td class="">Yes</td>
+                  <td class="warning">No</td>
                 </tr>
                 <tr>
                   <th class="link">
@@ -1381,9 +1363,8 @@
                   <td>Oceanside County</td>
                   <td class="number">52</td>
                   <td class="number warning">12</td>
-                  <td class="number">100</td>
-                  <td class="number">1</td>
-                  <td class="number">250</td>
+                  <td class="">Yes</td>
+                  <td class="">Yes</td>
                 </tr>
                 <tr>
                   <th class="link">
@@ -1392,9 +1373,8 @@
                   <td>Grasslands County</td>
                   <td class="number">80</td>
                   <td class="number">90</td>
-                  <td class="number">45</td>
-                  <td class="number">1</td>
-                  <td class="number">800</td>
+                  <td class="">Yes</td>
+                  <td class="">Yes</td>
                 </tr>
                 <tr>
                   <th class="link">
@@ -1403,9 +1383,8 @@
                   <td>Mangrove County</td>
                   <td class="number">100</td>
                   <td class="number warning">12</td>
-                  <td class="number">90</td>
-                  <td class="number">1</td>
-                  <td class="number">100</td>
+                  <td class="">Yes</td>
+                  <td class="">Yes</td>
                 </tr>
                 <tr>
                   <th class="link">
@@ -1414,9 +1393,8 @@
                   <td>Oceanside County</td>
                   <td class="number">90</td>
                   <td class="number warning">0</td>
-                  <td class="number">87</td>
-                  <td class="number">1</td>
-                  <td class="number">120</td>
+                  <td class="">Yes</td>
+                  <td class="">Yes</td>
                 </tr>
                 <tr>
                   <th class="link">
@@ -1425,9 +1403,8 @@
                   <td>Grasslands County</td>
                   <td class="number">90</td>
                   <td class="number">90</td>
-                  <td class="number">90</td>
-                  <td class="number">1</td>
-                  <td class="number">90</td>
+                  <td class="">Yes</td>
+                  <td class="">Yes</td>
                 </tr>
               </tbody>
             </table>
