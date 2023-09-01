@@ -357,6 +357,17 @@
         <div class="card">
           <div class="heading">
           <h3>Opportunistic screening</h3>
+          <div class="info">
+            <div class="info-hover-text">
+              <p>
+                <span>Numerator:</span> Patients screened for hypertension
+                months
+              </p>
+              <p>
+                <span>Denominator:</span> Approximate adult patients OPD per month
+              </p>
+            </div>
+          </div>
           <p>
             % of estimated adult OPD patients screened for hypertension
           </p>
@@ -1507,8 +1518,11 @@
           <a href="#note-bp-percent-controlled" class="nav-jump-links">% of patients with BP controlled</a>
           
           <span class="nav-section">Opportunistic screening</span>
-          <a href="#" class="nav-jump-links">Coming soon...</a>
-          <a href="#" class="nav-jump-links">Coming soon...</a>
+          <a href="#note-bp-screened" class="nav-jump-links">% of OPD patients screened</a>
+          <a href="#note-bp-screened-monthly" class="nav-jump-links">Monthly OPD patients screened</a>
+          
+          <span class="nav-section">Cohorts</span>
+          <a href="#note-bp-cohorts" class="nav-jump-links">Cohort reports</a>
         </aside>
         <main class="notes-body">
           
@@ -1593,6 +1607,7 @@
             </div>
             <div class="notes-details">
               <blockquote>
+                <h6>Value</h6>
                 <code>Cumulative registrations</code> in the hypertension program excluding <code>12 month lost to follow-up</code> and <code>Dead</code> patients.</code>
               </blockquote>
             </div>
@@ -1605,6 +1620,7 @@
             </div>
             <div class="notes-details">
               <blockquote>
+                <h6>Value</h6>
                 <code>Cumulative registrations</code> in the hypertension program excluding <code>Dead</code> patients.</code>
               </blockquote>
             </div>
@@ -1617,6 +1633,7 @@
             </div>
             <div class="notes-details">
               <blockquote>
+                <h6>Value</h6>
                 <i>New patients registered</i> in the hypertension program in a month who are diagnosed with hypertension (diagnosis could have happened on any date).
               </blockquote>
             </div>
@@ -1694,66 +1711,69 @@
           </div>
           
           <div class="notes-section">
-            <div class="notes-note">
-              <h6>More coming soon...</h6>
-              <p></p>
+            <div class="notes-note" id="bp-screening">
+              <h5>Opportunistic screening</h5>
+             <p>Facility-based opportunistic screening gives visibility into how many patients in the OPD (Outpatient Department) of hospitals are having their blood pressure measured to screen for hypertension.</p>
+             <p><b>Note:</b> In many health systems, the number of screened patients and the approximate number of adult patients visiting the OPD are only recorded on paper and are reported monthly in aggregate.</p>
+            </div>
+            <div class="notes-details">
+              
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-screened">
+              <h6>% of OPD patients screened for hypertension</h6>
+              <p>The approximate percentage of patients screened for hypertension in a month.</p>
             </div>
             <div class="notes-details">
               <blockquote>
-                
+                <h6>Numerator</h6>
+                <p><i>Adult OPD patients</i> with a blood pressure measure taken in a month</p>
+                <h6>Denominator</h6>
+                <p>Approximate <i>Adult patients visiting the OPD</i> of facilities per month</p>
               </blockquote>
             </div>
           </div>
           
           <div class="notes-section">
-            <div class="notes-note">
-              <h6></h6>
-              <p></p>
+            <div class="notes-note" id="note-bp-screened-monthly">
+              <h6>Monthly OPD patients screened for hypertension</h6>
+              <p>The number of patients screened for hypertension in a month.</p>
             </div>
             <div class="notes-details">
               <blockquote>
+                <h6>Value</h6>
+                <p><i>Adult OPD patients</i> with a blood pressure measure taken in a month</p>
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="bp-cohorts">
+              <h5>Cohort reports</h5>
+             <p>Cohorts allow program managers to track a set of patients receiving treatment over time. The dashboard takes all the patients registered during a quarter and displays the outcome of their visit in the following quarter.</p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>BP controlled numerator</h6>
+                <p>The number of <i>Patients with a BP &lt;140 OR &lt;90</i> at their last visit in the quarter after the quarter when they were registered.</p>
+                
+               <h6> BP not controlled numerator</h6>
+               <p>The number of <i>Patients with a BP &ge;140 AND &ge;90</i> at their last visit in the quarter after the quarter when they were registered.</p>
+                
+                <h6>No visit in 3 months numerator</h6>
+                <p>The number of <i>Patients with no visit</i> in the quarter after the quarter when they were registered.</p>
+                
+                <h6>Denominator</h6>
+                <p><i>New patients registered</i> in the hypertension program in a quarter.</p>
                 
               </blockquote>
             </div>
           </div>
           
         </main>
-        
-        
-          <!--li>
-           
-          <li>
-           
-            <ol>
-              <li>
-                
-                
-                
-              </li>
-              <li>
-                
-                
-              </li>
-              <li>
-                
-                
-                
-              </li>
-            </ol>
-          </li>
-          <li>
-            
-            
-            
-          </li>
-          <li>
-            <h5>Treatment coverage for hypertension</h5>
-          </li>
-          <li>
-            <h5>Opportunistic screening</h5>
-          </li>
-        </ol>
-      </div-->
+      </div>
       
       <div class="divider"></div>
     </main>
