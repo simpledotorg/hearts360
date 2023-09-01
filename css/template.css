@@ -42,6 +42,7 @@ h5 {
 }
 
 h6 {
+  font-size: 1.2rem;
   font-weight: bold;
   margin: 0 0 0.4rem 0;
 }
@@ -52,6 +53,63 @@ h6 {
   margin: 0;
   padding: 20px;
   color: #333;
+  display: flex;
+  gap: 64px;
+  position: relative;
+  
+  & .notes-nav {
+    width: 30%;
+    
+    & .nav-jump-links {
+      display: block;
+      font-size: 0.9rem;
+      padding: 4px 0;
+      margin-top: 2px;
+    }
+    
+    & .nav-section {
+      display: block;
+      color: rgba(0,0,0,0.4);
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  & .notes-body {
+    padding: 24px 0;
+  }
+  
+  & .notes-section {
+    display: flex;
+    gap: 64px;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    padding-top: 32px;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  & h5:after {
+    content: ".";
+    background: #333;
+    width: 160px;
+    height: 2px;
+    color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  & .notes-note {
+    width: 50%;
+  }
+  
+  & .notes-details {
+    width: 50%;
+  }
+  
+  & h2 {
+    margin-top: 16px;
+  }
   
   & h3 {
     text-transform: uppercase;
@@ -79,19 +137,18 @@ h6 {
     background: #283336;
     border-top: 2px solid rgba(0,0,0,0.1);
     padding: 20px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     border-radius: 5px;
     color: rgba(255,255,255,0.6);;
-    margin: 1rem 0;
     
     & code {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       background: rgba(255,255,255,0.2);
       color: #fff;
     }
     
     & i {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       background: rgba(255,255,255,0.2);
       color: aquamarine;
     }
@@ -100,7 +157,7 @@ h6 {
       font-size: 0.6rem;
       text-transform: uppercase;
       letter-spacing: 0.1rem;
-      color: slategrey;
+      color: gold;
     }
   }
 }
@@ -112,34 +169,6 @@ code {
   border-radius: 4px;
   color: cadetblue;
   white-space: nowrap;
-}
-
-ol {
-  list-style-type: decimal-leading-zero;
-  list-style-size: 3rem;
-  margin: 1.5rem 0 1.5rem 16px;
-  
-  & li {
-    padding-left: 12px;
-    margin: 1.5rem 0 2.5rem 32px;
-  }
-  
-  & ol {
-    list-style-type: lower-alpha;
-    margin-left: 0;
-    margin-bottom: 6em;
-    padding-left: 0;
-    
-    & li {
-      padding-left: 0;
-      margin-left: 0;
-      margin-top: 1.5rem;
-    }
-  }
-  
-  & p {
-    font-size: 0.9rem;
-  }
 }
 
 hr {

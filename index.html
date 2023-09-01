@@ -1448,126 +1448,303 @@
       <div class="divider"></div>
 
       <div class="notes">
-        
-        <h2>Data building blocks</h2>
-        <p>The dashboard requires just a handful of core data building blocks to generate the key indicator charts and tables.</p>
-        <ol>
-          <li>
-            <code>Cumulative registered patients</code>
-            <p>All patients diagnosed with hypertension. Dead patients are excluded.</p>
-          </li>
-          <li>
-            <code>Patients under care</code>
-            <p>All patients diagnosed with hypertension with a "visit" recorded in the last 12 months. A visit can have a simplified definition: the patient had a BP measure recorded in the last 12 months. Dead patients are excluded.</p>
-          </li>
-          <li>
-            <code>12 month lost to follow-up patients</code>
-            <p>All patients diagnosed with hypertension with no "visit" recorded in the last 12 months. A visit can have a simplified definition: the patient had no BP measures recorded in the last 12 months. Note: Some of the key indicators exclude 12-month lost to follow-up patients (i.e. the indicators only use "Patients under care") because these patients become a drag on the health system at scale and muddy the view of progress being made improving hypertension control.</p>
-          </li>
-          <li>
-            <code>Died</code>
-            <p>Dead patients are excluded from most indicators.</p>
-          </li>
-          <li>
-            <code>Patients with controlled blood pressure</code> and <code>Patients with uncontrolled blood pressure</code> in a month
-            <p>Controlled blood pressure in most countries is a BP measure &lt;140 mmHg systolic AND &lt; 90 mmHg diastolic. In a simple healthcare system, you can use the most recent BP measure in a month to calculate BP control. In more complex health systems where multiple blood pressures are recorded at each visit, you may need to average the measures.</p>
-          </li>
-          <li>
-            <p><code>Screened patients</code> (Aggregate data)</p>
-          </li>
-          <li>
-            <p><code>Estimated monthly adult OPD patients</code> (Aggregate data)</p>
-          </li>
-        </ol>
+        <aside class="notes-nav">
+          <h2>Data building blocks</h2>
+          <p>The dashboard requires just a handful of core data building blocks to generate the key indicator charts and tables.</p>
+        </aside>
+        <main class="notes-body">
+          <ol>
+            <li>
+              <code>Cumulative registered patients</code>
+              <p>All patients diagnosed with hypertension. Dead patients are excluded.</p>
+            </li>
+            <li>
+              <code>Patients under care</code>
+              <p>All patients diagnosed with hypertension with a "visit" recorded in the last 12 months. A visit can have a simplified definition: the patient had a BP measure recorded in the last 12 months. Dead patients are excluded.</p>
+            </li>
+            <li>
+              <code>12 month lost to follow-up patients</code>
+              <p>All patients diagnosed with hypertension with no "visit" recorded in the last 12 months. A visit can have a simplified definition: the patient had no BP measures recorded in the last 12 months. Note: Some of the key indicators exclude 12-month lost to follow-up patients (i.e. the indicators only use "Patients under care") because these patients become a drag on the health system at scale and muddy the view of progress being made improving hypertension control.</p>
+            </li>
+            <li>
+              <code>Died</code>
+              <p>Dead patients are excluded from most indicators.</p>
+            </li>
+            <li>
+              <code>Patients with controlled blood pressure</code> and <code>Patients with uncontrolled blood pressure</code> in a month
+              <p>Controlled blood pressure in most countries is a BP measure &lt;140 mmHg systolic AND &lt; 90 mmHg diastolic. In a simple healthcare system, you can use the most recent BP measure in a month to calculate BP control. In more complex health systems where multiple blood pressures are recorded at each visit, you may need to average the measures.</p>
+            </li>
+            <li>
+              <p><code>Screened patients</code> (Aggregate data)</p>
+            </li>
+            <li>
+              <p><code>Estimated monthly adult OPD patients</code> (Aggregate data)</p>
+            </li>
+          </ol>
+        </main>
       </div>
       <div class="notes">
-        <h2>Data definitions</h2>
-        <p>Many of the data definitions are based on the <a href="https://apps.who.int/iris/bitstream/handle/10665/260423/WHO-NMH-NVI-18.5-eng.pdf">WHO HEARTS</a> technical package.</p>
-        <ol>
+        <aside class="notes-nav">
+          <h2>Data definitions</h2>
+          <p>Many of the data definitions are based on the <a href="https://apps.who.int/iris/bitstream/handle/10665/260423/WHO-NMH-NVI-18.5-eng.pdf">WHO HEARTS</a> technical package.</p>
+          
+          <span class="nav-section">Hypertension treatment outcomes</span>
+          <a href="#note-bp-controlled" class="nav-jump-links">BP controlled at latest visit</a>
+          <a href="#note-bp-uncontrolled" class="nav-jump-links">BP not controlled at latest visit</a>
+          <a href="#note-bp-3-month-ltfu" class="nav-jump-links">No visit in past 3 months</a>
+          
+          <span class="nav-section">Registrations</span>
+          <a href="#note-bp-under-care" class="nav-jump-links">Patients under care</a>
+          <a href="#note-bp-registrations" class="nav-jump-links">Cumulative registrations</a>
+          <a href="#note-bp-monthly" class="nav-jump-links">Monthly registrations</a>
+          
+          <span class="nav-section">LTFU</span>
+          <a href="#note-bp-12-month-ltfu" class="nav-jump-links">12 month lost to follow-up</a>
+          
+          <span class="nav-section">Treatment coverage for hypertension</span>
+          <a href="#note-bp-percent-registered" class="nav-jump-links">% of patients registered</a>
+          <a href="#note-bp-percent-under-care" class="nav-jump-links">% of patients under care</a>
+          <a href="#note-bp-percent-controlled" class="nav-jump-links">% of patients with BP controlled</a>
+          
+          <span class="nav-section">Opportunistic screening</span>
+          <a href="#" class="nav-jump-links">Coming soon...</a>
+          <a href="#" class="nav-jump-links">Coming soon...</a>
+        </aside>
+        <main class="notes-body">
+          
+          <div class="notes-section">
+            <div class="notes-note">
+              <h5>Hypertension treatment outcomes</h5>
+              <p>The 3 treatment outcome indicators show whether patients in the hypertension control program are visiting health facilities regularly. Blood pressure control is the best indicator to know if patients under treatment are being treated effectively.</p>
+              <p>All 3 indicators have the same denominator.</p>
+            </div>
+            <div class="notes-details">
+              <!--blockquote>
+                <h6>Denominator</h6>
+                <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
+              </blockquote-->
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-controlled">
+              <h6>BP controlled at latest visit in past 3 months</h6>
+              <p>How many patients enrolled in the hypertension control program visited a health facility in the past 3 months with a healthy blood pressure?</p>
+              <p><b>Why are patients registered within the past 3 months excluded?</b> Three months gives patients time to take their hypertension medication and to get their BP controlled. Most newly registered patients have uncontrolled blood pressure and including them would not reflect an accurate picture of actual controlled patients.</p>
+              <p><b>Why is this important?</b> BP controlled reflects the overall health of a hypertension control program and is the most important hypertension control indicator.</p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Numerator</h6>
+                <p><code>Patients with controlled blood pressure</code> (&lt;140 systolic AND &lt; 90 diastolic) recorded at the patient's most recent visit within the past 3 months.</p>
+                <h6>Denominator</h6>
+                <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-uncontrolled">
+              <h6>BP not controlled at latest visit in past 3 months</h6>
+              <p>How many patients enrolled in the hypertension control program visited a health facility in the past 3 months with high blood pressure?</p>  
+              <p><b>Why is this important?</b> BP not controlled shows which patients are coming back to care, but require continued intervention to control their blood pressure.</p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Numerator</h6>
+                <p><code>Patients with uncontrolled blood pressure</code> (&ge;140 systolic OR &ge; 90 diastolic) recorded at the patient's most recent visit within the past 3 months.</p>
+                <h6>Denominator</h6>
+                <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-3-month-ltfu">
+              <h6>No visit in 3 months</h6>
+              <p>How many patients enrolled in the hypertension control program did not visit a health facility in the past 3 months?</p>  
+              <p><b>Note:</b> This can also be called "3 month lost to follow-up."</p>
+              <p><b>Why is this important?</b> This number reflects how good facilities are at retaining patients in care.</p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Numerator</h6>
+                <p>Patients no BP measure recorded within the past 3 months.</p>
+                <h6>Denominator</h6>
+                <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-registrations">
+              <h5>Registrations</h5>
+              <p>It is useful to know how many patients are enrolled in a hypertension control program and how many of those patients are "under care" (i.e. have visited at least once in the past 12 months).</p>
+            </div>
+            <div class="notes-details">
+              
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-under-care">
+              <h6>Patients under care</h6>
+              <p>Track the patients who have visited in the last 12 months and can be considered to be under care in the hypertension control program.</p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <code>Cumulative registrations</code> in the hypertension program excluding <code>12 month lost to follow-up</code> and <code>Dead</code> patients.</code>
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-registrations">
+              <h6>Cumulative registrations</h6>
+              <p>Track all of the patients who have been registered in the hypertension program. Over time, the cumulative registrations will be a larger number than <code>Patients under care</code>.</p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <code>Cumulative registrations</code> in the hypertension program excluding <code>Dead</code> patients.</code>
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-monthly">
+              <h6>Monthly new patients registered</h6>
+              <p>Monthly registrations give visibility into activity on-the-ground by health facility staff.</p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <i>New patients registered</i> in the hypertension program in a month who are diagnosed with hypertension (diagnosis could have happened on any date).
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-12-month-ltfu">
+              <h5>12 month lost to follow-up patients</h5>
+              <p>Patients with no "visit" in the past 12 months (i.e. no BP measure recorded in the past 12 months). </p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Numerator</h6>
+                <p>Patients no BP measure recorded within the past 12 months.</p>
+                <h6>Denominator</h6>
+                <p><code>Cumulative registered patients</code> in the hypertension program. Exclusions: <code>Dead</code> patients are excluded from the denominator.</p>
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note">
+              <h5>Treatment coverage for hypertension</h5>
+              <p>This indicator gives a view of how many expected individuals in the region are under treatment for hypertension and, of those patients, how many have their blood pressure under control.</p>
+              <p><b>Note:</b> The "Estimated number of adults" is usually derived from community surveys (e.g. <a href="https://www.who.int/teams/noncommunicable-diseases/surveillance/systems-tools/steps">WHO STEPS survey</a>) and can be updated annually or even less frequently in a data system.</p>
+            </div>
+            <div class="notes-details">
+              
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note"note-bp-percent-registered>
+              <h6>% of patients registered</h6>
+              <p>The number of patients in the region registered in the hypertension control program.</p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Numerator</h6>
+                <p><code>Cumulative registrations</code></p>
+                <h6>Denominator</h6>
+                <p><code>Estimated number of adults with hypertension</code> in the community.</p>
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note"note-bp-percent-under-care>
+              <h6>% of patients under care</h6>
+              <p>The number of patients in the region registered in the hypertension control program who have visited a facility at least once in the past 12 months.</p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Numerator</h6>
+                <p><code>Patients under care</code></p>
+                <h6>Denominator</h6>
+                <p><code>Estimated number of adults with hypertension</code> in the community.</p>
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-percent-controlled">
+              <h6>% of patients with BP controlled</h6>
+              <p>The number of patients in the region registered in the hypertension control program who have their BP controlled in the past 3 months.</p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Numerator</h6>
+                <p><code>Patients with controlled blood pressure</code> in past 3 months.</p>
+                <h6>Denominator</h6>
+                <p><code>Estimated number of adults with hypertension</code> in the community.</p>
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note">
+              <h6>More coming soon...</h6>
+              <p></p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                
+              </blockquote>
+            </div>
+          </div>
+          
+          <div class="notes-section">
+            <div class="notes-note">
+              <h6></h6>
+              <p></p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                
+              </blockquote>
+            </div>
+          </div>
+          
+        </main>
+        
+        
+          <!--li>
+           
           <li>
-            <h5>Hypertension treatment outcomes</h5>
-            <p>The 3 treatment outcome indicators show whether patients in the hypertension control program are visiting health facilities regularly. Blood pressure control is the best indicator to know if patients under treatment are being treated effectively.</p>
-            <p>All 3 indicators have the same denominator.</p>
+           
             <ol>
               <li>
-                <h6 class="bp-controlled">BP controlled at latest visit in past 3 months</h6>
-                <p>How many patients enrolled in the hypertension control program visited a health facility in the past 3 months with a healthy blood pressure?</p>
-                <blockquote>
-                  <h6>Numerator</h6>
-                  <p><code>Patients with controlled blood pressure</code> (&lt;140 systolic AND &lt; 90 diastolic) recorded at the patient's most recent visit within the past 3 months.</p>
-                  <h6>Denominator</h6>
-                  <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
-                </blockquote>
                 
-                <p><b>Why are patients registered within the past 3 months excluded?</b> Three months gives patients time to take their hypertension medication and to get their BP controlled. Most newly registered patients have uncontrolled blood pressure and including them would not reflect an accurate picture of actual controlled patients.</p>
-                  
-                <p><b>Why is this important?</b> BP controlled reflects the overall health of a hypertension control program and is the most important hypertension control indicator.</p>
+                
                 
               </li>
               <li>
-                <h6 class="bp-uncontrolled">BP not controlled at latest visit in past 3 months</h6>
-                <p>How many patients enrolled in the hypertension control program visited a health facility in the past 3 months with high blood pressure?</p>
-                <blockquote>
-                  <h6>Numerator</h6>
-                  <p><code>Patients with uncontrolled blood pressure</code> (&ge;140 systolic OR &ge; 90 diastolic) recorded at the patient's most recent visit within the past 3 months.</p>
-                  <h6>Denominator</h6>
-                  <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
-                </blockquote>
-                  
-                <p><b>Why is this important?</b> BP not controlled shows which patients are coming back to care, but require continued hypertension treatment to control their blood pressure.</p>
+                
                 
               </li>
               <li>
-                <h6 class="three-month-ltfu">No visit in 3 months</h6>
-                <p>How many patients enrolled in the hypertension control program did not visit a health facility in the past 3 months?</p>
-                <blockquote>
-                  <h6>Numerator</h6>
-                  <p>Patients no BP measure recorded within the past 3 months.</p>
-                  <h6>Denominator</h6>
-                  <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
-                </blockquote>
-                  
-                <p><b>Why is this important?</b> This number reflects how good facilities are at retaining patients in care.</p>
+                
+                
                 
               </li>
             </ol>
           </li>
           <li>
-            <h5>Registered patients</h5>
-            <p>It is useful to know how many patients are enrolled in a hypertension control program and how many of those patients are "under care" (i.e. have visited at least once in the past 12 months).</p>
-            <ol>
-              <li>
-                <h6 class="under-care">Patients under care</h6>
-                <p>Track the patients who have visited in the last 12 months and can be considered to be under care in the hypertension control program.</p>
-                <blockquote>
-                  <code>Cumulative registrations</code> in the hypertension program excluding <code>12 month lost to follow-up</code> and <code>Dead</code> patients.</code>
-                </blockquote>
-              </li>
-              <li>
-                <h6 class="registrations">Cumulative registrations</h6>
-                <p>Track all of the patients who have been registered in the hypertension program. Over time, the cumulative registrations will be a larger number than <code>Patients under care</code>.</p>
-                <blockquote>
-                  <code>Cumulative registrations</code> in the hypertension program excluding <code>Dead</code> patients.</code>
-                </blockquote>
-              </li>
-              <li>
-                <h6 class="registrations">Monthly new patients registered</h6>
-                <p>Monthly registrations give visibility into activity on-the-ground by health facility staff.</p>
-                <blockquote>
-                  <i>New patients registered</i> in the hypertension program in a month who are diagnosed with hypertension (diagnosis could have happened on any date).
-                </blockquote>
-              </li>
-            </ol>
-          </li>
-          <li>
-            <h5>12 month lost to follow-up patients</h5>
-            <p>Patients with no "visit" in the past 12 months (i.e. no BP measure recorded in the past 12 months). </p>
-            <blockquote>
-              <h6>Numerator</h6>
-              <p>Patients no BP measure recorded within the past 12 months.</p>
-              <h6>Denominator</h6>
-              <p><code>Cumulative registered patients</code> in the hypertension program. Exclusions: <code>Dead</code> patients are excluded from the denominator.</p>
-            </blockquote>
+            
+            
+            
           </li>
           <li>
             <h5>Treatment coverage for hypertension</h5>
@@ -1576,7 +1753,7 @@
             <h5>Opportunistic screening</h5>
           </li>
         </ol>
-      </div>
+      </div-->
       
       <div class="divider"></div>
     </main>
