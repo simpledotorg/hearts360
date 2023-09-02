@@ -416,6 +416,9 @@
             <table id="table-regions">
               <colgroup>
                 <col />
+                <col />
+                <col />
+                <col span="2" />
                 <col span="2" />
                 <col span="2" />
                 <col span="2" />
@@ -426,6 +429,7 @@
                   <td></td>
                   <th scope="colgroup">Patients under care</th>
                   <th scope="colgroup">Monthly new<br>patients registered</th>
+                  <th colspan="2" scope="colgroup">Patients<br>prescribed statins</th>
                   <th colspan="2" scope="colgroup">FBS &lt;126 mg/dl or<br>HbA1c &lt;7%</th>
                   <th colspan="2" scope="colgroup">FBS 126-199 mg/dL or<br>HbA1c 7-8.9%</th>
                   <th colspan="2" scope="colgroup">FBS &ge;200 mg/dL or<br>HbA1c &ge;9%</th>
@@ -445,6 +449,8 @@
                   <th><div>Percent</div></th>
                   <th class="text-right"><div>Total</div></th>
                   <th><div>Percent</div></th>
+                  <th class="text-right"><div>Total</div></th>
+                  <th><div>Percent</div></th>
                 </tr>
               </thead>
               <tbody>
@@ -452,6 +458,8 @@
                   <th class="link"><b>River District</b></th>
                   <td class="number under-care bold">3,500</td>
                   <td class="number">50</td>
+                  <td class="number">2,300</td>
+                  <td class="bold">66%</td>
                   <td class="number">700</td>
                   <td class="bp-controlled bold">20%</td>
                   <td class="number">1,425</td>
@@ -465,6 +473,8 @@
                   <th class="link"><a href="#">Cherry Blossom County</a></th>
                   <td class="number under-care bold">300</td>
                   <td class="number">3</td>
+                  <td class="number">186</td>
+                  <td class="bold">62%</td>
                   <td class="number">93</td>
                   <td class="bp-controlled bold">31%</td>
                   <td class="number">84</td>
@@ -478,6 +488,8 @@
                   <th class="link"><a href="#">Fern Grove County</a></th>
                   <td class="number under-care bold">1,100</td>
                   <td class="number">10</td>
+                  <td class="number">572</td>
+                  <td class="bold">52%</td>
                   <td class="number">286</td>
                   <td class="bp-controlled bold">26%</td>
                   <td class="number">440</td>
@@ -491,6 +503,8 @@
                   <th class="link"><a href="#">Grasslands County</a></th>
                   <td class="number under-care bold">80</td>
                   <td class="number">2</td>
+                  <td class="number">41</td>
+                  <td class="bold">50%</td>
                   <td class="number">20</td>
                   <td class="bp-controlled bold">25%</td>
                   <td class="number">27</td>
@@ -504,6 +518,8 @@
                   <th class="link"><a href="#">Hillside County</a></th>
                   <td class="number under-care bold">90</td>
                   <td class="number">2</td>
+                  <td class="number">45</td>
+                  <td class="bold">48%</td>
                   <td class="number">22</td>
                   <td class="bp-controlled bold">24%</td>
                   <td class="number">32</td>
@@ -517,6 +533,8 @@
                   <th class="link"><a href="#">Ice Caps County</a></th>
                   <td class="number under-care bold">50</td>
                   <td class="number">0</td>
+                  <td class="number">22</td>
+                  <td class="bold">44%</td>
                   <td class="number">11</td>
                   <td class="bp-controlled bold">22%</td>
                   <td class="number">20</td>
@@ -530,6 +548,8 @@
                   <th class="link"><a href="#">Mangrove County</a></th>
                   <td class="number under-care bold">1,200</td>
                   <td class="number">6</td>
+                  <td class="number">430</td>
+                  <td class="bold">36%</td>
                   <td class="number">216</td>
                   <td class="bp-controlled bold">18%</td>
                   <td class="number">540</td>
@@ -541,21 +561,25 @@
                 </tr>
                 <tr>
                   <th class="link"><a href="#">Mountain County</a></th>
-                  <td class="number under-care bold">3</td>
+                  <td class="number under-care bold">30</td>
                   <td class="number">1</td>
-                  <td class="number">1</td>
+                  <td class="number">10</td>
+                  <td class="bold">33%</td>
+                  <td class="number">6</td>
                   <td class="bp-controlled bold">17%</td>
-                  <td class="number">1</td>
+                  <td class="number">14</td>
                   <td class="bp-uncontrolled bold">46%</td>
-                  <td class="number">0</td>
+                  <td class="number">5</td>
                   <td class="bp-uncontrolled-dark bold">15%</td>
-                  <td class="number">1</td>
+                  <td class="number">6</td>
                   <td class="three-month-ltfu bold">22%</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">Oceanside County</a></th>
                   <td class="number under-care bold">15</td>
                   <td class="number">12</td>
+                  <td class="number">4</td>
+                  <td class="bold">32%</td>
                   <td class="number">2</td>
                   <td class="bp-controlled bold">16%</td>
                   <td class="number">7</td>
@@ -569,6 +593,8 @@
                   <th class="link"><a href="#">Peaks County</a></th>
                   <td class="number under-care bold">46</td>
                   <td class="number">2</td>
+                  <td class="number">14</td>
+                  <td class="bold">30%</td>
                   <td class="number">7</td>
                   <td class="bp-controlled bold">15%</td>
                   <td class="number">22</td>
@@ -582,6 +608,8 @@
                   <th class="link"><a href="#">Rain Forest County</a></th>
                   <td class="number under-care bold">47</td>
                   <td class="number">0</td>
+                  <td class="number">12</td>
+                  <td class="bold">24%</td>
                   <td class="number">6</td>
                   <td class="bp-controlled bold">12%</td>
                   <td class="number">20</td>
@@ -595,6 +623,8 @@
                   <th class="link"><a href="#">Rivers Edge County</a></th>
                   <td class="number under-care bold">90</td>
                   <td class="number">0</td>
+                  <td class="number">18</td>
+                  <td class="bold">20%</td>
                   <td class="number">9</td>
                   <td class="bp-controlled bold">10%</td>
                   <td class="number">41</td>
@@ -608,6 +638,8 @@
                   <th class="link"><a href="#">Sunshine Coast County</a></th>
                   <td class="number under-care bold">18</td>
                   <td class="number">0</td>
+                  <td class="number">4</td>
+                  <td class="bold">18%</td>
                   <td class="number">2</td>
                   <td class="bp-controlled bold">9%</td>
                   <td class="number">8</td>
@@ -621,6 +653,8 @@
                   <th class="link"><a href="#">Tree Top County</a></th>
                   <td class="number under-care bold">300</td>
                   <td class="number">6</td>
+                  <td class="number">36</td>
+                  <td class="bold">12%</td>
                   <td class="number">18</td>
                   <td class="bp-controlled bold">6%</td>
                   <td class="number">114</td>
@@ -634,6 +668,8 @@
                   <th class="link"><a href="#">Vineland County</a></th>
                   <td class="number under-care bold">140</td>
                   <td class="number">6</td>
+                  <td class="number">14</td>
+                  <td class="bold">10%</td>
                   <td class="number">7</td>
                   <td class="bp-controlled bold">5%</td>
                   <td class="number">59</td>
@@ -647,6 +683,8 @@
                   <th class="link"><a href="#">Wind Canyon County</a></th>
                   <td class="number under-care bold">21</td>
                   <td class="number">0</td>
+                  <td class="number">2</td>
+                  <td class="bold">8%</td>
                   <td class="number">1</td>
                   <td class="bp-controlled bold">4%</td>
                   <td class="number">11</td>
