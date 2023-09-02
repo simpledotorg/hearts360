@@ -2,6 +2,10 @@
   --system-ui: system-ui, Roboto, Helvetica, Arial, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #f8f8f8;
   font-family: var(--system-ui);
