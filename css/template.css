@@ -230,8 +230,7 @@ main {
 }
 
 .banner {
-  /* background: #fff; */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  background: #0075eb;
   width: 100%;
   font-size: 0.85em;
 
@@ -243,7 +242,7 @@ main {
     width: 100%;
     max-width: 1600px;
     margin: auto;
-    padding: 12px 22px;
+    padding: 16px 22px;
     position: relative;
     font-weight: 600;
   }
@@ -267,6 +266,10 @@ main {
     &::after {
       content: ' ↗';
     }
+  }
+  
+  & a {
+    color: #fff;
   }
 }
 
@@ -296,7 +299,7 @@ main {
 
 .navigation {
   font-size: 0.9em;
-  color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.5);
 
   & form, ul {
     display: block;
@@ -314,7 +317,6 @@ main {
   & select {
     padding: 4px 32px 4px 8px;
     margin: 0 2px;
-    border: 1px solid rgba(0, 0, 255, 0.1);
     background-color: #fff;
     border-radius: 4px;
     /** for the dropdown indicator */
