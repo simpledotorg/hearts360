@@ -270,6 +270,13 @@ main {
   
   & a {
     color: #fff;
+    display: inline-block;
+    padding: 4px 2px;
+  }
+  
+  & span {
+    display: inline-block;
+    padding: 4px 2px;
   }
 }
 
@@ -307,11 +314,6 @@ main {
     max-width: 1600px;
     margin: auto;
     position: relative;
-  }
-
-  & a {
-    display: inline-block;
-    padding: 4px 2px;
   }
 
   & select {
