@@ -243,7 +243,7 @@ main {
     width: 100%;
     max-width: 1600px;
     margin: auto;
-    padding: 12px 20px;
+    padding: 12px 22px;
     position: relative;
     font-weight: 600;
   }
@@ -256,20 +256,6 @@ main {
   .navigation-title-image {
     margin: -2px 8px 0 8px;
     display: inline-block;
-  }
-  
-  & .link-dashboards {
-    & a {
-      color: #333;
-      padding: 12px;
-      margin-right: 8px;
-    }
-    & a:hover {
-      text-decoration: none;
-    }
-    & a.active {
-      border-bottom: 3px solid #333;
-    }
   }
 
   & .link-list {
@@ -284,11 +270,32 @@ main {
   }
 }
 
+.link-dashboards {
+  font-size: 0.8rem;
+  padding: 12px 0;
+  margin: 0 0 2rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  
+  & div {
+    margin: 0 auto;
+    padding: 0 12px;
+    max-width: 1600px;
+  }
+  & a {
+    color: #333;
+    padding: 12px;
+    margin-right: 8px;
+  }
+  & a:hover {
+    text-decoration: none;
+  }
+  & a.active {
+    border-bottom: 3px solid #333;
+  }
+}
+
 .navigation {
-  display: block;
-  width: 100%;
   font-size: 0.9em;
-  margin: 1rem 0 2rem 0;
   color: rgba(0, 0, 0, 0.2);
 
   & form, ul {
@@ -296,7 +303,6 @@ main {
     width: 100%;
     max-width: 1600px;
     margin: auto;
-    padding: 12px 24px;
     position: relative;
   }
 
