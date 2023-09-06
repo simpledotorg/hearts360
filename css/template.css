@@ -319,11 +319,11 @@ main {
   & select {
     padding: 4px 32px 4px 8px;
     margin: 0 2px;
-    background-color: #fff;
+    background-color: #d9e3ff;
     border-radius: 4px;
     /** for the dropdown indicator */
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='LightGray' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='Gray' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 6px center;
     background-size: 0.9em;
@@ -333,10 +333,9 @@ main {
     }
 
     &.active {
-      background-color: #d9e3ff;
+      background-color: #fff;
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='Blue' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
       color: #0035bc;
-      border: 1px solid #4b7eff;
       font-weight: bold;
     }
   }
