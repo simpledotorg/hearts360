@@ -839,7 +839,8 @@ const dmLtfu3MonthData = {
         38, 36, 32, 30, 28, 27, 26, 22, 23, 22, 24, 22, 20, 26, 22, 21, 22, 22,
       ],
       borderColor: "#ed6300",
-      backgroundColor: "rgba(230, 137, 70, 0.1)",
+      backgroundColor: "transparent",
+      yAxisID: "y",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
@@ -847,6 +848,26 @@ const dmLtfu3MonthData = {
             18 // number of data elements
           ),
       },
+    },
+    {
+      type: "bar",
+      label: "No visit",
+      data: [
+        24, 26, 27, 25, 24, 23, 20, 19, 18, 18, 17, 17, 18, 17, 19, 19, 17, 17,
+      ],
+      borderColor: "rgba(238, 129, 83, 0.8)",
+      backgroundColor: "rgba(238, 129, 83, 0.8)",
+      yAxisID: "y",
+    },
+    {
+      type: "bar",
+      label: "Visit no blood sugar measure",
+      data: [
+        14, 10, 5, 5, 4, 4, 6, 3, 4, 3, 6, 4, 2, 8, 4, 2, 4, 5,
+      ],
+      borderColor: "rgba(242, 189, 167, 0.8)",
+      backgroundColor: "rgba(242, 189, 167, 0.8)",
+      yAxisID: "y",
     },
   ],
 };
@@ -857,6 +878,9 @@ dmLtfu3MonthConfig.options.plugins.tooltip.callbacks = { label: percentageLabel 
 dmLtfu3MonthConfig.options.scales.y.ticks.callback = (val) => {
   return val + "%";
 };
+
+dmLtfu3MonthConfig.options.scales.x.stacked = true
+dmLtfu3MonthConfig.options.scales.y.stacked = true
 
 const dmLtfu3MonthCanvas = document.getElementById("dmLtfu3Month");
 if (dmLtfu3MonthCanvas) {
