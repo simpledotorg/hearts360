@@ -483,54 +483,53 @@ if (ltfu12MonthsCanvas) {
 // Hypertension opportunistic screening
 const screeningsData = {
   labels: [
-  "Mar-2022",
-  "Apr-2022",
-  "May-2022",
-  "Jun-2022",
-  "Jul-2022",
-  "Aug-2022",
-  "Sep-2022",
-  "Oct-2022",
-  "Nov-2022",
-  "Dec-2022",
-  "Jan-2023",
-  "Feb-2023",
-  "Mar-2023",
-  "Apr-2023",
-  "May-2023",
-  "Jun-2023",
-  "Jul-2023",
-  "Aug-2023",
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
   ],
   datasets: [
-  {
-  label: "% of patients screened",
-  data: [
-  10, 15, 16, 12, 11, 10, 9, 11, 14, 20, 22, 23,
-  23, 24, 23, 24, 23, 6,
-  ],
-  segment: {
-    borderDash: (ctx) =>
-      dynamicChartSegementDashed(
-        ctx,
-        18 // number of data elements
-      ),
-  },
-  borderColor: "#34AEA0",
-  backgroundColor: "transparent",
-  yAxisID: "y",
-  },
-  {
-  type: "bar",
-  label: "Monthly screenings",
-  data: [
-  2000, 2200, 2300, 2200, 1600, 1800, 3400, 3600, 3900, 5800, 5700, 5600, 6600, 6200,
-  6000, 6500, 6900, 500,
-  ],
-  borderColor: "#C5E5E2",
-  backgroundColor: "#C5E5E2",
-  yAxisID: "yMonthlyscreenings",
-  },
+    {
+      label: "% of patients screened",
+      data: [
+        10, 15, 16, 12, 11, 10, 9, 11, 14, 20, 22, 23, 23, 24, 23, 24, 23, 6,
+      ],
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+      borderColor: "#34AEA0",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+    },
+    {
+      type: "bar",
+      label: "Monthly screenings",
+      data: [
+        2000, 2200, 2300, 2200, 1600, 1800, 3400, 3600, 3900, 5800, 5700, 5600,
+        6600, 6200, 6000, 6500, 6900, 500,
+      ],
+      borderColor: "#C5E5E2",
+      backgroundColor: "#C5E5E2",
+      yAxisID: "yMonthlyscreenings",
+    },
   ],
 };
 
@@ -545,7 +544,6 @@ screeningsConfig.options.scales.y.ticks.callback = (val) => {
 };
 screeningsConfig.options.scales.y.max = 100;
 
-
 screeningsConfig.options.scales.yMonthlyscreenings = {
   display: false,
   beginAtZero: true,
@@ -555,11 +553,11 @@ screeningsConfig.options.scales.yMonthlyscreenings = {
 screeningsConfig.options.plugins.tooltip.displayColors = true;
 screeningsConfig.options.plugins.tooltip.callbacks = {
   labelColor: function (context) {
-  return {
-  borderColor: "#fff",
-  backgroundColor: context.dataset.borderColor,
-  borderWidth: 1,
-  };
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
   },
 };
 
@@ -790,8 +788,8 @@ dmUncontrolledConfig.options.scales.y.ticks.callback = (val) => {
   return val + "%";
 };
 
-dmUncontrolledConfig.options.scales.x.stacked = true
-dmUncontrolledConfig.options.scales.y.stacked = true
+dmUncontrolledConfig.options.scales.x.stacked = true;
+dmUncontrolledConfig.options.scales.y.stacked = true;
 
 dmUncontrolledConfig.options.plugins.tooltip.displayColors = true;
 dmUncontrolledConfig.options.plugins.tooltip.callbacks = {
@@ -853,7 +851,9 @@ const dmLtfu3MonthData = {
 
 const dmLtfu3MonthConfig = baseLineChartConfig();
 dmLtfu3MonthConfig.data = dmLtfu3MonthData;
-dmLtfu3MonthConfig.options.plugins.tooltip.callbacks = { label: percentageLabel };
+dmLtfu3MonthConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
 dmLtfu3MonthConfig.options.scales.y.ticks.callback = (val) => {
   return val + "%";
 };
@@ -890,7 +890,8 @@ const dmRegistrationsData = {
     {
       label: "Cumulative registrations",
       data: [
-        900, 1000, 1100, 1200, 1400, 1500, 2000, 2500, 2750, 3000, 3200, 3500, 3750, 3900, 4000, 4050, 4100, 4150,
+        900, 1000, 1100, 1200, 1400, 1500, 2000, 2500, 2750, 3000, 3200, 3500,
+        3750, 3900, 4000, 4050, 4100, 4150,
       ],
       borderColor: "#007ee4",
       backgroundColor: "transparent",
@@ -899,7 +900,8 @@ const dmRegistrationsData = {
     {
       label: "Patients under care",
       data: [
-        720, 810, 900, 990, 1180, 1250, 1700, 2150, 2350, 2580, 2750, 3030, 3250, 3380, 3440, 3470, 3500, 3500,
+        720, 810, 900, 990, 1180, 1250, 1700, 2150, 2350, 2580, 2750, 3030,
+        3250, 3380, 3440, 3470, 3500, 3500,
       ],
       borderColor: "#b51bdc",
       backgroundColor: "transparent",
@@ -909,7 +911,8 @@ const dmRegistrationsData = {
       type: "bar",
       label: "Monthly registrations",
       data: [
-        150, 100, 100, 100, 200, 100, 500, 500, 250, 250, 200, 300, 250, 150, 100, 50, 50, 50,
+        150, 100, 100, 100, 200, 100, 500, 500, 250, 250, 200, 300, 250, 150,
+        100, 50, 50, 50,
       ],
       borderColor: "#BEDFF9",
       backgroundColor: "#BEDFF9",
@@ -972,7 +975,10 @@ const dmLtfu12MonthsData = {
   datasets: [
     {
       label: "12 month lost to follow-up",
-      data: [20, 19, 18, 18, 18, 16, 17, 15, 14, 15, 14, 14, 13, 13, 13, 14, 14, 15, 16],
+      data: [
+        20, 19, 18, 18, 18, 16, 17, 15, 14, 15, 14, 14, 13, 13, 13, 14, 14, 15,
+        16,
+      ],
       borderColor: "#FF3355",
       backgroundColor: "rgba(255, 51, 85, 0.1)",
       segment: {
@@ -1003,52 +1009,51 @@ if (dmLtfu12MonthsCanvas) {
 // DM opportunistic screening
 const dmScreeningsData = {
   labels: [
-  "Mar-2022",
-  "Apr-2022",
-  "May-2022",
-  "Jun-2022",
-  "Jul-2022",
-  "Aug-2022",
-  "Sep-2022",
-  "Oct-2022",
-  "Nov-2022",
-  "Dec-2022",
-  "Jan-2023",
-  "Feb-2023",
-  "Mar-2023",
-  "Apr-2023",
-  "May-2023",
-  "Jun-2023",
-  "Jul-2023",
-  "Aug-2023",
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
   ],
   datasets: [
-  {
-  label: "% of patients screened",
-  data: [
-  8, 6, 8, 7, 8, 6, 7, 7, 8, 9, 10, 10, 10, 9, 10, 12, 16, 2,
-  ],
-  segment: {
-    borderDash: (ctx) =>
-      dynamicChartSegementDashed(
-        ctx,
-        18 // number of data elements
-      ),
-  },
-  borderColor: "#34AEA0",
-  backgroundColor: "transparent",
-  yAxisID: "y",
-  },
-  {
-  type: "bar",
-  label: "Monthly screenings",
-  data: [
-  2400, 1500, 1500, 1800, 1500, 1800, 1800, 2100, 2400, 2700, 3000, 3000, 3000, 2700, 3000, 3600, 4800, 600,
-  ],
-  borderColor: "#C5E5E2",
-  backgroundColor: "#C5E5E2",
-  yAxisID: "yMonthlyscreenings",
-  },
+    {
+      label: "% of patients screened",
+      data: [8, 6, 8, 7, 8, 6, 7, 7, 8, 9, 10, 10, 10, 9, 10, 12, 16, 2],
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+      borderColor: "#34AEA0",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+    },
+    {
+      type: "bar",
+      label: "Monthly screenings",
+      data: [
+        2400, 1500, 1500, 1800, 1500, 1800, 1800, 2100, 2400, 2700, 3000, 3000,
+        3000, 2700, 3000, 3600, 4800, 600,
+      ],
+      borderColor: "#C5E5E2",
+      backgroundColor: "#C5E5E2",
+      yAxisID: "yMonthlyscreenings",
+    },
   ],
 };
 
@@ -1063,7 +1068,6 @@ dmScreeningsConfig.options.scales.y.ticks.callback = (val) => {
 };
 dmScreeningsConfig.options.scales.y.max = 100;
 
-
 dmScreeningsConfig.options.scales.yMonthlyscreenings = {
   display: false,
   beginAtZero: true,
@@ -1073,11 +1077,11 @@ dmScreeningsConfig.options.scales.yMonthlyscreenings = {
 dmScreeningsConfig.options.plugins.tooltip.displayColors = true;
 dmScreeningsConfig.options.plugins.tooltip.callbacks = {
   labelColor: function (context) {
-  return {
-  borderColor: "#fff",
-  backgroundColor: context.dataset.borderColor,
-  borderWidth: 1,
-  };
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
   },
 };
 
@@ -1274,4 +1278,98 @@ dmDrugStockConfig.options.plugins.tooltip.callbacks = {
 const dmDrugStockCanvas = document.getElementById("dmdrugstock");
 if (dmDrugStockCanvas) {
   createChart(dmDrugStockCanvas, dmDrugStockConfig);
+}
+
+// pie chart treatment coverage
+// Co-morbid Hypertension and Diabetes: BP Uncontrolled
+const treatmentCoverageData = {
+  labels: ["test", "test2"],
+  datasets: [
+    {
+      label: "BP controlled",
+      data: [
+        26, 28, 31, 30, 30, 32, 36, 38, 39, 41, 40, 42, 45, 44, 45, 47, 50, 48,
+      ],
+      borderColor: "#3BB231",
+      backgroundColor: "rgba(69, 205, 57, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+
+const pieData = {
+  labels: [
+    "% of people registered",
+    "% of people under care",
+    "% of people with BP controlled",
+    "Estimated population with HTN",
+  ],
+  datasets: [
+    {
+      label: "% of people registered",
+      data: [5, 0, 0, 95],
+      backgroundColor: [
+        "rgb(0, 126, 228)",
+        "rgb(181, 27, 220)",
+        "rgb(59, 178, 49)",
+        "rgb(241, 241, 241)",
+      ],
+      hoverOffset: 4,
+    },
+    {
+      label: "% of people under care",
+      data: [0, 4, 0, 96],
+      backgroundColor: [
+        "rgb(0, 126, 228)",
+        "rgb(181, 27, 220)",
+        "rgb(59, 178, 49)",
+        "rgb(241, 241, 241)",
+      ],
+      hoverOffset: 4,
+    },
+    {
+      label: "% of people with BP controlled",
+      data: [0, 0, 2, 98],
+      backgroundColor: [
+        "rgb(0, 126, 228)",
+        "rgb(181, 27, 220)",
+        "rgb(59, 178, 49)",
+        "rgb(241, 241, 241)",
+      ],
+      hoverOffset: 4,
+    },
+  ],
+};
+const pieConfig = {
+  type: "doughnut",
+  data: pieData,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: false,
+        // text: "Chart.js Doughnut Chart",
+      },
+      legend: {
+        display: false,
+      },
+    },
+  },
+};
+
+const treatmentCoverageConfig = pieConfig;
+// treatmentCoverageConfig.data = treatmentCoverageData;
+
+const treatmentCoverageCanvas = document.getElementById("treatmentcoverage");
+if (treatmentCoverageCanvas) {
+  createChart(treatmentCoverageCanvas, treatmentCoverageConfig);
 }
