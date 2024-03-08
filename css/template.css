@@ -28,9 +28,8 @@ h1 {
   font-size: 2rem;
   font-weight: bold;
   @media screen and (min-width: 880px) {
-    font-size: 3rem;  
+    font-size: 3rem;
   }
-  
 }
 
 h2 {
@@ -60,38 +59,38 @@ h6 {
   display: flex;
   gap: 64px;
   position: relative;
-  
+
   & .notes-nav {
     width: 30%;
-    
+
     & .nav-jump-links {
       display: block;
       font-size: 0.9rem;
       padding: 4px 0;
       margin-top: 2px;
     }
-    
+
     & .nav-section {
       display: block;
-      color: rgba(0,0,0,0.4);
+      color: rgba(0, 0, 0, 0.4);
       margin-top: 1.5rem;
       font-size: 0.8rem;
     }
   }
-  
+
   & .notes-body {
     padding: 24px 0;
   }
-  
+
   & .notes-section {
     display: flex;
     gap: 64px;
-    border-top: 1px solid rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
     padding-top: 32px;
     margin-bottom: 2rem;
     position: relative;
   }
-  
+
   & h5:after {
     content: ".";
     background: #333;
@@ -102,66 +101,66 @@ h6 {
     top: 0;
     left: 0;
   }
-  
+
   & .notes-note {
     width: 50%;
   }
-  
+
   & .notes-details {
     width: 50%;
   }
-  
+
   & h2 {
     margin-top: 16px;
   }
-  
+
   & h3 {
     text-transform: uppercase;
     font-size: 0.92rem;
     font-weight: bold;
     margin: 0;
   }
-  
+
   & h6 {
     color: teal;
   }
-  
+
   & p {
     margin-bottom: 1rem;
   }
-  
+
   & i {
-      font-size: 1rem;
-      background: white;
-      padding: 0 4px;
-      font-family: monospace;
-      border-radius: 4px;
-      color: darkgoldenrod;
-      font-style: normal;
-      white-space: nowrap;
+    font-size: 1rem;
+    background: white;
+    padding: 0 4px;
+    font-family: monospace;
+    border-radius: 4px;
+    color: darkgoldenrod;
+    font-style: normal;
+    white-space: nowrap;
   }
-  
+
   & blockquote {
     background: #283336;
-    border-top: 2px solid rgba(0,0,0,0.1);
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 10px;
     font-size: 0.8rem;
     border-radius: 5px;
-    color: rgba(255,255,255,0.6);;
-    
+    color: rgba(255, 255, 255, 0.6);
+
     & code {
       font-size: 0.8rem;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
       color: #fff;
     }
-    
+
     & i {
       font-size: 0.8rem;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
       color: aquamarine;
     }
-    
+
     & h6 {
       font-size: 0.6rem;
       text-transform: uppercase;
@@ -182,7 +181,7 @@ code {
 
 hr {
   margin: 3rem 0;
-  border-color: rgba(0,0,0,0.2);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 main {
@@ -198,7 +197,7 @@ main {
   .columns-3 {
     display: grid;
     grid-gap: 24px;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-auto-rows: auto;
   }
 }
@@ -208,7 +207,7 @@ main {
     .columns-2,
     .columns-3 {
       flex: 0 0 50%;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 }
@@ -217,7 +216,7 @@ main {
   main {
     .columns-3 {
       flex: 0 0 50%;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 }
@@ -264,16 +263,16 @@ main {
 
   .external-link {
     &::after {
-      content: ' ↗';
+      content: " ↗";
     }
   }
-  
+
   & a {
     color: #fff;
     display: inline-block;
     padding: 4px 2px;
   }
-  
+
   & span {
     display: inline-block;
     padding: 4px 2px;
@@ -284,8 +283,8 @@ main {
   font-size: 0.8rem;
   padding: 12px 0;
   margin: 0 0 2rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.15);
-  
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
   & div {
     margin: 0 auto;
     padding: 0 12px;
@@ -307,7 +306,7 @@ main {
 .banner-body {
   font-size: 0.9em;
   color: rgba(0, 0, 0, 0.5);
-  
+
   h1 {
     font-size: 1.2rem;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill-opacity='1.0' fill='white'%3E%3Cpath d='M16.5 3C19.5376 3 22 5.5 22 9C22 16 14.5 20 12 21.5C10.0226 20.3135 4.91699 17.563 2.86894 13.001L1 13V11L2.21045 11.0009C2.07425 10.3633 2 9.69651 2 9C2 5.5 4.5 3 7.5 3C9.35997 3 11 4 12 5C13 4 14.64 3 16.5 3ZM16.5 5C15.4241 5 14.2593 5.56911 13.4142 6.41421L12 7.82843L10.5858 6.41421C9.74068 5.56911 8.5759 5 7.5 5C5.55906 5 4 6.6565 4 9C4 9.68542 4.09035 10.3516 4.26658 11.0004L6.43381 11L8.5 7.55635L11.5 12.5563L12.4338 11H17V13H13.5662L11.5 16.4437L8.5 11.4437L7.56619 13L5.10789 13.0006C5.89727 14.3737 7.09304 15.6681 8.64514 16.9029C9.39001 17.4955 10.1845 18.0485 11.0661 18.6038C11.3646 18.7919 11.6611 18.9729 12 19.1752C12.3389 18.9729 12.6354 18.7919 12.9339 18.6038C13.8155 18.0485 14.61 17.4955 15.3549 16.9029C18.3337 14.533 20 11.9435 20 9C20 6.64076 18.463 5 16.5 5Z'%3E%3C/path%3E%3C/svg%3E");
@@ -351,9 +350,9 @@ main {
   background: #ffffff;
   border: 2px solid #e5e5e5;
   border-radius: 8px;
-  
+
   &&.blank {
-    background: rgba(0,0,0,0.05);
+    background: rgba(0, 0, 0, 0.05);
     border: none;
   }
 
@@ -580,13 +579,13 @@ table {
 .key {
   gap: 16px;
   margin-top: 12px;
-  
+
   @media screen and (min-width: 880px) {
     display: flex;
     justify-content: flex-end;
     align-items: center;
   }
-  
+
   & div {
     display: flex;
     align-items: center;
@@ -616,7 +615,7 @@ table {
 
 .key-text {
   font-size: 0.92em;
-  
+
   @media screen and (min-width: 880px) {
     display: flex;
     align-items: center;
@@ -804,11 +803,11 @@ table {
   background: #eeab00;
 }
 .bp-uncontrolled-dark {
-  color: #C08B00;
+  color: #c08b00;
 }
 
 .bp-uncontrolled-dark-bg {
-  background: #C08B00;
+  background: #c08b00;
 }
 
 .three-month-ltfu {
