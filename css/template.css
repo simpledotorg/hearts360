@@ -678,81 +678,52 @@ table {
 }
 
 .coverage {
-  background: rgb(241, 241, 241);
-  box-shadow: inset 0 1px 3px -1px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  margin: 10px 0 4px;
-  height: 36px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  margin: 32px 0 0 0;
 }
 
-.coverage-fill {
+.coverage p {
+  padding: 2px 8px;
+}
+
+.label-small {
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+.coverage-column {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.coverage-bar {
   position: relative;
-  display: block;
-  background: #363636;
-  height: 100%;
-  content: "";
+  height: 260px;
 }
 
-.coverage-fill-indicator {
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 100%;
-}
-
-.coverage-fill-indicator-line {
-  height: 34px;
-  width: 2px;
-  background: #b51bdc;
-  content: "";
-}
-
-.coverage-fill-indicator-percentage {
+.coverage-bar-fill {
+  background: #DAE0E1;
   position: absolute;
-  left: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-left: 6px;
-  font-weight: 600;
-  display: flex;
-  justify-content: center;
-  /* background: rgb(239, 239, 239); */
-  border-radius: 4px;
-  padding: 1px 4px;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: rgba(0,0,0,0.5);
 }
 
-/* 
-  Used to move the % figure inside the color block when the % is > 88% 
-  Without this the % figure will be hidden by the overflow setting 
-*/
-.coverage-fill-indicator-percentage[data-percentage="87"],
-.coverage-fill-indicator-percentage[data-percentage="88"],
-.coverage-fill-indicator-percentage[data-percentage="89"],
-.coverage-fill-indicator-percentage[data-percentage="90"],
-.coverage-fill-indicator-percentage[data-percentage="91"],
-.coverage-fill-indicator-percentage[data-percentage="92"],
-.coverage-fill-indicator-percentage[data-percentage="93"],
-.coverage-fill-indicator-percentage[data-percentage="94"],
-.coverage-fill-indicator-percentage[data-percentage="95"],
-.coverage-fill-indicator-percentage[data-percentage="96"],
-.coverage-fill-indicator-percentage[data-percentage="97"],
-.coverage-fill-indicator-percentage[data-percentage="98"],
-.coverage-fill-indicator-percentage[data-percentage="99"],
-.coverage-fill-indicator-percentage[data-percentage="100"] {
-  right: 0;
-  left: initial;
-  margin-left: 0;
-  margin-right: 6px;
-  color: #fff;
+.coverage-number {
+  position: relative;
+  top: -2em;
+  left: 8px;
+  width: 100%;
+  text-align: left;
 }
 
-.coverage-detail {
-  text-align: right;
-  font-size: 0.85rem;
-  margin: 0;
+.coverage-estimated {
+  padding-top: 8px;
 }
 
 .data-line {
