@@ -1,4 +1,4 @@
-# Hypertension Dashboard
+# Hearts360
 [![hypertension dashboard](dashboard.png)](https://simpledotorg.github.io/hypertension-dashboard/)
 
 ## About
