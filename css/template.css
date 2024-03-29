@@ -53,12 +53,12 @@ h6 {
 .notes {
   background: rgba(0, 0, 0, 0.04);
   border-radius: 8px;
-  margin: 0;
   padding: 20px;
   color: #333;
   display: flex;
   gap: 64px;
   position: relative;
+  margin-bottom: 24px;
 
   & .notes-nav {
     width: 30%;
