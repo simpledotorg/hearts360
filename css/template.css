@@ -704,14 +704,14 @@ table {
 }
 
 .coverage-bar-fill {
-  background: #DAE0E1;
+  background: #dae0e1;
   position: absolute;
   bottom: 0;
   width: 100%;
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem;
-  color: rgba(0,0,0,0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .coverage-number {
