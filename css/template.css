@@ -679,8 +679,7 @@ table {
 
 .coverage {
   display: flex;
-  flex-direction: row;
-  margin: 32px 0 0 0;
+  margin-top: 32px;
 }
 
 .coverage p {
@@ -694,39 +693,35 @@ table {
 
 .coverage-column {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
-  flex-grow: 1;
-  flex-basis: 0;
+  flex: 1;
 }
 
 .coverage-bar {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   height: 260px;
+  margin-bottom: 4px;
 }
 
 .coverage-bar-fill {
+  position: relative;
   background: #dae0e1;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  font-weight: bold;
   font-size: 1.2rem;
-  color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  color: #6d7070;
 }
 
 .coverage-number {
-  position: relative;
-  top: -2em;
-  left: 8px;
-  width: 100%;
-  text-align: left;
+  position: absolute;
+  top: -1.75em;
+  padding-left: 8px;
 }
 
 .coverage-estimated {
-  padding-top: 8px;
+  text-align: center;
+  margin-top: 4px;
 }
-
-/* ---- */
 
 .facilities-without-bp-monitor {
   font-size: 0.9rem;
