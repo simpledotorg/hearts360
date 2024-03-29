@@ -726,24 +726,7 @@ table {
   padding-top: 8px;
 }
 
-.data-line {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0 36px 0;
-}
-
-/* animations */
-.fade-in {
-  animation: fadeIn 5s;
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+/* ---- */
 
 .facilities-without-bp-monitor {
   font-size: 0.9rem;
