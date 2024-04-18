@@ -451,11 +451,10 @@ main {
   }
 }
 
-@media screen and (max-width: 880px) {
-  .table-wrap {
-    overflow-y: scroll;
-    margin-right: -20px;
-  }
+.table-wrap {
+  overflow-x: scroll;
+  width: calc(100% + 20px);
+  padding-right: 20px;
 }
 
 .table-scroll-message {
