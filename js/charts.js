@@ -1279,6 +1279,7 @@ if (dmDrugStockCanvas) {
 // Patients protected
 const patientsProtectedData = {
   labels: [
+    "Aug-2020",
     "Sep-2020",
     "Oct-2020",
     "Nov-2020",
@@ -1314,23 +1315,15 @@ const patientsProtectedData = {
     "May-2023",
     "Jun-2023",
     "Jul-2023",
-    "Aug-2023",
   ],
   datasets: [
     {
       label: "Patients protected",
       data: [
-        10, 120, 140, 160, 130, 120, 150, 200, 210, 400, 450, 500, 550, 600, 650, 700, 710, 720, 750, 800, 830, 880, 908, 1244, 1412, 1646, 1800, 2644, 2809, 3087, 3245, 3688, 3867, 4106, 4808, 5500,
+        10, 120, 140, 160, 130, 120, 150, 200, 260, 310, 400, 450, 500, 550, 600, 650, 700, 710, 720, 750, 800, 830, 880, 908, 1244, 1412, 1646, 1800, 2644, 2809, 3087, 3245, 3688, 3867, 4106, 4808,
       ],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
-      segment: {
-        borderDash: (ctx) =>
-          dynamicChartSegementDashed(
-            ctx,
-            36 // number of data elements
-          ),
-      },
     },
   ],
 };
@@ -1339,9 +1332,9 @@ const patientsProtectedConfig = baseLineChartConfig();
 patientsProtectedConfig.data = patientsProtectedData;
 patientsProtectedConfig.options.scales.y.grid = { drawTicks: false };
 patientsProtectedConfig.options.scales.y.ticks.display = true;
-patientsProtectedConfig.options.scales.y.ticks.count = 11;
+patientsProtectedConfig.options.scales.y.ticks.count = 10;
 patientsProtectedConfig.options.scales.y.max = 5500;
-patientsProtectedConfig.options.scales.y.ticks.stepSize = 1000;
+patientsProtectedConfig.options.scales.y.ticks.stepSize = 500;
 
 const patientsProtectedCanvas = document.getElementById("patientsprotected");
 if (patientsProtectedCanvas) {
