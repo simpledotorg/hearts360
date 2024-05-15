@@ -1275,3 +1275,75 @@ const dmDrugStockCanvas = document.getElementById("dmdrugstock");
 if (dmDrugStockCanvas) {
   createChart(dmDrugStockCanvas, dmDrugStockConfig);
 }
+
+// Patients protected
+const patientsProtectedData = {
+  labels: [
+    "Sep-2020",
+    "Oct-2020",
+    "Nov-2020",
+    "Dec-2020",
+    "Jan-2021",
+    "Feb-2021",
+    "Mar-2021",
+    "Apr-2021",
+    "May-2021",
+    "Jun-2021",
+    "Jul-2021",
+    "Aug-2021",
+    "Sep-2021",
+    "Oct-2021",
+    "Nov-2021",
+    "Dec-2021",
+    "Jan-2022",
+    "Feb-2022",
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+  ],
+  datasets: [
+    {
+      label: "Patients protected",
+      data: [
+        10, 120, 140, 160, 130, 120, 150, 200, 210, 400, 450, 500, 550, 600, 650, 700, 710, 720, 750, 800, 830, 880, 908, 1244, 1412, 1646, 1800, 2644, 2809, 3087, 3245, 3688, 3867, 4106, 4808, 5500,
+      ],
+      borderColor: "#3BB231",
+      backgroundColor: "rgba(69, 205, 57, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            36 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+
+const patientsProtectedConfig = baseLineChartConfig();
+patientsProtectedConfig.data = patientsProtectedData;
+patientsProtectedConfig.options.scales.y.grid = { drawTicks: false };
+patientsProtectedConfig.options.scales.y.ticks.display = true;
+patientsProtectedConfig.options.scales.y.ticks.count = 11;
+patientsProtectedConfig.options.scales.y.max = 5500;
+patientsProtectedConfig.options.scales.y.ticks.stepSize = 1000;
+
+const patientsProtectedCanvas = document.getElementById("patientsprotected");
+if (patientsProtectedCanvas) {
+  createChart(patientsProtectedCanvas, patientsProtectedConfig);
+}
