@@ -1318,7 +1318,7 @@ const patientsProtectedData = {
   ],
   datasets: [
     {
-      label: "Patients protected",
+      label: "Patients with BP <140/90",
       data: [
         10, 120, 140, 160, 130, 120, 150, 200, 260, 310, 400, 450, 500, 550, 600, 650, 700, 710, 720, 750, 800, 830, 880, 908, 1244, 1412, 1646, 1800, 2644, 2809, 3087, 3245, 3688, 3867, 4106, 4808,
       ],
@@ -1333,7 +1333,7 @@ patientsProtectedConfig.data = patientsProtectedData;
 patientsProtectedConfig.options.scales.y.grid = { drawTicks: false };
 patientsProtectedConfig.options.scales.y.ticks.display = true;
 patientsProtectedConfig.options.scales.y.ticks.count = 10;
-patientsProtectedConfig.options.scales.y.max = 5500;
+patientsProtectedConfig.options.scales.y.max = 5000;
 patientsProtectedConfig.options.scales.y.ticks.stepSize = 500;
 
 const patientsProtectedCanvas = document.getElementById("patientsprotected");
