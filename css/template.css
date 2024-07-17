@@ -70,13 +70,14 @@ h6 {
   margin-bottom: 24px;
 
   & .notes-nav {
-    width: 30%;
+    width: 50%;
 
     & .nav-jump-links {
       display: block;
       font-size: 0.9rem;
-      padding: 4px 0;
+      padding: 6px 0;
       margin-top: 2px;
+      line-height: 1.2;
     }
 
     & .nav-section {

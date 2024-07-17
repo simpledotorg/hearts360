@@ -1433,6 +1433,10 @@
           <h2>Data definitions</h2>
           <p>Many of the data definitions are based on the <a href="https://apps.who.int/iris/bitstream/handle/10665/260423/WHO-NMH-NVI-18.5-eng.pdf">WHO HEARTS</a> technical package.</p>
           
+          <span class="nav-section">Overview indicators</span>
+          <a href="#note-patients-protected" class="nav-jump-links">Patients protected</a>
+          <a href="#note-treatment-cascade" class="nav-jump-links">Hypertension treatment cascade</a>
+          
           <span class="nav-section">Hypertension treatment outcomes</span>
           <a href="#note-bp-controlled" class="nav-jump-links">BP controlled at latest visit</a>
           <a href="#note-bp-uncontrolled" class="nav-jump-links">BP not controlled at latest visit</a>
@@ -1446,11 +1450,6 @@
           <span class="nav-section">LTFU</span>
           <a href="#note-bp-12-month-ltfu" class="nav-jump-links">12 month lost to follow-up</a>
           
-          <span class="nav-section">Treatment coverage for hypertension</span>
-          <a href="#note-bp-percent-registered" class="nav-jump-links">% of people registered</a>
-          <a href="#note-bp-percent-under-care" class="nav-jump-links">% of people under care</a>
-          <a href="#note-bp-percent-controlled" class="nav-jump-links">% of people with BP controlled</a>
-          
           <span class="nav-section">Opportunistic screening</span>
           <a href="#note-bp-screened" class="nav-jump-links">% of OPD patients screened</a>
           <a href="#note-bp-screened-monthly" class="nav-jump-links">Monthly OPD patients screened</a>
@@ -1463,6 +1462,46 @@
           <a href="#note-bp-monitors" class="nav-jump-links">Blood pressure monitors</a>
         </aside>
         <div class="notes-body">
+          
+          <div class="notes-section">
+            <div class="notes-note">
+              <h5>Overview indicators</h5>
+              <p>The overview indicators are OPTIONAL indicators that are useful as your program scales. They can be used both for program management and can be useful data for advocacy.</p>
+            </div>
+            <div class="notes-details">
+              
+            </div>
+            </div>
+            <div class="notes-section">
+              <div class="notes-note" id="note-patients-protected">
+                <h6>Patients protected</h6>
+                <p>This indicator is a very simplistic representation of the number of patients controlled. It is primarily useful as a motivational tool for health staff and for advocacy. The data simply represents the numerator from the "BP controlled at latest visit in past 3 months" indicator below.</p>
+              </div>
+              <div class="notes-details">
+                <blockquote>
+                  <h6>Value</h6>
+                  <p><code>Number of patients with controlled blood pressure</code> (&lt;140 systolic AND &lt;90 diastolic) recorded at the patient's most recent visit within the past 3 months.</p>
+                  <h6>Example</h6>
+                  <p>By the end of July, 4808 patients had a visit anytime from May 1 to July 31 and at their most recent visit, they had their BP controlled.</p>
+                </blockquote>
+              </div>
+            </div>
+            <div class="notes-section">
+              <div class="notes-note" id="note-treatment-cascade">
+                <h6>Hypertension treatment cascade</h6>
+                <p>This indicator gives a view of how many expected individuals in the region are under treatment for hypertension and, of those patients, how many have their blood pressure under control.</p>
+                <p><b>Note:</b> The "Estimated number of adults" is usually derived from community surveys (e.g. <a href="https://www.who.int/teams/noncommunicable-diseases/surveillance/systems-tools/steps">WHO STEPS survey</a>) and can be updated annually or even less frequently in a data system.</p>
+              </div>
+              <div class="notes-details">
+                <blockquote>
+                  <h6>Numerators</h6>
+                  <p>The numerators for <code>Cumulative registered patients</code>, <code>Patients under care</code>, and <code>Patients with BP controlled</code> are simply the values from the charts lower in the report.</p>
+                  <h6>Denominator</h6>
+                  <p>Number of people in the region estimated to have hypertension. (This is commonly derived from community survey data e.g. STEPS survey)</p>
+                </blockquote>
+              </div>
+          </div>
+          
           <div class="notes-section">
             <div class="notes-note">
               <h5>Hypertension treatment outcomes</h5>
@@ -1588,17 +1627,6 @@
                 <h6>Denominator</h6>
                 <p><code>Cumulative registered patients</code> in the hypertension program. Exclusions: <code>Dead</code> patients are excluded from the denominator.</p>
               </blockquote>
-            </div>
-          </div>
-          
-          <div class="notes-section">
-            <div class="notes-note">
-              <h5>Treatment coverage for hypertension</h5>
-              <p>This indicator gives a view of how many expected individuals in the region are under treatment for hypertension and, of those patients, how many have their blood pressure under control.</p>
-              <p><b>Note:</b> The "Estimated number of adults" is usually derived from community surveys (e.g. <a href="https://www.who.int/teams/noncommunicable-diseases/surveillance/systems-tools/steps">WHO STEPS survey</a>) and can be updated annually or even less frequently in a data system.</p>
-            </div>
-            <div class="notes-details">
-              
             </div>
           </div>
           
