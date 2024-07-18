@@ -22,7 +22,7 @@
         
         <div class="desktop-only">
           <div class="link-list">
-            <span>v1.2</span>
+            <span>v1.3</span>
             <a href="instructions.html">Setup instructions</a>
             <a
               class="external-link"
@@ -49,6 +49,99 @@
         <h1>River District</h1>
         <div class="date-updated">Data last updated: 5-Aug-2023</div>
       </div>
+      
+      <h2 class="columns-header">1. Overview indicators</h2>
+      
+      <div class="columns-3">
+        <div class="card col-span-2">
+          <div class="heading">
+            <h3>Patients protected from heart attacks and strokes with world-class treatment</h3>
+            <div class="figures">
+              <p class="large-num bp-controlled">4,808 patients</p>
+              <div class="detail">
+                <p>in River District with BP &lt;140/90</p>
+              </div>
+            </div>
+            <div class="chart" style="height: 350px;">
+              <canvas id="patientsprotected"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="heading">
+            <h3>Hypertension treatment cascade</h3>
+            <p>Estimated adults (&gt;30) in River District with hypertension who are registered, under care, and controlled.</p>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <b>Estimated population</b> with hypertension is derived from a STEPS Community Survey conducted in 2022.
+                </p>
+                <p>
+                  <b>Patients under care</b> are patients with hypertension with at least 1 visit in the past 12 months
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="coverage">
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div class="coverage-bar-fill" style="height: 100%;">
+                    <p class="coverage-estimated">100%</p>
+                  </div>
+                </div>
+                <p>
+                  250,800
+                </p>
+                <p class="text-grey label-small">
+                  Estimated people with hypertension
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div class="coverage-bar-fill registrations-bg" style="height: 5%;">
+                    <p class="coverage-number registrations">5%</p>
+                  </div>
+                </div>
+                <p>
+                  12,213
+                </p>
+                <p class="text-grey label-small">
+                  Cumulative registered patients
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div class="coverage-bar-fill under-care-bg" style="height: 4%;">
+                    <p class="coverage-number under-care">4%</p>
+                  </div>
+                </div>
+                <p>
+                  10,632
+                </p>
+                <p class="text-grey label-small">
+                  Patients under care
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div class="coverage-bar-fill bp-controlled-bg" style="height: 2%;">
+                    <p class="coverage-number bp-controlled">2%</p>
+                  </div>
+                </div>
+                <p>
+                  4,808
+                </p>
+                <p class="text-grey label-small">
+                  Patients with BP controlled
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h2 class="columns-header spacer">2. Program management indicators</h2>
 
       <div class="card">
         <div class="heading">
@@ -196,84 +289,12 @@
                 <p>1,562 patients with no visit from Jul-2022 to Jul-2023</p>
                 <p class="text-grey">
                   of
-                  <span class="registrations"
-                    >12,213 cumulative registered patients</span
-                  >
+                  <span class="registrations">12,213 cumulative registered patients</span>
                 </p>
               </div>
             </div>
             <div class="chart">
               <canvas id="ltfu12Months"></canvas>
-            </div>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="heading">
-            <h3>Hypertension treatment cascade</h3>
-            <p>Estimated adults (&gt;30) in River District with hypertension who are registered, under care, and controlled.</p>
-            <div class="info">
-              <div class="info-hover-text">
-                <p>
-                  Estimated population with hypertension is derived from a STEPS Community Survey conducted in 2022.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="body">
-            <div class="coverage">
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div class="coverage-bar-fill" style="height: 100%;">
-                    <p class="coverage-estimated">100%</p>
-                  </div>
-                </div>
-                <p>
-                  250,800
-                </p>
-                <p class="text-grey label-small">
-                  Estimated people with hypertension
-                </p>
-              </div>
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div class="coverage-bar-fill registrations-bg" style="height: 5%;">
-                    <p class="coverage-number registrations">5%</p>
-                  </div>
-                </div>
-                <p>
-                  12,213
-                </p>
-                <p class="text-grey label-small">
-                  Cumulative registered patients
-                </p>
-              </div>
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div class="coverage-bar-fill under-care-bg" style="height: 4%;">
-                    <p class="coverage-number under-care">4%</p>
-                  </div>
-                </div>
-                <p>
-                  10,632
-                </p>
-                <p class="text-grey label-small">
-                  Patients under care
-                </p>
-              </div>
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div class="coverage-bar-fill bp-controlled-bg" style="height: 2%;">
-                    <p class="coverage-number bp-controlled">2%</p>
-                  </div>
-                </div>
-                <p>
-                  4,808
-                </p>
-                <p class="text-grey label-small">
-                  Patients with BP controlled
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -693,6 +714,8 @@
           </div>
         </div>
       </div>
+      
+      <h2 class="columns-header spacer">3. Inventory indicators</h2>
 
       <div class="columns-3">
         <div class="card">
@@ -1255,6 +1278,8 @@
         </div>
       </div>
       
+      <h2 class="columns-header spacer">4. Comorbidity indicators</h2>
+      
       <div class="columns-3">
         <div class="card col-span-2" style="justify-content: start;">
           <div class="heading">
@@ -1316,6 +1341,8 @@
         </div>
       </div>
       
+      <h2 class="columns-header spacer">5. Age and sex</h2>
+      
       <div class="card">
         <div class="heading">
         <h3>Age and sex of patients under care for hypertension</h3>
@@ -1364,10 +1391,8 @@
         </div>
         </div>
       </div>
-      
-      <div class="divider"></div>
 
-      <div class="notes">
+      <div class="notes spacer">
         <aside class="notes-nav">
           <h2>Data building blocks</h2>
           <p>The dashboard requires just a handful of core data building blocks to generate the key indicator charts and tables.</p>
@@ -1408,6 +1433,10 @@
           <h2>Data definitions</h2>
           <p>Many of the data definitions are based on the <a href="https://apps.who.int/iris/bitstream/handle/10665/260423/WHO-NMH-NVI-18.5-eng.pdf">WHO HEARTS</a> technical package.</p>
           
+          <span class="nav-section">Overview indicators</span>
+          <a href="#note-patients-protected" class="nav-jump-links">Patients protected</a>
+          <a href="#note-treatment-cascade" class="nav-jump-links">Hypertension treatment cascade</a>
+          
           <span class="nav-section">Hypertension treatment outcomes</span>
           <a href="#note-bp-controlled" class="nav-jump-links">BP controlled at latest visit</a>
           <a href="#note-bp-uncontrolled" class="nav-jump-links">BP not controlled at latest visit</a>
@@ -1421,11 +1450,6 @@
           <span class="nav-section">LTFU</span>
           <a href="#note-bp-12-month-ltfu" class="nav-jump-links">12 month lost to follow-up</a>
           
-          <span class="nav-section">Treatment coverage for hypertension</span>
-          <a href="#note-bp-percent-registered" class="nav-jump-links">% of people registered</a>
-          <a href="#note-bp-percent-under-care" class="nav-jump-links">% of people under care</a>
-          <a href="#note-bp-percent-controlled" class="nav-jump-links">% of people with BP controlled</a>
-          
           <span class="nav-section">Opportunistic screening</span>
           <a href="#note-bp-screened" class="nav-jump-links">% of OPD patients screened</a>
           <a href="#note-bp-screened-monthly" class="nav-jump-links">Monthly OPD patients screened</a>
@@ -1438,6 +1462,46 @@
           <a href="#note-bp-monitors" class="nav-jump-links">Blood pressure monitors</a>
         </aside>
         <div class="notes-body">
+          
+          <div class="notes-section">
+            <div class="notes-note">
+              <h5>Overview indicators</h5>
+              <p>The overview indicators are OPTIONAL indicators that are useful as your program scales. They can be used both for program management and can be useful data for advocacy.</p>
+            </div>
+            <div class="notes-details">
+              
+            </div>
+            </div>
+            <div class="notes-section">
+              <div class="notes-note" id="note-patients-protected">
+                <h6>Patients protected</h6>
+                <p>This indicator is a very simplistic representation of the number of patients controlled. It is primarily useful as a motivational tool for health staff and for advocacy. The data simply represents the numerator from the "BP controlled at latest visit in past 3 months" indicator below.</p>
+              </div>
+              <div class="notes-details">
+                <blockquote>
+                  <h6>Value</h6>
+                  <p><code>Number of patients with controlled blood pressure</code> (&lt;140 systolic AND &lt;90 diastolic) recorded at the patient's most recent visit within the past 3 months.</p>
+                  <h6>Example</h6>
+                  <p>By the end of July, 4808 patients had a visit anytime from May 1 to July 31 and at their most recent visit, they had their BP controlled.</p>
+                </blockquote>
+              </div>
+            </div>
+            <div class="notes-section">
+              <div class="notes-note" id="note-treatment-cascade">
+                <h6>Hypertension treatment cascade</h6>
+                <p>This indicator gives a view of how many expected individuals in the region are under treatment for hypertension and, of those patients, how many have their blood pressure under control.</p>
+                <p><b>Note:</b> The "Estimated number of adults" is usually derived from community surveys (e.g. <a href="https://www.who.int/teams/noncommunicable-diseases/surveillance/systems-tools/steps">WHO STEPS survey</a>) and can be updated annually or even less frequently in a data system.</p>
+              </div>
+              <div class="notes-details">
+                <blockquote>
+                  <h6>Numerators</h6>
+                  <p>The numerators for <code>Cumulative registered patients</code>, <code>Patients under care</code>, and <code>Patients with BP controlled</code> are simply the values from the charts lower in the report.</p>
+                  <h6>Denominator</h6>
+                  <p>Number of people in the region estimated to have hypertension. (This is commonly derived from community survey data e.g. STEPS survey)</p>
+                </blockquote>
+              </div>
+          </div>
+          
           <div class="notes-section">
             <div class="notes-note">
               <h5>Hypertension treatment outcomes</h5>
@@ -1563,17 +1627,6 @@
                 <h6>Denominator</h6>
                 <p><code>Cumulative registered patients</code> in the hypertension program. Exclusions: <code>Dead</code> patients are excluded from the denominator.</p>
               </blockquote>
-            </div>
-          </div>
-          
-          <div class="notes-section">
-            <div class="notes-note">
-              <h5>Treatment coverage for hypertension</h5>
-              <p>This indicator gives a view of how many expected individuals in the region are under treatment for hypertension and, of those patients, how many have their blood pressure under control.</p>
-              <p><b>Note:</b> The "Estimated number of adults" is usually derived from community surveys (e.g. <a href="https://www.who.int/teams/noncommunicable-diseases/surveillance/systems-tools/steps">WHO STEPS survey</a>) and can be updated annually or even less frequently in a data system.</p>
-            </div>
-            <div class="notes-details">
-              
             </div>
           </div>
           
@@ -1737,8 +1790,6 @@
           </div>
         </div>
       </div>
-      
-      <div class="divider"></div>
     </main>
 
     <!-- Chart.js -->
