@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HEARTS 360: Overdue Patients List</title>
+    <meta
+      name="description"
+      content="A free, open source, template for creating a very useful hypertension and diabetes dashboard to support public health projects."
+    />
+    <meta name="author" content="Resolve to Save Lives" />
+
+    <link rel="icon" href="favicon.png" />
+
+    <link rel="stylesheet" href="css/preflight.css?v=1.0" />
+    <link rel="stylesheet" href="css/template.css" />
+  </head>
+  <body>
+    <div class="banner">
+      <div class="banner-body">
+        <h1><span>HEARTS</span>360</h1>
+        
+        <div class="desktop-only">
+          <div class="link-list">
+            <span>v1.2</span>
+            <a href="instructions.html">Setup instructions</a>
+            <a
+              class="external-link"
+              href="https://github.com/simpledotorg/hypertension-dashboard"
+              >GitHub</a
+            >
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="link-dashboards">
+      <div>
+        <a href="index.html">
+          Hypertension Dashboard
+        </a>
+        <a href="diabetes.html">
+          Diabetes Dashboard
+        </a>
+        <a href="overdue.html" class="active">
+          Overdue patients list
+        </a>
+      </div>
+    </div>
+    <main class="main">
+      <div>
+        <h1>Overdue patients</h1>
+        <div class="date-updated">Data last updated: 5-Aug-2023</div>
+      </div>
+
+      <div class="card">
+        <div class="heading">
+          <h3>
+            Pending to call
+          </h3>
+        </div>
+        <style>
+          td, th {
+            font-size: 0.8rem;
+            border: none !important;
+            border-top: 1px solid #ddd !important;
+            padding: 8px 0 !important;
+          }
+          .phone {
+            font-weight: bold;
+            letter-spacing: 0.1rem;
+          }
+          .red {
+            color: red;
+          }
+        </style>
+        <div class="table-container">
+          <p class="table-scroll-message text-grey mobile-only">
+            scroll table &rarr;
+          </p>
+          <div class="table-wrap">
+            <table id="table-overdue">
+              <thead>
+                <tr>
+                  <th>Mark call result</th>
+                  <th>Phone</th>
+                  <th>Patient</th>
+                  <th>High risk?</th>
+                  <th>HTN or DM</th>
+                  <th>Last called</th>
+                  <th>Facility</th>
+                  <th>Home village / area</th>
+                  <th>Last visit</th>
+                  <th>Due date</th>
+                  <th data-sort-default>Overdue</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <form>
+                      <select>
+                        <option>Mark call result...</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <option>Remove from list</option>
+                      </select>
+                    </form>
+                  </td>
+                  <td><a href="tel:5554441234" class="phone">555 444 1234</a></td>
+                  <td>Chetan Notarealname, M, 45</td>
+                  <td>—</td>
+                  <td>HTN only</td>
+                  <td>15-May-2024</td>
+                  <td>PHC Bumblebee</td>
+                  <td>East Hastings</td>
+                  <td>11-Apr-2024</td>
+                  <td>10-May-2024</td>
+                  <td><span class="red">10 days</span></td>
+                </tr>
+                <tr>
+                  <td><a href="#">Mark call result...</a></td>
+                  <td><a href="tel:5554441234" class="phone">415 336 8700</a></td>
+                  <td>Dhruv Longname, M, 45</td>
+                  <td><b class="red">High risk</b></td>
+                  <td>HTN only</td>
+                  <td>15-May-2024</td>
+                  <td>PHC Bumblebee</td>
+                  <td>East Hastings</td>
+                  <td>11-Apr-2024</td>
+                  <td>10-May-2024</td>
+                  <td><span class="red">11 days</span></td>
+                </tr>
+                <tr>
+                  <td><a href="#">Mark call result...</a></td>
+                  <td><a href="tel:5554441234" class="phone">112 321 1111</a></td>
+                  <td>Prabhdeep Makebelieve, F, 45</td>
+                  <td>—</td>
+                  <td>HTN only</td>
+                  <td>15-May-2024</td>
+                  <td>PHC Bumblebee</td>
+                  <td>East Hastings</td>
+                  <td>11-Apr-2024</td>
+                  <td>10-May-2024</td>
+                  <td><span class="red">56 days</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+    </main>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script src="./js/charts.js"></script>
+
+    <!-- Tablesort.js -->
+    <script src="js/tablesort.js"></script>
+    <script src="js/tablesort.number.js"></script>
+    <script>
+      new Tablesort(document.getElementById("table-overdue"));
+    </script>
+  </body>
+</html>
