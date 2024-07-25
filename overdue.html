@@ -68,11 +68,12 @@
           }
           .phone {
             font-weight: bold;
-            letter-spacing: 0.1rem;
+            letter-spacing: 0.2rem;
             font-family: monospace;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>') no-repeat;
-            padding-left: 24px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>') 0 50% no-repeat;
             background-size: 16px;
+            display: block;
+            padding: 4px 4px 4px 24px;
           }
           .red {
             color: red;
@@ -260,9 +261,17 @@
                           <li>Medications: Amlodipine 5 mg</li>
                         </ul>
                         
+                        <p style="margin-top: 16px;"><b>1-Feb-2024 at PHC Bumblebee</b></p>
+                        <ul>
+                          <li>BP: 178/66</li>
+                          <li>Medications: Amlodipine 5 mg</li>
+                        </ul>
+                        
                         <h4 style="margin-top: 24px;">Call log</h4>
                         <ul>
                           <li style="margin-top: 8px;"><b>24-June-2024</b> at 9:00am: "Agreed to visit"</li>
+                          <li style="margin-top: 8px;"><b>23-June-2024</b> at 9:45am: "Remind to call later"</li>
+                          <li style="margin-top: 8px;"><b>20-June-2024</b> at 10:00am: "Remind to call later"</li>
                         </ul>
                       </div>
                     </div>
@@ -322,7 +331,7 @@
                         
                         <h4 style="margin-top: 24px;">Call log</h4>
                         <ul>
-                          <li style="margin-top: 8px;"><b>24-June-2024</b> at 9:00am: "Agreed to visit"</li>
+                          <li style="margin-top: 8px;">&lt;No calls&gt;</li>
                         </ul>
                       </div>
                     </div>
@@ -334,6 +343,67 @@
                   <td>East Hastings</td>
                   <td>10-May-2024</td>
                   <td><span class="red">56 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select>
+                        <option>Mark contact result...</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <option>Remove from list</option>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      &#8212;
+                      <div class="overdue-patient-info">
+                        <h3>Anupam Make Believe, F, 85</h3>
+                        
+                        <div class="overdue-patient-details">
+                          <p><span class="pill pill-htn">Hypertension</span></p>
+                          
+                          <p><b class="label">Phone:</b> No phone number</p>
+                          
+                          <p><b class="label">National Health ID:</b> 1454567B</p>
+                          
+                          <p><b class="label">Home address:</b> Queen Estates, East Hastings, River District</p>
+                          
+                          <p><b class="label">Overdue:</b> <span class="red">56 days</span> (due at PHC Marigold Bay on 10-May-2024)</p>
+                          
+                          <p><b class="label">Enrolled at:</b> PHC Bumblebee</p>
+                          
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+                        
+                        <h4>Recent visits</h4>
+                        <p style="margin-top: 16px;"><b>6-Apr-2024 at PHC Bumblebee</b></p>
+                        <ul>
+                          <li>BP: 144/56</li>
+                          <li>Medications: Amlodipine 10 mg</li>
+                        </ul>
+                        
+                        <p style="margin-top: 16px;"><b>4-Mar-2024 at PHC Bumblebee</b></p>
+                        <ul>
+                          <li>BP: 166/78</li>
+                          <li>Medications: Amlodipine 5 mg</li>
+                        </ul>
+                        
+                        <h4 style="margin-top: 24px;">Call log</h4>
+                        <ul>
+                          <li style="margin-top: 8px;">&lt;No calls&gt;</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Anupam Make Believe, F, 85</td>
+                  <td>—</td>
+                  <td>HTN only</td>
+                  <td>PHC Bumblebee</td>
+                  <td>East Hastings</td>
+                  <td>10-May-2024</td>
+                  <td><span class="red">14 days</span></td>
                 </tr>
               </tbody>
             </table>
