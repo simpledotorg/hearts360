@@ -385,68 +385,69 @@ main {
       font-size: 0.9rem;
     }
   }
+}
 
-  .info {
-    display: flex;
+.info {
+  display: flex;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  justify-content: center;
+  align-items: center;
+  background: #999;
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  border-radius: 100px;
+  cursor: pointer;
+  text-align: left;
+  &::before {
+    content: "?";
+  }
+
+  .info-hover-text {
+    display: none;
+    white-space: normal;
+    flex-direction: column;
+    gap: 6px;
     position: absolute;
-    top: 16px;
-    right: 16px;
-    justify-content: center;
-    align-items: center;
-    background: #999;
-    width: 18px;
-    height: 18px;
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: 800;
-    border-radius: 100px;
-    cursor: pointer;
-    text-align: left;
-    &::before {
-      content: "?";
-    }
+    right: 32px;
+    background: #222;
+    width: 200px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: #eee;
+    opacity: 0;
+    animation: fadeIn 190ms;
 
-    .info-hover-text {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
+    /* triangle */
+    &:after {
+      content: "";
       position: absolute;
-      right: 32px;
-      background: #222;
-      width: 200px;
-      font-size: 0.75rem;
-      font-weight: 400;
-      padding: 8px 10px;
-      border-radius: 6px;
-      color: #eee;
-      opacity: 0;
-      animation: fadeIn 190ms;
-
-      /* triangle */
-      &:after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: -6px;
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        border-top: 6px solid transparent;
-        border-bottom: 6px solid transparent;
-        border-left: 6px solid #222;
-      }
-
-      > p > span {
-        font-weight: 800;
-        color: #fff;
-      }
+      top: 50%;
+      right: -6px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-left: 6px solid #222;
     }
 
-    &:hover {
-      .info-hover-text {
-        display: flex;
-        opacity: 1;
-      }
+    > p > span {
+      font-weight: 800;
+      color: #fff;
+    }
+  }
+
+  &:hover {
+    .info-hover-text {
+      display: flex;
+      opacity: 1;
     }
   }
 }
