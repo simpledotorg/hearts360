@@ -61,10 +61,31 @@
         </div>
         <style>
           td, th {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             border: none !important;
             border-top: 1px solid #ddd !important;
             padding: 8px !important;
+          }
+          th {
+            vertical-align: top;
+            background: #eee;
+          }
+          select, input {
+            margin: 4px 0;
+            padding: 4px 32px 4px 12px;
+            border-radius: 3px;
+            appearance: none;
+            background: #d9e3ff url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 40 24" width="40"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>') 100% 50% no-repeat;
+            background-size: 24px;
+            font-size: 0.9rem;
+          }
+          .filters a, .filters select, .filters input {
+            display: inline-block;
+            margin: 16px 8px 0 0;
+          }
+          table select, table input {
+            background-color: white;
+            border: 1px solid #d9e3ff;
           }
           .phone {
             font-weight: bold;
@@ -135,24 +156,118 @@
             margin-bottom: 2rem;
             padding-left: 40px;
           }
+          .table-filter {
+            font-size: 0.8rem;
+            display: block;
+            padding: 8px 0 0 0;
+          }
+          .table-filter label {
+            font-weight: normal;
+          }
+          .table-filter select,
+          .table-filter input {
+            font-size: 0.7rem;
+            margin-top: -8px;
+            border-color: #ccc;
+            background-color: rgba(255,255,255,0.5);
+            color: #333;
+          }
+          .table-filter input {
+            padding-right: 8px;
+            padding-left: 28px;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.5) url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>') 6px 50% no-repeat;
+            background-size: 16px;
+          }
         </style>
+        
+        <div class="filters">
+            <a href="#">Download Excel</a>
+        </div>
+        
         <div class="table-container">
           <p class="table-scroll-message text-grey mobile-only">
             scroll table &rarr;
           </p>
           <div class="table-wrap">
-            <table id="table-overdue">
+            <table>
               <thead>
                 <tr>
-                  <th>Mark call result</th>
-                  <th>Phone</th>
-                  <th>Patient</th>
-                  <th>High risk?</th>
-                  <th>HTN or DM</th>
-                  <th>Facility</th>
-                  <th>Home village / area</th>
-                  <th>Due date</th>
-                  <th data-sort-default>Overdue</th>
+                  <th></th>
+                  <th>
+                    Phone
+                    <form class="table-filter">
+                      <select>
+                        <option>All...</option>
+                        <option>Only with phone</option>
+                        <option>Only without phone</option>
+                      </select>
+                    </form>
+                  </th>
+                  <th>
+                    Patient
+                    <form class="table-filter">
+                      <input type="search" placeholder="Search" />
+                    </form>
+                  </th>
+                  <th>
+                    Sex
+                    <form class="table-filter">
+                      <select>
+                        <option>All...</option>
+                        <option>F</option>
+                        <option>M</option>
+                        <option>T</option>
+                      </select>
+                    </form>
+                  </th>
+                  <th>Age</th>
+                  <th>
+                    High risk?
+                    <form class="table-filter">
+                      <select>
+                        <option>All...</option>
+                        <option>Only high risk</option>
+                      </select>
+                    </form>
+                  </th>
+                  <th>
+                    HTN or DM
+                    <form class="table-filter">
+                      <div>
+                        <select>
+                          <option>All...</option>
+                          <option>HTN-only</option>
+                          <option>DM-only</option>
+                          <option>HTN+DM</option>
+                        </select>
+                      </div>
+                    </form>
+                  </th>
+                  <th>
+                    Facility
+                    <form class="table-filter">
+                      <select>
+                        <option>All...</option>
+                        <option>PHC Blueberry</option>
+                        <option>PHC Carrot</option>
+                        <option>PHC Daikon</option>
+                        <option>PHC Eggplant</option>
+                      </select>
+                    </form>
+                  </th>
+                  <th>
+                    Home village / area
+                    <form class="table-filter">
+                      <select>
+                        <option>All...</option>
+                        <option>Acai Berry Hills</option>
+                      </select>
+                    </form>
+                  </th>
+                  <th>
+                    Overdue
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -208,12 +323,13 @@
                       </div>
                     </div>
                   </td>
-                  <td>Chetan Notarealname, M, 45</td>
+                  <td>Chetan Notarealname</td>
+                  <td>M</td>
+                  <td>45</td>
                   <td>—</td>
                   <td>HTN only</td>
                   <td>PHC Bumblebee</td>
                   <td>East Hastings</td>
-                  <td>10-May-2024</td>
                   <td><span class="red">10 days</span></td>
                 </tr>
                 <tr>
@@ -232,7 +348,7 @@
                       <a href="tel:5554441234" class="phone">2214456543</a>
                       <div class="overdue-patient-info">
                         <div class="phone-large">2214456543</div>
-                        <h3>Dhruv Longname, M, 45</h3>
+                        <h3>Dhruv Longname, M, 41</h3>
                         
                         <div class="overdue-patient-details">
                           <p><span class="pill pill-htn">Hypertension</span> <span class="pill pill-high-risk">High risk</span></p>
@@ -276,12 +392,13 @@
                       </div>
                     </div>
                   </td>
-                  <td>Dhruv Longname, M, 45</td>
+                  <td>Dhruv Longname</td>
+                  <td>M</td>
+                  <td>41</td>
                   <td><b class="red">High risk</b></td>
                   <td>HTN only</td>
                   <td>PHC Bumblebee</td>
                   <td>East Hastings</td>
-                  <td>10-May-2024</td>
                   <td><span class="red">11 days</span></td>
                 </tr>
                 <tr>
@@ -336,19 +453,20 @@
                       </div>
                     </div>
                   </td>
-                  <td>Prabhdeep Makebelieve, F, 45</td>
+                  <td>Prabhdeep Makebelieve</td>
+                  <td>F</td>
+                  <td>45</td>
                   <td>—</td>
                   <td>HTN only</td>
                   <td>PHC Bumblebee</td>
                   <td>East Hastings</td>
-                  <td>10-May-2024</td>
                   <td><span class="red">56 days</span></td>
                 </tr>
                 <tr>
                   <td>
                     <form>
                       <select>
-                        <option>Mark contact result...</option>
+                        <option>Mark call result...</option>
                         <option>Agreed to visit</option>
                         <option>Remind to call later</option>
                         <option>Remove from list</option>
@@ -397,12 +515,13 @@
                       </div>
                     </div>
                   </td>
-                  <td>Anupam Make Believe, F, 85</td>
+                  <td>Anupam Make Believe</td>
+                  <td>F</td>
+                  <td>85</td>
                   <td>—</td>
                   <td>HTN only</td>
                   <td>PHC Bumblebee</td>
                   <td>East Hastings</td>
-                  <td>10-May-2024</td>
                   <td><span class="red">14 days</span></td>
                 </tr>
               </tbody>
