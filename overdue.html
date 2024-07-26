@@ -14,6 +14,128 @@
 
     <link rel="stylesheet" href="css/preflight.css?v=1.0" />
     <link rel="stylesheet" href="css/template.css" />
+    
+    <style>
+      td, th {
+        font-size: 0.9rem;
+        border: none !important;
+        border-top: 1px solid #ddd !important;
+        padding: 8px !important;
+      }
+      th {
+        vertical-align: top;
+        background: #eee;
+      }
+      select, input {
+        margin: 4px 0;
+        padding: 4px 32px 4px 12px;
+        border-radius: 3px;
+        appearance: none;
+        background: #d9e3ff url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 40 24" width="40"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>') 100% 50% no-repeat;
+        background-size: 24px;
+        font-size: 0.9rem;
+      }
+      .filters a, .filters select, .filters input {
+        display: inline-block;
+        margin: 16px 8px 0 0;
+      }
+      table select, table input {
+        background-color: white;
+        border: 1px solid #d9e3ff;
+      }
+      .phone {
+        font-weight: bold;
+        letter-spacing: 0.2rem;
+        font-family: monospace;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>') 0 50% no-repeat;
+        background-size: 16px;
+        display: block;
+        padding: 4px 4px 4px 24px;
+      }
+      .red {
+        color: red;
+      }
+      .overdue-patient {
+        display: block;
+      }
+      .overdue-patient .overdue-patient-info {
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        position: fixed;
+        padding: 42px;
+        white-space: normal;
+        top: 0;
+        right: -1000px;
+        background: #fff;
+        border-left: 1px solid #999;
+        width: 40%;
+        height: 100%;
+        box-shadow: -10px 0 0 rgba(0,0,0,0.3);
+      }
+      .overdue-patient:hover .overdue-patient-info {
+        display: block;
+        opacity: 1;
+        right: 0;
+      }
+      .overdue-patient-info p {
+        margin-top: 0.5rem;
+      }
+      .overdue-patient-details p {
+        margin: 1rem 0;
+      }
+      .overdue-patient h4 {
+        margin-top: 2rem; 
+        border-top: 1px solid #ddd;
+        padding-top: 1rem;
+      }
+      .pill {
+        background: aquamarine;
+        padding: 2px 12px;
+        border-radius: 100px;
+        display: inline-block;
+      }
+      .pill-high-risk {
+        background: lightcoral;
+      }
+      .pill-hypertension {
+        background: lightcyan;
+      }
+      .pill-diabetes {
+        background: thistle;
+      }
+      .phone-large {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>') 0 50% no-repeat;
+        background-size: 24px;
+        font-size: 24px;
+        font-family: monospace;
+        letter-spacing: 0.5rem;
+        margin-bottom: 2rem;
+        padding-left: 40px;
+      }
+      .table-filter {
+        font-size: 0.8rem;
+        display: block;
+        padding: 8px 0 0 0;
+      }
+      .table-filter label {
+        font-weight: normal;
+      }
+      .table-filter select,
+      .table-filter input {
+        font-size: 0.7rem;
+        margin-top: -8px;
+        border-color: #ccc;
+        background-color: rgba(255,255,255,0.5);
+        color: #333;
+      }
+      .table-filter input {
+        padding-right: 8px;
+        padding-left: 28px;
+        border-radius: 100px;
+        background: rgba(255,255,255,0.5) url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>') 6px 50% no-repeat;
+        background-size: 16px;
+      }
+    </style>
   </head>
   <body>
     <div class="banner">
@@ -55,134 +177,25 @@
 
       <div class="card">
         <div class="heading">
-          <h3>
-            Pending to call
-          </h3>
-        </div>
-        <style>
-          td, th {
-            font-size: 0.9rem;
-            border: none !important;
-            border-top: 1px solid #ddd !important;
-            padding: 8px !important;
-          }
-          th {
-            vertical-align: top;
-            background: #eee;
-          }
-          select, input {
-            margin: 4px 0;
-            padding: 4px 32px 4px 12px;
-            border-radius: 3px;
-            appearance: none;
-            background: #d9e3ff url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 40 24" width="40"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>') 100% 50% no-repeat;
-            background-size: 24px;
-            font-size: 0.9rem;
-          }
-          .filters a, .filters select, .filters input {
-            display: inline-block;
-            margin: 16px 8px 0 0;
-          }
-          table select, table input {
-            background-color: white;
-            border: 1px solid #d9e3ff;
-          }
-          .phone {
-            font-weight: bold;
-            letter-spacing: 0.2rem;
-            font-family: monospace;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>') 0 50% no-repeat;
-            background-size: 16px;
-            display: block;
-            padding: 4px 4px 4px 24px;
-          }
-          .red {
-            color: red;
-          }
-          .overdue-patient {
-            display: block;
-          }
-          .overdue-patient .overdue-patient-info {
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-            position: fixed;
-            padding: 42px;
-            white-space: normal;
-            top: 0;
-            right: -1000px;
-            background: #fff;
-            border-left: 1px solid #999;
-            width: 40%;
-            height: 100%;
-            box-shadow: -10px 0 0 rgba(0,0,0,0.3);
-          }
-          .overdue-patient:hover .overdue-patient-info {
-            display: block;
-            opacity: 1;
-            right: 0;
-          }
-          .overdue-patient-info p {
-            margin-top: 0.5rem;
-          }
-          .overdue-patient-details p {
-            margin: 1rem 0;
-          }
-          .overdue-patient h4 {
-            margin-top: 2rem; 
-            border-top: 1px solid #ddd;
-            padding-top: 1rem;
-          }
-          .pill {
-            background: aquamarine;
-            padding: 2px 12px;
-            border-radius: 100px;
-            display: inline-block;
-          }
-          .pill-high-risk {
-            background: lightcoral;
-          }
-          .pill-hypertension {
-            background: lightcyan;
-          }
-          .pill-diabetes {
-            background: thistle;
-          }
-          .phone-large {
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>') 0 50% no-repeat;
-            background-size: 24px;
-            font-size: 24px;
-            font-family: monospace;
-            letter-spacing: 0.5rem;
-            margin-bottom: 2rem;
-            padding-left: 40px;
-          }
-          .table-filter {
-            font-size: 0.8rem;
-            display: block;
-            padding: 8px 0 0 0;
-          }
-          .table-filter label {
-            font-weight: normal;
-          }
-          .table-filter select,
-          .table-filter input {
-            font-size: 0.7rem;
-            margin-top: -8px;
-            border-color: #ccc;
-            background-color: rgba(255,255,255,0.5);
-            color: #333;
-          }
-          .table-filter input {
-            padding-right: 8px;
-            padding-left: 28px;
-            border-radius: 100px;
-            background: rgba(255,255,255,0.5) url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>') 6px 50% no-repeat;
-            background-size: 16px;
-          }
-        </style>
-        
-        <div class="filters">
-            <a href="#">Download Excel</a>
+          <a href="#" style="float: right; font-size: 0.8rem; margin: 8px">Download all overdue patients Excel</a>
+          <div class="link-dashboards">
+          <div>
+            <a href="#" class="active">
+              Pending to call
+            </a>
+            <a href="#">
+              Agreed to visit
+            </a>
+            <a href="#">
+              Remind to call later
+            </a>
+            <a href="#">
+              Removed from list
+            </a>
+            <a href="#">
+              No visit in 1 year
+            </a>
+          </div>
         </div>
         
         <div class="table-container">
@@ -198,7 +211,7 @@
                     Phone
                     <form class="table-filter">
                       <select>
-                        <option>All...</option>
+                        <option>All</option>
                         <option>Only with phone</option>
                         <option>Only without phone</option>
                       </select>
@@ -214,7 +227,7 @@
                     Sex
                     <form class="table-filter">
                       <select>
-                        <option>All...</option>
+                        <option>All</option>
                         <option>F</option>
                         <option>M</option>
                         <option>T</option>
@@ -226,7 +239,7 @@
                     High risk?
                     <form class="table-filter">
                       <select>
-                        <option>All...</option>
+                        <option>All</option>
                         <option>Only high risk</option>
                       </select>
                     </form>
@@ -236,7 +249,7 @@
                     <form class="table-filter">
                       <div>
                         <select>
-                          <option>All...</option>
+                          <option>All</option>
                           <option>HTN-only</option>
                           <option>DM-only</option>
                           <option>HTN+DM</option>
@@ -248,7 +261,7 @@
                     Facility
                     <form class="table-filter">
                       <select>
-                        <option>All...</option>
+                        <option>All</option>
                         <option>PHC Blueberry</option>
                         <option>PHC Carrot</option>
                         <option>PHC Daikon</option>
@@ -259,10 +272,7 @@
                   <th>
                     Home village / area
                     <form class="table-filter">
-                      <select>
-                        <option>All...</option>
-                        <option>Acai Berry Hills</option>
-                      </select>
+                      <input type="search" placeholder="Search" />
                     </form>
                   </th>
                   <th>
