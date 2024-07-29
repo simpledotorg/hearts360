@@ -1,4 +1,4 @@
-# Hearts360
+# HEARTS360
 
 [![hypertension dashboard](hearts-360-dashboard.png)](https://simpledotorg.github.io/hypertension-dashboard/)
 
