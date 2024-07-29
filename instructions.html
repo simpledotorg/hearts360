@@ -6,7 +6,7 @@
     <title>HEARTS 360 Dashboard: Instructions</title>
     <meta
       name="description"
-      content="A free, open source, template for creating a very useful hypertension dashboard to support public health projects."
+      content="A free, open source, template for creating a very useful hypertension and diabetes dashboard to support public health projects."
     />
     <meta name="author" content="Resolve to Save Lives" />
 
@@ -44,42 +44,74 @@
 
     <main>
       <h1>Developer guide</h1>
- 
-    <div class="notes">
-      <aside class="notes-nav">
-        <h2>HEARTS360 implementation guide</h2>
-        <p>Many of the data definitions are based on the <a href="https://apps.who.int/iris/bitstream/handle/10665/260423/WHO-NMH-NVI-18.5-eng.pdf">WHO HEARTS</a> technical package.</p>
-  
 
-        <span class="nav-section">Overview indicators</span>
-        <a href="#note-patients-protected" class="nav-jump-links">Patients protected</a>
-        <a href="#note-treatment-cascade" class="nav-jump-links">Hypertension treatment cascade</a>
-        
-        <span class="nav-section">Hypertension treatment outcomes</span>
-        <a href="#note-bp-controlled" class="nav-jump-links">BP controlled at latest visit</a>
-        <a href="#note-bp-uncontrolled" class="nav-jump-links">BP not controlled at latest visit</a>
-        <a href="#note-bp-3-month-ltfu" class="nav-jump-links">No visit in past 3 months</a>
-        
-        <span class="nav-section">Registrations</span>
-        <a href="#note-bp-under-care" class="nav-jump-links">Patients under care</a>
-        <a href="#note-bp-registrations" class="nav-jump-links">Cumulative registrations</a>
-        <a href="#note-bp-monthly" class="nav-jump-links">Monthly registrations</a>
-        
-        <span class="nav-section">LTFU</span>
-        <a href="#note-bp-12-month-ltfu" class="nav-jump-links">12 month lost to follow-up</a>
-        
-        <span class="nav-section">Opportunistic screening</span>
-        <a href="#note-bp-screened" class="nav-jump-links">% of OPD patients screened</a>
-        <a href="#note-bp-screened-monthly" class="nav-jump-links">Monthly OPD patients screened</a>
-        
-        <span class="nav-section">Cohorts</span>
-        <a href="#note-bp-cohorts" class="nav-jump-links">Cohort reports</a>
-        
-        <span class="nav-section">Stock</span>
-        <a href="#note-bp-drug-stock" class="nav-jump-links">Anti-hypertensive drug stock</a>
-        <a href="#note-bp-monitors" class="nav-jump-links">Blood pressure monitors</a>
-      </aside>
-      <div class="notes-body">
+      <div class="notes">
+        <aside class="notes-nav">
+          <h2>Implementation guide</h2>
+          <p>
+            Many of the data definitions are based on the
+            <a
+              href="https://apps.who.int/iris/bitstream/handle/10665/260423/WHO-NMH-NVI-18.5-eng.pdf"
+              >WHO HEARTS</a
+            >
+            technical package.
+          </p>
+
+          <span class="nav-section">Overview indicators</span>
+          <a href="#note-patients-protected" class="nav-jump-links"
+            >Patients protected</a
+          >
+          <a href="#note-treatment-cascade" class="nav-jump-links"
+            >Hypertension treatment cascade</a
+          >
+
+          <span class="nav-section">Hypertension treatment outcomes</span>
+          <a href="#note-bp-controlled" class="nav-jump-links"
+            >BP controlled at latest visit</a
+          >
+          <a href="#note-bp-uncontrolled" class="nav-jump-links"
+            >BP not controlled at latest visit</a
+          >
+          <a href="#note-bp-3-month-ltfu" class="nav-jump-links"
+            >No visit in past 3 months</a
+          >
+
+          <span class="nav-section">Registrations</span>
+          <a href="#note-bp-under-care" class="nav-jump-links"
+            >Patients under care</a
+          >
+          <a href="#note-bp-registrations" class="nav-jump-links"
+            >Cumulative registrations</a
+          >
+          <a href="#note-bp-monthly" class="nav-jump-links"
+            >Monthly registrations</a
+          >
+
+          <span class="nav-section">LTFU</span>
+          <a href="#note-bp-12-month-ltfu" class="nav-jump-links"
+            >12 month lost to follow-up</a
+          >
+
+          <span class="nav-section">Opportunistic screening</span>
+          <a href="#note-bp-screened" class="nav-jump-links"
+            >% of OPD patients screened</a
+          >
+          <a href="#note-bp-screened-monthly" class="nav-jump-links"
+            >Monthly OPD patients screened</a
+          >
+
+          <span class="nav-section">Cohorts</span>
+          <a href="#note-bp-cohorts" class="nav-jump-links">Cohort reports</a>
+
+          <span class="nav-section">Stock</span>
+          <a href="#note-bp-drug-stock" class="nav-jump-links"
+            >Anti-hypertensive drug stock</a
+          >
+          <a href="#note-bp-monitors" class="nav-jump-links"
+            >Blood pressure monitors</a
+          >
+        </aside>
+        <div class="notes-body">
         
         <div class="notes-section">
           <div class="notes-note">
@@ -91,7 +123,7 @@
               <li>Dead</li>
             </ul>
             
-            <p>Patients marked ‘under care’ fall into one of the 4 following additional categories:</p>
+            <p>Patients marked 'under care' fall into one of the 4 following additional categories:</p>
             <ul>
               <li>Newly registered - this category is not visualized in the dashboard</li>
               <li>BP controlled</li>
@@ -108,7 +140,11 @@
               <li>Number of BP encounters in the last 12 months</li>
               <li>Most recent BP value in the last 3 months</li>
             </ul>
+            <p>We consider it a good practice to chart the last 18 months of data with the most recent month being the current month.</p>
+            <p style="background:rgb(255, 244, 172); border-width: 4px; border-color: rgb(236, 223, 77); padding: 8px 12px;">All indicators listed in this document are computed as monthly values. For completed months, the monthly value is based on the end of the month. For the current month, the monthly value is updated throughout the course of the month (e.g. daily if materialized views are refreshed daily).</p>
+            <div style="background-color: red; color: white">Add table here</div>
           </div>
+          
           <div class="notes-details">
             <blockquote>
               <h6>Example</h6>
@@ -121,236 +157,979 @@
               <p>A patient that does not have a visit recorded in the last 12 months will move to the Lost to Follow Up category (up until the 12 month mark, the patient will be recorded in the No Visit category)</p>
             </blockquote>
           </div>
-          </div>
-          <div class="notes-section">
-            <div class="notes-note" id="note-patients-protected">
-              <h6>Patients protected</h6>
-              <p>This indicator is a very simplistic representation of the number of patients controlled. It is primarily useful as a motivational tool for health staff and for advocacy. The data simply represents the numerator from the "BP controlled at latest visit in past 3 months" indicator below.</p>
-            </div>
-            <div class="notes-details">
-              <blockquote>
-                <h6>Value</h6>
-                <p><code>Number of patients with controlled blood pressure</code> (&lt;140 systolic AND &lt;90 diastolic) recorded at the patient's most recent visit within the past 3 months.</p>
-                <h6>Example</h6>
-                <p>By the end of July, 4808 patients had a visit anytime from May 1 to July 31 and at their most recent visit, they had their BP controlled.</p>
-              </blockquote>
-            </div>
-          </div>
-          <div class="notes-section">
-            <div class="notes-note" id="note-treatment-cascade">
-              <h6>Hypertension treatment cascade</h6>
-              <p>This indicator gives a view of how many expected individuals in the region are under treatment for hypertension and, of those patients, how many have their blood pressure under control.</p>
-              <p><b>Note:</b> The "Estimated number of adults" is usually derived from community surveys (e.g. <a href="https://www.who.int/teams/noncommunicable-diseases/surveillance/systems-tools/steps">WHO STEPS survey</a>) and can be updated annually or even less frequently in a data system.</p>
-            </div>
-            <div class="notes-details">
-              <blockquote>
-                <h6>Numerators</h6>
-                <p>The numerators for <code>Cumulative registered patients</code>, <code>Patients under care</code>, and <code>Patients with BP controlled</code> are simply the values from the charts lower in the report.</p>
-                <h6>Denominator</h6>
-                <p>Number of people in the region estimated to have hypertension. (This is commonly derived from community survey data e.g. STEPS survey)</p>
-              </blockquote>
-            </div>
         </div>
-        
+
+        <div class="notes-section">
+          <div class="notes-note" id="note-patients-protected">
+            <h5>Database structure example</h5>
+            <p>
+              This example corresponds to the minimal data set required to reproduce the HEART360 dashboard. It does not correspond to a real life example, as tables are missing important information (name/phone number, table ids …)
+            </p>
+            <p>Data can be organized differently.</p>
+          </div>
+        </div>
+        <div class="notes-section">
+          <div class="notes-note" id="note-treatment-cascade">
+            <h6>Patients table</h6>
+            <p>Example table structure for patients.</p>
+          </div>
+          <div class="notes-details">
+            <table border="1">
+              <thead>
+                  <tr>
+                      <th>Column name</th>
+                      <th>Column type</th>
+                      <th>Possible Values</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>patient_id</td>
+                      <td>number</td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td>patient_status</td>
+                      <td></td>
+                      <td>DEAD, ALIVE</td>
+                  </tr>
+                  <tr>
+                      <td>registration_date</td>
+                      <td>date</td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td>death_date</td>
+                      <td>date</td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td>facility</td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td>region</td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+              </tbody>
+          </table>
+          </div>
+        </div>
+
         <div class="notes-section">
           <div class="notes-note">
-            <h5>Hypertension treatment outcomes</h5>
-            <p>The 3 treatment outcome indicators show whether patients in the hypertension control program are visiting health facilities regularly. Blood pressure control is the best indicator to know if patients under treatment are being treated effectively.</p>
-            <p>All 3 indicators have the same denominator.</p>
+            <h6>BP encounters table</h6>
+
           </div>
           <div class="notes-details">
-            <!--blockquote>
-              <h6>Denominator</h6>
-              <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
-            </blockquote-->
+            <table border="1">
+              <thead>
+                  <tr>
+                      <th>Column name</th>
+                      <th>Column type</th>
+                      <th>Possible Values</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>encounter_id</td>
+                      <td>number</td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td>patient_id</td>
+                      <td>number</td>
+                      <td>References a patient.<br>Can be a Foreign Key</td>
+                  </tr>
+                  <tr>
+                      <td>encounter_date</td>
+                      <td>date</td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td>diastolic_bp</td>
+                      <td>number</td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td>systolic_bp</td>
+                      <td>number</td>
+                      <td></td>
+                  </tr>
+              </tbody>
+          </table>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-controlled">
-            <h6>BP controlled at latest visit in past 3 months</h6>
-            <p>How many patients enrolled in the hypertension control program visited a health facility in the past 3 months with a healthy blood pressure?</p>
-            <p><b>Why are patients registered within the past 3 months excluded?</b> Three months gives patients time to take their hypertension medication and to get their BP controlled. Most newly registered patients have uncontrolled blood pressure and including them would not reflect an accurate picture of actual controlled patients.</p>
-            <p><b>Why is this important?</b> BP controlled reflects the overall health of a hypertension control program and is the most important hypertension control indicator.</p>
-          </div>
-          <div class="notes-details">
-            <blockquote>
-              <h6>Numerator</h6>
-              <p><code>Patients with controlled blood pressure</code> (&lt;140 systolic AND &lt;90 diastolic) recorded at the patient's most recent visit within the past 3 months.</p>
-              <h6>Denominator</h6>
-              <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
-            </blockquote>
+            <h5>Example queries (detailed)</h5>
+            <p>Note: Example queries in this document does not take facility/region/state into account. Refer to additional dimensions below on how to modify these queries for facilities, region, state.</p>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-uncontrolled">
-            <h6>BP not controlled at latest visit in past 3 months</h6>
-            <p>How many patients enrolled in the hypertension control program visited a health facility in the past 3 months with high blood pressure?</p>  
-            <p><b>Why is this important?</b> BP not controlled shows which patients are coming back to care, but require continued intervention to control their blood pressure.</p>
+            <h6>Cumulative dead patients</h6>
+            <p>
+              <b>Definition:</b> Cumulative number of dead patients at the end of each month (including patients that have died in previous months). 
+            </p>
+            <p>This should be implemented as a flag during the data collection process where users are allowed to indicate when a patient is deceased. This flag allows dead patients to be excluded from indicators. All historic data of dead patients is excluded from figures.</p>
+            <p><b>Tip:</b> This indicator is cumulative and should increase over time.</p>
           </div>
           <div class="notes-details">
             <blockquote>
-              <h6>Numerator</h6>
-              <p><code>Patients with uncontrolled blood pressure</code> (&ge;140 systolic OR &ge;90 diastolic) recorded at the patient's most recent visit within the past 3 months.</p>
-              <h6>Denominator</h6>
-              <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
+              <h6>Scenario example</h6>
+              <p>A patient was registered Sep-2023, and marked dead on Jan-2024. This patient is included in figures Sep-Jan. From the moment they are marked dead all data will be excluded. This patient will no longer be included in any figures for Sep-Jan.</p>
+            </blockquote>
+            <blockquote>
+              <h6>Code example</h6>
+              <pre>
+                <code>
+WITH DEAD_PATIENTS_BY_MONTH as (
+    SELECT 
+        DATE_TRUNC('month',DEATH_DATE) as REF_MONTH,
+        count(*) as NB_DEAD_PATIENTS_THAT_MONTH
+    FROM patients
+    WHERE PATIENT_STATUS = 'dead'
+    GROUP by DATE_TRUNC('month',DEATH_DATE))
+SELECT 
+    REFERENCE.REF_MONTH,
+    SUM(REFERENCE_BEFORE.NB_DEAD_PATIENTS_THAT_MONTH) as CUMULATIVE_NUMBRER_OF_DEAD_PATIENTS
+FROM DEAD_PATIENTS_BY_MONTH REFERENCE
+JOIN DEAD_PATIENTS_BY_MONTH REFERENCE_BEFORE on REFERENCE.REF_MONTH >= REFERENCE_BEFORE.REF_MONTH
+GROUP BY REFERENCE.REF_MONTH
+ORDER by REFERENCE.REF_MONTH desc
+              </code>
+              </pre>
+            </blockquote>
+            <blockquote>
+              <h6>Data example</h6>
+              <table border="1">
+                <thead>
+                    <tr>
+                        <th>ref_month</th>
+                        <th>cumulative_number_of_patients</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-06-01</td>
+                        <td>95</td>
+                    </tr>
+                    <tr>
+                        <td>2024-05-01</td>
+                        <td>87</td>
+                    </tr>
+                    <tr>
+                        <td>2024-04-01</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>2024-03-01</td>
+                        <td>76</td>
+                    </tr>
+                    <tr>
+                        <td>2024-02-01</td>
+                        <td>64</td>
+                    </tr>
+                    <tr>
+                        <td>2024-01-01</td>
+                        <td>60</td>
+                    </tr>
+                    <tr>
+                        <td>2023-12-01</td>
+                        <td>49</td>
+                    </tr>
+                    <tr>
+                        <td>2023-11-01</td>
+                        <td>45</td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-01</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>2023-09-01</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>2023-08-01</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>2023-07-01</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>2023-06-01</td>
+                        <td>28</td>
+                    </tr>
+                </tbody>
+            </table>
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-3-month-ltfu">
-            <h6>No visit in 3 months</h6>
-            <p>How many patients enrolled in the hypertension control program did not visit a health facility in the past 3 months?</p>  
-            <p><b>Note:</b> This can also be called "3 month lost to follow-up."</p>
-            <p><b>Why is this important?</b> This number reflects how good facilities are at retaining patients in care.</p>
+            <h6>Cumulative registered patients and monthly registrations</h6>
+            <p><b>Monthly registrations</b> at the end of each month are the patients registered during the month.</p>
+            <p><b>Cumulative</b> registered patients at the end of each month are the total number of patients registered before the end of the month and are not dead.</p>
+            <p><b>Tip:</b> This number should be growing with time. More recent months should have a greater number than older months.</p>
+            <h6>Subqueries detail</h6>
+            <p style="background-color: rgb(62, 124, 204); display: inline-block; color: white; padding: 2px 4px; margin-top: 8px;">KNOWN_MONTHS</p>
+              <p>This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the Database as in the example.
+              </p>
+              <p style="background-color: rgb(14, 120, 85); display: inline-block; color: white; padding: 2px 4px; margin-top: 8px;">ALIVE_PATIENTS</p>
+              <p>This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
+              </p>
           </div>
           <div class="notes-details">
             <blockquote>
-              <h6>Numerator</h6>
-              <p>Patients no BP measure recorded within the past 3 months.</p>
-              <h6>Denominator</h6>
-              <p><code>Patients under care</code> in the hypertension program <i>registered before the past 3 months</i>. Exclusions: <code>Dead</code> and <code>12 month lost to follow-up</code> patients are excluded from the denominator.</p>
+              <h6>Example</h6>
+              <p>A patient was registered Sep-2023, this patient is counted as a monthly registration for Sep-2023. For cumulative registrations, the patient is counted for Sep-2023 and for every subsequent month as long as they are not marked as dead.</p>
+              
+              </blockquote>
+              <blockquote>
+                <h6>Code example</h6>
+              
+                <pre><code>WITH 
+<span style="background-color: rgb(62, 124, 204); display: block;">KNOWN_MONTHS as (
+    select 
+        distinct(DATE_TRUNC('month',REGISTRATION_DATE)) as REF_MONTH
+    from patients
+),</span>
+<span style="background-color: rgb(14, 120, 85); display: block;">PATIENTS_BY_MONTH as (
+    select 
+        DATE_TRUNC('month',created_at) as REF_MONTH,
+        count(*) as NB_NEW_PATIENTS
+    from patients
+    where status <> 'dead'
+    group by DATE_TRUNC('month',created_at)
+)</span>
+SELECT
+    KNOWN_MONTHS.REF_MONTH,
+    sum(REFERENCE_BEFORE.NB_NEW_PATIENTS) as CUMULATIVE_NUMBRER_OF_PATIENTS,
+   sum(case when KNOWN_MONTHS.REF_MONTH = REFERENCE_BEFORE.REF_MONTH then NB_NEW_PATIENTS else null end) as NB_NEW_PATIENTS
+FROM KNOWN_MONTHS 
+join PATIENTS_BY_MONTH REFERENCE_BEFORE on KNOWN_MONTHS.REF_MONTH >= REFERENCE_BEFORE.REF_MONTH
+GROUP BY KNOWN_MONTHS.REF_MONTH
+order by KNOWN_MONTHS.REF_MONTH desc
+
+                </code></pre>
+              
+            </blockquote>
+            <blockquote>
+              <h6>Data example</h6>
+              <table border="1">
+                <thead>
+                    <tr>
+                        <th>ref_month</th>
+                        <th>cumulative_number_of_patients</th>
+                        <th>nb_new_patients</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-06-01</td>
+                        <td>41151</td>
+                        <td>2777</td>
+                    </tr>
+                    <tr>
+                        <td>2024-05-01</td>
+                        <td>38374</td>
+                        <td>5288</td>
+                    </tr>
+                    <tr>
+                        <td>2024-04-01</td>
+                        <td>33086</td>
+                        <td>5921</td>
+                    </tr>
+                    <tr>
+                        <td>2024-03-01</td>
+                        <td>27165</td>
+                        <td>5338</td>
+                    </tr>
+                    <tr>
+                        <td>2024-02-01</td>
+                        <td>21827</td>
+                        <td>2630</td>
+                    </tr>
+                    <tr>
+                        <td>2024-01-01</td>
+                        <td>19197</td>
+                        <td>1755</td>
+                    </tr>
+                    <tr>
+                        <td>2023-12-01</td>
+                        <td>17442</td>
+                        <td>1132</td>
+                    </tr>
+                    <tr>
+                        <td>2023-11-01</td>
+                        <td>16310</td>
+                        <td>1348</td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-01</td>
+                        <td>14962</td>
+                        <td>1844</td>
+                    </tr>
+                    <tr>
+                        <td>2023-09-01</td>
+                        <td>13118</td>
+                        <td>1048</td>
+                    </tr>
+                    <tr>
+                        <td>2023-08-01</td>
+                        <td>12070</td>
+                        <td>979</td>
+                    </tr>
+                    <tr>
+                        <td>2023-07-01</td>
+                        <td>11091</td>
+                        <td>1176</td>
+                    </tr>
+                    <tr>
+                        <td>2023-06-01</td>
+                        <td>9915</td>
+                        <td>1542</td>
+                    </tr>
+                    <tr>
+                        <td>2023-05-01</td>
+                        <td>8373</td>
+                        <td>1545</td>
+                    </tr>
+                </tbody>
+            </table>
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-registrations">
-            <h5>Registrations</h5>
-            <p>It is useful to know how many patients are enrolled in a hypertension control program and how many of those patients are "under care" (i.e. have visited at least once in the past 12 months).</p>
-          </div>
-          <div class="notes-details">
-            
-          </div>
-        </div>
-        
-        <div class="notes-section">
-          <div class="notes-note" id="note-bp-under-care">
-            <h6>Patients under care</h6>
-            <p>Track the patients who have visited in the last 12 months and can be considered to be under care in the hypertension control program.</p>
+            <h6>Patients under care & 12 Months lost to follow-up</h6>
+            <p>
+              A patient that is not <b>Dead</b> is either <b>Under Care</b> or <b>12 months lost to follow-up</b> for a given reference month:
+
+            </p>
+            <ul>
+              <li>A patient with at least one visit recorded in the last 12 months before the end of the reference month is Under Care
+                </li>
+                <li>                A patient with no visit recorded in the last 12 months before the end of the reference month is Lost To Follow Up</li>
+            </ul>
+            <p>As these two indicators are mutually exclusive (the total of <b><i>patients under care</i></b> and patients <b><i>12 month lost to follow-up</i></b> should equal <b><i>cumulative registrations</i></b>), it can be calculated in a single query.</p>
+            <p style="background:rgb(255, 244, 172); border-width: 4px; border-color: rgb(236, 223, 77); padding: 8px 12px;">Before the end of the reference month - This means the last day of the month is always referenced even when that date is in the future and has not yet occurred. For example if today is 10-Jun-2024, the end of the reference month is 30-Jun-2024, so checking for an event in the last 12 months includes events that occurred between 1-Jul-2023 and 30-Jun-2024.
+            </p>
+            <h6>Subqueries detail</h6>
+            <p style="background-color: rgb(62, 124, 204); display: inline-block; color: white; padding: 2px 4px; margin-top: 8px;">KNOWN_MONTHS</p>
+              <p>This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the Database as in the example.
+              </p>
+              <p style="background-color: rgb(14, 120, 85); display: inline-block; color: white; padding: 2px 4px; margin-top: 8px;">ALIVE_PATIENTS</p>
+              <p>This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
+              </p>
+              <p style="background-color: rgb(156, 109, 38); display: inline-block; color: white; padding: 2px 4px; margin-top: 8px;">BP_ENCOUNTERS</p>
+              <p>This is a list of all BP readings taken for each patient based on the visit month.</p>
           </div>
           <div class="notes-details">
             <blockquote>
-              <h6>Value</h6>
-              <code>Cumulative registrations</code> in the hypertension program excluding <code>12 month lost to follow-up</code> and <code>Dead</code> patients.</code>
+              <h6>Examples</h6>
+              <p>A patient was registered in Jan-2023, and visited once in Mar-2023. Today is Feb-<b style="color:#d9d9d9">2024</b>. This patient is counted as a <i>patient under care</i> as they had a visit in the past 12 months.</p>
+              <p>Using the same patient, today is Mar-<b style="color:#d9d9d9">2024</b>. This patient is counted as <i>12 months lost to follow-up</i> because they have no visit in the past 12 months.</p>
+            </blockquote>
+            <blockquote>
+              <h6>Code example</h6>
+              <pre>
+                <code>WITH 
+<span style="background-color: rgb(62, 124, 204); display: block;">KNOWN_MONTHS as (
+    SELECT 
+        distinct(DATE_TRUNC('month',REGISTRATION_DATE)) as REF_MONTH
+    FROM patients),</span>
+<span style="background-color: rgb(14, 120, 85); display: block;">ALIVE_PATIENTS as (
+    SELECT 
+        DATE_TRUNC('month',REGISTRATION_DATE) as REGISTRATION_MONTH,
+        patient_id
+    FROM patients
+    WHERE PATIENT_STATUS <> 'dead'
+),</span>
+<span style="background-color: rgb(156, 109, 38); display: block;">BP_ENCOUNTERS as (
+    SELECT
+        patient_id,
+        DATE_TRUNC('month',ENCOUNTER_DATE)  as BP_ENCOUNTER_MONTH
+    FROM blood_pressures
+)</span>
+SELECT 
+    KNOWN_MONTHS.REF_MONTH,
+    sum(CASE WHEN BP_ENCOUNTERS.patient_id IS NULL THEN 1 ELSE NULL END ) as <b>NB_PATIENTS_LOST_TO_FOLLOW_UP</b>,
+    count(distinct(BP_ENCOUNTERS.patient_id)) as <b>NB_PATIENTS_UNDER_CARE</b>,
+    count(distinct(ALIVE_PATIENTS.patient_id)) as <b>CUMULATIVE_NUMBER_OF_PATIENTS</b>
+FROM KNOWN_MONTHS
+JOIN ALIVE_PATIENTS 
+    on ALIVE_PATIENTS.REGISTRATION_MONTH <= KNOWN_MONTHS.REF_MONTH
+LEFT OUTER JOIN BP_ENCOUNTERS 
+    on BP_ENCOUNTERS.patient_id = ALIVE_PATIENTS.patient_id
+    and BP_ENCOUNTER_MONTH <= KNOWN_MONTHS.REF_MONTH
+    and BP_ENCOUNTER_MONTH + interval '12 month'> KNOWN_MONTHS.REF_MONTH
+GROUP BY KNOWN_MONTHS.REF_MONTH
+ORDER by KNOWN_MONTHS.REF_MONTH desc;
+                </code>
+              </pre>
+            </blockquote>
+            <blockquote style="overflow-x: scroll;">
+              <h6>Data example</h6>
+              <table border="1">
+                <thead>
+                    <tr>
+                        <th>ref_month</th>
+                        <th>nb_patients_lost_to_follow_up</th>
+                        <th>nb_patients_under_care</th>
+                        <th>total_number_of_patients</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-06-01</td>
+                        <td>2266</td>
+                        <td>38885</td>
+                        <td>41151</td>
+                    </tr>
+                    <tr>
+                        <td>2024-05-01</td>
+                        <td>1990</td>
+                        <td>36384</td>
+                        <td>38374</td>
+                    </tr>
+                    <tr>
+                        <td>2024-04-01</td>
+                        <td>1778</td>
+                        <td>31308</td>
+                        <td>33086</td>
+                    </tr>
+                    <tr>
+                        <td>2024-03-01</td>
+                        <td>1492</td>
+                        <td>25673</td>
+                        <td>27165</td>
+                    </tr>
+                    <tr>
+                        <td>2024-02-01</td>
+                        <td>1283</td>
+                        <td>20544</td>
+                        <td>21827</td>
+                    </tr>
+                    <tr>
+                        <td>2024-01-01</td>
+                        <td>1155</td>
+                        <td>18042</td>
+                        <td>19197</td>
+                    </tr>
+                    <tr>
+                        <td>2023-12-01</td>
+                        <td>997</td>
+                        <td>16445</td>
+                        <td>17442</td>
+                    </tr>
+                    <tr>
+                        <td>2023-11-01</td>
+                        <td>918</td>
+                        <td>15392</td>
+                        <td>16310</td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-01</td>
+                        <td>827</td>
+                        <td>14135</td>
+                        <td>14962</td>
+                    </tr>
+                    <tr>
+                        <td>2023-09-01</td>
+                        <td>721</td>
+                        <td>12397</td>
+                        <td>13118</td>
+                    </tr>
+                    <tr>
+                        <td>2023-08-01</td>
+                        <td>619</td>
+                        <td>11451</td>
+                        <td>12070</td>
+                    </tr>
+                    <tr>
+                        <td>2023-07-01</td>
+                        <td>538</td>
+                        <td>10553</td>
+                        <td>11091</td>
+                    </tr>
+                    <tr>
+                        <td>2023-06-01</td>
+                        <td>443</td>
+                        <td>9472</td>
+                        <td>9915</td>
+                    </tr>
+                    <tr>
+                        <td>2023-05-01</td>
+                        <td>362</td>
+                        <td>8011</td>
+                        <td>8373</td>
+                    </tr>
+                </tbody>
+            </table>
             </blockquote>
           </div>
         </div>
-        
+
+        <div class="notes-section">
+          <div class="notes-note" id="note-bp-under-care">
+            <h5>Newly registered & Patients under care registered before the past 3 months
+            </h5>
+            <p>
+              There are two mutually exclusive categories for <b>Patients Under Care</b>:
+              
+            </p>
+            <ul>
+              <li><b>Newly</b> registered: Patient registered in the last 3 months. <b>Note</b>: This category is not visualized in the dashboard.</li>
+              <li><b>Patients under care registered before the past 3 months</b>: Patients registered before the past 3 months.</li>
+            </ul>
+
+            <p>There are 3 mutually exclusive categories for <b>Patients under care registered before the past 3 months</b>:</p>
+            <ul>
+              <li><b>Controlled BP</b>: Patient registered before the past 3 months, with a BP reading <140/90 (systolic BP < 140 AND diastolic BP < 90) recorded at the patient's most recent visit within the past 3 months.</li>
+            <li><b>Uncontrolled BP</b>: Patient registered before the past 3 months, with a BP reading >=140/90 (systolic BP >= 140 OR diastolic BP >= 90) recorded at the patient's most recent visit within the past 3.
+            </li>
+            <li><b>No visit</b>: Patient registered before the past 3 months, with no recorded visited in the last 3 months.
+            </li>
+            </ul>
+
+            <h6>Subqueries detail</h6>
+            <p style="background-color: rgb(62, 124, 204); display: inline-block; color: white; padding: 2px 4px; margin-top: 8px;">KNOWN_MONTHS</p>
+              <p>This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the Database as in the example.
+              </p>
+              <p style="background-color: rgb(14, 120, 85); display: inline-block; color: white; padding: 2px 4px; margin-top: 8px;">ALIVE_PATIENTS</p>
+              <p>This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
+              </p>
+              <p style="background-color: rgb(156, 109, 38); display: inline-block; color: white; padding: 2px 4px; margin-top: 8px;">BP_ENCOUNTERS</p>
+              <p>This is a list of all BP readings taken for each patient based on the visit month.</p>
+              <p style="background-color: rgb(156, 38, 38); display: inline-block; color: white; padding: 2px 4px; margin-top: 8px;">LATEST_BP_BY_MONTH_AND_PATIENT</p>
+              <p>This subquery returns the most recent BP reading for every patient for every Reference Month.</p>
+              <p>This is done by first taking the date of the latest BP Measurement in the past 12 months <b>from a given Reference Month for a given patient.</b></p>
+              <pre><code style="font-size: 12px; background-color: #dbdbdb !important; color: rgb(80, 80, 80); padding: 12px 16px; margin-bottom: 12px;">SELECT
+    KNOWN_MONTHS.REF_MONTH,
+    MOST_RECENT_BP_ENCOUNTER.patient_id, 
+    MAX(MOST_RECENT_BP_ENCOUNTER.created_at) as MOST_RECENT_BP_DATE
+from blood_pressures MOST_RECENT_BP_ENCOUNTER
+join KNOWN_MONTHS
+    on DATE_TRUNC('month', MOST_RECENT_BP_ENCOUNTER.created_at) <= KNOWN_MONTHS.REF_MONTH
+    and DATE_TRUNC('month',MOST_RECENT_BP_ENCOUNTER.created_at) + interval '12 month'> KNOWN_MONTHS.REF_MONTH
+group by KNOWN_MONTHS.REF_MONTH, patient_id</code></pre>
+                <p>Using this result, we join it against BP_ENCOUNTERS to get the information we need. 
+                </p>
+          </div>
+          <div class="notes-details">
+            <blockquote>
+              <h6>Examples</h6>
+              <b style="color: white;">Controlled BP</b>
+              <p>A patient was registered into the hypertension program in Sep-2023. They visited for blood pressure measures in Nov-2023 (BP controlled), Jan-2024 (BP not controlled), Feb-2024 (BP not controlled) and Mar-2024 (BP controlled).</p>
+              <p>Today is Apr-2024, this patient has visited twice in the past 3 months (Feb-2024 and Mar-2024) and is categorized in the controlled BP group at their latest visit (Mar-2024).</p>
+            
+              <b style="color: white;">Uncontrolled BP</b>
+              <p>A patient was registered into the hypertension program in Sep-2023. They visited for blood pressure measures in Nov-2023 (BP controlled), Feb-2024 (BP not controlled) and Apr-2024 (BP not controlled). Today is Apr-2024, this patient has visited twice in the past 3 months (Feb-2024 and Apr-2024) and is uncontrolled BP at their latest visit (Apr-2024).</p>
+            
+              <b style="color: white;">No visit</b>
+              <p>A patient was registered into the hypertension program in Sep-2023. They visited for blood pressure measures in Dec-2023 (BP controlled), Jan-2024 (BP not controlled). Today is Apr-2024, this patient had no visit in the past 3 months.</p>
+            </blockquote>
+            
+            <blockquote>
+              <h6>Code example</h6>
+              <pre><code>WITH 
+<span style="background-color: rgb(62, 124, 204); display: block;">KNOWN_MONTHS as (
+    select 
+        distinct(DATE_TRUNC('month',created_at)) as REF_MONTH
+    from patients
+),</span><span style="background-color: rgb(14, 120, 85); display: block;">ALIVE_PATIENTS as (
+  select 
+      DATE_TRUNC('month',created_at) as REGISTRATION_MONTH,
+      id as patient_id
+  from patients
+  where PATIENT_STATUS <> 'dead'
+),
+</span><span style="background-color: rgb(156, 109, 38); display: block;">BP_ENCOUNTERS as (
+    SELECT
+        id,
+        patient_id,
+        systolic, 
+        diastolic,
+        created_at  as BP_ENCOUNTER_DATE,
+        DATE_TRUNC('month',created_at)  as BP_ENCOUNTER_MONTH
+    from blood_pressures
+),</span><span style="background-color: rgb(156, 38, 38); display: block;">LATEST_BP_BY_MONTH_AND_PATIENT  as (
+    WITH MOST_RECENT_BP_ENCOUNTER as (
+        SELECT
+            KNOWN_MONTHS.REF_MONTH,
+            MOST_RECENT_BP_ENCOUNTER.patient_id, 
+            MAX(MOST_RECENT_BP_ENCOUNTER.created_at) as MOST_RECENT_BP_DATE
+        from blood_pressures MOST_RECENT_BP_ENCOUNTER
+        join KNOWN_MONTHS
+            on DATE_TRUNC('month', MOST_RECENT_BP_ENCOUNTER.created_at) <= KNOWN_MONTHS.REF_MONTH
+            and DATE_TRUNC('month',MOST_RECENT_BP_ENCOUNTER.created_at) + interval '12 month'> KNOWN_MONTHS.REF_MONTH
+        group by KNOWN_MONTHS.REF_MONTH, patient_id)
+    select
+        REF_MONTH, MOST_RECENT_BP_ENCOUNTER.patient_id,
+        max(systolic) as systolic, 
+        max(diastolic) as diastolic,
+        max(BP_ENCOUNTER_MONTH) as BP_ENCOUNTER_MONTH
+    from MOST_RECENT_BP_ENCOUNTER 
+    join BP_ENCOUNTERS 
+        on MOST_RECENT_BP_ENCOUNTER.MOST_RECENT_BP_DATE = BP_ENCOUNTERS.BP_ENCOUNTER_DATE
+        and MOST_RECENT_BP_ENCOUNTER.patient_id = BP_ENCOUNTERS.patient_id
+    group by REF_MONTH, MOST_RECENT_BP_ENCOUNTER.patient_id
+)</span>SELECT
+    KNOWN_MONTHS.REF_MONTH,
+    count(*) as NB_PATIENTS_UNDER_CARE,
+    sum(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 1 else 0 end ) as NB_PATIENTS_NEWLY_REGISTERED,
+    sum(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0 else 1 end ) as NB_PATIENTS_UNDER_CARE_REGISTERED_BEFORE_THE_PAST_3_MONTHS,
+    sum(CASE
+        WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
+        WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 1
+        else 0 end ) as NB_PATIENTS_NO_VISIT,
+    sum(CASE
+        WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
+        WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 0
+        WHEN systolic > 140 OR diastolic > 90 then 1 
+        else 0 end ) as NB_PATIENTS_UNCONTROLLED,
+    sum(CASE
+        WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
+        WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 0
+        WHEN systolic > 140 OR diastolic > 90 then 0 
+        else 1 end ) as NB_PATIENTS_CONTROLLED
+FROM KNOWN_MONTHS
+join ALIVE_PATIENTS 
+    on ALIVE_PATIENTS.REGISTRATION_MONTH <= KNOWN_MONTHS.REF_MONTH
+join LATEST_BP_BY_MONTH_AND_PATIENT
+    on LATEST_BP_BY_MONTH_AND_PATIENT.patient_id = ALIVE_PATIENTS.patient_id
+    and LATEST_BP_BY_MONTH_AND_PATIENT.REF_MONTH = KNOWN_MONTHS.REF_MONTH
+GROUP BY KNOWN_MONTHS.REF_MONTH
+order by 1 desc
+                </code>
+              </pre>
+            </blockquote>
+
+            <blockquote style="overflow-x: scroll;">
+              <h6>Data example</h6>
+              <!-- <table border="1" >
+        <thead>
+            <tr>
+                <th>ref_month</th>
+                <th>nb_patients_under_care</th>
+                <th>nb_patients_newly_registered</th>
+                <th>nb_patients_under_care_registered_before_the_last_3_months</th>
+                <th>nb_patients_no_visit</th>
+                <th>nb_patients_uncontrolled</th>
+                <th>nb_patients_controlled</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2024-06-01</td>
+                <td>38885</td>
+                <td>13617</td>
+                <td>25268</td>
+                <td>5262</td>
+                <td>5121</td>
+                <td>14885</td>
+            </tr>
+            <tr>
+                <td>2024-05-01</td>
+                <td>36384</td>
+                <td>16058</td>
+                <td>20326</td>
+                <td>3926</td>
+                <td>3955</td>
+                <td>12445</td>
+            </tr>
+            <tr>
+                <td>2024-04-01</td>
+                <td>31308</td>
+                <td>13419</td>
+                <td>17889</td>
+                <td>3590</td>
+                <td>3205</td>
+                <td>11094</td>
+            </tr>
+            <tr>
+                <td>2024-03-01</td>
+                <td>25673</td>
+                <td>9461</td>
+                <td>16212</td>
+                <td>3305</td>
+                <td>2852</td>
+                <td>10055</td>
+            </tr>
+            <tr>
+                <td>2024-02-01</td>
+                <td>20544</td>
+                <td>5389</td>
+                <td>15155</td>
+                <td>2841</td>
+                <td>2902</td>
+                <td>9412</td>
+            </tr>
+            <tr>
+                <td>2024-01-01</td>
+                <td>18042</td>
+                <td>4138</td>
+                <td>13904</td>
+                <td>2369</td>
+                <td>2653</td>
+                <td>8882</td>
+            </tr>
+            <tr>
+                <td>2023-12-01</td>
+                <td>16445</td>
+                <td>4229</td>
+                <td>12216</td>
+                <td>1799</td>
+                <td>2139</td>
+                <td>8278</td>
+            </tr>
+            <tr>
+                <td>2023-11-01</td>
+                <td>15392</td>
+                <td>4136</td>
+                <td>11256</td>
+                <td>1676</td>
+                <td>2026</td>
+                <td>7554</td>
+            </tr>
+            <tr>
+                <td>2023-10-01</td>
+                <td>14135</td>
+                <td>3767</td>
+                <td>10368</td>
+                <td>1492</td>
+                <td>1888</td>
+                <td>6988</td>
+            </tr>
+            <tr>
+                <td>2023-09-01</td>
+                <td>12397</td>
+                <td>3111</td>
+                <td>9286</td>
+                <td>1268</td>
+                <td>1821</td>
+                <td>6197</td>
+            </tr>
+            <tr>
+                <td>2023-08-01</td>
+                <td>11451</td>
+                <td>3604</td>
+                <td>7847</td>
+                <td>1061</td>
+                <td>1476</td>
+                <td>5310</td>
+            </tr>
+            <tr>
+                <td>2023-07-01</td>
+                <td>10553</td>
+                <td>4160</td>
+                <td>6393</td>
+                <td>910</td>
+                <td>1314</td>
+                <td>4169</td>
+            </tr>
+            <tr>
+                <td>2023-06-01</td>
+                <td>9472</td>
+                <td>3495</td>
+                <td>5977</td>
+                <td>942</td>
+                <td>1320</td>
+                <td>3715</td>
+            </tr>
+            <tr>
+                <td>2023-05-01</td>
+                <td>8011</td>
+                <td>2195</td>
+                <td>5816</td>
+                <td>969</td>
+                <td>1279</td>
+                <td>3568</td>
+            </tr>
+        </tbody>
+    </table> -->
+            </blockquote>
+          </div>
+        </div>
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-registrations">
             <h6>Cumulative registrations</h6>
-            <p>Track all of the patients who have been registered in the hypertension program. Over time, the cumulative registrations will be a larger number than <code>Patients under care</code>.</p>
+            <p>
+              Track all of the patients who have been registered in the
+              hypertension program. Over time, the cumulative registrations will
+              be a larger number than <code>Patients under care</code>.
+            </p>
           </div>
           <div class="notes-details">
             <blockquote>
               <h6>Value</h6>
-              <code>Cumulative registrations</code> in the hypertension program excluding <code>Dead</code> patients.</code>
+              <code>Cumulative registrations</code> in the hypertension program
+              excluding <code>Dead</code> patients.
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-monthly">
             <h6>Monthly new patients registered</h6>
-            <p>Monthly registrations give visibility into activity on-the-ground by health facility staff.</p>
+            <p>
+              Monthly registrations give visibility into activity on-the-ground
+              by health facility staff.
+            </p>
           </div>
           <div class="notes-details">
             <blockquote>
               <h6>Value</h6>
-              <i>New patients registered</i> in the hypertension program in a month who are diagnosed with hypertension (diagnosis could have happened on any date).
+              <i>New patients registered</i> in the hypertension program in a
+              month who are diagnosed with hypertension (diagnosis could have
+              happened on any date).
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-12-month-ltfu">
             <h5>12 month lost to follow-up patients</h5>
-            <p>Patients with no "visit" in the past 12 months (i.e. no BP measure recorded in the past 12 months). </p>
+            <p>
+              Patients with no "visit" in the past 12 months (i.e. no BP measure
+              recorded in the past 12 months).
+            </p>
           </div>
           <div class="notes-details">
             <blockquote>
               <h6>Numerator</h6>
               <p>Patients no BP measure recorded within the past 12 months.</p>
               <h6>Denominator</h6>
-              <p><code>Cumulative registered patients</code> in the hypertension program. Exclusions: <code>Dead</code> patients are excluded from the denominator.</p>
+              <p>
+                <code>Cumulative registered patients</code> in the hypertension
+                program. Exclusions: <code>Dead</code> patients are excluded
+                from the denominator.
+              </p>
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-percent-registered">
             <h6>% of people registered</h6>
-            <p>The number of patients in the region registered in the hypertension control program.</p>
+            <p>
+              The number of patients in the region registered in the
+              hypertension control program.
+            </p>
           </div>
           <div class="notes-details">
             <blockquote>
               <h6>Numerator</h6>
               <p><code>Cumulative registrations</code></p>
               <h6>Denominator</h6>
-              <p><code>Estimated number of adults with hypertension</code> in the community.</p>
+              <p>
+                <code>Estimated number of adults with hypertension</code> in the
+                community.
+              </p>
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
-          <div class="notes-note"note-bp-percent-under-care>
+          <div class="notes-note" note-bp-percent-under-care>
             <h6>% of people under care</h6>
-            <p>The number of patients in the region registered in the hypertension control program who have visited a facility at least once in the past 12 months.</p>
+            <p>
+              The number of patients in the region registered in the
+              hypertension control program who have visited a facility at least
+              once in the past 12 months.
+            </p>
           </div>
           <div class="notes-details">
             <blockquote>
               <h6>Numerator</h6>
               <p><code>Patients under care</code></p>
               <h6>Denominator</h6>
-              <p><code>Estimated number of adults with hypertension</code> in the community.</p>
+              <p>
+                <code>Estimated number of adults with hypertension</code> in the
+                community.
+              </p>
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-percent-controlled">
             <h6>% of people with BP controlled</h6>
-            <p>The number of patients in the region registered in the hypertension control program who have their BP controlled in the past 3 months.</p>
+            <p>
+              The number of patients in the region registered in the
+              hypertension control program who have their BP controlled in the
+              past 3 months.
+            </p>
           </div>
           <div class="notes-details">
             <blockquote>
               <h6>Numerator</h6>
-              <p><code>Patients with controlled blood pressure</code> in past 3 months.</p>
+              <p>
+                <code>Patients with controlled blood pressure</code> in past 3
+                months.
+              </p>
               <h6>Denominator</h6>
-              <p><code>Estimated number of adults with hypertension</code> in the community.</p>
+              <p>
+                <code>Estimated number of adults with hypertension</code> in the
+                community.
+              </p>
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="bp-screening">
             <h5>Opportunistic screening</h5>
-           <p>Facility-based opportunistic screening gives visibility into how many patients in the OPD (Outpatient Department) of hospitals are having their blood pressure measured to screen for hypertension.</p>
-           <p><b>Note:</b> In many health systems, the number of screened patients and the approximate number of adult patients visiting the OPD are only recorded on paper and are reported monthly in aggregate.</p>
+            <p>
+              Facility-based opportunistic screening gives visibility into how
+              many patients in the OPD (Outpatient Department) of hospitals are
+              having their blood pressure measured to screen for hypertension.
+            </p>
+            <p>
+              <b>Note:</b> In many health systems, the number of screened
+              patients and the approximate number of adult patients visiting the
+              OPD are only recorded on paper and are reported monthly in
+              aggregate.
+            </p>
           </div>
-          <div class="notes-details">
-            
-          </div>
+          <div class="notes-details"></div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-screened">
             <h6>% of OPD patients screened for hypertension</h6>
-            <p>The approximate percentage of patients screened for hypertension in a month.</p>
+            <p>
+              The approximate percentage of patients screened for hypertension
+              in a month.
+            </p>
           </div>
           <div class="notes-details">
             <blockquote>
               <h6>Numerator</h6>
-              <p><i>Adult OPD patients</i> with a blood pressure measure taken in a month</p>
+              <p>
+                <i>Adult OPD patients</i> with a blood pressure measure taken in
+                a month
+              </p>
               <h6>Denominator</h6>
-              <p>Approximate <i>Adult patients visiting the OPD</i> of facilities per month</p>
+              <p>
+                Approximate <i>Adult patients visiting the OPD</i> of facilities
+                per month
+              </p>
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-screened-monthly">
             <h6>Monthly OPD patients screened for hypertension</h6>
@@ -359,44 +1138,63 @@
           <div class="notes-details">
             <blockquote>
               <h6>Value</h6>
-              <p><i>Adult OPD patients</i> with a blood pressure measure taken in a month</p>
+              <p>
+                <i>Adult OPD patients</i> with a blood pressure measure taken in
+                a month
+              </p>
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-cohorts">
             <h5>Cohort reports</h5>
-           <p>Cohorts allow program managers to track a set of patients receiving treatment over time. The dashboard takes all the patients registered during a quarter and displays the outcome of their visit in the following quarter.</p>
+            <p>
+              Cohorts allow program managers to track a set of patients
+              receiving treatment over time. The dashboard takes all the
+              patients registered during a quarter and displays the outcome of
+              their visit in the following quarter.
+            </p>
           </div>
           <div class="notes-details">
             <blockquote>
               <h6>BP controlled numerator</h6>
-              <p>The number of <i>Patients with a BP &lt;140 AND &lt;90</i> at their last visit in the quarter after the quarter when they were registered.</p>
-              
-             <h6> BP not controlled numerator</h6>
-             <p>The number of <i>Patients with a BP &ge;140 OR &ge;90</i> at their last visit in the quarter after the quarter when they were registered.</p>
-              
+              <p>
+                The number of <i>Patients with a BP &lt;140 AND &lt;90</i> at
+                their last visit in the quarter after the quarter when they were
+                registered.
+              </p>
+
+              <h6>BP not controlled numerator</h6>
+              <p>
+                The number of <i>Patients with a BP &ge;140 OR &ge;90</i> at
+                their last visit in the quarter after the quarter when they were
+                registered.
+              </p>
+
               <h6>No visit in 3 months numerator</h6>
-              <p>The number of <i>Patients with no visit</i> in the quarter after the quarter when they were registered.</p>
-              
+              <p>
+                The number of <i>Patients with no visit</i> in the quarter after
+                the quarter when they were registered.
+              </p>
+
               <h6>Denominator</h6>
-              <p><i>New patients registered</i> in the hypertension program in a quarter.</p>
-              
+              <p>
+                <i>New patients registered</i> in the hypertension program in a
+                quarter.
+              </p>
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="">
             <h5>Drug stock and BP monitor inventory</h5>
-           <p>Description...</p>
+            <p>Description...</p>
           </div>
-          <div class="notes-details">
-            
-          </div>
+          <div class="notes-details"></div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-drug-stock">
             <h6>Anti-hypertensive drug stock</h6>
@@ -406,24 +1204,25 @@
             <blockquote>
               <h6>Patient days calculation</h6>
               <p>
-                <i>Quantity of DRUG ABC 5 mg</i> +<br>
-                <i>Quantity of DRUG ABC 10 mg</i> * 2<br>
-                / <code>Patients under care</code> * <i>Estimated % of patients on DRUG ABC</i><br>
+                <i>Quantity of DRUG ABC 5 mg</i> +<br />
+                <i>Quantity of DRUG ABC 10 mg</i> * 2<br />
+                / <code>Patients under care</code> *
+                <i>Estimated % of patients on DRUG ABC</i><br />
                 = <i>Patient days of drug stock</i>
               </p>
             </blockquote>
             <blockquote>
               <h6>Example</h6>
-              <p style="font-family: monospace;">
-                &nbsp;&nbsp;<i>25,000 pills of Amlodipine 5 mg</i> +<br>
-                &nbsp;&nbsp;<i>15,000 pills of Amlodipine 10 mg</i> * 2<br>
-                / <code>6,000 patients under care</code> * <i>72%</i><br>
+              <p style="font-family: monospace">
+                &nbsp;&nbsp;<i>25,000 pills of Amlodipine 5 mg</i> +<br />
+                &nbsp;&nbsp;<i>15,000 pills of Amlodipine 10 mg</i> * 2<br />
+                / <code>6,000 patients under care</code> * <i>72%</i><br />
                 = <i>12.5 patient days of Amlodipine</i>
               </p>
             </blockquote>
           </div>
         </div>
-        
+
         <div class="notes-section">
           <div class="notes-note" id="note-bp-monitors">
             <h6>Blood pressure monitors</h6>
@@ -439,690 +1238,7 @@
           </div>
         </div>
       </div>
-    </div>
-    Hypertension pseudocode for HEARTS360
-
-
-    Depending on the month, a patient may fall under different categories. For example:
-
-    As a result, the notion of a REFERENCE MONTH is important for crafting the queries required to get accurate information for each month to build the hypertension treatment indicators.
-    All elements related to time, should be computed from the perspective of the REFERENCE MONTH and not the current date.  This is critically important for information such as:
-    Number of BP encounters in the last 3 months 
-    Number of BP encounters in the last 12 months
-    Most recent BP value in the last 3 months
-    We consider it a good practice to chart the last 18 months of data with the most recent month being the current month.
-    All indicators listed in this document are computed as monthly values. For completed months, the monthly value is based on the end of the month. For the current month, the monthly value is updated throughout the course of the month (e.g. daily if materialized views are refreshed daily).
-    
-    
-    
-    Patient Category
-    Condition
-    All
-    Known
-    Patients
-    Dead
-    Patient is dead
-    Alive
-    Lost to follow up
-    Patient has no visit in the last 12 months
-    Under
-    Care
-    Newly Registered
-    Patient has registered in the last 3 months
-    Under Care Registered before the last 3 months
-    No Visit
-    Patient has no visit in the last 3 months
-    This excludes Newly Registered patients
-    BP Uncontrolled
-    Latest BP taken in the last 3 months was not controlled
-    This exudes Newly Registered patients and No Visit
-    BP Controlled
-    Latest BP taken in the last 3 months was controlled
-    This exudes Newly Registered patients and No Visit
-    
-    
-    
-    Database structure example
-    This example corresponds to the minimal data set required to reproduce the HEART360 dashboard. It does not correspond to a real life example, as tables are missing important information (name/phone number, table ids …)
-    
-    Data can be organized differently. 
-    Patients Table
-    Column name
-    Column type
-    Possible Values
-    patient_id
-    number
-    
-    
-    patient_status
-    
-    
-    DEAD, ALIVE
-    registration_date 
-    date
-    
-    
-    death_date
-    date
-    
-    
-    facility
-    
-    
-    
-    
-    region
-    
-    
-    
-    
-    
-    BP Encounters Table
-    Column name
-    Column type
-    Possible Values
-    encounter_id
-    number
-    
-    
-    patient_id
-    number
-    References a patient
-    Can be a Foreign Key
-    encounter_date
-    date
-    
-    
-    diastolic_bp 
-    number
-    
-    
-    systolic_bp
-    number
-    
-    
-    
-    
-    Example queries (detailed)
-    Note: Example queries in this document does not take facility/region/state into account. Refer to additional dimensions below on how to modify these queries for facilities, region, state.
-    Cumulative dead patients
-    Definition 
-    Cumulative number of dead patients at the end of each month (including patients that have died in previous months).  
-    
-    This should be implemented as a flag during the data collection process where users are allowed to indicate when a patient is deceased. This flag allows dead patients to be excluded from indicators.
-    All historic data of dead patients is excluded from figures.
-    
-    Tip: This indicator is cumulative and should increase over time.
-    
-    Scenario Example
-    A patient was registered Sep-2023, and marked dead on Jan-2024. This patient is included in figures Sep-Jan. From the moment they are marked dead all data will be excluded. This patient will no longer be included in any figures for Sep-Jan.
-    Code Example
-    WITH DEAD_PATIENTS_BY_MONTH as (
-        select 
-            DATE_TRUNC('month',DEATH_DATE) as REF_MONTH,
-            count(*) as NB_DEAD_PATIENTS_THAT_MONTH
-        from patients
-        where PATIENT_STATUS = 'dead'
-        group by DATE_TRUNC('month',DEATH_DATE))
-    SELECT 
-        REFERENCE.REF_MONTH,
-        SUM(REFERENCE_BEFORE.NB_DEAD_PATIENTS_THAT_MONTH) as CUMULATIVE_NUMBRER_OF_DEAD_PATIENTS
-    FROM DEAD_PATIENTS_BY_MONTH REFERENCE
-    JOIN DEAD_PATIENTS_BY_MONTH REFERENCE_BEFORE on REFERENCE.REF_MONTH >= REFERENCE_BEFORE.REF_MONTH
-    GROUP BY REFERENCE.REF_MONTH
-    order by REFERENCE.REF_MONTH desc
-    Data Example
-    
-    ref_month
-    cumulative_numbrer_of_patients
-    2024-06-01
-    95
-    2024-05-01
-    87
-    2024-04-01
-    80
-    2024-03-01
-    76
-    2024-02-01
-    64
-    2024-01-01
-    60
-    2023-12-01
-    49
-    2023-11-01
-    45
-    2023-10-01
-    42
-    2023-09-01
-    40
-    2023-08-01
-    35
-    2023-07-01
-    30
-    2023-06-01
-    28
-    
-    Cumulative registered patients and monthly registrations
-    Definition
-    
-    Monthly registrations at the end of each month are the patients registered during the month.
-    
-    Cumulative registered patients at the end of each month are the total number of patients registered before the end of the month and are not dead.
-    
-    Tip: This number should be growing with time. More recent months should have a greater number than older months.
-    
-    
-    Scenario Example
-    
-    A patient was registered Sep-2023, this patient is counted as a monthly registration for Sep-2023. For cumulative registrations, the patient is counted for Sep-2023 and for every subsequent month as long as they are not marked as dead.
-    Code Example
-    WITH 
-    KNOWN_MONTHS as (
-        select 
-            distinct(DATE_TRUNC('month',REGISTRATION_DATE)) as REF_MONTH
-        from patients),
-    PATIENTS_BY_MONTH as (
-        select 
-            DATE_TRUNC('month',created_at) as REF_MONTH,
-            count(*) as NB_NEW_PATIENTS
-        from patients
-        where status <> 'dead'
-        group by DATE_TRUNC('month',created_at))
-    SELECT 
-        KNOWN_MONTHS.REF_MONTH,
-        sum(REFERENCE_BEFORE.NB_NEW_PATIENTS) as CUMULATIVE_NUMBRER_OF_PATIENTS,
-       sum(case when KNOWN_MONTHS.REF_MONTH = REFERENCE_BEFORE.REF_MONTH then NB_NEW_PATIENTS else null end) as NB_NEW_PATIENTS
-    FROM KNOWN_MONTHS 
-    join PATIENTS_BY_MONTH REFERENCE_BEFORE on KNOWN_MONTHS.REF_MONTH >= REFERENCE_BEFORE.REF_MONTH
-    GROUP BY KNOWN_MONTHS.REF_MONTH
-    order by KNOWN_MONTHS.REF_MONTH desc
-    Data Example
-    
-    ref_month
-    cumulative_numbrer_of_patients
-    nb_new_patients
-    2024-06-01
-    41151
-    2777
-    2024-05-01
-    38374
-    5288
-    2024-04-01
-    33086
-    5921
-    2024-03-01
-    27165
-    5338
-    2024-02-01
-    21827
-    2630
-    2024-01-01
-    19197
-    1755
-    2023-12-01
-    17442
-    1132
-    2023-11-01
-    16310
-    1348
-    2023-10-01
-    14962
-    1844
-    2023-09-01
-    13118
-    1048
-    2023-08-01
-    12070
-    979
-    2023-07-01
-    11091
-    1176
-    2023-06-01
-    9915
-    1542
-    2023-05-01
-    8373
-    1545
-    
-    Subqueries detail
-    KNOWN_MONTHS
-    
-    This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the Database as in the example.
-    
-    ALIVE_PATIENTS
-    
-    This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
-    Patients under care/ 12 Months lost to follow-up
-    Definition
-    
-    A patient that is not Dead is either Under Care or Lost To Follow Up for a given reference month:
-    A patient with at least one visit recorded in the last 12 months before the end of the reference month is Under Care
-    A patient with no visit recorded in the last 12 months before the end of the reference month is Lost To Follow Up
-    
-    As these two indicators are mutually exclusive (the total of patients under care and patients lost to follow-up should equal cumulative registrations), it can be calculated in a single query.
-    
-    Before the end of the reference month - This means the last day of the month is always referenced even when that date is in the future and has not yet occurred. For example if today is 10-Jun-2024, the end of the reference month is 30-Jun-2024, so checking for an event in the last 12 months includes events that occurred between 1-Jul-2023 and 30-Jun-2024.
-    
-    Scenario Example
-    A patient was registered in Jan-2023, and visited once in Mar-2023. Today is Feb-2024. This patient is counted as a patient under care as they had a visit in the past 12 months.
-    Using the same patient, today is Mar-2024. This patient is counted as 12 months lost to follow-up because they have not had a visit in the past 12 months.
-    Code Example
-    
-    WITH 
-    KNOWN_MONTHS as (
-        select 
-            distinct(DATE_TRUNC('month',REGISTRATION_DATE)) as REF_MONTH
-        from patients),
-    ALIVE_PATIENTS as (
-        select 
-            DATE_TRUNC('month',REGISTRATION_DATE) as REGISTRATION_MONTH,
-            patient_id
-        from patients
-        where PATIENT_STATUS <> 'dead'
-    ),
-    BP_ENCOUNTERS as (
-        SELECT
-            patient_id,
-            DATE_TRUNC('month',ENCOUNTER_DATE)  as BP_ENCOUNTER_MONTH
-        from blood_pressures
-    )
-    SELECT 
-        KNOWN_MONTHS.REF_MONTH,
-        sum(CASE WHEN BP_ENCOUNTERS.patient_id IS NULL THEN 1 ELSE NULL END ) as NB_PATIENTS_LOST_TO_FOLLOW_UP,
-        count(distinct(BP_ENCOUNTERS.patient_id)) as NB_PATIENTS_UNDER_CARE,
-        count(distinct(ALIVE_PATIENTS.patient_id)) as CUMULATIVE_NUMBER_OF_PATIENTS
-    FROM KNOWN_MONTHS
-    join ALIVE_PATIENTS 
-        on ALIVE_PATIENTS.REGISTRATION_MONTH <= KNOWN_MONTHS.REF_MONTH
-    left outer join BP_ENCOUNTERS 
-        on BP_ENCOUNTERS.patient_id = ALIVE_PATIENTS.patient_id
-        and BP_ENCOUNTER_MONTH <= KNOWN_MONTHS.REF_MONTH
-        and BP_ENCOUNTER_MONTH + interval '12 month'> KNOWN_MONTHS.REF_MONTH
-    GROUP BY KNOWN_MONTHS.REF_MONTH
-    order by KNOWN_MONTHS.REF_MONTH desc;
-    Subqueries detail
-    KNOWN_MONTHS
-    
-    This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the Database as in the example.
-    
-    ALIVE_PATIENTS
-    
-    This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
-    
-    BP_ENCOUNTERS
-    
-    This is a list of all BP readings taken for each patient based on the visit month.
-    Data Example
-    
-    ref_month
-    nb_patients_lost_to_follow_up
-    nb_patients_under_care
-    total_number_of_patients
-    2024-06-01
-    2266
-    38885
-    41151
-    2024-05-01
-    1990
-    36384
-    38374
-    2024-04-01
-    1778
-    31308
-    33086
-    2024-03-01
-    1492
-    25673
-    27165
-    2024-02-01
-    1283
-    20544
-    21827
-    2024-01-01
-    1155
-    18042
-    19197
-    2023-12-01
-    997
-    16445
-    17442
-    2023-11-01
-    918
-    15392
-    16310
-    2023-10-01
-    827
-    14135
-    14962
-    2023-09-01
-    721
-    12397
-    13118
-    2023-08-01
-    619
-    11451
-    12070
-    2023-07-01
-    538
-    10553
-    11091
-    2023-06-01
-    443
-    9472
-    9915
-    2023-05-01
-    362
-    8011
-    8373
-    
-    
-    Newly registered / 
-    Patients under care registered before the past 3 months (Controlled BP / Uncontrolled BP / No visit )
-    Definition
-    There are two mutually exclusive categories for Patients Under Care:
-    Newly registered: Patient registered in the last 3 months. Note: This category is not visualized in the dashboard.
-    Patients under care registered before the past 3 months: Patients registered before the past 3 months.
-    
-    There are 3 mutually exclusive categories for Patients under care registered before the past 3 months:
-    Controlled BP: Patient registered before the past 3 months, with a BP reading <140/90 (systolic BP < 140 AND diastolic BP < 90) recorded at the patient's most recent visit within the past 3 months.
-    Uncontrolled BP: Patient registered before the past 3 months, with a BP reading >=140/90 (systolic BP >= 140 OR diastolic BP >= 90) recorded at the patient's most recent visit within the past 3.
-    No visit: Patient registered before the past 3 months, with no recorded visited in the last 3 months.
-    
-    Scenario Example 
-    Controlled BP
-    A patient was registered into the hypertension program in Sep-2023. They visited for blood pressure measures in Nov-2023 (BP controlled), Jan-2024 (BP not controlled), Feb-2024 (BP not controlled) and Mar-2024 (BP controlled).
-    Today is Apr-2024, this patient has visited twice in the past 3 months (Feb-2024 and Mar-2024) and is categorized in the controlled BP group at their latest visit (Mar-2024).
-    Uncontrolled BP
-    A patient was registered into the hypertension program in Sep-2023. They visited for blood pressure measures in Nov-2023 (BP controlled), Feb-2024 (BP not controlled) and Apr-2024 (BP not controlled). Today is Apr-2024, this patient has visited twice in the past 3 months (Feb-2024 and Apr-2024) and is uncontrolled BP at their latest visit (Apr-2024).
-    No visit
-    A patient was registered into the hypertension program in Sep-2023. They visited for blood pressure measures in Dec-2023 (BP controlled), Jan-2024 (BP not controlled). Today is Apr-2024, this patient had no visit in the past 3 months.
-    Code Example
-    WITH 
-    KNOWN_MONTHS as (
-        select 
-            distinct(DATE_TRUNC('month',created_at)) as REF_MONTH
-        from patients),
-    ALIVE_PATIENTS as (
-        select 
-            DATE_TRUNC('month',created_at) as REGISTRATION_MONTH,
-            id as patient_id
-        from patients
-        where PATIENT_STATUS <> 'dead'
-    ),
-    BP_ENCOUNTERS as (
-        SELECT
-            id,
-            patient_id,
-            systolic, 
-            diastolic,
-            created_at  as BP_ENCOUNTER_DATE,
-            DATE_TRUNC('month',created_at)  as BP_ENCOUNTER_MONTH
-        from blood_pressures
-    ),
-    LATEST_BP_BY_MONTH_AND_PATIENT  as (
-        WITH MOST_RECENT_BP_ENCOUNTER as (
-            SELECT
-                KNOWN_MONTHS.REF_MONTH,
-                MOST_RECENT_BP_ENCOUNTER.patient_id, 
-                MAX(MOST_RECENT_BP_ENCOUNTER.created_at) as MOST_RECENT_BP_DATE
-            from blood_pressures MOST_RECENT_BP_ENCOUNTER
-            join KNOWN_MONTHS
-                on DATE_TRUNC('month', MOST_RECENT_BP_ENCOUNTER.created_at) <= KNOWN_MONTHS.REF_MONTH
-                and DATE_TRUNC('month',MOST_RECENT_BP_ENCOUNTER.created_at) + interval '12 month'> KNOWN_MONTHS.REF_MONTH
-            group by KNOWN_MONTHS.REF_MONTH, patient_id)
-        select
-            REF_MONTH, MOST_RECENT_BP_ENCOUNTER.patient_id,
-            max(systolic) as systolic, 
-            max(diastolic) as diastolic,
-            max(BP_ENCOUNTER_MONTH) as BP_ENCOUNTER_MONTH
-        from MOST_RECENT_BP_ENCOUNTER 
-        join BP_ENCOUNTERS 
-            on MOST_RECENT_BP_ENCOUNTER.MOST_RECENT_BP_DATE = BP_ENCOUNTERS.BP_ENCOUNTER_DATE
-            and MOST_RECENT_BP_ENCOUNTER.patient_id = BP_ENCOUNTERS.patient_id
-        group by REF_MONTH, MOST_RECENT_BP_ENCOUNTER.patient_id
-    )
-    
-    SELECT
-        KNOWN_MONTHS.REF_MONTH,
-        count(*) as NB_PATIENTS_UNDER_CARE,
-        sum(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 1 else 0 end ) as NB_PATIENTS_NEWLY_REGISTERED,
-        sum(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0 else 1 end ) as NB_PATIENTS_UNDER_CARE_REGISTERED_BEFORE_THE_PAST_3_MONTHS,
-        sum(CASE
-            WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
-            WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 1
-            else 0 end ) as NB_PATIENTS_NO_VISIT,
-        sum(CASE
-            WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
-            WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 0
-            WHEN systolic > 140 OR diastolic > 90 then 1 
-            else 0 end ) as NB_PATIENTS_UNCONTROLLED,
-        sum(CASE
-            WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
-            WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 0
-            WHEN systolic > 140 OR diastolic > 90 then 0 
-            else 1 end ) as NB_PATIENTS_CONTROLLED
-    FROM KNOWN_MONTHS
-    join ALIVE_PATIENTS 
-        on ALIVE_PATIENTS.REGISTRATION_MONTH <= KNOWN_MONTHS.REF_MONTH
-    join LATEST_BP_BY_MONTH_AND_PATIENT
-        on LATEST_BP_BY_MONTH_AND_PATIENT.patient_id = ALIVE_PATIENTS.patient_id
-        and LATEST_BP_BY_MONTH_AND_PATIENT.REF_MONTH = KNOWN_MONTHS.REF_MONTH
-    GROUP BY KNOWN_MONTHS.REF_MONTH
-    order by 1 desc
-    
-    Subqueries detail
-    KNOWN_MONTHS
-    This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the Database as in the example.
-    ALIVE_PATIENTS
-    This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
-    BP_ENCOUNTERS
-    This is a list of all BP readings taken for each patient based on the visit month.
-    LATEST_BP_BY_MONTH_AND_PATIENT
-    This subquery returns the most recent BP reading for every patient for every Reference Month.
-    
-    This is done by first taking the date of the latest BP Measurement in the past 12 months from a given Reference Month for a given patient.
-    
-    SELECT
-        KNOWN_MONTHS.REF_MONTH,
-        MOST_RECENT_BP_ENCOUNTER.patient_id, 
-        MAX(MOST_RECENT_BP_ENCOUNTER.created_at) as MOST_RECENT_BP_DATE
-    from blood_pressures MOST_RECENT_BP_ENCOUNTER
-    join KNOWN_MONTHS
-        on DATE_TRUNC('month', MOST_RECENT_BP_ENCOUNTER.created_at) <= KNOWN_MONTHS.REF_MONTH
-        and DATE_TRUNC('month',MOST_RECENT_BP_ENCOUNTER.created_at) + interval '12 month'> KNOWN_MONTHS.REF_MONTH
-    group by KNOWN_MONTHS.REF_MONTH, patient_id
-    
-    
-    Using this result, we join it against BP_ENCOUNTERS to get the information we need. 
-    Data	 Example
-    
-    ref_month
-    nb_patients_under_care
-    nb_patients_newly_registered
-    nb_patients_under_care_registered
-    _before_the_ast_3_months
-    nb_patients_no_visit
-    nb_patients_uncontrolled
-    nb_patients_controlled
-    2024-06-01
-    38885
-    13617
-    25268
-    5262
-    5121
-    14885
-    2024-05-01
-    36384
-    16058
-    20326
-    3926
-    3955
-    12445
-    2024-04-01
-    31308
-    13419
-    17889
-    3590
-    3205
-    11094
-    2024-03-01
-    25673
-    9461
-    16212
-    3305
-    2852
-    10055
-    2024-02-01
-    20544
-    5389
-    15155
-    2841
-    2902
-    9412
-    2024-01-01
-    18042
-    4138
-    13904
-    2369
-    2653
-    8882
-    2023-12-01
-    16445
-    4229
-    12216
-    1799
-    2139
-    8278
-    2023-11-01
-    15392
-    4136
-    11256
-    1676
-    2026
-    7554
-    2023-10-01
-    14135
-    3767
-    10368
-    1492
-    1888
-    6988
-    2023-09-01
-    12397
-    3111
-    9286
-    1268
-    1821
-    6197
-    2023-08-01
-    11451
-    3604
-    7847
-    1061
-    1476
-    5310
-    2023-07-01
-    10553
-    4160
-    6393
-    910
-    1314
-    4169
-    2023-06-01
-    9472
-    3495
-    5977
-    942
-    1320
-    3715
-    2023-05-01
-    8011
-    2195
-    5816
-    969
-    1279
-    3568
-    
-    
-    Hypertension treatment cascade
-    The treatment cascade gives a view of how many estimated patients with hypertension in the region have been registered into the hypertension program, how many are under treatment for hypertension and, of those under treatment, how many have controlled blood pressure. The cascade should be constructed for the latest completed reference month.
-    
-    The estimated patients with hypertension in the region can be found from STEPs survey data and entered into the system. The estimated number of people with hypertension cannot be inferred from the database.
-    
-    * The values related to these figures are colored in the previous data example tables:
-    Cumulative registrations
-    Patients under care
-    Patients with BP controlled
-    
-    
-    The corresponding values for the month of May 2024 are highlighted in their respective colors in the data example tables. 
-    
-    
-    
-    Additional Dimensions
-    In order to aggregate by region/state, queries can be modified easily to take this in account by adding the correct level of aggregation in:
-    Patient subqueries
-    Group by clause of the main query 
-    
-    Caching results
-    Depending on the size of the different tables, these queries may be too resource intensive to run in real time, each time a user views the HEARTS360 dashboard.
-    
-    It is a good practice to cache the results and refresh the tables daily. For example, using Materialized Views that refresh once a day. Caching can also be done at application level, or through a variety of other mechanisms.
-    Data Checks
-    
-    After these queries have been adapted to a system, it is a good practice to check that values obtained through the different queries are consistent:
-    
-    The same numbers obtained from different queries should be identical
-    CUMULATIVE_NUMBRER_OF_PATIENTS  should be the same value from the two queries that produce it
-    NB_PATIENTS_UNDER_CARE should be the same value from the two queries that produce it
-    The following queries should total:
-    NB_PATIENTS_UNDER_CARE = NB_PATIENTS_NEWLY_REGISTERED + NB_PATIENTS_CONTROLLED + NB_PATIENTS_UNCONTROLLED + NB_PATIENTS_NO_VISIT
-    NB_PATIENTS_UNDER_CARE_REGISTERED_BEFORE_PAST_3_MONTHS = NB_PATIENTS_UNDER_CARE - NB_PATIENTS_NEWLY_REGISTERED
-    CUMULATIVE_NUMBRER_OF_PATIENTS = NB_PATIENTS_LOST_TO_FOLLOW_UP + NB_PATIENTS_UNDER_CARE
-    Cumulative indicators should increase over time:
-    Cumulative number of dead patients 
-    Cumulative number of registered patients
-    Month to month verification
-    NB_PATIENTS_NEWLY_REGISTERED of month X = (CUMULATIVE_NUMBER_OF_PATIENTS of month X) - (CUMULATIVE_NUMBER_OF_PATIENTS of month X -3) 
-    
-    
-    
-    Adapting queries to your data
-    If your PATIENTS and EVENTS tables are structured similar to the database example, it should be possible to adapt the queries by changing only the subqueries.
-    
-    This is the easiest way to produce valid queries that will work for your data.
-     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </main>
+    </main>
   </body>
   <style>
     .menu {
@@ -1222,7 +1338,7 @@
         }
 
         &:not(.parent) p::before {
-          content: '⎣';
+          content: "⎣";
           margin-right: 4px;
           color: #a9a9a9;
           font-size: 0.5rem;
