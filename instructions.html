@@ -177,14 +177,14 @@
             </div>
             <div class="notes-details">
               <blockquote>
-                <h6>Example</h6>
+                <h6>Example A</h6>
                 <p>
                   A patient registered in January 2024, is considered Newly
                   Registered for the first 3 months from registration date and
                   from April 2024 moves into either the BP controlled, BP
                   uncontrolled or No Visit category
                 </p>
-                <h6>Example</h6>
+                <h6>Example B</h6>
 
                 <p>
                   Patients under care that have a visit recorded in the last 3
@@ -192,12 +192,12 @@
                   category (depending on their BP reading)
                 </p>
 
-                <h6>Example</h6>
+                <h6>Example C</h6>
                 <p>
                   A patient that does not have a visit recorded in the last 12
-                  months will move to the Lost to Follow Up category (up until
-                  the 12 month mark, the patient will be recorded in the No
-                  Visit category)
+                  months will move to the 12 month lost to follow-up category
+                  (up until the 12 month mark, the patient will be recorded in
+                  the No Visit category)
                 </p>
               </blockquote>
             </div>
@@ -530,15 +530,7 @@ ORDER by REFERENCE.REF_MONTH desc
                 months should have a greater number than older months.
               </p>
               <h6>Subqueries detail</h6>
-              <p
-                style="
-                  background-color: rgb(62, 124, 204);
-                  display: inline-block;
-                  color: white;
-                  padding: 2px 4px;
-                  margin-top: 8px;
-                "
-              >
+              <p class="code-highlight highlight-text code-highlight-blue">
                 KNOWN_MONTHS
               </p>
               <p>
@@ -546,15 +538,7 @@ ORDER by REFERENCE.REF_MONTH desc
                 in a variety of ways, but can be derived from the months
                 explicitly existing in the Database as in the example.
               </p>
-              <p
-                style="
-                  background-color: rgb(14, 120, 85);
-                  display: inline-block;
-                  color: white;
-                  padding: 2px 4px;
-                  margin-top: 8px;
-                "
-              >
+              <p class="code-highlight highlight-text code-highlight-green">
                 ALIVE_PATIENTS
               </p>
               <p>
@@ -578,20 +562,18 @@ ORDER by REFERENCE.REF_MONTH desc
                 <h6>Code example</h6>
 
                 <pre><code>WITH 
-<span style="background-color: rgb(62, 124, 204); display: block;">KNOWN_MONTHS as (
+<span class="code-highlight code-highlight-blue">KNOWN_MONTHS as (
     select 
         distinct(DATE_TRUNC('month',<b>REGISTRATION_DATE</b>)) as REF_MONTH
     from patients
-),</span>
-<span style="background-color: rgb(14, 120, 85); display: block;">PATIENTS_BY_MONTH as (
+),</span><span class="code-highlight code-highlight-green">PATIENTS_BY_MONTH as (
     select 
         DATE_TRUNC('month',created_at) as REF_MONTH,
         count(*) as NB_NEW_PATIENTS
     from patients
     where status <> 'dead'
     group by DATE_TRUNC('month',created_at)
-)</span>
-SELECT
+)</span>SELECT
     KNOWN_MONTHS.REF_MONTH,
     sum(REFERENCE_BEFORE.NB_NEW_PATIENTS) as CUMULATIVE_NUMBER_OF_PATIENTS,
    sum(case when KNOWN_MONTHS.REF_MONTH = REFERENCE_BEFORE.REF_MONTH then NB_NEW_PATIENTS else null end) as NB_NEW_PATIENTS
@@ -703,7 +685,7 @@ order by KNOWN_MONTHS.REF_MONTH desc
                 </li>
                 <li>
                   A patient with no visit recorded in the past 12 months before
-                  the end of the reference month is 12month lost to follow-up
+                  the end of the reference month is 12 month lost to follow-up
                 </li>
               </ul>
               <p>
