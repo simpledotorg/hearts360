@@ -178,6 +178,17 @@ h6 {
       color: gold;
     }
   }
+  & ul {
+    list-style: disc;
+    list-style-position: outside;
+    margin-top: -8px;
+    margin-bottom: 24px;
+    margin-left: 20px;
+    & li {
+      margin-left: 12px;
+      margin-bottom: 4px;
+    }
+  }
 }
 
 code {
@@ -902,18 +913,33 @@ pre {
     & b {
       color: white;
       background: rgba(255, 255, 255, 0.2);
-      padding: 1px;
+      padding: 0px 4px;
+      /* border: 1px rgba(255, 255, 255, 0.25) solid; */
+      border-radius: 6px;
+      display: inline-block;
     }
   }
 }
-/* 
-pre code {
+
+.code-highlight {
   display: block;
-  background: black;
-  white-space: pre;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: scroll;
-  max-width: 100%;
-  min-width: 100px;
-  padding: 0;
-} */
+}
+.highlight-text {
+  margin-top: 8px;
+  color: white;
+  display: inline-block;
+  padding: 2px 6px;
+}
+
+.code-highlight-blue {
+  background-color: rgba(62, 124, 204, 1);
+}
+.code-highlight-green {
+  background-color: rgb(14, 120, 85);
+}
+.code-highlight-orange {
+  background-color: rgb(14, 120, 85);
+}
+.code-highlight-red {
+  background-color: rgb(14, 120, 85);
+}
