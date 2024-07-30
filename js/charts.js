@@ -180,24 +180,24 @@ function createChart(ctx, config) {
 // BP Controlled
 const bpControlledData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -237,24 +237,24 @@ if (bpControlledCanvas) {
 // Hypertension: BP Uncontrolled
 const bpUncontrolledData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -291,24 +291,24 @@ if (bpUncontrolledCanvas) {
 // Hypertension: No visit in 3 months
 const ltfu3MonthData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -344,24 +344,24 @@ if (ltfu3MonthCanvas) {
 // Hypertension: Registrations
 const registrationsData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -430,24 +430,24 @@ if (registrationsCanvas) {
 // Hypertension: Lost to follow-up
 const ltfu12MonthsData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -483,95 +483,6 @@ if (ltfu12MonthsCanvas) {
 // Hypertension opportunistic screening
 const screeningsData = {
   labels: [
-  "Mar-2022",
-  "Apr-2022",
-  "May-2022",
-  "Jun-2022",
-  "Jul-2022",
-  "Aug-2022",
-  "Sep-2022",
-  "Oct-2022",
-  "Nov-2022",
-  "Dec-2022",
-  "Jan-2023",
-  "Feb-2023",
-  "Mar-2023",
-  "Apr-2023",
-  "May-2023",
-  "Jun-2023",
-  "Jul-2023",
-  "Aug-2023",
-  ],
-  datasets: [
-  {
-  label: "% of patients screened",
-  data: [
-  10, 15, 16, 12, 11, 10, 9, 11, 14, 20, 22, 23,
-  23, 24, 23, 24, 23, 6,
-  ],
-  segment: {
-    borderDash: (ctx) =>
-      dynamicChartSegementDashed(
-        ctx,
-        18 // number of data elements
-      ),
-  },
-  borderColor: "#34AEA0",
-  backgroundColor: "transparent",
-  yAxisID: "y",
-  },
-  {
-  type: "bar",
-  label: "Monthly screenings",
-  data: [
-  2000, 2200, 2300, 2200, 1600, 1800, 3400, 3600, 3900, 5800, 5700, 5600, 6600, 6200,
-  6000, 6500, 6900, 500,
-  ],
-  borderColor: "#C5E5E2",
-  backgroundColor: "#C5E5E2",
-  yAxisID: "yMonthlyscreenings",
-  },
-  ],
-};
-
-const screeningsConfig = baseLineChartConfig();
-screeningsConfig.data = screeningsData;
-console.log(screeningsConfig.options.scales.y);
-screeningsConfig.options.scales.y.grid = { drawTicks: false };
-screeningsConfig.options.scales.y.ticks.display = false;
-screeningsConfig.options.scales.y.ticks.count = 5;
-screeningsConfig.options.scales.y.ticks.callback = (val) => {
-  return val + "%";
-};
-screeningsConfig.options.scales.y.max = 100;
-
-
-screeningsConfig.options.scales.yMonthlyscreenings = {
-  display: false,
-  beginAtZero: true,
-  max: 7000,
-};
-
-screeningsConfig.options.plugins.tooltip.displayColors = true;
-screeningsConfig.options.plugins.tooltip.callbacks = {
-  labelColor: function (context) {
-  return {
-  borderColor: "#fff",
-  backgroundColor: context.dataset.borderColor,
-  borderWidth: 1,
-  };
-  },
-};
-
-const screeningsCanvas = document.getElementById("screenings");
-if (screeningsCanvas) {
-  createChart(screeningsCanvas, screeningsConfig);
-}
-
-// Anti-hypertensive drug stock
-
-const drugStockData = {
-  labels: [
     "Mar-2022",
     "Apr-2022",
     "May-2022",
@@ -590,6 +501,93 @@ const drugStockData = {
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+  ],
+  datasets: [
+    {
+      label: "% of patients screened",
+      data: [
+        10, 15, 16, 12, 11, 10, 9, 11, 14, 20, 22, 23, 23, 24, 23, 24, 23, 6,
+      ],
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+      borderColor: "#34AEA0",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+    },
+    {
+      type: "bar",
+      label: "Monthly screenings",
+      data: [
+        2000, 2200, 2300, 2200, 1600, 1800, 3400, 3600, 3900, 5800, 5700, 5600,
+        6600, 6200, 6000, 6500, 6900, 500,
+      ],
+      borderColor: "#C5E5E2",
+      backgroundColor: "#C5E5E2",
+      yAxisID: "yMonthlyscreenings",
+    },
+  ],
+};
+
+const screeningsConfig = baseLineChartConfig();
+screeningsConfig.data = screeningsData;
+console.log(screeningsConfig.options.scales.y);
+screeningsConfig.options.scales.y.grid = { drawTicks: false };
+screeningsConfig.options.scales.y.ticks.display = false;
+screeningsConfig.options.scales.y.ticks.count = 5;
+screeningsConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+screeningsConfig.options.scales.y.max = 100;
+
+screeningsConfig.options.scales.yMonthlyscreenings = {
+  display: false,
+  beginAtZero: true,
+  max: 7000,
+};
+
+screeningsConfig.options.plugins.tooltip.displayColors = true;
+screeningsConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
+
+const screeningsCanvas = document.getElementById("screenings");
+if (screeningsCanvas) {
+  createChart(screeningsCanvas, screeningsConfig);
+}
+
+// Anti-hypertensive drug stock
+
+const drugStockData = {
+  labels: [
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -671,24 +669,24 @@ if (drugStockCanvas) {
 // DM Controlled
 const dmControlledData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -725,24 +723,24 @@ if (dmControlledCanvas) {
 //DM: Uncontrolled
 const dmUncontrolledData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -790,8 +788,8 @@ dmUncontrolledConfig.options.scales.y.ticks.callback = (val) => {
   return val + "%";
 };
 
-dmUncontrolledConfig.options.scales.x.stacked = true
-dmUncontrolledConfig.options.scales.y.stacked = true
+dmUncontrolledConfig.options.scales.x.stacked = true;
+dmUncontrolledConfig.options.scales.y.stacked = true;
 
 dmUncontrolledConfig.options.plugins.tooltip.displayColors = true;
 dmUncontrolledConfig.options.plugins.tooltip.callbacks = {
@@ -813,24 +811,24 @@ if (dmUncontrolledCanvas) {
 // DM: No visit in 3 months
 const dmLtfu3MonthData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -853,7 +851,9 @@ const dmLtfu3MonthData = {
 
 const dmLtfu3MonthConfig = baseLineChartConfig();
 dmLtfu3MonthConfig.data = dmLtfu3MonthData;
-dmLtfu3MonthConfig.options.plugins.tooltip.callbacks = { label: percentageLabel };
+dmLtfu3MonthConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
 dmLtfu3MonthConfig.options.scales.y.ticks.callback = (val) => {
   return val + "%";
 };
@@ -867,30 +867,31 @@ if (dmLtfu3MonthCanvas) {
 
 const dmRegistrationsData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
       label: "Cumulative registrations",
       data: [
-        900, 1000, 1100, 1200, 1400, 1500, 2000, 2500, 2750, 3000, 3200, 3500, 3750, 3900, 4000, 4050, 4100, 4150,
+        900, 1000, 1100, 1200, 1400, 1500, 2000, 2500, 2750, 3000, 3200, 3500,
+        3750, 3900, 4000, 4050, 4100, 4150,
       ],
       borderColor: "#007ee4",
       backgroundColor: "transparent",
@@ -899,7 +900,8 @@ const dmRegistrationsData = {
     {
       label: "Patients under care",
       data: [
-        720, 810, 900, 990, 1180, 1250, 1700, 2150, 2350, 2580, 2750, 3030, 3250, 3380, 3440, 3470, 3500, 3500,
+        720, 810, 900, 990, 1180, 1250, 1700, 2150, 2350, 2580, 2750, 3030,
+        3250, 3380, 3440, 3470, 3500, 3500,
       ],
       borderColor: "#b51bdc",
       backgroundColor: "transparent",
@@ -909,7 +911,8 @@ const dmRegistrationsData = {
       type: "bar",
       label: "Monthly registrations",
       data: [
-        150, 100, 100, 100, 200, 100, 500, 500, 250, 250, 200, 300, 250, 150, 100, 50, 50, 50,
+        150, 100, 100, 100, 200, 100, 500, 500, 250, 250, 200, 300, 250, 150,
+        100, 50, 50, 50,
       ],
       borderColor: "#BEDFF9",
       backgroundColor: "#BEDFF9",
@@ -950,29 +953,32 @@ if (dmRegistrationsCanvas) {
 // DM: Lost to follow-up
 const dmLtfu12MonthsData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
       label: "12 month lost to follow-up",
-      data: [20, 19, 18, 18, 18, 16, 17, 15, 14, 15, 14, 14, 13, 13, 13, 14, 14, 15, 16],
+      data: [
+        20, 19, 18, 18, 18, 16, 17, 15, 14, 15, 14, 14, 13, 13, 13, 14, 14, 15,
+        16,
+      ],
       borderColor: "#FF3355",
       backgroundColor: "rgba(255, 51, 85, 0.1)",
       segment: {
@@ -1003,92 +1009,6 @@ if (dmLtfu12MonthsCanvas) {
 // DM opportunistic screening
 const dmScreeningsData = {
   labels: [
-  "Mar-2022",
-  "Apr-2022",
-  "May-2022",
-  "Jun-2022",
-  "Jul-2022",
-  "Aug-2022",
-  "Sep-2022",
-  "Oct-2022",
-  "Nov-2022",
-  "Dec-2022",
-  "Jan-2023",
-  "Feb-2023",
-  "Mar-2023",
-  "Apr-2023",
-  "May-2023",
-  "Jun-2023",
-  "Jul-2023",
-  "Aug-2023",
-  ],
-  datasets: [
-  {
-  label: "% of patients screened",
-  data: [
-  8, 6, 8, 7, 8, 6, 7, 7, 8, 9, 10, 10, 10, 9, 10, 12, 16, 2,
-  ],
-  segment: {
-    borderDash: (ctx) =>
-      dynamicChartSegementDashed(
-        ctx,
-        18 // number of data elements
-      ),
-  },
-  borderColor: "#34AEA0",
-  backgroundColor: "transparent",
-  yAxisID: "y",
-  },
-  {
-  type: "bar",
-  label: "Monthly screenings",
-  data: [
-  2400, 1500, 1500, 1800, 1500, 1800, 1800, 2100, 2400, 2700, 3000, 3000, 3000, 2700, 3000, 3600, 4800, 600,
-  ],
-  borderColor: "#C5E5E2",
-  backgroundColor: "#C5E5E2",
-  yAxisID: "yMonthlyscreenings",
-  },
-  ],
-};
-
-const dmScreeningsConfig = baseLineChartConfig();
-dmScreeningsConfig.data = dmScreeningsData;
-console.log(dmScreeningsConfig.options.scales.y);
-dmScreeningsConfig.options.scales.y.grid = { drawTicks: false };
-dmScreeningsConfig.options.scales.y.ticks.display = false;
-dmScreeningsConfig.options.scales.y.ticks.count = 5;
-dmScreeningsConfig.options.scales.y.ticks.callback = (val) => {
-  return val + "%";
-};
-dmScreeningsConfig.options.scales.y.max = 100;
-
-
-dmScreeningsConfig.options.scales.yMonthlyscreenings = {
-  display: false,
-  beginAtZero: true,
-  max: 5000,
-};
-
-dmScreeningsConfig.options.plugins.tooltip.displayColors = true;
-dmScreeningsConfig.options.plugins.tooltip.callbacks = {
-  labelColor: function (context) {
-  return {
-  borderColor: "#fff",
-  backgroundColor: context.dataset.borderColor,
-  borderWidth: 1,
-  };
-  },
-};
-
-const dmScreeningsCanvas = document.getElementById("dmscreenings");
-if (dmScreeningsCanvas) {
-  createChart(dmScreeningsCanvas, dmScreeningsConfig);
-}
-
-// DM: Statins
-const dmStatinsData = {
-  labels: [
     "Mar-2022",
     "Apr-2022",
     "May-2022",
@@ -1107,6 +1027,90 @@ const dmStatinsData = {
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+  ],
+  datasets: [
+    {
+      label: "% of patients screened",
+      data: [8, 6, 8, 7, 8, 6, 7, 7, 8, 9, 10, 10, 10, 9, 10, 12, 16, 2],
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+      borderColor: "#34AEA0",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+    },
+    {
+      type: "bar",
+      label: "Monthly screenings",
+      data: [
+        2400, 1500, 1500, 1800, 1500, 1800, 1800, 2100, 2400, 2700, 3000, 3000,
+        3000, 2700, 3000, 3600, 4800, 600,
+      ],
+      borderColor: "#C5E5E2",
+      backgroundColor: "#C5E5E2",
+      yAxisID: "yMonthlyscreenings",
+    },
+  ],
+};
+
+const dmScreeningsConfig = baseLineChartConfig();
+dmScreeningsConfig.data = dmScreeningsData;
+console.log(dmScreeningsConfig.options.scales.y);
+dmScreeningsConfig.options.scales.y.grid = { drawTicks: false };
+dmScreeningsConfig.options.scales.y.ticks.display = false;
+dmScreeningsConfig.options.scales.y.ticks.count = 5;
+dmScreeningsConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+dmScreeningsConfig.options.scales.y.max = 100;
+
+dmScreeningsConfig.options.scales.yMonthlyscreenings = {
+  display: false,
+  beginAtZero: true,
+  max: 5000,
+};
+
+dmScreeningsConfig.options.plugins.tooltip.displayColors = true;
+dmScreeningsConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
+
+const dmScreeningsCanvas = document.getElementById("dmscreenings");
+if (dmScreeningsCanvas) {
+  createChart(dmScreeningsCanvas, dmScreeningsConfig);
+}
+
+// DM: Statins
+const dmStatinsData = {
+  labels: [
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -1142,24 +1146,24 @@ if (dmStatinsCanvas) {
 // Co-morbid Hypertension and Diabetes: BP Uncontrolled
 const comorbidControlledData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -1197,24 +1201,24 @@ if (comorbidControlledCanvas) {
 
 const dmDrugStockData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
     "Mar-2023",
     "Apr-2023",
     "May-2023",
     "Jun-2023",
     "Jul-2023",
     "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
   ],
   datasets: [
     {
@@ -1274,4 +1278,71 @@ dmDrugStockConfig.options.plugins.tooltip.callbacks = {
 const dmDrugStockCanvas = document.getElementById("dmdrugstock");
 if (dmDrugStockCanvas) {
   createChart(dmDrugStockCanvas, dmDrugStockConfig);
+}
+
+// Patients protected
+const patientsProtectedData = {
+  labels: [
+    "Aug-2021",
+    "Sep-2021",
+    "Oct-2021",
+    "Nov-2021",
+    "Dec-2021",
+    "Jan-2022",
+    "Feb-2022",
+    "Mar-2022",
+    "Apr-2022",
+    "May-2022",
+    "Jun-2022",
+    "Jul-2022",
+    "Aug-2022",
+    "Sep-2022",
+    "Oct-2022",
+    "Nov-2022",
+    "Dec-2022",
+    "Jan-2023",
+    "Feb-2023",
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+  ],
+  datasets: [
+    {
+      label: "Patients with BP <140/90",
+      data: [
+        10, 120, 140, 160, 130, 120, 150, 200, 260, 310, 400, 450, 500, 550,
+        600, 650, 700, 710, 720, 750, 800, 830, 880, 908, 1244, 1412, 1646,
+        1800, 2644, 2809, 3087, 3245, 3688, 3867, 4106, 4808,
+      ],
+      borderColor: "#3BB231",
+      backgroundColor: "rgba(69, 205, 57, 0.1)",
+    },
+  ],
+};
+
+const patientsProtectedConfig = baseLineChartConfig();
+patientsProtectedConfig.data = patientsProtectedData;
+patientsProtectedConfig.options.scales.y.grid = { drawTicks: false };
+patientsProtectedConfig.options.scales.y.ticks.display = true;
+patientsProtectedConfig.options.scales.y.ticks.count = 10;
+patientsProtectedConfig.options.scales.y.max = 5000;
+patientsProtectedConfig.options.scales.y.ticks.stepSize = 500;
+
+const patientsProtectedCanvas = document.getElementById("patientsprotected");
+if (patientsProtectedCanvas) {
+  createChart(patientsProtectedCanvas, patientsProtectedConfig);
 }

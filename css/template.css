@@ -32,10 +32,19 @@ h1 {
   }
 }
 
-h2 {
+h2.columns-header {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: rgba(0,0,0,0.5);
+  font-size: 0.8rem;
+}
+
+aside h2 {
   font-size: 1.5rem;
   font-weight: bold;
-  margin: 0;
+  margin: 0 0 0.4rem 0;
+  line-height: 1.1;
 }
 
 h5 {
@@ -61,13 +70,14 @@ h6 {
   margin-bottom: 24px;
 
   & .notes-nav {
-    width: 30%;
+    width: 50%;
 
     & .nav-jump-links {
       display: block;
       font-size: 0.9rem;
-      padding: 4px 0;
+      padding: 6px 0;
       margin-top: 2px;
+      line-height: 1.2;
     }
 
     & .nav-section {
@@ -336,9 +346,8 @@ main {
   }
 }
 
-.divider {
-  margin: 24px 0;
-  height: 12px;
+.spacer {
+  margin-top: 2rem;
 }
 
 .card {
@@ -679,6 +688,11 @@ table {
   text-align: right;
 }
 
+.label-small {
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
 .coverage {
   display: flex;
   margin-top: 32px;
@@ -686,11 +700,6 @@ table {
 
 .coverage p {
   padding: 2px 8px;
-}
-
-.label-small {
-  font-size: 0.8rem;
-  line-height: 1.2;
 }
 
 .coverage-column {
