@@ -93,6 +93,7 @@
         background: aquamarine;
         padding: 2px 12px;
         border-radius: 100px;
+        font-size: 0.8rem;
         display: inline-block;
       }
       .pill-high-risk {
@@ -193,19 +194,19 @@
                       <select>
                         <option>All</option>
                         <option selected="selected">
-                          Pending to call
+                          Pending to call: 2,500
                         </option>
                         <option>
-                          Agreed to visit
+                          Agreed to visit: 400
                         </option>
                         <option>
-                          Remind to call later
+                          Remind to call later: 10
                         </option>
                         <option>
-                          Removed from list
+                          Removed from list: 40
                         </option>
                         <option>
-                          No visit in 1 year
+                          No visit in 1 year: 300
                         </option>
                       </select>
                     </form>
@@ -277,8 +278,8 @@
                   </th>
                 </tr>
                 <tr>
-                  <th colspan="10" style="font-weight: normal; font-size: 0.8rem; background: beige; color: rgba(0,0,0,0.7);">
-                    Showing 1,800 patients who have not been contacted yet. Instruction: Call patients and then change the overdue status.
+                  <th colspan="10" style="font-weight: normal; font-size: 0.8rem; background: LightGoldenrodYellow; color: rgba(0,0,0,0.7);">
+                    Showing 2,500 patients who have not been contacted yet. Instruction: Call patients and then change the overdue status.
                   </th>
                 </tr>
               </thead>
@@ -346,7 +347,7 @@
                   <td>
                     <a href="phone:4451234123" class="phone">2251234999</a>
                   </td>
-                  <td>—</td>
+                  <td><span class="red">High risk</span></td>
                   <td><span class="pill pill-htn">HTN only</span></td>
                   <td>PHC Carrotville</td>
                   <td>Lakeside</td>
