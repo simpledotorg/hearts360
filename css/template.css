@@ -898,6 +898,12 @@ pre {
     max-width: 100%;
     min-width: 100px;
     padding: 0;
+    color: #ededed !important;
+    & b {
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1px;
+    }
   }
 }
 /* 

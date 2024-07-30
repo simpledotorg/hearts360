@@ -430,14 +430,14 @@
                 <code>
 WITH DEAD_PATIENTS_BY_MONTH as (
     SELECT 
-        DATE_TRUNC('month',DEATH_DATE) as REF_MONTH,
+        DATE_TRUNC('month',<b>DEATH_DATE</b>) as REF_MONTH,
         count(*) as NB_DEAD_PATIENTS_THAT_MONTH
     FROM patients
-    WHERE PATIENT_STATUS = 'dead'
-    GROUP by DATE_TRUNC('month',DEATH_DATE))
+    WHERE <b>PATIENT_STATUS</b> = 'dead'
+    GROUP by DATE_TRUNC('month',<b>DEATH_DATE</b>))
 SELECT 
     REFERENCE.REF_MONTH,
-    SUM(REFERENCE_BEFORE.NB_DEAD_PATIENTS_THAT_MONTH) as CUMULATIVE_NUMBER_OF_DEAD_PATIENTS
+    SUM(REFERENCE_BEFORE.NB_DEAD_PATIENTS_THAT_MONTH) as <b>CUMULATIVE_NUMBER_OF_DEAD_PATIENTS</b>
 FROM DEAD_PATIENTS_BY_MONTH REFERENCE
 JOIN DEAD_PATIENTS_BY_MONTH REFERENCE_BEFORE on REFERENCE.REF_MONTH >= REFERENCE_BEFORE.REF_MONTH
 GROUP BY REFERENCE.REF_MONTH
@@ -580,7 +580,7 @@ ORDER by REFERENCE.REF_MONTH desc
                 <pre><code>WITH 
 <span style="background-color: rgb(62, 124, 204); display: block;">KNOWN_MONTHS as (
     select 
-        distinct(DATE_TRUNC('month',REGISTRATION_DATE)) as REF_MONTH
+        distinct(DATE_TRUNC('month',<b>REGISTRATION_DATE</b>)) as REF_MONTH
     from patients
 ),</span>
 <span style="background-color: rgb(14, 120, 85); display: block;">PATIENTS_BY_MONTH as (
@@ -698,12 +698,12 @@ order by KNOWN_MONTHS.REF_MONTH desc
               </p>
               <ul>
                 <li>
-                  A patient with at least one visit recorded in the last 12
+                  A patient with at least one visit recorded in the past 12
                   months before the end of the reference month is Under Care
                 </li>
                 <li>
-                  A patient with no visit recorded in the last 12 months before
-                  the end of the reference month is Lost To Follow Up
+                  A patient with no visit recorded in the past 12 months before
+                  the end of the reference month is 12month lost to follow-up
                 </li>
               </ul>
               <p>
@@ -801,22 +801,19 @@ order by KNOWN_MONTHS.REF_MONTH desc
                 <code>WITH 
 <span style="background-color: rgb(62, 124, 204); display: block;">KNOWN_MONTHS as (
     SELECT 
-        distinct(DATE_TRUNC('month',REGISTRATION_DATE)) as REF_MONTH
-    FROM patients),</span>
-<span style="background-color: rgb(14, 120, 85); display: block;">ALIVE_PATIENTS as (
+        distinct(DATE_TRUNC('month',<b>REGISTRATION_DATE</b>)) as REF_MONTH
+    FROM patients),</span><span style="background-color: rgb(14, 120, 85); display: block;">ALIVE_PATIENTS as (
     SELECT 
-        DATE_TRUNC('month',REGISTRATION_DATE) as REGISTRATION_MONTH,
+        DATE_TRUNC('month',<b>REGISTRATION_DATE</b>) as REGISTRATION_MONTH,
         patient_id
     FROM patients
-    WHERE PATIENT_STATUS <> 'dead'
-),</span>
-<span style="background-color: rgb(156, 109, 38); display: block;">BP_ENCOUNTERS as (
+    WHERE <b>PATIENT_STATUS</b> <> 'dead'
+),</span><span style="background-color: rgb(156, 109, 38); display: block;">BP_ENCOUNTERS as (
     SELECT
         patient_id,
-        DATE_TRUNC('month',ENCOUNTER_DATE)  as BP_ENCOUNTER_MONTH
+        DATE_TRUNC('month',<b>ENCOUNTER_DATE</b>)  as BP_ENCOUNTER_MONTH
     FROM blood_pressures
-)</span>
-SELECT 
+)</span>SELECT 
     KNOWN_MONTHS.REF_MONTH,
     sum(CASE WHEN BP_ENCOUNTERS.patient_id IS NULL THEN 1 ELSE NULL END ) as <b>NB_PATIENTS_LOST_TO_FOLLOW_UP</b>,
     count(distinct(BP_ENCOUNTERS.patient_id)) as <b>NB_PATIENTS_UNDER_CARE</b>,
@@ -1049,7 +1046,7 @@ ORDER by KNOWN_MONTHS.REF_MONTH desc;
                 Measurement in the past 12 months
                 <b>from a given Reference Month for a given patient.</b>
               </p>
-              <pre><code style="font-size: 12px; background-color: #dbdbdb !important; color: rgb(80, 80, 80); padding: 12px 16px; margin-bottom: 12px;">SELECT
+              <pre><code style="font-size: 12px; background-color: #dbdbdb !important; color: rgb(80, 80, 80) !important; padding: 12px 16px; margin-bottom: 12px;">SELECT
     KNOWN_MONTHS.REF_MONTH,
     MOST_RECENT_BP_ENCOUNTER.patient_id, 
     MAX(MOST_RECENT_BP_ENCOUNTER.created_at) as MOST_RECENT_BP_DATE
@@ -1110,7 +1107,7 @@ group by KNOWN_MONTHS.REF_MONTH, patient_id</code></pre>
       DATE_TRUNC('month',created_at) as REGISTRATION_MONTH,
       id as patient_id
   from patients
-  where PATIENT_STATUS <> 'dead'
+  where <b>PATIENT_STATUS</b> <> 'dead'
 ),
 </span><span style="background-color: rgb(156, 109, 38); display: block;">BP_ENCOUNTERS as (
     SELECT
@@ -1143,24 +1140,24 @@ group by KNOWN_MONTHS.REF_MONTH, patient_id</code></pre>
         and MOST_RECENT_BP_ENCOUNTER.patient_id = BP_ENCOUNTERS.patient_id
     group by REF_MONTH, MOST_RECENT_BP_ENCOUNTER.patient_id
 )</span>SELECT
-    KNOWN_MONTHS.REF_MONTH,
-    count(*) as NB_PATIENTS_UNDER_CARE,
-    sum(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 1 else 0 end ) as NB_PATIENTS_NEWLY_REGISTERED,
-    sum(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0 else 1 end ) as NB_PATIENTS_UNDER_CARE_REGISTERED_BEFORE_THE_PAST_3_MONTHS,
+    KNOWN_MONTHS.<b>REF_MONTH</b>,
+    count(*) as <b>NB_PATIENTS_UNDER_CARE</b>,
+    sum(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 1 else 0 end ) as <b>NB_PATIENTS_NEWLY_REGISTERED</b>,
+    sum(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0 else 1 end ) as <b>NB_PATIENTS_UNDER_CARE_REGISTERED_BEFORE_THE_PAST_3_MONTHS</b>,
     sum(CASE
         WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
         WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 1
-        else 0 end ) as NB_PATIENTS_NO_VISIT,
+        else 0 end ) as <b>NB_PATIENTS_NO_VISIT</b>,
     sum(CASE
         WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
         WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 0
         WHEN systolic > 140 OR diastolic > 90 then 1 
-        else 0 end ) as NB_PATIENTS_UNCONTROLLED,
+        else 0 end ) as <b>NB_PATIENTS_UNCONTROLLED</b>,
     sum(CASE
         WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
         WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 0
         WHEN systolic > 140 OR diastolic > 90 then 0 
-        else 1 end ) as NB_PATIENTS_CONTROLLED
+        else 1 end ) as <b>NB_PATIENTS_CONTROLLED</b>
 FROM KNOWN_MONTHS
 join ALIVE_PATIENTS 
     on ALIVE_PATIENTS.REGISTRATION_MONTH <= KNOWN_MONTHS.REF_MONTH
