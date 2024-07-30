@@ -280,7 +280,7 @@ main {
 }
 
 .link-dashboards {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 12px 0;
   margin: 0 0 2rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -294,12 +294,14 @@ main {
     color: #333;
     padding: 12px;
     margin-right: 8px;
+    white-space: nowrap;
   }
   & a:hover {
     text-decoration: none;
   }
   & a.active {
-    border-bottom: 3px solid #333;
+    border-bottom: 3px solid cornflowerblue;
+    font-weight: bold;
   }
 }
 
