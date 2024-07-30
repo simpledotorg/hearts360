@@ -24,6 +24,10 @@ a:hover {
   text-underline-offset: 2px;
 }
 
+p {
+  margin: 0.2rem 0 1rem 0;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: bold;
@@ -383,15 +387,17 @@ main {
   }
 
   .figures {
-    margin: 12px 0;
+    margin: 12px 0 0 0;
 
     & .large-num {
       font-size: 2rem;
       font-weight: 700;
+      margin: 0;
     }
 
     & .detail p {
       font-size: 0.9rem;
+      margin: 0 0 1rem 0;
     }
   }
 
