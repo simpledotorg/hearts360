@@ -113,11 +113,15 @@ h6 {
   }
 
   & .notes-note {
-    width: 50%;
+    width: calc(50% - 32px);
+    flex-grow: 0;
+    flex-shrink: 0;
   }
 
   & .notes-details {
-    width: 50%;
+    width: calc(50% - 32px);
+    flex-grow: 0;
+    flex-shrink: 0;
   }
 
   & h2 {
@@ -163,6 +167,7 @@ h6 {
       font-size: 0.8rem;
       background: rgba(255, 255, 255, 0.2);
       color: #fff;
+      width: 100%;
     }
 
     & i {
@@ -932,7 +937,7 @@ pre {
 }
 
 .code-highlight-blue {
-  background-color: rgba(62, 124, 204, 1);
+  background-color: rgba(62, 124, 204, 0.6);
 }
 .code-highlight-green {
   background-color: rgb(14, 120, 85);
