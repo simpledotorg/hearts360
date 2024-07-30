@@ -371,6 +371,12 @@ main {
     height: 260px;
     margin: -8px;
   }
+  
+  & h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: 24px;
+  }
 
   & h3 {
     font-size: 1.2rem;
