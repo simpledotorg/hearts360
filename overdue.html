@@ -14,9 +14,10 @@
 
     <link rel="stylesheet" href="css/preflight.css?v=1.0" />
     <link rel="stylesheet" href="css/template.css" />
-    
+
     <style>
-      td, th {
+      td,
+      th {
         font-size: 0.9rem;
         border: none !important;
         border-top: 1px solid #ddd !important;
@@ -26,21 +27,27 @@
         vertical-align: top;
         background: aliceblue;
       }
-      select, input {
+      select,
+      input {
         margin: 4px 0;
         padding: 4px 20px 4px 10px;
         border-radius: 3px;
         appearance: none;
-        background: #d9e3ff url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 40 24" width="40"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>') 102% 50% no-repeat;
+        background: #d9e3ff
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 40 24" width="40"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>')
+          102% 50% no-repeat;
         background-size: 24px;
         font-size: 0.9rem;
         color: #0075eb;
       }
-      .filters a, .filters select, .filters input {
+      .filters a,
+      .filters select,
+      .filters input {
         display: inline-block;
         margin: 16px 8px 0 0;
       }
-      table select, table input {
+      table select,
+      table input {
         background-color: white;
         border: 1px solid #d9e3ff;
         font-size: 0.8rem;
@@ -49,7 +56,8 @@
         font-weight: bold;
         letter-spacing: 0.1rem;
         font-family: monospace;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>') 0 50% no-repeat;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>')
+          0 50% no-repeat;
         background-size: 16px;
         display: block;
         padding: 4px 4px 4px 24px;
@@ -60,6 +68,12 @@
       .overdue-patient {
         display: block;
       }
+
+      .overdue-patient button {
+        color: #0075eb;
+        font-weight: bold;
+      }
+
       .modal {
         display: none;
         position: fixed;
@@ -71,16 +85,21 @@
         border-left: 1px solid #999;
         width: 40%;
         height: 100%;
-        box-shadow: -10px 0 0 rgba(0,0,0,0.3);
+        box-shadow: -10px 0 0 rgba(0, 0, 0, 0.3);
         overflow: auto;
       }
+
+      .modal-show {
+        display: block;
+      }
+
       .modal p {
         margin-top: 0.5rem;
       }
-      a.modal-close:before {
-        content: '❌ ';
+      button.modal-close:before {
+        content: "❌ ";
       }
-      a.modal-close {
+      button.modal-close {
         display: block;
         position: fixed;
         top: 50px;
@@ -101,7 +120,7 @@
         margin: 0.4rem 0;
       }
       .overdue-patient h4 {
-        margin-top: 2rem; 
+        margin-top: 2rem;
       }
       .pill {
         background: aquamarine;
@@ -122,7 +141,8 @@
         background: bisque;
       }
       .phone-large {
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>') 0 50% no-repeat;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>')
+          0 50% no-repeat;
         background-size: 18px;
         font-size: 18px;
         font-family: monospace;
@@ -159,7 +179,9 @@
         padding-right: 4px;
         padding-left: 28px;
         border-radius: 100px;
-        background: white url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>') 6px 50% no-repeat;
+        background: white
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>')
+          6px 50% no-repeat;
         background-size: 16px;
       }
     </style>
@@ -168,7 +190,7 @@
     <div class="banner">
       <div class="banner-body">
         <h1><span>HEARTS</span>360</h1>
-        
+
         <div class="desktop-only">
           <div class="link-list">
             <span>v1.3</span>
@@ -180,31 +202,25 @@
             >
           </div>
         </div>
-        
       </div>
     </div>
     <div class="link-dashboards">
       <div>
-        <a href="index.html">
-          Hypertension Dashboard
-        </a>
-        <a href="diabetes.html">
-          Diabetes Dashboard
-        </a>
-        <a href="overdue.html" class="active">
-          Overdue patients list
-        </a>
+        <a href="index.html"> Hypertension Dashboard </a>
+        <a href="diabetes.html"> Diabetes Dashboard </a>
+        <a href="overdue.html" class="active"> Overdue patients list </a>
       </div>
     </div>
     <main class="main">
-
       <div class="card">
         <div class="heading">
-          <a href="#" style="float: right; display: block; margin: 12px;">Download list (XLS)</a>
+          <a href="#" style="float: right; display: block; margin: 12px"
+            >Download list (XLS)</a
+          >
           <h2>Overdue patients</h2>
           <p>3,250 overdue patients in River District</p>
         </div>
-        
+
         <div class="table-container">
           <p class="table-scroll-message text-grey mobile-only">
             scroll table &rarr;
@@ -221,18 +237,10 @@
                         <option selected="selected">
                           Pending to call: 2,500
                         </option>
-                        <option>
-                          Agreed to visit: 400
-                        </option>
-                        <option>
-                          Remind to call later: 10
-                        </option>
-                        <option>
-                          Removed from list: 40
-                        </option>
-                        <option>
-                          No visit in 1 year: 300
-                        </option>
+                        <option>Agreed to visit: 400</option>
+                        <option>Remind to call later: 10</option>
+                        <option>Removed from list: 40</option>
+                        <option>No visit in 1 year: 300</option>
                       </select>
                     </form>
                   </th>
@@ -242,12 +250,8 @@
                       <input type="search" placeholder="Search" />
                     </form>
                   </th>
-                  <th>
-                    Sex
-                  </th>
-                  <th>
-                    Age
-                  </th>
+                  <th>Sex</th>
+                  <th>Age</th>
                   <th>
                     Phone
                     <form class="table-filter">
@@ -344,13 +348,21 @@
                       <input type="search" placeholder="Search" />
                     </form>
                   </th>
-                  <th>
-                    Overdue
-                  </th>
+                  <th>Overdue</th>
                 </tr>
                 <tr>
-                  <th colspan="10" style="font-weight: normal; font-size: 0.8rem; background: LightGoldenrodYellow; color: rgba(0,0,0,0.7);">
-                    Showing 2,500 patients who have not been contacted yet. Instruction: Call patients and then change the overdue status.
+                  <th
+                    colspan="10"
+                    style="
+                      font-weight: normal;
+                      font-size: 0.8rem;
+                      background: LightGoldenrodYellow;
+                      color: rgba(0, 0, 0, 0.7);
+                    "
+                  >
+                    Showing 2,500 patients who have not been contacted yet.
+                    Instruction: Call patients and then change the overdue
+                    status.
                   </th>
                 </tr>
               </thead>
@@ -377,15 +389,25 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient01').style.display='block'"><b>Amrith Madeupname</b></a>
-                      
+                      <button onclick="openModal('patient01')">
+                        Amrith Madeupname
+                      </button>
+
                       <div class="modal" id="patient01">
-                        
-                        <a href="#" onclick="document.getElementById('patient01').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Amrith Madeupname, M, 90</h2>
-                        <p><span class="pill pill-high-risk">High risk</span> <span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:2251234999" class="phone-large">2251234999</a>
-                        
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:2251234999" class="phone-large"
+                          >2251234999</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -403,30 +425,45 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">3 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">3 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Blueberry</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Lakeside, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Carrotville</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Lakeside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Carrotville
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
                           <p><b class="label">Facility:</b> PHC Carrotville</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -465,15 +502,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient02').style.display='block'"><b>Mahima Longnameperson</b></a>
-                      
+                      <button onclick="openModal('patient02')">
+                        Mahima Longnameperson
+                      </button>
+
                       <div class="modal" id="patient02">
-                        
-                        <a href="#" onclick="document.getElementById('patient02').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Mahima Longnameperson, F, 76</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:5551234021" class="phone-large">5551234021</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:5551234021" class="phone-large"
+                          >5551234021</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -491,30 +537,40 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">4 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">4 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 25-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Jackfruit</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 809 Church Rd, Section 56, River District</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 809 Church Rd,
+                            Section 56, River District
+                          </p>
                           <p><b class="label">Enrolled at:</b> PHC Jackfruit</p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 29-Jun-2024 (35 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 29-Jun-2024 (35 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 145 / 60</p>
                           <p><b class="label">Medicine:</b> Amlodipine 5 mg</p>
                           <p><b class="label">Facility:</b> PHC Jackfruit</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -553,15 +609,23 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient03').style.display='block'"><b>Prabhdeep Storyline</b></a>
-                      
+                      <button onclick="openModal('patient03')">
+                        Prabhdeep Storyline
+                      </button>
+
                       <div class="modal" id="patient03">
-                        
-                        <a href="#" onclick="document.getElementById('patient03').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Prabhdeep Storyline, F, 45</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span> <span class="pill pill-diabetes">Diabetes</span></p>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                          <span class="pill pill-diabetes">Diabetes</span>
+                        </p>
                         <span class="phone-large-none">&lt;No phone&gt;</span>
-                        
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -579,31 +643,46 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">5 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">5 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 24-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Fang Cove</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 2254567A</p>
-                          <p><b class="label">Home address:</b> 9087 Main Road, Mole Hill, River District</p>
-                          <p><b class="label">Enrolled at:</b> CHC Weather Top</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 2254567A
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 9087 Main Road,
+                            Mole Hill, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> CHC Weather Top
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 27-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 27-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
                           <p><b class="label">Blood sugar:</b> FBS 140 mg/dL</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 10 mg, Metformin 500 mg</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 10 mg,
+                            Metformin 500 mg
+                          </p>
                           <p><b class="label">Facility:</b> CHC Weather Top</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -613,7 +692,10 @@
                   <td>45</td>
                   <td>—</td>
                   <td>—</td>
-                  <td><span class="pill pill-hypertension">HTN</span><span class="pill pill-diabetes">DM</span></td>
+                  <td>
+                    <span class="pill pill-hypertension">HTN</span
+                    ><span class="pill pill-diabetes">DM</span>
+                  </td>
                   <td>PHC Fang Cove</td>
                   <td>Mole Hill</td>
                   <td><span class="red">5 days</span></td>
@@ -640,15 +722,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient04').style.display='block'"><b>Pragati Fictionelle</b></a>
-                      
+                      <button onclick="openModal('patient04')">
+                        Pragati Fictionelle
+                      </button>
+
                       <div class="modal" id="patient04">
-                        
-                        <a href="#" onclick="document.getElementById('patient04').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Pragati Fictionelle, F, 36</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:3211234990" class="phone-large">3211234990</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:3211234990" class="phone-large"
+                          >3211234990</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -666,30 +757,45 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">6 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">6 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 20-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Azalea Hills</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 0454567F</p>
-                          <p><b class="label">Home address:</b> 90 MG Road, Flat 6098, Lakeside, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Azalea Hills</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 0454567F
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 90 MG Road, Flat
+                            6098, Lakeside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Azalea Hills
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 23-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 23-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
                           <p><b class="label">Facility:</b> PHC Azalea Hills</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -728,15 +834,25 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient05').style.display='block'"><b>Amrith Novella</b></a>
-                      
+                      <button onclick="openModal('patient05')">
+                        Amrith Novella
+                      </button>
+
                       <div class="modal" id="patient05">
-                        
-                        <a href="#" onclick="document.getElementById('patient05').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Amrith Novella, M, 67</h2>
-                        <p><span class="pill pill-high-risk">High risk</span> <span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:3351234876" class="phone-large">3351234876</a>
-                        
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:3351234876" class="phone-large"
+                          >3351234876</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -754,30 +870,43 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">7 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">7 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 19-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Bumblebee</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 109 River Road, Flat 98, River Valley, River District</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 109 River Road,
+                            Flat 98, River Valley, River District
+                          </p>
                           <p><b class="label">Enrolled at:</b> PHC Bumblebee</p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 26-Jun-2024 (38 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 26-Jun-2024 (38 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 130 / 80</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 10 mg, Telmisartan 40 mg</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 10 mg,
+                            Telmisartan 40 mg
+                          </p>
                           <p><b class="label">Facility:</b> PHC Bumblebee</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -816,15 +945,20 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient05A').style.display='block'"><b>Honey Poem</b></a>
-                      
+                      <button onclick="openModal('patient05A')">
+                        Honey Poem
+                      </button>
+
                       <div class="modal" id="patient05A">
-                        
-                        <a href="#" onclick="document.getElementById('patient05A').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Honey Poem, F, 89</h2>
                         <p><span class="pill pill-diabetes">Diabetes</span></p>
-                        <a href="tel:0512349916" class="phone-large">0512349916</a>
-                        
+                        <a href="tel:0512349916" class="phone-large"
+                          >0512349916</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -842,30 +976,42 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">7 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">7 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 19-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Azalea Hills</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 908 4th Road, Lakeside, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Azalea Hills</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 908 4th Road,
+                            Lakeside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Azalea Hills
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood sugar:</b> FBS 150 mg/dL</p>
                           <p><b class="label">Medicine:</b> Metformin 500 mg</p>
                           <p><b class="label">Facility:</b> PHC Azalea Hills</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -904,15 +1050,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient06').style.display='block'"><b>Anupam Longform Fiction</b></a>
-                      
+                      <button onclick="openModal('patient06')">
+                        <b>Anupam Longform Fiction</b>
+                      </button>
+
                       <div class="modal" id="patient06">
-                        
-                        <a href="#" onclick="document.getElementById('patient06').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Anupam Longform Fiction, F, 90</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:1231129087" class="phone-large">1231129087</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:1231129087" class="phone-large"
+                          >1231129087</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -930,30 +1085,45 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">8 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">8 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 18-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Copperville</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 908 Long Road, Waterstone, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Copperville</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 908 Long Road,
+                            Waterstone, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Copperville
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 22-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 22-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 141 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
                           <p><b class="label">Facility:</b> PHC Copperville</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -992,15 +1162,25 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient07').style.display='block'"><b>Mahfuz Readsalot</b></a>
-                      
+                      <button onclick="openModal('patient07')">
+                        Mahfuz Readsalot
+                      </button>
+
                       <div class="modal" id="patient07">
-                        
-                        <a href="#" onclick="document.getElementById('patient07').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Mahfuz Readsalot, M, 70</h2>
-                        <p><span class="pill pill-high-risk">High risk</span> <span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:2251234991" class="phone-large">2251234991</a>
-                        
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:2251234991" class="phone-large"
+                          >2251234991</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1018,30 +1198,49 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">8 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">8 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 18-Jul-2024</p>
-                          <p><b class="label">Facility:</b> CHC Bramble River</p>
+                          <p>
+                            <b class="label">Facility:</b> CHC Bramble River
+                          </p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 90 MG Road, Bramble Gulch, River District</p>
-                          <p><b class="label">Enrolled at:</b> CHC Bramble River</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 90 MG Road,
+                            Bramble Gulch, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> CHC Bramble River
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (40 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (40 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
-                          <p><b class="label">Facility:</b> CHC Bramble River</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> CHC Bramble River
+                          </p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1080,15 +1279,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient08').style.display='block'"><b>Mahima Written Form</b></a>
-                      
+                      <button onclick="openModal('patient08')">
+                        Mahima Written Form
+                      </button>
+
                       <div class="modal" id="patient08">
-                        
-                        <a href="#" onclick="document.getElementById('patient08').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Mahima Written Form, F, 24</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:1151234945" class="phone-large">1151234945</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:1151234945" class="phone-large"
+                          >1151234945</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1106,30 +1314,45 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">8 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">8 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 16-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Azalea Hills</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 19 MG Road, Morningside, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Azalea Hills</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 19 MG Road,
+                            Morningside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Azalea Hills
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
                           <p><b class="label">Facility:</b> CHC Carrotville</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1168,15 +1391,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient09').style.display='block'"><b>Ganesh Prosefiction</b></a>
-                      
+                      <button onclick="openModal('patient09')">
+                        Ganesh Prosefiction
+                      </button>
+
                       <div class="modal" id="patient09">
-                        
-                        <a href="#" onclick="document.getElementById('patient09').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Ganesh Prosefiction, M, 45</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:1121234087" class="phone-large">1121234087</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:1121234087" class="phone-large"
+                          >1121234087</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1194,30 +1426,49 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">9 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">9 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 13-Jul-2024</p>
-                          <p><b class="label">Facility:</b> PHC Dartboard Hill</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Dartboard Hill
+                          </p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, River Village, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Dartboard Hill</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, River Village, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Dartboard Hill
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
-                          <p><b class="label">Facility:</b> PHC Dartboard Hill</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Dartboard Hill
+                          </p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1256,15 +1507,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient10').style.display='block'"><b>Amit Fable</b></a>
-                      
+                      <button onclick="openModal('patient10')">
+                        Amit Fable
+                      </button>
+
                       <div class="modal" id="patient10">
-                        
-                        <a href="#" onclick="document.getElementById('patient10').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Amit Fable, M, 60</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:5251234776" class="phone-large">5251234776</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:5251234776" class="phone-large"
+                          >5251234776</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1282,30 +1542,47 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">10 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">10 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 18-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Blueberry</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Section A, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Dartboard Hill</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Section A, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Dartboard Hill
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
-                          <p><b class="label">Facility:</b> PHC Dartboard Hill</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Dartboard Hill
+                          </p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1344,15 +1621,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient11').style.display='block'"><b>Hari Storytelling</b></a>
-                      
+                      <button onclick="openModal('patient11')">
+                        Hari Storytelling
+                      </button>
+
                       <div class="modal" id="patient11">
-                        
-                        <a href="#" onclick="document.getElementById('patient11').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Hari Storytelling, M, 44</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:1051234590" class="phone-large">1051234590</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:1051234590" class="phone-large"
+                          >1051234590</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1370,30 +1656,43 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">10 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">10 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Blueberry</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Mount Skyward, River District</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Mount Skyward, River District
+                          </p>
                           <p><b class="label">Enrolled at:</b> PHC Cupola</p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
                           <p><b class="label">Facility:</b> PHC Cupola</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1432,15 +1731,25 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient12').style.display='block'"><b>Roopa Story</b></a>
-                      
+                      <button onclick="openModal('patient12')">
+                        Roopa Story
+                      </button>
+
                       <div class="modal" id="patient12">
-                        
-                        <a href="#" onclick="document.getElementById('patient12').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Roopa Story, F, 65</h2>
-                        <p><span class="pill pill-high-risk">High risk</span> <span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:4551234003" class="phone-large">4551234003</a>
-                        
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:4551234003" class="phone-large"
+                          >4551234003</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1458,30 +1767,50 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">11 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">11 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
-                          <p><b class="label">Facility:</b> PHC Strawberry Field</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Field
+                          </p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Streamville, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Strawberry Field</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Streamville, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Strawberry
+                            Field
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
-                          <p><b class="label">Facility:</b> PHC Strawberry Field</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Field
+                          </p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1520,15 +1849,25 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient13').style.display='block'"><b>Amit Prose</b></a>
-                      
+                      <button onclick="openModal('patient13')">
+                        Amit Prose
+                      </button>
+
                       <div class="modal" id="patient13">
-                        
-                        <a href="#" onclick="document.getElementById('patient13').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Amit Prose, M, 40</h2>
-                        <p><span class="pill pill-high-risk">High risk</span> <span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:5251234088" class="phone-large">5251234088</a>
-                        
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:5251234088" class="phone-large"
+                          >5251234088</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1546,30 +1885,49 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">11 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">11 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
-                          <p><b class="label">Facility:</b> PHC Hackney Downs</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Hackney Downs
+                          </p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Stoney Brooke, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Hackney Downs</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Stoney Brooke, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Hackney Downs
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
-                          <p><b class="label">Facility:</b> PHC Hackney Downs</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Hackney Downs
+                          </p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1608,15 +1966,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient14').style.display='block'"><b>Mahima Literature</b></a>
-                      
+                      <button onclick="openModal('patient14')">
+                        Mahima Literature
+                      </button>
+
                       <div class="modal" id="patient14">
-                        
-                        <a href="#" onclick="document.getElementById('patient14').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Mahima Literature, F, 48</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:2251234994" class="phone-large">2251234994</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:2251234994" class="phone-large"
+                          >2251234994</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1634,30 +2001,50 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">11 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">11 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
-                          <p><b class="label">Facility:</b> PHC Strawberry Hill</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Hill
+                          </p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Waterside, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Strawberry Hill</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Waterside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Strawberry
+                            Hill
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
-                          <p><b class="label">Facility:</b> PHC Strawberry Hill</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Hill
+                          </p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1696,15 +2083,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient15').style.display='block'"><b>Rahul Fiction</b></a>
-                      
+                      <button onclick="openModal('patient15')">
+                        Rahul Fiction
+                      </button>
+
                       <div class="modal" id="patient15">
-                        
-                        <a href="#" onclick="document.getElementById('patient15').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Rahul Fiction, M, 72</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:2251234994" class="phone-large">2251234994</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:2251234994" class="phone-large"
+                          >2251234994</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1722,30 +2118,50 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">11 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">11 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
-                          <p><b class="label">Facility:</b> PHC Watermelon Cove</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Watermelon Cove
+                          </p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Lakeview, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Watermelon Cove</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Lakeview, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Watermelon
+                            Cove
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
-                          <p><b class="label">Facility:</b> PHC Watermelon Cove</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Watermelon Cove
+                          </p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1784,15 +2200,25 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient16').style.display='block'"><b>Gaurav Illusion</b></a>
-                      
+                      <button onclick="openModal('patient16')">
+                        Gaurav Illusion
+                      </button>
+
                       <div class="modal" id="patient16">
-                        
-                        <a href="#" onclick="document.getElementById('patient16').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Gaurav Illusion, M, 55</h2>
-                        <p><span class="pill pill-high-risk">High risk</span> <span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:0951234453" class="phone-large">0951234453</a>
-                        
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:0951234453" class="phone-large"
+                          >0951234453</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1810,30 +2236,50 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">12 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">12 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
-                          <p><b class="label">Facility:</b> PHC Watermelon Cove</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Watermelon Cove
+                          </p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Lakerton, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Watermelon Cove</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Lakerton, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Watermelon
+                            Cove
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
-                          <p><b class="label">Facility:</b> PHC Watermelon Cove</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Watermelon Cove
+                          </p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1872,15 +2318,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient17').style.display='block'"><b>Misu Novella</b></a>
-                      
+                      <button onclick="openModal('patient17')">
+                        Misu Novella
+                      </button>
+
                       <div class="modal" id="patient17">
-                        
-                        <a href="#" onclick="document.getElementById('patient17').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Misu Novella, F, 52</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:8751234886" class="phone-large">8751234886</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:8751234886" class="phone-large"
+                          >8751234886</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1898,30 +2353,43 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">12 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">12 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
                           <p><b class="label">Facility:</b> CHC Riverside</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Stoney Brook, River District</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Stoney Brook, River District
+                          </p>
                           <p><b class="label">Enrolled at:</b> CHC Riverside</p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
                           <p><b class="label">Facility:</b> CHC Riverside</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -1960,15 +2428,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient18').style.display='block'"><b>Ashanti Storyteller</b></a>
-                      
+                      <button onclick="openModal('patient18')">
+                        Ashanti Storyteller
+                      </button>
+
                       <div class="modal" id="patient18">
-                        
-                        <a href="#" onclick="document.getElementById('patient18').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Ashanti Storyteller, F, 39</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:0051234992" class="phone-large">0051234992</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:0051234992" class="phone-large"
+                          >0051234992</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -1986,30 +2463,43 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">12 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">12 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Dune Hill</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Cloudville, River District</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Cloudville, River District
+                          </p>
                           <p><b class="label">Enrolled at:</b> PHC Dune Hill</p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
                           <p><b class="label">Facility:</b> PHC Dune Hill</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -2048,15 +2538,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient19').style.display='block'"><b>Fatima Madeupname</b></a>
-                      
+                      <button onclick="openModal('patient19')">
+                        Fatima Madeupname
+                      </button>
+
                       <div class="modal" id="patient19">
-                        
-                        <a href="#" onclick="document.getElementById('patient19').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Fatima Madeupname, F, 88</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:331234995" class="phone-large">331234995</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:331234995" class="phone-large"
+                          >331234995</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -2074,30 +2573,43 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">12 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">12 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
                           <p><b class="label">Facility:</b> PHC Dune Hill</p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Stoney Brook, River District</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Stoney Brook, River District
+                          </p>
                           <p><b class="label">Enrolled at:</b> PHC Iceberg</p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
                           <p><b class="label">Facility:</b> PHC Iceberg</p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -2136,15 +2648,24 @@
                   </td>
                   <td>
                     <div class="overdue-patient">
-                      <a href="#" onclick="document.getElementById('patient20').style.display='block'"><b>Hari Fictionelle</b></a>
-                      
+                      <button onclick="openModal('patient20')">
+                        Hari Fictionelle
+                      </button>
+
                       <div class="modal" id="patient20">
-                        
-                        <a href="#" onclick="document.getElementById('patient20').style.display='none'" class="modal-close">Close</a>
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
                         <h2>Hari Fictionelle, M, 76</h2>
-                        <p><span class="pill pill-hypertension">Hypertension</span></p>
-                        <a href="tel:2051234990" class="phone-large">2051234990</a>
-                        
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:2051234990" class="phone-large"
+                          >2051234990</a
+                        >
+
                         <form>
                           <select class="mark-result">
                             <option>Pending to call</option>
@@ -2162,30 +2683,50 @@
                             </optgroup>
                           </select>
                         </form>
-                        
+
                         <h4>Appointment</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Overdue:</b> <span class="red">12 days</span></p>
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">12 days</span>
+                          </p>
                           <p><b class="label">Date:</b> 26-Jul-2024</p>
-                          <p><b class="label">Facility:</b> PHC Strawberry Hill</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Hill
+                          </p>
                         </div>
-                        
+
                         <h4>Patient details</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">National Health ID:</b> 4454567C</p>
-                          <p><b class="label">Home address:</b> 45 MG Road, Flat 6098, Lakeside, River District</p>
-                          <p><b class="label">Enrolled at:</b> PHC Strawberry Hill</p>
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Lakeside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Strawberry
+                            Hill
+                          </p>
                           <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
                         </div>
-                        
+
                         <h4>Most recent visit</h4>
                         <div class="overdue-patient-details">
-                          <p><b class="label">Date:</b> 30-Jun-2024 (34 days ago)</p>
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
                           <p><b class="label">Blood pressure:</b> 170 / 68</p>
-                          <p><b class="label">Medicine:</b> Amlodipine 5 mg, Telmisartan 40 mg</p>
-                          <p><b class="label">Facility:</b> PHC Strawberry Hill</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Hill
+                          </p>
                         </div>
-                        
+
                         <h4>Call log</h4>
                         <p><b class="label">&lt;No calls yet&gt;</b></p>
                       </div>
@@ -2203,14 +2744,18 @@
                   <td><span class="red">12 days</span></td>
                 </tr>
                 <tr>
-                  <td colspan="10" style="text-align: center;"><a href="#" style="display: block; padding: 6px;">Load more...</a></td>
+                  <td colspan="10" style="text-align: center">
+                    <a href="#" style="display: block; padding: 6px"
+                      >Load more...</a
+                    >
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-      
+
       <div class="divider"></div>
     </main>
 
@@ -2223,6 +2768,18 @@
     <script src="js/tablesort.number.js"></script>
     <script>
       new Tablesort(document.getElementById("table-overdue"));
+
+      function openModal(modalName) {
+        closeOpenModal();
+        document.getElementById(modalName).classList.add("modal-show");
+      }
+
+      function closeOpenModal() {
+        var modals = document.getElementsByClassName("modal-show");
+        for (var i = 0; i < modals.length; i++) {
+          modals[i].classList.remove("modal-show");
+        }
+      }
     </script>
   </body>
 </html>
