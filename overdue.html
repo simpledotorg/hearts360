@@ -1,0 +1,2809 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HEARTS 360: Overdue Patients List</title>
+    <meta
+      name="description"
+      content="A free, open source, template for creating a very useful hypertension and diabetes dashboard to support public health projects."
+    />
+    <meta name="author" content="Resolve to Save Lives" />
+
+    <link rel="icon" href="favicon.png" />
+
+    <link rel="stylesheet" href="css/preflight.css?v=1.0" />
+    <link rel="stylesheet" href="css/template.css" />
+
+    <style>
+      td,
+      th {
+        font-size: 0.9rem;
+        border: none !important;
+        border-top: 1px solid #ddd !important;
+        padding: 8px !important;
+      }
+      th {
+        vertical-align: top;
+        background: aliceblue;
+      }
+      select,
+      input {
+        margin: 4px 0;
+        padding: 4px 20px 4px 10px;
+        border-radius: 3px;
+        appearance: none;
+        background: #d9e3ff
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 40 24" width="40"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>')
+          102% 50% no-repeat;
+        background-size: 24px;
+        font-size: 0.9rem;
+        color: #0075eb;
+      }
+      .filters a,
+      .filters select,
+      .filters input {
+        display: inline-block;
+        margin: 16px 8px 0 0;
+      }
+      table select,
+      table input {
+        background-color: white;
+        border: 1px solid #d9e3ff;
+        font-size: 0.8rem;
+      }
+      table select.select-main {
+        background: #0075eb
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 40 24" width="40"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="%23FFFFFF"/></svg>')
+        102% 50% no-repeat;
+        background-size: 24px;
+        color: white;
+      }
+      .phone {
+        letter-spacing: 0.1rem;
+        font-family: monospace;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>')
+          0 50% no-repeat;
+        color: #000;
+        background-size: 16px;
+        display: block;
+        padding: 4px 4px 4px 24px;
+      }
+      .table-sort {
+        background: #0075eb url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.59 12.09L13 15.67L13 1.5L11 1.5L11 15.67L7.41 12.08L6 13.5L12 19.5L18 13.5L16.59 12.09ZM18 20.5L6 20.5L6 22.5L18 22.5L18 20.5Z' fill='%23FFFFFF'/%3E%3C/svg%3E%0A") 50% 50% no-repeat;
+        background-size: 16px;
+        width: 42px;
+        height: 24px;
+        padding: 8px;
+        display: block;
+        margin: 4px 0;
+        border: 1px solid #d9e3ff;
+        border-radius: 100px;
+      }
+      .red {
+        color: red;
+      }
+      .overdue-patient {
+        display: block;
+      }
+
+      .overdue-patient button {
+        color: #0075eb;
+        font-weight: bold;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        padding: 42px;
+        white-space: normal;
+        top: 0;
+        right: 0;
+        background: #fff;
+        border-left: 1px solid #999;
+        width: 40%;
+        height: 100%;
+        box-shadow: -10px 0 0 rgba(0, 0, 0, 0.3);
+        overflow: auto;
+      }
+
+      .modal-show {
+        display: block;
+      }
+
+      .modal p {
+        margin-top: 0.5rem;
+      }
+      button.modal-close:before {
+        content: "✖️ ";
+      }
+      button.modal-close {
+        display: block;
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        font-weight: bold;
+        color: #333;
+        border: 1px solid #ddd;
+        padding: 4px 12px;
+        border-radius: 4px;
+      }
+      a.modal-close:hover {
+        text-decoration: none;
+        color: firebrick;
+      }
+      .modal select.mark-result {
+        font-size: 1rem;
+        background-size: 32px;
+        width: 70%;
+      }
+      .overdue-patient-details p {
+        margin: 0.4rem 0;
+      }
+      .overdue-patient h4 {
+        margin-top: 2rem;
+      }
+      .pill {
+        background: aquamarine;
+        padding: 2px 12px;
+        margin-right: 0.2rem;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        display: inline-block;
+      }
+      .pill-high-risk {
+        background: lightcoral;
+        color: white;
+      }
+      .pill-hypertension {
+        background: lavender;
+      }
+      .pill-diabetes {
+        background: bisque;
+      }
+      .phone-large {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>')
+          0 50% no-repeat;
+        background-size: 18px;
+        font-size: 18px;
+        font-family: monospace;
+        letter-spacing: 0.3rem;
+        margin: 2rem 0 1rem 0;
+        padding-left: 32px;
+        display: block;
+      }
+      .phone-large-none {
+        font-size: 18px;
+        margin: 2rem 0 1rem 0;
+        display: block;
+        color: #777;
+      }
+      .label {
+        font-weight: normal;
+        color: #777;
+      }
+      .table-filter {
+        font-size: 0.8rem;
+        display: block;
+        padding: 8px 0 0 0;
+      }
+      .table-filter label {
+        font-weight: normal;
+      }
+      .table-filter select,
+      .table-filter input {
+        font-size: 0.7rem;
+        margin-top: -8px;
+        background-color: white;
+      }
+      .table-filter input {
+        padding-right: 4px;
+        padding-left: 28px;
+        border-radius: 100px;
+        background: white
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>')
+          6px 50% no-repeat;
+        background-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <div class="banner-body">
+        <h1><span>HEARTS</span>360</h1>
+
+        <div class="desktop-only">
+          <div class="link-list">
+            <span>v1.3</span>
+            <a href="instructions.html">Setup instructions</a>
+            <a
+              class="external-link"
+              href="https://github.com/simpledotorg/hypertension-dashboard"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="link-dashboards">
+      <div>
+        <a href="index.html"> Hypertension Dashboard </a>
+        <a href="diabetes.html"> Diabetes Dashboard </a>
+        <a href="overdue.html" class="active"> Overdue patients list </a>
+      </div>
+    </div>
+    <main class="main">
+      <div class="card">
+        <div class="heading">
+          <a href="#" style="float: right; display: block; margin: 12px"
+            >Download list (XLS)</a
+          >
+          <h2>Overdue patients</h2>
+          <p>3,250 overdue patients in River District</p>
+        </div>
+
+        <div class="table-container">
+          <p class="table-scroll-message text-grey mobile-only">
+            scroll table &rarr;
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    Overdue status
+                    <form class="table-filter">
+                      <select class="select-main">
+                        <option>All</option>
+                        <option selected="selected">
+                          Pending to call: 2,500
+                        </option>
+                        <option>Agreed to visit: 400</option>
+                        <option>Remind to call later: 10</option>
+                        <option>Removed from list: 40</option>
+                        <option>No visit in 1 year: 300</option>
+                      </select>
+                    </form>
+                  </th>
+                  <th>
+                    Patient
+                    <form class="table-filter">
+                      <input type="search" placeholder="Search" />
+                    </form>
+                  </th>
+                  <th>Sex</th>
+                  <th>Age</th>
+                  <th>
+                    Phone
+                    <form class="table-filter">
+                      <select style="max-width: 12em;">
+                        <option></option>
+                        <option>Only with phone</option>
+                        <option>Only without phone</option>
+                      </select>
+                    </form>
+                  </th>
+                  <th>
+                    High risk?
+                    <form class="table-filter">
+                      <select style="max-width: 8em;">
+                        <option></option>
+                        <option>Only high risk</option>
+                      </select>
+                    </form>
+                  </th>
+                  <th>
+                    HTN or DM
+                    <form class="table-filter">
+                      <div>
+                        <select>
+                          <option></option>
+                          <option>HTN-only</option>
+                          <option>DM-only</option>
+                          <option>HTN+DM</option>
+                        </select>
+                      </div>
+                    </form>
+                  </th>
+                  <th>
+                    Facility
+                    <form class="table-filter">
+                      <select style="max-width: 12em;">
+                        <option></option>
+                        <option>CHC Apple Orchard</option>
+                        <option>CHC Bramble River</option>
+                        <option>CHC Bumpy Hill</option>
+                        <option>CHC Carrot Peak</option>
+                        <option>CHC Cumin Creek</option>
+                        <option>CHC Dandelion Wine</option>
+                        <option>CHC Elderflower Ridge</option>
+                        <option>CHC Riverside</option>
+                        <option>CHC Rhubarb Hills</option>
+                        <option>CHC Turnip</option>
+                        <option>CHC Ugly Fruit Bay</option>
+                        <option>CHC Vine Bay</option>
+                        <option>CHC Watermelon Cove</option>
+                        <option>CHC Weather Top</option>
+                        <option>CHC Yellow Melon</option>
+                        <option>CHC Young Potato</option>
+                        <option>CHC Zucchiniville</option>
+                        <option>District Hospital Strawberry</option>
+                        <option>PHC Apricot Island</option>
+                        <option>PHC Azalea Hills</option>
+                        <option>PHC Bumblebee</option>
+                        <option>PHC Capital Town</option>
+                        <option>PHC Copperville</option>
+                        <option>PHC Cupola</option>
+                        <option>PHC Dartboard Hill</option>
+                        <option>PHC Deck Town</option>
+                        <option>PHC Dune Hill</option>
+                        <option>PHC Eagle Hill</option>
+                        <option>PHC Eggplant Mountain</option>
+                        <option>PHC El Toro</option>
+                        <option>PHC Fang Cove</option>
+                        <option>PHC Grapefruit Hill</option>
+                        <option>PHC Gumdrop Cove</option>
+                        <option>PHC Happy Street</option>
+                        <option>PHC Hilltop Station</option>
+                        <option>PHC Iceberg</option>
+                        <option>PHC Idaho Hills</option>
+                        <option>PHC Jackfruit</option>
+                        <option>PHC Juniperberry</option>
+                        <option>PHC Lard Lane</option>
+                        <option>PHC Lobby Mountain</option>
+                        <option>Subdistrict Hospital Grape</option>
+                        <option>Subdistrict Hospital Juniper</option>
+                        <option>Subdistrict Hospital Grasslands</option>
+                        <option>UPHC Cinnamon Hill</option>
+                        <option>UPHC Dandelion Mountain</option>
+                        <option>UPHC Dill Weed</option>
+                        <option>UPHC Dry Marjoram</option>
+                        <option>UPHC Dry Mustard</option>
+                        <option>UPHC Dry Nutmeg</option>
+                      </select>
+                    </form>
+                  </th>
+                  <th>
+                    Home village / area
+                    <form class="table-filter">
+                      <input type="search" placeholder="Search" style="width: 12em;" />
+                    </form>
+                  </th>
+                  <th>
+                    Overdue
+                    <a href="#" class="table-sort"></a>
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    colspan="10"
+                    style="
+                      font-weight: normal;
+                      font-size: 0.8rem;
+                      background: LightGoldenrodYellow;
+                      color: rgba(0, 0, 0, 0.7);
+                    "
+                  >
+                    Showing 2,500 patients who have not been contacted yet.
+                    Instruction: Call patients and then change the overdue
+                    status.
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient01')">
+                        Amrith Madeupname
+                      </button>
+
+                      <div class="modal" id="patient01">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Amrith Madeupname, M, 90</h2>
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:2251234999" class="phone-large"
+                          >2251234999</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">3 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Blueberry</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Lakeside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Carrotville
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p><b class="label">Facility:</b> PHC Carrotville</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>90</td>
+                  <td>
+                    <a href="tel:4451234123" class="phone">2251234999</a>
+                  </td>
+                  <td><span class="pill pill-high-risk">High risk</span></td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Carrotville</td>
+                  <td>Lakeside</td>
+                  <td><span class="red">3 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient02')">
+                        Mahima Longnameperson
+                      </button>
+
+                      <div class="modal" id="patient02">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Mahima Longnameperson, F, 76</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:5551234021" class="phone-large"
+                          >5551234021</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">4 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 25-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Jackfruit</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 809 Church Rd,
+                            Section 56, River District
+                          </p>
+                          <p><b class="label">Enrolled at:</b> PHC Jackfruit</p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 29-Jun-2024 (35 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 145 / 60</p>
+                          <p><b class="label">Medicine:</b> Amlodipine 5 mg</p>
+                          <p><b class="label">Facility:</b> PHC Jackfruit</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>F</td>
+                  <td>76</td>
+                  <td>
+                    <a href="tel:4451234123" class="phone">5551234021</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Jackfruit</td>
+                  <td>Section 56</td>
+                  <td><span class="red">4 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient03')">
+                        Prabhdeep Storyline
+                      </button>
+
+                      <div class="modal" id="patient03">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Prabhdeep Storyline, F, 45</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                          <span class="pill pill-diabetes">Diabetes</span>
+                        </p>
+                        <span class="phone-large-none">&lt;No phone&gt;</span>
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">5 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 24-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Fang Cove</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 2254567A
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 9087 Main Road,
+                            Mole Hill, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> CHC Weather Top
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 27-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p><b class="label">Blood sugar:</b> FBS 140 mg/dL</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 10 mg,
+                            Metformin 500 mg
+                          </p>
+                          <p><b class="label">Facility:</b> CHC Weather Top</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>F</td>
+                  <td>45</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>
+                    <span class="pill pill-hypertension">HTN</span
+                    ><span class="pill pill-diabetes">DM</span>
+                  </td>
+                  <td>PHC Fang Cove</td>
+                  <td>Mole Hill</td>
+                  <td><span class="red">5 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient04')">
+                        Pragati Fictionelle
+                      </button>
+
+                      <div class="modal" id="patient04">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Pragati Fictionelle, F, 36</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:3211234990" class="phone-large"
+                          >3211234990</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">6 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 20-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Azalea Hills</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 0454567F
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 90 MG Road, Flat
+                            6098, Lakeside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Azalea Hills
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 23-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p><b class="label">Facility:</b> PHC Azalea Hills</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>F</td>
+                  <td>36</td>
+                  <td>
+                    <a href="tel:3211234990" class="phone">3211234990</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Azalea Hills</td>
+                  <td>Lakeside</td>
+                  <td><span class="red">6 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient05')">
+                        Amrith Novella
+                      </button>
+
+                      <div class="modal" id="patient05">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Amrith Novella, M, 67</h2>
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:3351234876" class="phone-large"
+                          >3351234876</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">7 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 19-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Bumblebee</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 109 River Road,
+                            Flat 98, River Valley, River District
+                          </p>
+                          <p><b class="label">Enrolled at:</b> PHC Bumblebee</p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 26-Jun-2024 (38 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 130 / 80</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 10 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p><b class="label">Facility:</b> PHC Bumblebee</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>67</td>
+                  <td>
+                    <a href="tel:3351234876" class="phone">3351234876</a>
+                  </td>
+                  <td><span class="pill pill-high-risk">High risk</span></td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Bumblebee</td>
+                  <td>River Valley</td>
+                  <td><span class="red">7 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient05A')">
+                        Honey Poem
+                      </button>
+
+                      <div class="modal" id="patient05A">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Honey Poem, F, 89</h2>
+                        <p><span class="pill pill-diabetes">Diabetes</span></p>
+                        <a href="tel:0512349916" class="phone-large"
+                          >0512349916</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">7 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 19-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Azalea Hills</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 908 4th Road,
+                            Lakeside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Azalea Hills
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood sugar:</b> FBS 150 mg/dL</p>
+                          <p><b class="label">Medicine:</b> Metformin 500 mg</p>
+                          <p><b class="label">Facility:</b> PHC Azalea Hills</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>90</td>
+                  <td>
+                    <a href="tel:0512349916" class="phone">0512349916</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-diabetes">DM only</span></td>
+                  <td>PHC Azalea Hills</td>
+                  <td>Lakeside</td>
+                  <td><span class="red">7 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient06')">
+                        Anupam Longform Fiction
+                      </button>
+
+                      <div class="modal" id="patient06">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Anupam Longform Fiction, F, 90</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:1231129087" class="phone-large"
+                          >1231129087</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">8 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 18-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Copperville</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 908 Long Road,
+                            Waterstone, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Copperville
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 22-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 141 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p><b class="label">Facility:</b> PHC Copperville</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>F</td>
+                  <td>90</td>
+                  <td>
+                    <a href="tel:1231129087" class="phone">1231129087</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Copperville</td>
+                  <td>Waterstone</td>
+                  <td><span class="red">8 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient07')">
+                        Mahfuz Readsalot
+                      </button>
+
+                      <div class="modal" id="patient07">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Mahfuz Readsalot, M, 70</h2>
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:2251234991" class="phone-large"
+                          >2251234991</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">8 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 18-Jul-2024</p>
+                          <p>
+                            <b class="label">Facility:</b> CHC Bramble River
+                          </p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 90 MG Road,
+                            Bramble Gulch, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> CHC Bramble River
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (40 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> CHC Bramble River
+                          </p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>70</td>
+                  <td>
+                    <a href="tel:2251234991" class="phone">2251234991</a>
+                  </td>
+                  <td><span class="pill pill-high-risk">High risk</span></td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>CHC Bramble River</td>
+                  <td>Bramble Gulch</td>
+                  <td><span class="red">8 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient08')">
+                        Mahima Written Form
+                      </button>
+
+                      <div class="modal" id="patient08">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Mahima Written Form, F, 24</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:1151234945" class="phone-large"
+                          >1151234945</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">8 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 16-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Azalea Hills</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 19 MG Road,
+                            Morningside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Azalea Hills
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p><b class="label">Facility:</b> CHC Carrotville</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>F</td>
+                  <td>24</td>
+                  <td>
+                    <a href="tel:1151234945" class="phone">1151234945</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Azalea Hills</td>
+                  <td>Morningside</td>
+                  <td><span class="red">8 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient09')">
+                        Ganesh Prosefiction
+                      </button>
+
+                      <div class="modal" id="patient09">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Ganesh Prosefiction, M, 45</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:1121234087" class="phone-large"
+                          >1121234087</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">9 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 13-Jul-2024</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Dartboard Hill
+                          </p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, River Village, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Dartboard Hill
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Dartboard Hill
+                          </p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>45</td>
+                  <td>
+                    <a href="tel:4451234123" class="phone">1121234087</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Dartboard Hill</td>
+                  <td>River Village</td>
+                  <td><span class="red">9 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient10')">
+                        Amit Fable
+                      </button>
+
+                      <div class="modal" id="patient10">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Amit Fable, M, 60</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:5251234776" class="phone-large"
+                          >5251234776</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">10 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 18-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Blueberry</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Section A, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Dartboard Hill
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Dartboard Hill
+                          </p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>60</td>
+                  <td>
+                    <a href="tel:5251234776" class="phone">5251234776</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Dartboard Hill</td>
+                  <td>Section A</td>
+                  <td><span class="red">10 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient11')">
+                        Hari Storytelling
+                      </button>
+
+                      <div class="modal" id="patient11">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Hari Storytelling, M, 44</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:1051234590" class="phone-large"
+                          >1051234590</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">10 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Blueberry</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Mount Skyward, River District
+                          </p>
+                          <p><b class="label">Enrolled at:</b> PHC Cupola</p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p><b class="label">Facility:</b> PHC Cupola</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>44</td>
+                  <td>
+                    <a href="tel:1051234590" class="phone">1051234590</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Cupola</td>
+                  <td>Mount Skyward</td>
+                  <td><span class="red">10 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient12')">
+                        Roopa Story
+                      </button>
+
+                      <div class="modal" id="patient12">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Roopa Story, F, 65</h2>
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:4551234003" class="phone-large"
+                          >4551234003</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">11 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Field
+                          </p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Streamville, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Strawberry
+                            Field
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Field
+                          </p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>F</td>
+                  <td>65</td>
+                  <td>
+                    <a href="tel:4551234003" class="phone">4551234003</a>
+                  </td>
+                  <td><span class="pill pill-high-risk">High risk</span></td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Strawberry Field</td>
+                  <td>Streamville</td>
+                  <td><span class="red">11 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient13')">
+                        Amit Prose
+                      </button>
+
+                      <div class="modal" id="patient13">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Amit Prose, M, 40</h2>
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:5251234088" class="phone-large"
+                          >5251234088</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">11 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Hackney Downs
+                          </p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Stoney Brooke, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Hackney Downs
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Hackney Downs
+                          </p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>40</td>
+                  <td>
+                    <a href="tel:5251234088" class="phone">5251234088</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Hackney Downs</td>
+                  <td>Stoney Brooke</td>
+                  <td><span class="red">11 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient14')">
+                        Mahima Literature
+                      </button>
+
+                      <div class="modal" id="patient14">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Mahima Literature, F, 48</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:2251234994" class="phone-large"
+                          >2251234994</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">11 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Hill
+                          </p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Waterside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Strawberry
+                            Hill
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Hill
+                          </p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>F</td>
+                  <td>48</td>
+                  <td>
+                    <a href="tel:4451234123" class="phone">2251234999</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Strawberry Hill</td>
+                  <td>Waterside</td>
+                  <td><span class="red">11 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient15')">
+                        Rahul Fiction
+                      </button>
+
+                      <div class="modal" id="patient15">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Rahul Fiction, M, 72</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:2251234994" class="phone-large"
+                          >2251234994</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">11 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Watermelon Cove
+                          </p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Lakeview, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Watermelon
+                            Cove
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Watermelon Cove
+                          </p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>72</td>
+                  <td>
+                    <a href="tel:2251234994" class="phone">2251234994</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Watermelon Cove</td>
+                  <td>Lakeview</td>
+                  <td><span class="red">11 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient16')">
+                        Gaurav Illusion
+                      </button>
+
+                      <div class="modal" id="patient16">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Gaurav Illusion, M, 55</h2>
+                        <p>
+                          <span class="pill pill-high-risk">High risk</span>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:0951234453" class="phone-large"
+                          >0951234453</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">12 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Watermelon Cove
+                          </p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Lakerton, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Watermelon
+                            Cove
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Watermelon Cove
+                          </p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>55</td>
+                  <td>
+                    <a href="tel:0951234453" class="phone">0951234453</a>
+                  </td>
+                  <td><span class="pill pill-high-risk">High risk</span></td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Watermelon Cove</td>
+                  <td>Lakerton</td>
+                  <td><span class="red">12 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient17')">
+                        Misu Novella
+                      </button>
+
+                      <div class="modal" id="patient17">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Misu Novella, F, 52</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:8751234886" class="phone-large"
+                          >8751234886</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">12 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p><b class="label">Facility:</b> CHC Riverside</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Stoney Brook, River District
+                          </p>
+                          <p><b class="label">Enrolled at:</b> CHC Riverside</p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p><b class="label">Facility:</b> CHC Riverside</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>F</td>
+                  <td>52</td>
+                  <td>
+                    <a href="tel:8751234886" class="phone">8751234886</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>CHC Riverside</td>
+                  <td>Stoney Brook</td>
+                  <td><span class="red">12 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient18')">
+                        Ashanti Storyteller
+                      </button>
+
+                      <div class="modal" id="patient18">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Ashanti Storyteller, F, 39</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:0051234992" class="phone-large"
+                          >0051234992</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">12 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Dune Hill</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Cloudville, River District
+                          </p>
+                          <p><b class="label">Enrolled at:</b> PHC Dune Hill</p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p><b class="label">Facility:</b> PHC Dune Hill</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>F</td>
+                  <td>39</td>
+                  <td>
+                    <a href="tel:0051234992" class="phone">0051234992</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Dune Hill</td>
+                  <td>Cloudville</td>
+                  <td><span class="red">12 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient19')">
+                        Fatima Madeupname
+                      </button>
+
+                      <div class="modal" id="patient19">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Fatima Madeupname, F, 88</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:331234995" class="phone-large"
+                          >331234995</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">12 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p><b class="label">Facility:</b> PHC Dune Hill</p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Stoney Brook, River District
+                          </p>
+                          <p><b class="label">Enrolled at:</b> PHC Iceberg</p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p><b class="label">Facility:</b> PHC Iceberg</p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>F</td>
+                  <td>88</td>
+                  <td>
+                    <a href="tel:331234995" class="phone">331234995</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Iceberg</td>
+                  <td>Stoney Brook</td>
+                  <td><span class="red">12 days</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <form>
+                      <select class="mark-result">
+                        <option>Pending to call</option>
+                        <option>Agreed to visit</option>
+                        <option>Remind to call later</option>
+                        <optgroup label="Or, remove from list">
+                          <option>Already visited</option>
+                          <option>Unavailable</option>
+                          <option>Wrong phone #</option>
+                          <option>Changed facilities</option>
+                          <option>Moved</option>
+                          <option>Died</option>
+                          <option>Refused to return</option>
+                          <option>Other</option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </td>
+                  <td>
+                    <div class="overdue-patient">
+                      <button onclick="openModal('patient20')">
+                        Hari Fictionelle
+                      </button>
+
+                      <div class="modal" id="patient20">
+                        <button onclick="closeOpenModal()" class="modal-close">
+                          Close
+                        </button>
+                        <h2>Hari Fictionelle, M, 76</h2>
+                        <p>
+                          <span class="pill pill-hypertension"
+                            >Hypertension</span
+                          >
+                        </p>
+                        <a href="tel:2051234990" class="phone-large"
+                          >2051234990</a
+                        >
+
+                        <form>
+                          <select class="mark-result">
+                            <option>Pending to call</option>
+                            <option>Agreed to visit</option>
+                            <option>Remind to call later</option>
+                            <optgroup label="Or, remove from list">
+                              <option>Already visited</option>
+                              <option>Unavailable</option>
+                              <option>Wrong phone #</option>
+                              <option>Changed facilities</option>
+                              <option>Moved</option>
+                              <option>Died</option>
+                              <option>Refused to return</option>
+                              <option>Other</option>
+                            </optgroup>
+                          </select>
+                        </form>
+
+                        <h4>Appointment</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Overdue:</b>
+                            <span class="red">12 days</span>
+                          </p>
+                          <p><b class="label">Date:</b> 26-Jul-2024</p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Hill
+                          </p>
+                        </div>
+
+                        <h4>Patient details</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">National Health ID:</b> 4454567C
+                          </p>
+                          <p>
+                            <b class="label">Home address:</b> 45 MG Road, Flat
+                            6098, Lakeside, River District
+                          </p>
+                          <p>
+                            <b class="label">Enrolled at:</b> PHC Strawberry
+                            Hill
+                          </p>
+                          <p><b class="label">Enrolled:</b> 30-Dec-2023</p>
+                        </div>
+
+                        <h4>Most recent visit</h4>
+                        <div class="overdue-patient-details">
+                          <p>
+                            <b class="label">Date:</b> 30-Jun-2024 (34 days ago)
+                          </p>
+                          <p><b class="label">Blood pressure:</b> 170 / 68</p>
+                          <p>
+                            <b class="label">Medicine:</b> Amlodipine 5 mg,
+                            Telmisartan 40 mg
+                          </p>
+                          <p>
+                            <b class="label">Facility:</b> PHC Strawberry Hill
+                          </p>
+                        </div>
+
+                        <h4>Call log</h4>
+                        <p><b class="label">&lt;No calls yet&gt;</b></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>M</td>
+                  <td>76</td>
+                  <td>
+                    <a href="tel:2051234990" class="phone">2051234990</a>
+                  </td>
+                  <td>—</td>
+                  <td><span class="pill pill-hypertension">HTN only</span></td>
+                  <td>PHC Strawberry Hill</td>
+                  <td>Lakeside</td>
+                  <td><span class="red">12 days</span></td>
+                </tr>
+                <tr>
+                  <td colspan="10" style="text-align: center">
+                    <a href="#" style="display: block; padding: 6px"
+                      >Load more...</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+    </main>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script src="./js/charts.js"></script>
+
+    <!-- Tablesort.js -->
+    <script src="js/tablesort.js"></script>
+    <script src="js/tablesort.number.js"></script>
+    <script>
+      new Tablesort(document.getElementById("table-overdue"));
+
+      function openModal(modalName) {
+        closeOpenModal();
+        document.getElementById(modalName).classList.add("modal-show");
+      }
+
+      function closeOpenModal() {
+        var modals = document.getElementsByClassName("modal-show");
+        for (var i = 0; i < modals.length; i++) {
+          modals[i].classList.remove("modal-show");
+        }
+      }
+    </script>
+  </body>
+</html>
