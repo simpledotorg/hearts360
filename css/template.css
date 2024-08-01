@@ -114,14 +114,26 @@ h6 {
 
   & .notes-note {
     width: calc(50% - 32px);
+    min-width: 0;
     flex-grow: 0;
     flex-shrink: 0;
   }
 
   & .notes-details {
     width: calc(50% - 32px);
+    min-width: 0;
     flex-grow: 0;
     flex-shrink: 0;
+    & table {
+      border-width: 1px;
+      border-color: #ccc;
+      background: #f8f8f8;
+      color: black;
+    }
+
+    & thead {
+      background: #e8e8e8;
+    }
   }
 
   & h2 {
@@ -162,6 +174,15 @@ h6 {
     font-size: 0.8rem;
     border-radius: 5px;
     color: rgba(255, 255, 255, 0.6);
+    & .code::before {
+      content: ">";
+      color: #fff;
+      margin-right: 8px;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      color: gold;
+    }
 
     & code {
       font-size: 0.8rem;
@@ -194,6 +215,24 @@ h6 {
       margin-bottom: 4px;
     }
   }
+}
+
+blockquote.codeblock::before {
+  content: "Code example";
+  color: #888;
+  background: rgb(235, 238, 241);
+  display: block;
+  padding: 8px;
+  text-transform: uppercase;
+}
+
+blockquote.codeblock {
+  background: rgb(245, 246, 248);
+  padding: 0px;
+  border-radius: 4px;
+  border-color: rgba(0, 0, 0, 0.4);
+  border-width: 1px;
+  overflow: hidden;
 }
 
 code {

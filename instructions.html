@@ -340,6 +340,7 @@
           <div class="notes-section">
             <div class="notes-note">
               <h6>BP encounters table</h6>
+              <p>Example table structure for BP encounters.</p>
             </div>
             <div class="notes-details">
               <table border="1">
@@ -424,11 +425,10 @@
                   Sep-Jan.
                 </p>
               </blockquote>
-              <blockquote>
+              <blockquote class="codeblock">
                 <h6>Code example</h6>
                 <pre>
-                <code>
-WITH DEAD_PATIENTS_BY_MONTH as (
+                    <code>WITH DEAD_PATIENTS_BY_MONTH as (
     SELECT 
         DATE_TRUNC('month',<b>DEATH_DATE</b>) as REF_MONTH,
         count(*) as NB_DEAD_PATIENTS_THAT_MONTH
@@ -441,9 +441,8 @@ SELECT
 FROM DEAD_PATIENTS_BY_MONTH REFERENCE
 JOIN DEAD_PATIENTS_BY_MONTH REFERENCE_BEFORE on REFERENCE.REF_MONTH >= REFERENCE_BEFORE.REF_MONTH
 GROUP BY REFERENCE.REF_MONTH
-ORDER by REFERENCE.REF_MONTH desc
-              </code>
-              </pre>
+ORDER by REFERENCE.REF_MONTH desc</code>
+                </pre>
               </blockquote>
               <blockquote>
                 <h6>Data example</h6>
@@ -673,7 +672,7 @@ order by KNOWN_MONTHS.REF_MONTH desc
 
           <div class="notes-section">
             <div class="notes-note" id="note-bp-registrations">
-              <h6>Patients under care & 12 Months lost to follow-up</h6>
+              <h6>Patients under care & 12 month lost to follow-up</h6>
               <p>
                 A patient that is not <b>Dead</b> is either <b>Under Care</b> or
                 <b>12 months lost to follow-up</b> for a given reference month:
@@ -1152,151 +1151,156 @@ order by 1 desc
               </pre>
               </blockquote>
 
-              <blockquote style="overflow-x: scroll; max-width: 500px">
+              <blockquote>
                 <h6>Data example</h6>
-                <table border="1">
-                  <thead>
-                    <tr>
-                      <th>ref_month</th>
-                      <th>nb_patients_under_care</th>
-                      <th>nb_patients_newly_registered</th>
-                      <th>
-                        nb_patients_under_care_registered_before_the_last_3_months
-                      </th>
-                      <th>nb_patients_no_visit</th>
-                      <th>nb_patients_uncontrolled</th>
-                      <th>nb_patients_controlled</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>2024-06-01</td>
-                      <td>38885</td>
-                      <td>13617</td>
-                      <td>25268</td>
-                      <td>5262</td>
-                      <td>5121</td>
-                      <td>14885</td>
-                    </tr>
-                    <tr>
-                      <td>2024-05-01</td>
-                      <td>36384</td>
-                      <td>16058</td>
-                      <td>20326</td>
-                      <td>3926</td>
-                      <td>3955</td>
-                      <td>12445</td>
-                    </tr>
-                    <tr>
-                      <td>2024-04-01</td>
-                      <td>31308</td>
-                      <td>13419</td>
-                      <td>17889</td>
-                      <td>3590</td>
-                      <td>3205</td>
-                      <td>11094</td>
-                    </tr>
-                    <tr>
-                      <td>2024-03-01</td>
-                      <td>25673</td>
-                      <td>9461</td>
-                      <td>16212</td>
-                      <td>3305</td>
-                      <td>2852</td>
-                      <td>10055</td>
-                    </tr>
-                    <tr>
-                      <td>2024-02-01</td>
-                      <td>20544</td>
-                      <td>5389</td>
-                      <td>15155</td>
-                      <td>2841</td>
-                      <td>2902</td>
-                      <td>9412</td>
-                    </tr>
-                    <tr>
-                      <td>2024-01-01</td>
-                      <td>18042</td>
-                      <td>4138</td>
-                      <td>13904</td>
-                      <td>2369</td>
-                      <td>2653</td>
-                      <td>8882</td>
-                    </tr>
-                    <tr>
-                      <td>2023-12-01</td>
-                      <td>16445</td>
-                      <td>4229</td>
-                      <td>12216</td>
-                      <td>1799</td>
-                      <td>2139</td>
-                      <td>8278</td>
-                    </tr>
-                    <tr>
-                      <td>2023-11-01</td>
-                      <td>15392</td>
-                      <td>4136</td>
-                      <td>11256</td>
-                      <td>1676</td>
-                      <td>2026</td>
-                      <td>7554</td>
-                    </tr>
-                    <tr>
-                      <td>2023-10-01</td>
-                      <td>14135</td>
-                      <td>3767</td>
-                      <td>10368</td>
-                      <td>1492</td>
-                      <td>1888</td>
-                      <td>6988</td>
-                    </tr>
-                    <tr>
-                      <td>2023-09-01</td>
-                      <td>12397</td>
-                      <td>3111</td>
-                      <td>9286</td>
-                      <td>1268</td>
-                      <td>1821</td>
-                      <td>6197</td>
-                    </tr>
-                    <tr>
-                      <td>2023-08-01</td>
-                      <td>11451</td>
-                      <td>3604</td>
-                      <td>7847</td>
-                      <td>1061</td>
-                      <td>1476</td>
-                      <td>5310</td>
-                    </tr>
-                    <tr>
-                      <td>2023-07-01</td>
-                      <td>10553</td>
-                      <td>4160</td>
-                      <td>6393</td>
-                      <td>910</td>
-                      <td>1314</td>
-                      <td>4169</td>
-                    </tr>
-                    <tr>
-                      <td>2023-06-01</td>
-                      <td>9472</td>
-                      <td>3495</td>
-                      <td>5977</td>
-                      <td>942</td>
-                      <td>1320</td>
-                      <td>3715</td>
-                    </tr>
-                    <tr>
-                      <td>2023-05-01</td>
-                      <td>8011</td>
-                      <td>2195</td>
-                      <td>5816</td>
-                      <td>969</td>
-                      <td>1279</td>
-                      <td>3568</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div>
+                  <table
+                    border="1"
+                    style="overflow-x: scroll; display: block; max-width: 500px"
+                  >
+                    <thead>
+                      <tr>
+                        <th>ref_month</th>
+                        <th>nb_patients_under_care</th>
+                        <th>nb_patients_newly_registered</th>
+                        <th>
+                          nb_patients_under_care_registered_before_the_last_3_months
+                        </th>
+                        <th>nb_patients_no_visit</th>
+                        <th>nb_patients_uncontrolled</th>
+                        <th>nb_patients_controlled</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>2024-06-01</td>
+                        <td>38885</td>
+                        <td>13617</td>
+                        <td>25268</td>
+                        <td>5262</td>
+                        <td>5121</td>
+                        <td>14885</td>
+                      </tr>
+                      <tr>
+                        <td>2024-05-01</td>
+                        <td>36384</td>
+                        <td>16058</td>
+                        <td>20326</td>
+                        <td>3926</td>
+                        <td>3955</td>
+                        <td>12445</td>
+                      </tr>
+                      <tr>
+                        <td>2024-04-01</td>
+                        <td>31308</td>
+                        <td>13419</td>
+                        <td>17889</td>
+                        <td>3590</td>
+                        <td>3205</td>
+                        <td>11094</td>
+                      </tr>
+                      <tr>
+                        <td>2024-03-01</td>
+                        <td>25673</td>
+                        <td>9461</td>
+                        <td>16212</td>
+                        <td>3305</td>
+                        <td>2852</td>
+                        <td>10055</td>
+                      </tr>
+                      <tr>
+                        <td>2024-02-01</td>
+                        <td>20544</td>
+                        <td>5389</td>
+                        <td>15155</td>
+                        <td>2841</td>
+                        <td>2902</td>
+                        <td>9412</td>
+                      </tr>
+                      <tr>
+                        <td>2024-01-01</td>
+                        <td>18042</td>
+                        <td>4138</td>
+                        <td>13904</td>
+                        <td>2369</td>
+                        <td>2653</td>
+                        <td>8882</td>
+                      </tr>
+                      <tr>
+                        <td>2023-12-01</td>
+                        <td>16445</td>
+                        <td>4229</td>
+                        <td>12216</td>
+                        <td>1799</td>
+                        <td>2139</td>
+                        <td>8278</td>
+                      </tr>
+                      <tr>
+                        <td>2023-11-01</td>
+                        <td>15392</td>
+                        <td>4136</td>
+                        <td>11256</td>
+                        <td>1676</td>
+                        <td>2026</td>
+                        <td>7554</td>
+                      </tr>
+                      <tr>
+                        <td>2023-10-01</td>
+                        <td>14135</td>
+                        <td>3767</td>
+                        <td>10368</td>
+                        <td>1492</td>
+                        <td>1888</td>
+                        <td>6988</td>
+                      </tr>
+                      <tr>
+                        <td>2023-09-01</td>
+                        <td>12397</td>
+                        <td>3111</td>
+                        <td>9286</td>
+                        <td>1268</td>
+                        <td>1821</td>
+                        <td>6197</td>
+                      </tr>
+                      <tr>
+                        <td>2023-08-01</td>
+                        <td>11451</td>
+                        <td>3604</td>
+                        <td>7847</td>
+                        <td>1061</td>
+                        <td>1476</td>
+                        <td>5310</td>
+                      </tr>
+                      <tr>
+                        <td>2023-07-01</td>
+                        <td>10553</td>
+                        <td>4160</td>
+                        <td>6393</td>
+                        <td>910</td>
+                        <td>1314</td>
+                        <td>4169</td>
+                      </tr>
+                      <tr>
+                        <td>2023-06-01</td>
+                        <td>9472</td>
+                        <td>3495</td>
+                        <td>5977</td>
+                        <td>942</td>
+                        <td>1320</td>
+                        <td>3715</td>
+                      </tr>
+                      <tr>
+                        <td>2023-05-01</td>
+                        <td>8011</td>
+                        <td>2195</td>
+                        <td>5816</td>
+                        <td>969</td>
+                        <td>1279</td>
+                        <td>3568</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </blockquote>
             </div>
           </div>
@@ -1339,13 +1343,6 @@ order by 1 desc
                 highlighted in their respective colors in the data example
                 tables.
               </p>
-            </div>
-            <div class="notes-details">
-              <blockquote>
-                <h6>Value</h6>
-                <code>Cumulative registrations</code> in the hypertension
-                program excluding <code>Dead</code> patients.
-              </blockquote>
             </div>
           </div>
 
