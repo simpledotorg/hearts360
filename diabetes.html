@@ -19,7 +19,7 @@
     <div class="banner">
       <div class="banner-body">
         <h1><span>HEARTS</span>360</h1>
-
+        
         <div class="desktop-only">
           <div class="link-list">
             <span>v1.3</span>
@@ -31,18 +31,19 @@
             >
           </div>
         </div>
+        
       </div>
     </div>
     <div class="link-dashboards">
       <div>
         <a href="index.html">
-          Hypertension Dashboard
+          Hypertension <span class="desktop-only">Dashboard</span>
         </a>
         <a href="diabetes.html" class="active">
-          Diabetes Dashboard
+          Diabetes <span class="desktop-only">Dashboard</span>
         </a>
         <a href="overdue.html">
-          Overdue patients list
+          Overdue <span class="desktop-only">patients list</span>
         </a>
       </div>
     </div>
@@ -54,8 +55,10 @@
 
       <div class="card">
         <div class="heading">
-          <h3>DM treatment outcomes</h3>
-
+          <h3>
+            DM treatment outcomes
+          </h3>
+          
           <p>
             Outcomes for 3,500 patients under care (registered before
             1-May-2024) between 1-May-2024 to 31-Jul-2024
@@ -64,9 +67,7 @@
           <div class="body columns-3">
             <div class="inner-card">
               <div class="figures">
-                <h4 class="bp-controlled">
-                  Blood sugar controlled at latest visit in past 3 months
-                </h4>
+                <h4 class="bp-controlled">Blood sugar controlled at latest visit in past 3 months</h4>
                 <p class="large-num bp-controlled">20%</p>
                 <div class="detail">
                   <p>700 patients with FBS &lt;126 mg/dl or HbA1c &lt;7%</p>
@@ -78,19 +79,11 @@
             </div>
             <div class="inner-card">
               <div class="figures">
-                <h4 class="bp-uncontrolled">
-                  Blood sugar not controlled at latest visit in past 3 months
-                </h4>
+                <h4 class="bp-uncontrolled">Blood sugar not controlled at latest visit in past 3 months</h4>
                 <!--p class="large-num bp-uncontrolled">46%</p-->
                 <div class="detail">
-                  <p style="padding-top: 0.8rem">
-                    <b class="bp-uncontrolled">41%</b> &nbsp; 1,435 patients
-                    with FBS 126-199 mg/dL or HbA1c 7-8.9%
-                  </p>
-                  <p style="padding-top: 0.8rem">
-                    <b class="bp-uncontrolled-dark">17%</b> &nbsp; 595 patients
-                    with FBS &ge;200 mg/dL or HbA1c &ge;9%
-                  </p>
+                  <p style="padding-top: 0.8rem;"><b class="bp-uncontrolled">41%</b> &nbsp; 1,435 patients with FBS 126-199 mg/dL or HbA1c 7-8.9%</p>
+                  <p style="padding-top: 0.8rem;"><b class="bp-uncontrolled-dark">17%</b> &nbsp; 595 patients with FBS &ge;200 mg/dL or HbA1c &ge;9%</p>
                   <!--p><b class="bp-uncontrolled">10%</b> &nbsp; 350 patients with BS &lt;200 mg/dL in  past 3 months</p-->
                 </div>
               </div>
@@ -110,7 +103,7 @@
                 <canvas id="dmLtfu3Month"></canvas>
               </div>
             </div>
-          </div>
+          </div> 
         </div>
       </div>
 
@@ -137,7 +130,8 @@
               </div>
             </div>
             <p>
-              Patients with diabetes with at least 1 visit in the past 12 months
+              Patients with diabetes with at least 1 visit in the past 12
+              months
             </p>
           </div>
           <div class="body">
@@ -171,12 +165,14 @@
                   months
                 </p>
                 <p>
-                  <span>Denominator:</span> Registered patients with diabetes.
-                  Dead patients (60) are excluded.
+                  <span>Denominator:</span> Registered patients with
+                  diabetes. Dead patients (60) are excluded.
                 </p>
               </div>
             </div>
-            <p>Patients with diabetes with no visit in the past 12 months</p>
+            <p>
+              Patients with diabetes with no visit in the past 12 months
+            </p>
           </div>
           <div class="body">
             <div class="figures">
@@ -196,19 +192,15 @@
             </div>
           </div>
         </div>
-
+        
         <div class="card">
           <div class="heading">
             <h3>Diabetes treatment cascade</h3>
-            <p>
-              Estimated adults (&gt;30) in River District with diabetes who are
-              registered, under care, and controlled.
-            </p>
+            <p>Estimated adults (&gt;30) in River District with diabetes who are registered, under care, and controlled.</p>
             <div class="info">
               <div class="info-hover-text">
                 <p>
-                  Estimated adult (&gt;30) population with diabetes is derived
-                  from a STEPS Community Survey conducted in 2022.
+                  Estimated adult (&gt;30) population with diabetes is derived from a STEPS Community Survey conducted in 2022.
                 </p>
               </div>
             </div>
@@ -217,51 +209,52 @@
             <div class="coverage">
               <div class="coverage-column">
                 <div class="coverage-bar">
-                  <div class="coverage-bar-fill" style="height: 100%">
+                  <div class="coverage-bar-fill" style="height: 100%;">
                     <div class="coverage-estimated">100%</div>
                   </div>
                 </div>
-                <p>60,800</p>
+                <p>
+                  60,800
+                </p>
                 <p class="text-grey label-small">
                   Estimated people with diabetes
                 </p>
               </div>
               <div class="coverage-column">
                 <div class="coverage-bar">
-                  <div
-                    class="coverage-bar-fill registrations-bg"
-                    style="height: 7%"
-                  >
+                  <div class="coverage-bar-fill registrations-bg" style="height: 7%;">
                     <div class="coverage-number registrations">7%</div>
                   </div>
                 </div>
-                <p>4,100</p>
+                <p>
+                  4,100
+                </p>
                 <p class="text-grey label-small">
                   Cumulative registered patients
                 </p>
               </div>
               <div class="coverage-column">
                 <div class="coverage-bar">
-                  <div
-                    class="coverage-bar-fill under-care-bg"
-                    style="height: 6%"
-                  >
+                  <div class="coverage-bar-fill under-care-bg" style="height: 6%;">
                     <div class="coverage-number under-care">6%</div>
                   </div>
                 </div>
-                <p>3,500</p>
-                <p class="text-grey label-small">Patients under care</p>
+                <p>
+                  3,500
+                </p>
+                <p class="text-grey label-small">
+                  Patients under care
+                </p>
               </div>
               <div class="coverage-column">
                 <div class="coverage-bar">
-                  <div
-                    class="coverage-bar-fill bp-controlled-bg"
-                    style="height: 1%"
-                  >
+                  <div class="coverage-bar-fill bp-controlled-bg" style="height: 1%;">
                     <div class="coverage-number bp-controlled">1%</div>
                   </div>
                 </div>
-                <p>700</p>
+                <p>
+                  700
+                </p>
                 <p class="text-grey label-small">
                   Patients with blood sugar controlled
                 </p>
@@ -269,27 +262,29 @@
             </div>
           </div>
         </div>
-
+        
         <div class="card">
           <div class="heading">
-            <h3>Opportunistic screening</h3>
-            <p>% of estimated adult OPD patients screened for diabetes</p>
+          <h3>Opportunistic screening</h3>
+          <p>
+            % of estimated adult OPD patients screened for diabetes
+          </p>
           </div>
           <div class="body">
-            <div class="figures">
-              <div>
-                <p class="large-num" style="color: #34aea0">16%</p>
-                <div class="detail">
-                  <p>4,800 individuals screened for diabetes in Jul-2024</p>
-                  <p class="text-grey">
-                    of ~30,000 estimated OPD patients &gt;18 years
-                  </p>
-                </div>
-              </div>
+          <div class="figures">
+            <div>
+            <p class="large-num" style="color: #34AEA0;">16%</p>
+            <div class="detail">
+              <p>4,800 individuals screened for diabetes in Jul-2024</p>
+              <p class="text-grey">
+              of ~30,000 estimated OPD patients &gt;18 years
+              </p>
             </div>
-            <div class="chart">
-              <canvas id="dmscreenings"></canvas>
             </div>
+          </div>
+          <div class="chart">
+            <canvas id="dmscreenings"></canvas>
+          </div>
           </div>
         </div>
         <div class="card">
@@ -298,33 +293,26 @@
             <div class="info">
               <div class="info-hover-text">
                 <p>
-                  <span>Numerator:</span> Patients from the denominator who were
-                  prescribed statins at their most recent visit
+                  <span>Numerator:</span> Patients from the denominator who were prescribed statins at their most recent visit
                 </p>
                 <p>
-                  <span>Denominator:</span> Registered patients &ge;40 years old
-                  with diabetes with at least 1 visit in the past 12 months.
-                  Dead patients (60) and 12 month lost to follow-up patients
-                  (600) are excluded.
+                  <span>Denominator:</span> Registered patients &ge;40 years old with diabetes with at least 1 visit in the past 12 months. Dead patients (60) and 12 month lost to follow-up patients (600) are excluded.
                 </p>
               </div>
             </div>
             <p>
-              Patients under care for diabetes &ge;40 years old who were
-              prescribed statins at latest visit in the past 12 months
+              Patients under care for diabetes &ge;40 years old who were prescribed statins at latest visit in the past 12 months
             </p>
           </div>
           <div class="body">
             <div class="figures">
               <p class="large-num">66%</p>
               <div class="detail">
-                <p>
-                  2,300 patients prescribed statins at latest visit in past 12
-                  months
-                </p>
+                <p>2,300 patients prescribed statins at latest visit in past 12 months</p>
                 <p class="text-grey">
                   of
-                  <span class="under-care">3,500 patients under care</span>
+                  <span class="under-care">3,500 patients under care</span
+                  >
                 </p>
               </div>
             </div>
@@ -339,8 +327,8 @@
         <div class="heading">
           <h3>Compare sub-regions</h3>
           <p>
-            Treatment outcomes for patients with diabetes at their latest visit
-            from 1-May-2024 to 31-Jul-2024
+            Treatment outcomes for patients with diabetes at their latest visit from
+            1-May-2024 to 31-Jul-2024
           </p>
         </div>
         <div class="table-container">
@@ -363,19 +351,11 @@
                 <tr class="text-center">
                   <td></td>
                   <th scope="colgroup">Patients under care</th>
-                  <th scope="colgroup">Monthly new<br />patients registered</th>
-                  <th colspan="2" scope="colgroup">
-                    Patients<br />prescribed statins
-                  </th>
-                  <th colspan="2" scope="colgroup">
-                    FBS &lt;126 mg/dl or<br />HbA1c &lt;7%
-                  </th>
-                  <th colspan="2" scope="colgroup">
-                    FBS 126-199 mg/dL or<br />HbA1c 7-8.9%
-                  </th>
-                  <th colspan="2" scope="colgroup">
-                    FBS &ge;200 mg/dL or<br />HbA1c &ge;9%
-                  </th>
+                  <th scope="colgroup">Monthly new<br>patients registered</th>
+                  <th colspan="2" scope="colgroup">Patients<br>prescribed statins</th>
+                  <th colspan="2" scope="colgroup">FBS &lt;126 mg/dl or<br>HbA1c &lt;7%</th>
+                  <th colspan="2" scope="colgroup">FBS 126-199 mg/dL or<br>HbA1c 7-8.9%</th>
+                  <th colspan="2" scope="colgroup">FBS &ge;200 mg/dL or<br>HbA1c &ge;9%</th>
                   <th colspan="2" scope="colgroup">
                     No visit in past 3 months
                   </th>
@@ -642,13 +622,12 @@
           </div>
         </div>
       </div>
-
+      
       <div class="card">
         <div class="heading">
           <h3>Quarterly cohort reports</h3>
           <p>
-            The treatment outcomes for newly registered patients at the end of
-            the following quarter
+            The treatment outcomes for newly registered patients at the end of the following quarter
           </p>
         </div>
         <div class="body">
@@ -665,10 +644,7 @@
                   <div class="segment bp-uncontrolled-bg" style="height: 46%">
                     46%
                   </div>
-                  <div
-                    class="segment bp-uncontrolled-dark-bg"
-                    style="height: 18%"
-                  >
+                  <div class="segment bp-uncontrolled-dark-bg" style="height: 18%">
                     18%
                   </div>
                   <div class="segment three-month-ltfu-bg" style="height: 13%">
@@ -689,10 +665,7 @@
                   <div class="segment bp-uncontrolled-bg" style="height: 48%">
                     48%
                   </div>
-                  <div
-                    class="segment bp-uncontrolled-dark-bg"
-                    style="height: 18%"
-                  >
+                  <div class="segment bp-uncontrolled-dark-bg" style="height: 18%">
                     18%
                   </div>
                   <div class="segment three-month-ltfu-bg" style="height: 9%">
@@ -713,10 +686,7 @@
                   <div class="segment bp-uncontrolled-bg" style="height: 49%">
                     49%
                   </div>
-                  <div
-                    class="segment bp-uncontrolled-dark-bg"
-                    style="height: 16%"
-                  >
+                  <div class="segment bp-uncontrolled-dark-bg" style="height: 16%">
                     16%
                   </div>
                   <div class="segment three-month-ltfu-bg" style="height: 7%">
@@ -737,10 +707,7 @@
                   <div class="segment bp-uncontrolled-bg" style="height: 47%">
                     48%
                   </div>
-                  <div
-                    class="segment bp-uncontrolled-dark-bg"
-                    style="height: 18%"
-                  >
+                  <div class="segment bp-uncontrolled-dark-bg" style="height: 18%">
                     18%
                   </div>
                   <div class="segment three-month-ltfu-bg" style="height: 5%">
@@ -761,10 +728,7 @@
                   <div class="segment bp-uncontrolled-bg" style="height: 47%">
                     47%
                   </div>
-                  <div
-                    class="segment bp-uncontrolled-dark-bg"
-                    style="height: 18%"
-                  >
+                  <div class="segment bp-uncontrolled-dark-bg" style="height: 18%">
                     18%
                   </div>
                   <div class="segment three-month-ltfu-bg" style="height: 5%">
@@ -785,10 +749,7 @@
                   <div class="segment bp-uncontrolled-bg" style="height: 47%">
                     47%
                   </div>
-                  <div
-                    class="segment bp-uncontrolled-dark-bg"
-                    style="height: 20%"
-                  >
+                  <div class="segment bp-uncontrolled-dark-bg" style="height: 20%">
                     20%
                   </div>
                   <div class="segment three-month-ltfu-bg" style="height: 8%">
@@ -805,7 +766,7 @@
                 <div class="cohort-bar">
                   <div
                     class="segment"
-                    style="height: 100%; border: 2px solid rgb(241, 241, 241)"
+                    style="height: 100%; border: 2px solid rgb(241, 241, 241);"
                   ></div>
                 </div>
                 <div class="cohort-detail">
@@ -817,26 +778,22 @@
             </div>
             <div class="key">
               <div class="key-text">
-                <span class="key-color-box bp-controlled-bg"></span> FBS&lt;126
-                mg/dl or HbA1c &lt;7%
+                <span class="key-color-box bp-controlled-bg"></span> FBS&lt;126 mg/dl or HbA1c &lt;7%
               </div>
               <div class="key-text">
-                <span class="key-color-box bp-uncontrolled-bg"></span> FBS
-                126-199 mg/dL or HbA1c 7-8.9%
+                <span class="key-color-box bp-uncontrolled-bg"></span> FBS 126-199 mg/dL or HbA1c 7-8.9%
               </div>
               <div class="key-text">
-                <span class="key-color-box bp-uncontrolled-dark-bg"></span> FBS
-                &ge;200 mg/dL or HbA1c &ge;9%
+                <span class="key-color-box bp-uncontrolled-dark-bg"></span> FBS &ge;200 mg/dL or HbA1c &ge;9%
               </div>
               <div class="key-text">
-                <span class="key-color-box three-month-ltfu-bg"></span> No visit
-                in quarter
+                <span class="key-color-box three-month-ltfu-bg"></span> No visit in quarter
               </div>
             </div>
           </div>
         </div>
       </div>
-
+      
       <div class="columns-3">
         <div class="card">
           <div class="heading">
@@ -844,8 +801,8 @@
             <div class="info">
               <div class="info-hover-text">
                 <p>
-                  <span>Numerator:</span> Facilities with &ge;30 patient days
-                  protocol drugs in stock.
+                  <span>Numerator:</span> Facilities with &ge;30 patient days protocol
+                  drugs in stock.
                 </p>
                 <p>
                   <span>Denominator:</span> All facilities in the diabetes
@@ -853,10 +810,7 @@
                 </p>
               </div>
             </div>
-            <p>
-              Facilities with &ge;30 patient days of diabetes protocol drugs in
-              stock
-            </p>
+            <p>Facilities with &ge;30 patient days of diabetes protocol drugs in stock</p>
           </div>
           <div class="body">
             <div class="key key-per-row">
@@ -881,8 +835,7 @@
             <div class="info">
               <div class="info-hover-text">
                 <p>
-                  <span>Numerator:</span> Facilities with point-of-care
-                  glucometers or lab testing available.
+                  <span>Numerator:</span> Facilities with point-of-care glucometers or lab testing available.
                 </p>
                 <p>
                   <span>Denominator:</span> All facilities in the diabetes
@@ -915,8 +868,7 @@
             <div class="info">
               <div class="info-hover-text">
                 <p>
-                  <span>Numerator:</span> Facilities with HbA1c lab test
-                  available
+                  <span>Numerator:</span> Facilities with HbA1c lab test available
                 </p>
                 <p>
                   <span>Denominator:</span> All facilities in the diabetes
@@ -939,10 +891,7 @@
               153 facility without a blood glucose testing:
             </div>
             <div class="text-grey facilities-without-bp-monitor">
-              <a href="#">CHC Apple Orchard</a>,
-              <a href="#">CHC Carrot Peak</a>, <a href="#">CHC Cumin Creek</a>,
-              <a href="#">CHC Dandelion Wine</a>,
-              <a href="#">CHC Elderflower Ridge</a>, and 148 others (see table)
+              <a href="#">CHC Apple Orchard</a>, <a href="#">CHC Carrot Peak</a>, <a href="#">CHC Cumin Creek</a>, <a href="#">CHC Dandelion Wine</a>, <a href="#">CHC Elderflower Ridge</a>, and 148 others (see table)
             </div>
           </div>
         </div>
@@ -972,16 +921,16 @@
                     <th><div>Facility</div></th>
                     <th><div>Sub-region</div></th>
                     <th>
-                      <div>Metformin<br />in patient days</div>
+                      <div>Metformin<br>in patient days</div>
                     </th>
                     <th>
-                      <div>Glimeperide<br />in patient days</div>
+                      <div>Glimeperide<br>in patient days</div>
                     </th>
                     <th>
-                      <div>Availability of<br />blood glucose testing</div>
+                      <div>Availability of<br>blood glucose testing</div>
                     </th>
                     <th>
-                      <div>Availability of<br />HbA1c testing</div>
+                      <div>Availability of<br>HbA1c testing</div>
                     </th>
                   </tr>
                 </thead>
@@ -1117,7 +1066,9 @@
                   <tr>
                     <th class="link"><a href="#">CHC Young Potato</a></th>
                     <td>Vineland County</td>
-                    <td class="number expiry expiry-text">365</td>
+                    <td class="number expiry">
+                      <p class="expiry-text">365</p>
+                    </td>
                     <td class="number warning">12</td>
                     <td class="">Yes</td>
                     <td class="warning">No</td>
@@ -1254,7 +1205,7 @@
                   </tr>
                   <tr>
                     <th class="link"><a href="#">PHC Gumdrop Cove</a></th>
-                    <td>Tree Top County</td>
+                    <td>Tree Top County</td >
                     <td class="number">34</td>
                     <td class="number warning">6</td>
                     <td class="">Yes</td>
@@ -1287,7 +1238,9 @@
                   <tr>
                     <th class="link"><a href="#">PHC Idaho Hills</a></th>
                     <td>Vineland County</td>
-                    <td class="number expiry expiry-text">365</td>
+                    <td class="number expiry">
+                      <p class="expiry-text">365</p>
+                    </td>
                     <td class="number warning">12</td>
                     <td class="">Yes</td>
                     <td class="warning">No</td>
@@ -1430,17 +1383,15 @@
           </div>
         </div>
       </div>
-
+        </div>
+      </div>
+      
       <div class="columns-3">
-        <div class="card col-span-2" style="justify-content: start">
+        <div class="card col-span-2" style="justify-content: start;">
           <div class="heading">
             <h3>Hypertension and diabetes comorbidity</h3>
-            <p>
-              All patients registered in the hypertension and/or diabetes
-              programs
-            </p>
+            <p>All patients registered in the hypertension and/or diabetes programs
           </div>
-
           <div class="body">
             <table>
               <tr>
@@ -1483,172 +1434,65 @@
         </div>
         <div class="card">
           <h3>Comorbid patients with BP controlled</h3>
-          <p>
-            Patients with both hypertension and diabetes with BP controlled at
-            latest visit in past 3 months
-          </p>
+          <p>Patients with both hypertension and diabetes with BP controlled at latest visit in past 3 months</p>
           <div class="figures">
             <p class="large-num bp-controlled">50%</p>
-            <div class="detail">
-              <p>1,000 patients with BP &lt;140/90</p>
+              <div class="detail">
+                <p>1,000 patients with BP &lt;140/90</p>
+              </div>
             </div>
-          </div>
-          <div class="chart">
-            <canvas id="comodrbidcontrolled"></canvas>
-          </div>
+            <div class="chart">
+              <canvas id="comodrbidcontrolled"></canvas>
+            </div>
         </div>
       </div>
-
+      
       <div class="card">
         <div class="heading">
-          <h3>Age and sex of patients under care for diabetes</h3>
-          <p>
-            <span class="under-care">3,500 patients under care</span>
-          </p>
+        <h3>Age and sex of patients under care for diabetes</h3>
+        <p>
+          <span class="under-care">3,500 patients under care</span>
+        </p>
         </div>
         <div class="body">
-          <div>
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 10%; border-right: 0">Age</th>
-                  <th style="width: 40%" class="text-right">Female (64%)</th>
-                  <th style="width: 40%; border-right: 0">Male (36%)</th>
-                  <th style="width: 10%; border-left: 0">Female and male</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th style="border-right: 0">18-29</th>
-                  <td class="text-right">
-                    <div
-                      style="
-                        border-radius: 3px;
-                        padding: 4px 8px;
-                        color: rgba(0, 0, 0, 0.6);
-                        background: Thistle;
-                        width: 24%;
-                        display: inline-block;
-                      "
-                    >
-                      6%
-                    </div>
-                  </td>
-                  <td style="border-right: 0">
-                    <div
-                      style="
-                        border-radius: 3px;
-                        padding: 4px 8px;
-                        color: rgba(0, 0, 0, 0.6);
-                        background: LightSteelBlue;
-                        width: 16%;
-                        display: inline-block;
-                      "
-                    >
-                      4%
-                    </div>
-                  </td>
-                  <td style="border-left: 0" class="text-right">10%</td>
-                </tr>
-                <tr>
-                  <th style="border-right: 0">30-49</th>
-                  <td class="text-right">
-                    <div
-                      style="
-                        border-radius: 3px;
-                        padding: 4px 8px;
-                        color: rgba(0, 0, 0, 0.6);
-                        background: Thistle;
-                        width: 100%;
-                        display: inline-block;
-                      "
-                    >
-                      28%
-                    </div>
-                  </td>
-                  <td style="border-right: 0">
-                    <div
-                      style="
-                        border-radius: 3px;
-                        padding: 4px 8px;
-                        color: rgba(0, 0, 0, 0.6);
-                        background: LightSteelBlue;
-                        width: 68%;
-                        display: inline-block;
-                      "
-                    >
-                      17%
-                    </div>
-                  </td>
-                  <td style="border-left: 0" class="text-right">45%</td>
-                </tr>
-                <tr>
-                  <th style="border-right: 0">50-69</th>
-                  <td class="text-right">
-                    <div
-                      style="
-                        border-radius: 3px;
-                        padding: 4px 8px;
-                        color: rgba(0, 0, 0, 0.6);
-                        background: Thistle;
-                        width: 76%;
-                        display: inline-block;
-                      "
-                    >
-                      19%
-                    </div>
-                  </td>
-                  <td style="border-right: 0">
-                    <div
-                      style="
-                        border-radius: 3px;
-                        padding: 4px 8px;
-                        color: rgba(0, 0, 0, 0.6);
-                        background: LightSteelBlue;
-                        width: 72%;
-                        display: inline-block;
-                      "
-                    >
-                      6%
-                    </div>
-                  </td>
-                  <td style="border-left: 0" class="text-right">25%</td>
-                </tr>
-                <tr>
-                  <th style="border-right: 0">70+</th>
-                  <td class="text-right">
-                    <div
-                      style="
-                        border-radius: 3px;
-                        padding: 4px 8px;
-                        color: rgba(0, 0, 0, 0.6);
-                        background: Thistle;
-                        width: 48%;
-                        display: inline-block;
-                      "
-                    >
-                      12%
-                    </div>
-                  </td>
-                  <td style="border-right: 0">
-                    <div
-                      style="
-                        border-radius: 3px;
-                        padding: 4px 8px;
-                        color: rgba(0, 0, 0, 0.6);
-                        background: LightSteelBlue;
-                        width: 24%;
-                        display: inline-block;
-                      "
-                    >
-                      8%
-                    </div>
-                  </td>
-                  <td style="border-left: 0" class="text-right">20%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div>
+          <table>
+            <thead>
+              <tr>
+              <th style="width: 10%; border-right: 0;">Age</th>
+              <th style="width: 40%;" class="text-right">Female (64%)</th>
+              <th style="width: 40%; border-right: 0;">Male (36%)</th>
+              <th style="width: 10%; border-left: 0;">Female and male</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="border-right: 0;">18-29</th>
+                <td class="text-right"><div style="border-radius: 3px; padding: 4px 8px; color: rgba(0,0,0,0.6); background: Thistle; width: 24%; display: inline-block;">6%</div></td>
+                <td style="border-right: 0;"><div style="border-radius: 3px; padding: 4px 8px; color: rgba(0,0,0,0.6); background: LightSteelBlue; width: 16%; display: inline-block;">4%</div></td>  
+                <td style="border-left: 0;" class="text-right">10%</td>
+              </tr>
+              <tr>
+                <th style="border-right: 0;">30-49</th>
+                <td class="text-right"><div style="border-radius: 3px; padding: 4px 8px; color: rgba(0,0,0,0.6); background: Thistle; width: 100%; display: inline-block;">28%</div></td>
+                <td style="border-right: 0;"><div style="border-radius: 3px; padding: 4px 8px; color: rgba(0,0,0,0.6); background: LightSteelBlue; width: 68%; display: inline-block;">17%</div></td>  
+                <td style="border-left: 0;" class="text-right">45%</td>
+              </tr>
+              <tr>
+                <th style="border-right: 0;">50-69</th>
+                <td class="text-right"><div style="border-radius: 3px; padding: 4px 8px; color: rgba(0,0,0,0.6); background: Thistle; width: 76%; display: inline-block;">19%</div></td>
+                <td style="border-right: 0;"><div style="border-radius: 3px; padding: 4px 8px; color: rgba(0,0,0,0.6); background: LightSteelBlue; width: 72%; display: inline-block;">6%</div></td>  
+                <td style="border-left: 0;" class="text-right">25%</td>
+              </tr>
+              <tr>
+                <th style="border-right: 0;">70+</th>
+                <td class="text-right"><div style="border-radius: 3px; padding: 4px 8px; color: rgba(0,0,0,0.6); background: Thistle; width: 48%; display: inline-block;">12%</div></td>
+                <td style="border-right: 0;"><div style="border-radius: 3px; padding: 4px 8px; color: rgba(0,0,0,0.6); background: LightSteelBlue; width: 24%; display: inline-block;">8%</div></td>  
+                <td style="border-left: 0;" class="text-right">20%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         </div>
       </div>
 
