@@ -14,198 +14,8 @@
 
     <link rel="stylesheet" href="css/preflight.css?v=1.0" />
     <link rel="stylesheet" href="css/template.css" />
+    <link rel="stylesheet" href="css/overdue.css" />
 
-    <style>
-      td,
-      th {
-        font-size: 0.9rem;
-        border: none !important;
-        border-top: 1px solid #ddd !important;
-        padding: 8px !important;
-      }
-      th {
-        vertical-align: top;
-        background: aliceblue;
-      }
-      select,
-      input {
-        margin: 4px 0;
-        padding: 4px 20px 4px 10px;
-        border-radius: 3px;
-        appearance: none;
-        background: #d9e3ff
-          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 40 24" width="40"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>')
-          102% 50% no-repeat;
-        background-size: 24px;
-        font-size: 0.9rem;
-        color: #0075eb;
-      }
-      .filters a,
-      .filters select,
-      .filters input {
-        display: inline-block;
-        margin: 16px 8px 0 0;
-      }
-      table select,
-      table input {
-        background-color: white;
-        border: 1px solid #d9e3ff;
-        font-size: 0.8rem;
-      }
-      table select.select-main {
-        background: #0075eb
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 40 24" width="40"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="%23FFFFFF"/></svg>')
-        102% 50% no-repeat;
-        background-size: 24px;
-        color: white;
-      }
-      .phone {
-        letter-spacing: 0.1rem;
-        font-family: monospace;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>')
-          0 50% no-repeat;
-        color: #000;
-        background-size: 16px;
-        display: block;
-        padding: 4px 4px 4px 24px;
-      }
-      .table-sort {
-        background: #0075eb url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.59 12.09L13 15.67L13 1.5L11 1.5L11 15.67L7.41 12.08L6 13.5L12 19.5L18 13.5L16.59 12.09ZM18 20.5L6 20.5L6 22.5L18 22.5L18 20.5Z' fill='%23FFFFFF'/%3E%3C/svg%3E%0A") 50% 50% no-repeat;
-        background-size: 16px;
-        width: 42px;
-        height: 24px;
-        padding: 8px;
-        display: block;
-        margin: 4px 0;
-        border: 1px solid #d9e3ff;
-        border-radius: 100px;
-      }
-      .red {
-        color: red;
-      }
-      .overdue-patient {
-        display: block;
-      }
-
-      .overdue-patient button {
-        color: #0075eb;
-        font-weight: bold;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        padding: 42px;
-        white-space: normal;
-        top: 0;
-        right: 0;
-        background: #fff;
-        border-left: 1px solid #999;
-        width: 40%;
-        height: 100%;
-        box-shadow: -10px 0 0 rgba(0, 0, 0, 0.3);
-        overflow: auto;
-      }
-
-      .modal-show {
-        display: block;
-      }
-
-      .modal p {
-        margin-top: 0.5rem;
-      }
-      button.modal-close:before {
-        content: "✖️ ";
-      }
-      button.modal-close {
-        display: block;
-        position: fixed;
-        top: 24px;
-        right: 24px;
-        font-weight: bold;
-        color: #333;
-        border: 1px solid #ddd;
-        padding: 4px 12px;
-        border-radius: 4px;
-      }
-      a.modal-close:hover {
-        text-decoration: none;
-        color: firebrick;
-      }
-      .modal select.mark-result {
-        font-size: 1rem;
-        background-size: 32px;
-        width: 70%;
-      }
-      .overdue-patient-details p {
-        margin: 0.4rem 0;
-      }
-      .overdue-patient h4 {
-        margin-top: 2rem;
-      }
-      .pill {
-        background: aquamarine;
-        padding: 2px 12px;
-        margin-right: 0.2rem;
-        border-radius: 100px;
-        font-size: 0.8rem;
-        display: inline-block;
-      }
-      .pill-high-risk {
-        background: lightcoral;
-        color: white;
-      }
-      .pill-hypertension {
-        background: lavender;
-      }
-      .pill-diabetes {
-        background: bisque;
-      }
-      .phone-large {
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>')
-          0 50% no-repeat;
-        background-size: 18px;
-        font-size: 18px;
-        font-family: monospace;
-        letter-spacing: 0.3rem;
-        margin: 2rem 0 1rem 0;
-        padding-left: 32px;
-        display: block;
-      }
-      .phone-large-none {
-        font-size: 18px;
-        margin: 2rem 0 1rem 0;
-        display: block;
-        color: #777;
-      }
-      .label {
-        font-weight: normal;
-        color: #777;
-      }
-      .table-filter {
-        font-size: 0.8rem;
-        display: block;
-        padding: 8px 0 0 0;
-      }
-      .table-filter label {
-        font-weight: normal;
-      }
-      .table-filter select,
-      .table-filter input {
-        font-size: 0.7rem;
-        margin-top: -8px;
-        background-color: white;
-      }
-      .table-filter input {
-        padding-right: 4px;
-        padding-left: 28px;
-        border-radius: 100px;
-        background: white
-          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>')
-          6px 50% no-repeat;
-        background-size: 16px;
-      }
-    </style>
   </head>
   <body>
     <div class="banner">
@@ -235,11 +45,13 @@
     <main class="main">
       <div class="card">
         <div class="heading">
-          <a href="#" style="float: right; display: block; margin: 12px"
-            >Download list (XLS)</a
-          >
           <h2>Overdue patients</h2>
           <p>3,250 overdue patients in River District</p>
+          <div class="date-updated">
+            <a href="#"
+              >Download list (XLS)</a
+            >
+          </div>
         </div>
 
         <div class="table-container">

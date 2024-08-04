@@ -344,9 +344,10 @@ main {
 
 @media screen and (min-width: 880px) {
   .date-updated {
-    text-align: right;
-    margin-top: -3em;
-    padding-bottom: 1.5rem;
+    position: absolute;
+    right: 40px;
+    width: auto;
+    margin: -4rem 0 0 0;
   }
 }
 
