@@ -43,13 +43,13 @@ The queries provided in this document are based on the table structers provided 
 
 ## Patient Categorization
 
+![Patient categories](patient-categorization.png)
+
 Patients in the hypertension program are categorized as one of the following:
 
 - Under care
 - 12 month lost to follow up
 - Dead
-
-![](./setupguideimages/patient-categorization-main-groups1.png)
 
 Patients marked ‘under care’ fall into one of the 4 following additional categories:
 
@@ -57,9 +57,6 @@ Patients marked ‘under care’ fall into one of the 4 following additional cat
 - BP controlled
 - BP uncontrolled
 - No visit
-
-![](./setupguideimages/patient-categorisation.png)
-_Complete categorization options_
 
 Depending on the month, a patient may fall under different categories. For example:
 
