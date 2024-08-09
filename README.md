@@ -460,7 +460,7 @@ This is done by first taking the date of the latest BP Measurement in the past 1
 SELECT
     KNOWN_MONTHS.REF_MONTH,
     MOST_RECENT_BP_ENCOUNTER.patient_id,
-    MAX(MOST_RECENT_BP_ENCOUNTER.created_at) as MOST_RECENT_BP_DATE
+    MAX(MOST_RECENT_BP_ENCOUNTER.created_at) AS MOST_RECENT_BP_DATE
 FROM blood_pressures MOST_RECENT_BP_ENCOUNTER
 JOIN KNOWN_MONTHS
     ON DATE_TRUNC('month', MOST_RECENT_BP_ENCOUNTER.created_at) <= KNOWN_MONTHS.REF_MONTH
