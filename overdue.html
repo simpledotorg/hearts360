@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="css/preflight.css?v=1.0" />
     <link rel="stylesheet" href="css/template.css" />
     <link rel="stylesheet" href="css/overdue.css" />
-
   </head>
   <body>
     <div class="banner">
@@ -24,8 +23,19 @@
 
         <div class="desktop-only">
           <div class="link-list">
-            <span>v1.3</span>
-            <a href="about.html">About</a>
+            <span
+              style="
+                padding: 2px 4px;
+                background: #3063c2;
+                display: inline-block;
+                height: 100%;
+                color: white;
+                border-radius: 3px;
+                font-size: 11px;
+              "
+              >v1.3</span
+            >
+            <a href="about.html">What is Hearts360?</a>
             <a
               class="external-link"
               href="https://github.com/simpledotorg/hypertension-dashboard"
@@ -54,9 +64,7 @@
           <h2>Overdue patients</h2>
           <p>3,250 overdue patients in River District</p>
           <div class="date-updated">
-            <a href="#"
-              >Download list (XLS)</a
-            >
+            <a href="#">Download list (XLS)</a>
           </div>
         </div>
 
@@ -94,7 +102,7 @@
                   <th>
                     Phone
                     <form class="table-filter">
-                      <select style="max-width: 12em;">
+                      <select style="max-width: 12em">
                         <option></option>
                         <option>Only with phone</option>
                         <option>Only without phone</option>
@@ -104,7 +112,7 @@
                   <th>
                     High risk?
                     <form class="table-filter">
-                      <select style="max-width: 8em;">
+                      <select style="max-width: 8em">
                         <option></option>
                         <option>Only high risk</option>
                       </select>
@@ -126,7 +134,7 @@
                   <th>
                     Facility
                     <form class="table-filter">
-                      <select style="max-width: 12em;">
+                      <select style="max-width: 12em">
                         <option></option>
                         <option>CHC Apple Orchard</option>
                         <option>CHC Bramble River</option>
@@ -184,7 +192,11 @@
                   <th>
                     Home village / area
                     <form class="table-filter">
-                      <input type="search" placeholder="Search" style="width: 12em;" />
+                      <input
+                        type="search"
+                        placeholder="Search"
+                        style="width: 12em"
+                      />
                     </form>
                   </th>
                   <th>
