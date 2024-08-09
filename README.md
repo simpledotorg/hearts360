@@ -72,7 +72,7 @@ All elements related to time, should be computed from the perspective of the REF
 
 We consider it a good practice to chart the past 18 months of data with the most recent month being the current month.
 
-> [!NOTE]
+> [!IMPORTANT]
 > All indicators listed in this document are computed as monthly values.
 >
 > For completed months, the monthly value is based on the end of the month. For the current month, the monthly value is updated throughout the course of the month (e.g. daily if materialized views are refreshed daily).
