@@ -495,10 +495,9 @@ The estimated patients with hypertension in the region can be found from STEPs s
 
 \*The values related to these figures are highlight in the previous data example tables with a colored circle:
 
-- Cumulative registrations :large_blue_circle: [Scroll to table](#data-example1) [Scroll to table](#data-example2)
-
-- Patients under care :purple_circle: [Scroll to table](#data-example-3)
-- Patients with BP controlled :green\*circle: [Scroll to table](#data-example-3) - Scoll right
+- Cumulative registrations :large_blue_circle: [[View data example](#data-example-1)] [[View date example 2](#data-example-2)]
+- Patients under care :purple_circle: [[View data example](#data-example-2)] [[View data example 2](#data-example-3)]
+- Patients with BP controlled :green_circle: [[View data example](#data-example-3) (Scoll right)]
 
 > [!TIP]
 > The corresponding values for the month of May 2024 are highlighted in their respective colors in the data example tables.
