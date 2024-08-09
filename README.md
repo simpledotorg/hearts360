@@ -212,7 +212,7 @@ ORDER BY KNOWN_MONTHS.REF_MONTH DESC
 | ref_month  | cumulative_number_of_patients | nb_new_patients |
 | ---------- | ----------------------------- | --------------- |
 | 2024-06-01 | 41151                         | 2777            |
-| 2024-05-01 | 38374                         | 5288            |
+| 2024-05-01 | 38374 :large_blue_circle:     | 5288            |
 | 2024-04-01 | 33086                         | 5921            |
 | 2024-03-01 | 27165                         | 5338            |
 | 2024-02-01 | 21827                         | 2630            |
@@ -495,10 +495,10 @@ The estimated patients with hypertension in the region can be found from STEPs s
 
 \*The values related to these figures are highlight in the previous data example tables with a colored circle:
 
-- Cumulative registrations :large_blue_circle: [Scroll to table](#newly-registered--patients-under-care-registered-before-the-past-3-months-controlled-bp--uncontrolled-bp--no-visit-data-example)
+- Cumulative registrations :large_blue_circle: [Scroll to table](#data-example1) [Scroll to table](#data-example2)
 
 - Patients under care :purple_circle: [Scroll to table](#data-example-3)
-- Patients with BP controlled :green\*circle: _\*Located in the same table as patients under care_
+- Patients with BP controlled :green\*circle: [Scroll to table](#data-example-3) - Scoll right
 
 > [!TIP]
 > The corresponding values for the month of May 2024 are highlighted in their respective colors in the data example tables.
