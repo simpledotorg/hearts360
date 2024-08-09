@@ -32,6 +32,10 @@ Data that shows how much of a region's population has lowered blood pressure is 
 
 Adding data on drug stock and functioning BP devices helps round out the dashboard to make it even more useful.
 
+## Developers
+
+Refer to the [developer guide](./developer_guide.md) detailed instruction (with examples) on how to implement HEARTS360 in your own software system.
+
 ## License
 
 The generic dashboard is licensed under an MIT License. Please take this code and use it for your own project in any way.
