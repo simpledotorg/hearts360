@@ -1,6 +1,6 @@
 # Developer guide
 
-This guide explains the how the definitions for the HEARTS360 dashboard are calculated using example table structures and working queries based on those tables.
+This guide explains the how the definitions for the [HEARTS360 dashboard](hearts360.org) are calculated using example table structures and working queries based on those tables.
 
 The queries provided in this document are based on the table structers provided and can be easily adapted to conform to your own database structure.
 
