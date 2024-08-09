@@ -37,7 +37,7 @@ Adding data on drug stock and functioning BP devices helps round out the dashboa
 
 # Developer guide
 
-This guide explains the how to recreate the [HEARTS360 dashboard](hearts360.org) using example database tables and working SQL queries which can be adapted to work on your own archetecture.
+This guide explains the how to recreate the [HEARTS360 dashboard](hearts360.org) using example database tables and working SQL queries which can be adapted to work with your own archetecture.
 
 ## Patient Categorization
 
@@ -128,21 +128,21 @@ A patient was registered Sep-2023, and marked dead on Jan-2024. This patient is 
 #### Code Example
 
 ```SQL
-WITH DEAD_PATIENTS_BY_MONTH as (
+WITH DEAD_PATIENTS_BY_MONTH AS (
     SELECT
-        DATE_TRUNC('month',DEATH_DATE) as REF_MONTH,
-        count(\*) as NB_DEAD_PATIENTS_THAT_MONTH
+        DATE_TRUNC('month',DEATH_DATE) AS REF_MONTH,
+        count(\*) AS NB_DEAD_PATIENTS_THAT_MONTH
     FROM patients
     WHERE PATIENT_STATUS = 'dead'
     GROUP BY DATE_TRUNC('month',DEATH_DATE)
 )
 SELECT
     REFERENCE.REF_MONTH,
-    SUM(REFERENCE_BEFORE.NB_DEAD_PATIENTS_THAT_MONTH) as CUMULATIVE_NUMBER_OF_DEAD_PATIENTS
+    SUM(REFERENCE_BEFORE.NB_DEAD_PATIENTS_THAT_MONTH) AS CUMULATIVE_NUMBER_OF_DEAD_PATIENTS
 FROM DEAD_PATIENTS_BY_MONTH REFERENCE
-JOIN DEAD_PATIENTS_BY_MONTH REFERENCE_BEFORE on REFERENCE.REF_MONTH >= REFERENCE_BEFORE.REF_MONTH
+JOIN DEAD_PATIENTS_BY_MONTH REFERENCE_BEFORE ON REFERENCE.REF_MONTH >= REFERENCE_BEFORE.REF_MONTH
 GROUP BY REFERENCE.REF_MONTH
-ORDER by REFERENCE.REF_MONTH desc
+ORDER BY REFERENCE.REF_MONTH DESC
 ```
 
 #### Data Example
@@ -169,7 +169,7 @@ ORDER by REFERENCE.REF_MONTH desc
 
 **Monthly registrations** at the end of each month are the patients registered during the month.
 
-**Cumulative registered patients** at the end of each month are the total number of patients registered before the end of the month and are not dead.
+**Cumulative registered patients** at the end of each month are the total number of patients registered before the end of the month and are not **dead**.
 
 > [!TIP]
 > This number should be growing with time. More recent months should have a greater number than older months.
@@ -182,25 +182,25 @@ A patient was registered Sep-2023, this patient is counted as a monthly registra
 
 ```SQL
 WITH
-KNOWN_MONTHS as (
+KNOWN_MONTHS AS (
     SELECT
-        DISTINCT(DATE_TRUNC('month',REGISTRATION_DATE)) as REF_MONTH
+        DISTINCT(DATE_TRUNC('month',REGISTRATION_DATE)) AS REF_MONTH
     FROM patients
 ),
-PATIENTS_BY_MONTH as (
+PATIENTS_BY_MONTH AS (
     SELECT
-        DATE_TRUNC('month',created_at) as REF_MONTH,
-        count(\*) as NB_NEW_PATIENTS
+        DATE_TRUNC('month',created_at) AS REF_MONTH,
+        count(\*) AS NB_NEW_PATIENTS
     FROM patients
     WHERE STATUS <> 'dead'
     GROUP BY DATE_TRUNC('month',created_at)
 )
 SELECT
     KNOWN_MONTHS.REF_MONTH,
-    sum(REFERENCE_BEFORE.NB_NEW_PATIENTS) as CUMULATIVE_NUMBER_OF_PATIENTS,
-    sum(case when KNOWN_MONTHS.REF_MONTH = REFERENCE_BEFORE.REF_MONTH then NB_NEW_PATIENTS else null end) as NB_NEW_PATIENTS
+    sum(REFERENCE_BEFORE.NB_NEW_PATIENTS) AS CUMULATIVE_NUMBER_OF_PATIENTS,
+    sum(case when KNOWN_MONTHS.REF_MONTH = REFERENCE_BEFORE.REF_MONTH then NB_NEW_PATIENTS else null end) AS NB_NEW_PATIENTS
 FROM KNOWN_MONTHS
-JOIN PATIENTS_BY_MONTH REFERENCE_BEFORE on KNOWN_MONTHS.REF_MONTH >= REFERENCE_BEFORE.REF_MONTH
+JOIN PATIENTS_BY_MONTH REFERENCE_BEFORE ON KNOWN_MONTHS.REF_MONTH >= REFERENCE_BEFORE.REF_MONTH
 GROUP BY KNOWN_MONTHS.REF_MONTH
 ORDER BY KNOWN_MONTHS.REF_MONTH DESC
 ```
@@ -234,61 +234,62 @@ This is a list of all patients that are alive. We are limiting our subquery to t
 | 2023-06-01 | 9915                          | 1542            |
 | 2023-05-01 | 8373                          | 1545            |
 
-### Patients under care & 12 month lost to follow-up
+### Patients under care & lost to follow-up
 
 #### Definition
 
-A patient that is not `Dead` is either `Under care` or `12 month lost to follow-up` for a given reference month:
+A patient that is not **Dead** is either **Under care** or **lost to follow-up** for a given reference month:
 
-- A patient with at least one visit recorded in the past 12 months before the end of the reference month is `Under care`
-- A patient with no visit recorded in the past 12 months before the end of the reference month is `12 month lost to follow up`
+- **Under care** is a patient with at least one visit recorded in the past 12 months before the end of the reference month
+- **Lost to follow-up** is a patient with no visit recorded in the past 12 months before the end of the reference month
 
-As these two indicators are mutually exclusive (the total of _*patients under care*_ and patients _*12 month lost to follow-up*_ should equal _*cumulative registrations*_), it can be calculated in a single query.
+As these two indicators are mutually exclusive (the total of _**patients under care**_ and patients _**lost to follow-up**_ should equal _**cumulative registrations**_), it can be calculated in a single query.
 
-> [!NOTE]
-> Before the end of the reference month - _This means the last day of the month is always referenced even when that date is in the future and has not yet occurred. For example if today is 10-Jun-2024, the end of the reference month is 30-Jun-2024, so checking for an event in the past 12 months includes events that occurred between 1-Jul-2023 and 30-Jun-2024._
+> [!IMPORTANT]
+>
+> **Before the end of the reference month**: _This means the last day of the month is always referenced even when that date is in the future and has not yet occurred. For example if today is 10-Jun-2024, the end of the reference month is 30-Jun-2024, so checking for an event in the past 12 months includes events that occurred between 1-Jul-2023 and 30-Jun-2024._
 
 Scenario Example
-A patient was registered in Jan-2023, and visited once in Mar-2023. Today is Feb-**2024**. This patient is counted as a _*patient under care*_ as they had a visit in the past 12 months.
+A patient was registered in Jan-2023, and visited once in Mar-2023. Today is Feb-**2024**. This patient is counted as a _**patient under care**_ as they had a visit in the past 12 months.
 
-Using the same patient, today is Mar-**2024**. This patient is counted as _*12 months lost to follow-up*_ because they have no visit in the past 12 months.
+Using the same patient, today is Mar-**2024**. This patient is counted as _**lost to follow-up**_ because they have no visit in the past 12 months.
 
 #### Code Example
 
 ```SQL
 WITH
-KNOWN_MONTHS as (
+KNOWN_MONTHS AS (
     SELECT
-        DISTINCT(DATE_TRUNC('month',REGISTRATION_DATE)) as REF_MONTH
+        DISTINCT(DATE_TRUNC('month',REGISTRATION_DATE)) AS REF_MONTH
     FROM patients
 ),
-ALIVE_PATIENTS as (
+ALIVE_PATIENTS AS (
     SELECT
-        DATE_TRUNC('month',REGISTRATION_DATE) as REGISTRATION_MONTH,
+        DATE_TRUNC('month',REGISTRATION_DATE) AS REGISTRATION_MONTH,
         patient_id
     FROM patients
     WHERE PATIENT_STATUS <> 'dead'
 ),
-BP_ENCOUNTERS as (
+BP_ENCOUNTERS AS (
     SELECT
         patient_id,
-        DATE_TRUNC('month',ENCOUNTER_DATE) as BP_ENCOUNTER_MONTH
+        DATE_TRUNC('month',ENCOUNTER_DATE) AS BP_ENCOUNTER_MONTH
     FROM blood_pressures
 )
 SELECT
     KNOWN_MONTHS.REF_MONTH,
-    sum(CASE WHEN BP_ENCOUNTERS.patient_id IS NULL THEN 1 ELSE NULL END ) as NB_PATIENTS_LOST_TO_FOLLOW_UP,
-    count(distinct(BP_ENCOUNTERS.patient_id)) as NB_PATIENTS_UNDER_CARE,
-    count(distinct(ALIVE_PATIENTS.patient_id)) as CUMULATIVE_NUMBER_OF_PATIENTS
+    sum(CASE WHEN BP_ENCOUNTERS.patient_id IS NULL THEN 1 ELSE NULL END ) AS NB_PATIENTS_LOST_TO_FOLLOW_UP,
+    count(DISTINCT(BP_ENCOUNTERS.patient_id)) AS NB_PATIENTS_UNDER_CARE,
+    count(DISTINCT(ALIVE_PATIENTS.patient_id)) AS CUMULATIVE_NUMBER_OF_PATIENTS
 FROM KNOWN_MONTHS
 JOIN ALIVE_PATIENTS
-    on ALIVE_PATIENTS.REGISTRATION_MONTH <= KNOWN_MONTHS.REF_MONTH
+    ON ALIVE_PATIENTS.REGISTRATION_MONTH <= KNOWN_MONTHS.REF_MONTH
 LEFT OUTER JOIN BP_ENCOUNTERS
-    on BP_ENCOUNTERS.patient_id = ALIVE_PATIENTS.patient_id
-        and BP_ENCOUNTER_MONTH <= KNOWN_MONTHS.REF_MONTH
-        and BP_ENCOUNTER_MONTH + interval '12 month'> KNOWN_MONTHS.REF_MONTH
+    ON BP_ENCOUNTERS.patient_id = ALIVE_PATIENTS.patient_id
+        AND BP_ENCOUNTER_MONTH <= KNOWN_MONTHS.REF_MONTH
+        AND BP_ENCOUNTER_MONTH + interval '12 month'> KNOWN_MONTHS.REF_MONTH
 GROUP BY KNOWN_MONTHS.REF_MONTH
-ORDER BY KNOWN_MONTHS.REF_MONTH desc;
+ORDER BY KNOWN_MONTHS.REF_MONTH DESC;
 ```
 
 #### Subqueries detail
@@ -330,8 +331,11 @@ This is a list of all BP readings taken for each patient based on the visit mont
 
 There are two mutually exclusive categories for Patients Under Care:
 
-- **Newly registered**: Patient registered in the past 3 months. _Note: This category is not visualized in the dashboard_.
+- **Newly registered**: Patient registered in the past 3 months (not visualized).
 - **Patients under care registered before the past 3 months**: Patients registered before the past 3 months.
+
+> [!NOTE]
+> The **Newly registered** category is not visualized in the dashboard.
 
 There are 3 mutually exclusive categories for Patients under care registered before the past 3 months:
 
@@ -359,77 +363,77 @@ A patient was registered into the hypertension program in Sep-2023. They visited
 
 ```SQL
 WITH
-KNOWN_MONTHS as (
-    select
-        distinct(DATE_TRUNC('month',created_at)) as REF_MONTH
-    from patients
+KNOWN_MONTHS AS (
+    SELECT
+        DISTINCT(DATE_TRUNC('month',created_at)) AS REF_MONTH
+    FROM patients
 ),
-ALIVE_PATIENTS as (
-    select
-        DATE_TRUNC('month',created_at) as REGISTRATION_MONTH,
-        id as patient_id
-    from patients
-    where PATIENT_STATUS <> 'dead'
+ALIVE_PATIENTS AS (
+    SELECT
+        DATE_TRUNC('month',created_at) AS REGISTRATION_MONTH,
+        id AS patient_id
+    FROM patients
+    WHERE PATIENT_STATUS <> 'dead'
 ),
-BP_ENCOUNTERS as (
+BP_ENCOUNTERS AS (
     SELECT
         id,
         patient_id,
         systolic,
         diastolic,
-        created_at  as BP_ENCOUNTER_DATE,
-        DATE_TRUNC('month',created_at)  as BP_ENCOUNTER_MONTH
-    from blood_pressures
+        created_at  AS BP_ENCOUNTER_DATE,
+        DATE_TRUNC('month',created_at)  AS BP_ENCOUNTER_MONTH
+    FROM blood_pressures
 ),
-LATEST_BP_BY_MONTH_AND_PATIENT  as (
-    WITH MOST_RECENT_BP_ENCOUNTER as (
+LATEST_BP_BY_MONTH_AND_PATIENT AS (
+    WITH MOST_RECENT_BP_ENCOUNTER AS (
         SELECT
             KNOWN_MONTHS.REF_MONTH,
             MOST_RECENT_BP_ENCOUNTER.patient_id,
-            MAX(MOST_RECENT_BP_ENCOUNTER.created_at) as MOST_RECENT_BP_DATE
-        from blood_pressures MOST_RECENT_BP_ENCOUNTER
-        join KNOWN_MONTHS
-            on DATE_TRUNC('month', MOST_RECENT_BP_ENCOUNTER.created_at) <= KNOWN_MONTHS.REF_MONTH
-            and DATE_TRUNC('month',MOST_RECENT_BP_ENCOUNTER.created_at) + interval '12 month'> KNOWN_MONTHS.REF_MONTH
-        group by KNOWN_MONTHS.REF_MONTH, patient_id)
-    select
+            MAX(MOST_RECENT_BP_ENCOUNTER.created_at) AS MOST_RECENT_BP_DATE
+        FROM blood_pressures MOST_RECENT_BP_ENCOUNTER
+        JOIN KNOWN_MONTHS
+            ON DATE_TRUNC('month', MOST_RECENT_BP_ENCOUNTER.created_at) <= KNOWN_MONTHS.REF_MONTH
+            AND DATE_TRUNC('month',MOST_RECENT_BP_ENCOUNTER.created_at) + interval '12 month'> KNOWN_MONTHS.REF_MONTH
+        GROUP BY KNOWN_MONTHS.REF_MONTH, patient_id)
+    SELECT
         REF_MONTH, MOST_RECENT_BP_ENCOUNTER.patient_id,
-        max(systolic) as systolic,
-        max(diastolic) as diastolic,
-        max(BP_ENCOUNTER_MONTH) as BP_ENCOUNTER_MONTH
-    from MOST_RECENT_BP_ENCOUNTER
-    join BP_ENCOUNTERS
-        on MOST_RECENT_BP_ENCOUNTER.MOST_RECENT_BP_DATE = BP_ENCOUNTERS.BP_ENCOUNTER_DATE
-        and MOST_RECENT_BP_ENCOUNTER.patient_id = BP_ENCOUNTERS.patient_id
-    group by REF_MONTH, MOST_RECENT_BP_ENCOUNTER.patient_id
+        MAX(systolic) AS systolic,
+        MAX(diastolic) AS diastolic,
+        MAX(BP_ENCOUNTER_MONTH) AS BP_ENCOUNTER_MONTH
+    FROM MOST_RECENT_BP_ENCOUNTER
+    JOIN BP_ENCOUNTERS
+        ON MOST_RECENT_BP_ENCOUNTER.MOST_RECENT_BP_DATE = BP_ENCOUNTERS.BP_ENCOUNTER_DATE
+        AND MOST_RECENT_BP_ENCOUNTER.patient_id = BP_ENCOUNTERS.patient_id
+    GROUP BY REF_MONTH, MOST_RECENT_BP_ENCOUNTER.patient_id
 )
 SELECT
     KNOWN_MONTHS.REF_MONTH,
-    count(*) as NB_PATIENTS_UNDER_CARE,
-    sum(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 1 else 0 end ) as NB_PATIENTS_NEWLY_REGISTERED,
-    sum(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0 else 1 end ) as NB_PATIENTS_UNDER_CARE_REGISTERED_BEFORE_THE_PAST_3_MONTHS,
-    sum(CASE
+    COUNT(*) AS NB_PATIENTS_UNDER_CARE,
+    SUM(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 1 else 0 end ) AS NB_PATIENTS_NEWLY_REGISTERED,
+    SUM(CASE WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0 else 1 end ) AS NB_PATIENTS_UNDER_CARE_REGISTERED_BEFORE_THE_PAST_3_MONTHS,
+    SUM(CASE
         WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
         WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 1
-        else 0 end ) as NB_PATIENTS_NO_VISIT,
-    sum(CASE
+        ELSE 0 END ) as NB_PATIENTS_NO_VISIT,
+    SUM(CASE
         WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
         WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 0
         WHEN systolic > 140 OR diastolic > 90 then 1
-        else 0 end ) as NB_PATIENTS_UNCONTROLLED,
-    sum(CASE
+        ELSE 0 END ) aASs NB_PATIENTS_UNCONTROLLED,
+    SUM(CASE
         WHEN ALIVE_PATIENTS.REGISTRATION_MONTH + interval '3 month' > KNOWN_MONTHS.REF_MONTH then 0
         WHEN LATEST_BP_BY_MONTH_AND_PATIENT.BP_ENCOUNTER_MONTH + interval '3 month' <= KNOWN_MONTHS.REF_MONTH then 0
         WHEN systolic > 140 OR diastolic > 90 then 0
-        else 1 end ) as NB_PATIENTS_CONTROLLED
+        ELSE 1 END ) AS NB_PATIENTS_CONTROLLED
 FROM KNOWN_MONTHS
-join ALIVE_PATIENTS
-    on ALIVE_PATIENTS.REGISTRATION_MONTH <= KNOWN_MONTHS.REF_MONTH
-join LATEST_BP_BY_MONTH_AND_PATIENT
-    on LATEST_BP_BY_MONTH_AND_PATIENT.patient_id = ALIVE_PATIENTS.patient_id
-    and LATEST_BP_BY_MONTH_AND_PATIENT.REF_MONTH = KNOWN_MONTHS.REF_MONTH
+JOIN ALIVE_PATIENTS
+    ON ALIVE_PATIENTS.REGISTRATION_MONTH <= KNOWN_MONTHS.REF_MONTH
+JOIN LATEST_BP_BY_MONTH_AND_PATIENT
+    ON LATEST_BP_BY_MONTH_AND_PATIENT.patient_id = ALIVE_PATIENTS.patient_id
+    AND LATEST_BP_BY_MONTH_AND_PATIENT.REF_MONTH = KNOWN_MONTHS.REF_MONTH
 GROUP BY KNOWN_MONTHS.REF_MONTH
-order by 1 desc
+ORDER BY 1 DESC
 ```
 
 #### Subqueries detail
@@ -457,33 +461,33 @@ SELECT
     KNOWN_MONTHS.REF_MONTH,
     MOST_RECENT_BP_ENCOUNTER.patient_id,
     MAX(MOST_RECENT_BP_ENCOUNTER.created_at) as MOST_RECENT_BP_DATE
-from blood_pressures MOST_RECENT_BP_ENCOUNTER
-join KNOWN_MONTHS
-    on DATE_TRUNC('month', MOST_RECENT_BP_ENCOUNTER.created_at) <= KNOWN_MONTHS.REF_MONTH
-    and DATE_TRUNC('month',MOST_RECENT_BP_ENCOUNTER.created_at) + interval '12 month'> KNOWN_MONTHS.REF_MONTH
-group by KNOWN_MONTHS.REF_MONTH, patient_id
+FROM blood_pressures MOST_RECENT_BP_ENCOUNTER
+JOIN KNOWN_MONTHS
+    ON DATE_TRUNC('month', MOST_RECENT_BP_ENCOUNTER.created_at) <= KNOWN_MONTHS.REF_MONTH
+    AND DATE_TRUNC('month',MOST_RECENT_BP_ENCOUNTER.created_at) + interval '12 month'> KNOWN_MONTHS.REF_MONTH
+GROUP BY KNOWN_MONTHS.REF_MONTH, patient_id
 ```
 
 Using this result, we join it against BP_ENCOUNTERS to get the information we need.
 
 ### Data Example
 
-| ref_month  | nb_patients_under_care | nb_patients_newly_registered | nb_patients_under_care_registered | nb_patients_under_care_registered_before_the_past_3_months | nb_patients_no_visit | nb_patients_uncontrolled | nb_patients_controlled |
-| ---------- | ---------------------- | ---------------------------- | --------------------------------- | ---------------------------------------------------------- | -------------------- | ------------------------ | ---------------------- |
-| 2024-06-01 | 38885                  | 13617                        | 25268                             | 5262                                                       | 5121                 | 14885                    | 14885                  |
-| 2024-05-01 | 36384 :purple_circle:  | 16058                        | 20326                             | 3926                                                       | 3955                 | 12445                    | 12445 :green_circle:   |
-| 2024-04-01 | 31308                  | 13419                        | 17889                             | 3590                                                       | 3205                 | 11094                    | 11094                  |
-| 2024-03-01 | 25673                  | 9461                         | 16212                             | 3305                                                       | 2852                 | 10055                    | 10055                  |
-| 2024-02-01 | 20544                  | 5389                         | 15155                             | 2841                                                       | 2902                 | 9412                     | 9412                   |
-| 2024-01-01 | 18042                  | 4138                         | 13904                             | 2369                                                       | 2653                 | 8882                     | 8882                   |
-| 2023-12-01 | 16445                  | 4229                         | 12216                             | 1799                                                       | 2139                 | 8278                     | 8278                   |
-| 2023-11-01 | 15392                  | 4136                         | 11256                             | 1676                                                       | 2026                 | 7554                     | 7554                   |
-| 2023-10-01 | 14135                  | 3767                         | 10368                             | 1492                                                       | 1888                 | 6988                     | 6988                   |
-| 2023-09-01 | 12397                  | 3111                         | 9286                              | 1268                                                       | 1821                 | 6197                     | 6197                   |
-| 2023-08-01 | 11451                  | 3604                         | 7847                              | 1061                                                       | 1476                 | 5310                     | 5310                   |
-| 2023-07-01 | 10553                  | 4160                         | 6393                              | 910                                                        | 1314                 | 4169                     | 4169                   |
-| 2023-06-01 | 9472                   | 3495                         | 5977                              | 942                                                        | 1320                 | 3715                     | 3715                   |
-| 2023-05-01 | 8011                   | 2195                         | 5816                              | 969                                                        | 1279                 | 3568                     | 3568                   |
+| ref_month  | nb_patients_under_care | nb_patients_newly_registered | nb_patients_under_care_registered_before_the_past_3_months | nb_patients_no_visit | nb_patients_uncontrolled | nb_patients_controlled |
+| ---------- | ---------------------- | ---------------------------- | ---------------------------------------------------------- | -------------------- | ------------------------ | ---------------------- |
+| 2024-06-01 | 38885                  | 13617                        | 25268                                                      | 5262                 | 5121                     | 14885                  |
+| 2024-05-01 | 36384 :purple_circle:  | 16058                        | 20326                                                      | 3926                 | 3955                     | 12445 :green_circle:   |
+| 2024-04-01 | 31308                  | 13419                        | 17889                                                      | 3590                 | 3205                     | 11094                  |
+| 2024-03-01 | 25673                  | 9461                         | 16212                                                      | 3305                 | 2852                     | 10055                  |
+| 2024-02-01 | 20544                  | 5389                         | 15155                                                      | 2841                 | 2902                     | 9412                   |
+| 2024-01-01 | 18042                  | 4138                         | 13904                                                      | 2369                 | 2653                     | 8882                   |
+| 2023-12-01 | 16445                  | 4229                         | 12216                                                      | 1799                 | 2139                     | 8278                   |
+| 2023-11-01 | 15392                  | 4136                         | 11256                                                      | 1676                 | 2026                     | 7554                   |
+| 2023-10-01 | 14135                  | 3767                         | 10368                                                      | 1492                 | 1888                     | 6988                   |
+| 2023-09-01 | 12397                  | 3111                         | 9286                                                       | 1268                 | 1821                     | 6197                   |
+| 2023-08-01 | 11451                  | 3604                         | 7847                                                       | 1061                 | 1476                     | 5310                   |
+| 2023-07-01 | 10553                  | 4160                         | 6393                                                       | 910                  | 1314                     | 4169                   |
+| 2023-06-01 | 9472                   | 3495                         | 5977                                                       | 942                  | 1320                     | 3715                   |
+| 2023-05-01 | 8011                   | 2195                         | 5816                                                       | 969                  | 1279                     | 3568                   |
 
 ## Hypertension treatment cascade
 
@@ -498,7 +502,7 @@ The estimated patients with hypertension in the region can be found from STEPs s
 - Patients with BP controlled :green_circle: [[View data example](#data-example-3) (Scoll right)]
 
 > [!TIP]
-> The corresponding values for the month of May 2024 are highlighted in their respective colors in the data example tables.
+> The corresponding values for the month of **May 2024** are highlighted in their respective colors in the data example tables.
 
 ## Additional Dimensions
 
