@@ -24,6 +24,10 @@ a:hover {
   text-underline-offset: 2px;
 }
 
+p {
+  margin: 0.2rem 0 1rem 0;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: bold;
@@ -345,7 +349,7 @@ main {
 }
 
 .link-dashboards {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 12px 0;
   margin: 0 0 2rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -359,12 +363,14 @@ main {
     color: #333;
     padding: 12px;
     margin-right: 8px;
+    white-space: nowrap;
   }
   & a:hover {
     text-decoration: none;
   }
   & a.active {
-    border-bottom: 3px solid #333;
+    border-bottom: 3px solid cornflowerblue;
+    color: #000;
   }
 }
 
@@ -424,6 +430,12 @@ main {
     height: 260px;
     margin: -8px;
   }
+  
+  & h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: 24px;
+  }
 
   & h3 {
     font-size: 1.2rem;
@@ -438,79 +450,82 @@ main {
   }
 
   .figures {
-    margin: 12px 0;
+    margin: 12px 0 0 0;
 
     & .large-num {
       font-size: 2rem;
       font-weight: 700;
+      margin: 0;
     }
 
     & .detail p {
       font-size: 0.9rem;
+      margin: 0 0 1rem 0;
+    }
+  }
+}
+
+.info {
+  display: flex;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  justify-content: center;
+  align-items: center;
+  background: #999;
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  border-radius: 100px;
+  cursor: pointer;
+  text-align: left;
+  &::before {
+    content: "?";
+  }
+
+  .info-hover-text {
+    display: none;
+    white-space: normal;
+    flex-direction: column;
+    gap: 6px;
+    position: absolute;
+    right: 32px;
+    background: #222;
+    width: 200px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: #eee;
+    opacity: 0;
+    animation: fadeIn 190ms;
+
+    /* triangle */
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -6px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-left: 6px solid #222;
+    }
+
+    > p > span {
+      font-weight: 800;
+      color: #fff;
     }
   }
 
-  .info {
-    display: flex;
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    justify-content: center;
-    align-items: center;
-    background: #999;
-    width: 18px;
-    height: 18px;
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: 800;
-    border-radius: 100px;
-    cursor: pointer;
-    text-align: left;
-    &::before {
-      content: "?";
-    }
-
+  &:hover {
     .info-hover-text {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      position: absolute;
-      right: 32px;
-      background: #222;
-      width: 200px;
-      font-size: 0.75rem;
-      font-weight: 400;
-      padding: 8px 10px;
-      border-radius: 6px;
-      color: #eee;
-      opacity: 0;
-      animation: fadeIn 190ms;
-
-      /* triangle */
-      &:after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: -6px;
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        border-top: 6px solid transparent;
-        border-bottom: 6px solid transparent;
-        border-left: 6px solid #222;
-      }
-
-      > p > span {
-        font-weight: 800;
-        color: #fff;
-      }
-    }
-
-    &:hover {
-      .info-hover-text {
-        display: flex;
-        opacity: 1;
-      }
+      display: flex;
+      opacity: 1;
     }
   }
 }

@@ -1,6 +1,7 @@
-# Hearts360
+# HEARTS360
+[Hearts360.org](https://hearts360.org)
 
-[![hypertension dashboard](hearts-360-dashboard.png)](https://simpledotorg.github.io/hypertension-dashboard/)
+[![hypertension dashboard](hearts-360-dashboard.png)](https://simpledotorg.github.io/hearts360/)
 
 ## About
 
