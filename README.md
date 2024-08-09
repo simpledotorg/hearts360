@@ -39,8 +39,6 @@ Adding data on drug stock and functioning BP devices helps round out the dashboa
 
 This guide explains the how the definitions for the [HEARTS360 dashboard](hearts360.org) are calculated using example table structures and working queries based on those tables.
 
-The queries provided in this document are based on the table structers provided and can be easily adapted to conform to your own database structure.
-
 ## Patient Categorization
 
 ![Patient categories](patient-categorization.png)
@@ -207,6 +205,16 @@ GROUP BY KNOWN_MONTHS.REF_MONTH
 ORDER BY KNOWN_MONTHS.REF_MONTH DESC
 ```
 
+#### Subqueries detail
+
+`KNOWN_MONTHS`
+
+This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the Database as in the example.
+
+`ALIVE_PATIENTS`
+
+This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
+
 #### Data Example
 
 | ref_month  | cumulative_number_of_patients | nb_new_patients |
@@ -225,16 +233,6 @@ ORDER BY KNOWN_MONTHS.REF_MONTH DESC
 | 2023-07-01 | 11091                         | 1176            |
 | 2023-06-01 | 9915                          | 1542            |
 | 2023-05-01 | 8373                          | 1545            |
-
-#### Subqueries detail
-
-`KNOWN_MONTHS`
-
-This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the Database as in the example.
-
-`ALIVE_PATIENTS`
-
-This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
 
 ### Patients under care & 12 month lost to follow-up
 
