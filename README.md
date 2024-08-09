@@ -37,7 +37,7 @@ Adding data on drug stock and functioning BP devices helps round out the dashboa
 
 # Developer guide
 
-This guide explains the how to recreate the [HEARTS360 dashboard](hearts360.org) using example databse table structures and working SQL queries which can be adapted to work on your own archetecture.
+This guide explains the how to recreate the [HEARTS360 dashboard](hearts360.org) using example database tables and working SQL queries which can be adapted to work on your own archetecture.
 
 ## Patient Categorization
 
