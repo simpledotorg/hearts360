@@ -536,7 +536,7 @@ After these queries have been adapted to a system, it is a good practice to chec
 - Month to month verification
   - `NB_PATIENTS_NEWLY_REGISTERED` of month X = (`CUMULATIVE_NUMBER_OF_PATIENTS` of month X) - (`CUMULATIVE_NUMBER_OF_PATIENTS` of month X -3)
 
-### Adapting queries to your data
+## Adapting queries to your data
 
 If your **PATIENTS** and **EVENTS** tables are structured similar to the database example, it should be possible to adapt the queries by changing only the subqueries.
 
