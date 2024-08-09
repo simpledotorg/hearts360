@@ -497,7 +497,7 @@ The estimated patients with hypertension in the region can be found from STEPs s
 
 - Cumulative registrations :large_blue_circle: [Scroll to table](#newly-registered--patients-under-care-registered-before-the-past-3-months-controlled-bp--uncontrolled-bp--no-visit-data-example)
 
-- Patients under care :purple_circle: [Scroll to table]()
+- Patients under care :purple_circle: [Scroll to table](#data-example-3)
 - Patients with BP controlled :green\*circle: _\*Located in the same table as patients under care_
 
 > [!TIP]
