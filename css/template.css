@@ -335,20 +335,17 @@ main {
     }
   }
 }
-
-.date-updated {
-  width: 100%;
-  margin-top: 6px;
-  font-size: 0.9em;
+@media screen and (min-width: 880px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 }
 
-@media screen and (min-width: 880px) {
-  .date-updated {
-    position: absolute;
-    right: 40px;
-    width: auto;
-    margin: -4rem 0 0 0;
-  }
+.date-updated {
+  font-size: 0.9em;
 }
 
 .spacer {
