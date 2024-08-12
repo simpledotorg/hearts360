@@ -1,22 +1,22 @@
-# HEARTS360
+# HEARTS360 <!-- omit in toc -->
 
 [Hearts360.org](https://hearts360.org)
 
 [![hypertension dashboard](hearts-360-dashboard.png)](https://simpledotorg.github.io/hearts360/)
 
-## About
+## About <!-- omit in toc -->
 
 This dashboard is a template that can be used by any team working on a hypertension control project. Our team has learned many lessons while developing the [Simple.org](https://simple.org/) project and we want to share our best practices with the world. A similar dashboard has been used in India, Bangladesh, Sri Lanka, Ethiopia, and Nigeria to successfully manage over 4 million patients with hypertension.
 
 Please feel free to copy any of the code or ideas that you see in this hypertension dashboard (see [open source license](#license) open source license below).
 
-## See a live example
+## See a live example <!-- omit in toc -->
 
 [View a live example](https://hearts360.org)
 
-## Data & definitions
+## Data & definitions <!-- omit in toc -->
 
-### Basic Data
+### Basic Data <!-- omit in toc -->
 
 A very good public health hypertension dashboard only requires a small number of longitudinal patient data as building blocks:
 
@@ -25,11 +25,11 @@ A very good public health hypertension dashboard only requires a small number of
 - `Patients who had a BP measure in the last 12 months`
 - `Patient status as living or died`
 
-### Useful Data
+### Useful Data <!-- omit in toc -->
 
 Data that shows how much of a region's population has lowered blood pressure is also very helpful. If a region does public health surveys, including the `Estimated population with hypertension` allows you to easily report coverage metrics.
 
-### Inventory data
+### Inventory data <!-- omit in toc -->
 
 Adding data on drug stock and functioning BP devices helps round out the dashboard to make it even more useful.
 
@@ -38,6 +38,41 @@ Adding data on drug stock and functioning BP devices helps round out the dashboa
 # Developer guide
 
 This guide explains the how to recreate the [HEARTS360 dashboard](https://hearts360.org) using example database tables and working SQL queries which can be adapted to work with your own archetecture.
+
+## Table of contents <!-- omit in toc -->
+
+- [Developer guide](#developer-guide)
+  - [Patient Categorization](#patient-categorization)
+  - [Database structure example](#database-structure-example)
+    - [Patients table](#patients-table)
+    - [BP encounters table](#bp-encounters-table)
+  - [Example queries (detailed)](#example-queries-detailed)
+    - [Cumulative dead patients](#cumulative-dead-patients)
+      - [Definition](#definition)
+      - [Scenario Example](#scenario-example)
+      - [Code Example](#code-example)
+      - [Data Example](#data-example)
+    - [Cumulative registered patients and monthly registrations](#cumulative-registered-patients-and-monthly-registrations)
+      - [Definition](#definition-1)
+      - [Scenario Example](#scenario-example-1)
+      - [Code Example](#code-example-1)
+      - [Data Example](#data-example-1)
+    - [Patients under care \& lost to follow-up](#patients-under-care--lost-to-follow-up)
+      - [Definition](#definition-2)
+      - [Scenario Example](#scenario-example-2)
+      - [Code Example](#code-example-2)
+      - [Data Example](#data-example-2)
+    - [Newly registered / Patients under care registered before the past 3 months ('Controlled BP', 'Uncontrolled BP' \& 'No visit' )](#newly-registered--patients-under-care-registered-before-the-past-3-months-controlled-bp-uncontrolled-bp--no-visit-)
+      - [Definition](#definition-3)
+      - [Scenario Example](#scenario-example-3)
+      - [Code Example](#code-example-3)
+      - [Data Example](#data-example-3)
+  - [Hypertension treatment cascade](#hypertension-treatment-cascade)
+  - [Additional Dimensions](#additional-dimensions)
+  - [Caching results](#caching-results)
+  - [Data Checks](#data-checks)
+  - [Adapting queries to your data](#adapting-queries-to-your-data)
+  - [License](#license)
 
 ## Patient Categorization
 
@@ -83,7 +118,7 @@ This example corresponds to the minimal data set required to reproduce the HEART
 
 Data can be organized differently.
 
-### Patients Table
+### Patients table
 
 | Column name       | Column type | Possible Values |
 | ----------------- | ----------- | --------------- |
@@ -94,7 +129,7 @@ Data can be organized differently.
 | facility          |             |                 |
 | region            |             |                 |
 
-### BP Encounters Table
+### BP encounters table
 
 | Column name    | Column type | Possible Values                            |
 | -------------- | ----------- | ------------------------------------------ |
@@ -107,7 +142,7 @@ Data can be organized differently.
 ## Example queries (detailed)
 
 > [!NOTE]
-> Example queries in this document does not take facility/region/state into account. Refer to [Additional Dimensions]() setion below on how to modify these queries for facilities, region, state.
+> Example queries in this document does not take facility/region/state into account. Refer to [Additional Dimensions](#additional-dimensions) setion below on how to modify these queries for facilities, region, state.
 
 ### Cumulative dead patients
 
@@ -205,7 +240,7 @@ GROUP BY KNOWN_MONTHS.REF_MONTH
 ORDER BY KNOWN_MONTHS.REF_MONTH DESC
 ```
 
-#### Subqueries detail
+##### Subqueries detail <!-- omit in toc -->
 
 `KNOWN_MONTHS`
 
@@ -213,7 +248,7 @@ This is a list of months known by the system. It can be obtained in a variety of
 
 `ALIVE_PATIENTS`
 
-This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
+This is a list of all patients that are alive. We are limiting our subquery to the columns that are relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
 
 #### Data Example
 
@@ -249,7 +284,8 @@ As these two indicators are mutually exclusive (the total of _**patients under c
 >
 > **Before the end of the reference month**: _This means the last day of the month is always referenced even when that date is in the future and has not yet occurred. For example if today is 10-Jun-2024, the end of the reference month is 30-Jun-2024, so checking for an event in the past 12 months includes events that occurred between 1-Jul-2023 and 30-Jun-2024._
 
-Scenario Example
+#### Scenario Example
+
 A patient was registered in Jan-2023, and visited once in Mar-2023. Today is Feb-**2024**. This patient is counted as a _**patient under care**_ as they had a visit in the past 12 months.
 
 Using the same patient, today is Mar-**2024**. This patient is counted as _**lost to follow-up**_ because they have no visit in the past 12 months.
@@ -292,17 +328,17 @@ GROUP BY KNOWN_MONTHS.REF_MONTH
 ORDER BY KNOWN_MONTHS.REF_MONTH DESC;
 ```
 
-#### Subqueries detail
+##### Subqueries detail <!-- omit in toc -->
 
-##### `KNOWN_MONTHS`
+`KNOWN_MONTHS`
 
 This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the Database as in the example.
 
-##### `ALIVE_PATIENTS`
+`ALIVE_PATIENTS`
 
 This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
 
-##### `BP_ENCOUNTERS`
+`BP_ENCOUNTERS`
 
 This is a list of all BP readings taken for each patient based on the visit month.
 
@@ -345,21 +381,21 @@ There are 3 mutually exclusive categories for Patients under care registered bef
 
 #### Scenario Example
 
-##### Controlled BP
+##### Controlled BP <!-- omit in toc -->
 
 A patient was registered into the hypertension program in Sep-2023. They visited for blood pressure measures in Nov-2023 (BP controlled), Jan-2024 (BP not controlled), Feb-2024 (BP not controlled) and Mar-2024 (BP controlled).
 
 Today is Apr-2024, this patient has visited twice in the past 3 months (Feb-2024 and Mar-2024) and is categorized in the controlled BP group at their latest visit (Mar-2024).
 
-##### Uncontrolled BP
+##### Uncontrolled BP <!-- omit in toc -->
 
 A patient was registered into the hypertension program in Sep-2023. They visited for blood pressure measures in Nov-2023 (BP controlled), Feb-2024 (BP not controlled) and Apr-2024 (BP not controlled). Today is Apr-2024, this patient has visited twice in the past 3 months (Feb-2024 and Apr-2024) and is uncontrolled BP at their latest visit (Apr-2024).
 
-##### No visit
+##### No visit <!-- omit in toc -->
 
 A patient was registered into the hypertension program in Sep-2023. They visited for blood pressure measures in Dec-2023 (BP controlled), Jan-2024 (BP not controlled). Today is Apr-2024, this patient had no visit in the past 3 months.
 
-### Code Example
+#### Code Example
 
 ```SQL
 WITH
@@ -436,21 +472,21 @@ GROUP BY KNOWN_MONTHS.REF_MONTH
 ORDER BY 1 DESC
 ```
 
-#### Subqueries detail
+##### Subqueries detail <!-- omit in toc -->
 
-##### `KNOWN_MONTHS`
+`KNOWN_MONTHS`
 
 This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the Database as in the example.
 
-##### `ALIVE_PATIENT`
+`ALIVE_PATIENT`
 
 This is a list of all patients that are alive. We are limiting our subquery to the columns that is relevant for this aggregation. Registration date is rounded by month as we’re doing a monthly analysis.
 
-##### `BP_ENCOUNTERS`
+`BP_ENCOUNTERS`
 
 This is a list of all BP readings taken for each patient based on the visit month.
 
-##### `LATEST_BP_BY_MONTH_AND_PATIENT`
+`LATEST_BP_BY_MONTH_AND_PATIENT`
 
 This subquery returns the most recent BP reading for every patient for every Reference Month.
 
@@ -470,7 +506,7 @@ GROUP BY KNOWN_MONTHS.REF_MONTH, patient_id
 
 Using this result, we join it against BP_ENCOUNTERS to get the information we need.
 
-### Data Example
+#### Data Example
 
 | ref_month  | nb_patients_under_care | nb_patients_newly_registered | nb_patients_under_care_registered_before_the_past_3_months | nb_patients_no_visit | nb_patients_uncontrolled | nb_patients_controlled |
 | ---------- | ---------------------- | ---------------------------- | ---------------------------------------------------------- | -------------------- | ------------------------ | ---------------------- |
