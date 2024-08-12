@@ -58,7 +58,7 @@
       </div>
     </div>
     <main class="main">
-      <div>
+      <div class="header">
         <h1>River District</h1>
         <div class="date-updated">Data last updated: 5-Aug-2024</div>
       </div>
@@ -1525,6 +1525,74 @@
 
       <div class="notes spacer">
         <aside class="notes-nav">
+          <h2>Core concepts</h2>
+          <p>
+            To understand the details of the dashboard, it's important know
+            these core concepts.
+          </p>
+        </aside>
+        <div class="notes-body">
+          <ol>
+            <li>
+              <code>Cumulative registered patients</code>
+              <p>
+                All patients diagnosed with hypertension. Dead patients are
+                excluded.
+              </p>
+            </li>
+            <li>
+              <code>Patients under care</code>
+              <p>
+                All patients diagnosed with hypertension with a "visit" recorded
+                in the last 12 months. A visit can have a simplified definition:
+                the patient had a BP measure recorded in the last 12 months.
+                Dead patients are excluded.
+              </p>
+            </li>
+            <li>
+              <code>12 month lost to follow-up patients</code>
+              <p>
+                All patients diagnosed with hypertension with no "visit"
+                recorded in the last 12 months. A visit can have a simplified
+                definition: the patient had no BP measures recorded in the last
+                12 months. Note: Some of the key indicators exclude 12-month
+                lost to follow-up patients (i.e. the indicators only use
+                "Patients under care") because these patients become a drag on
+                the health system at scale and muddy the view of progress being
+                made improving hypertension control.
+              </p>
+            </li>
+            <li>
+              <code>Died</code>
+              <p>Dead patients are excluded from most indicators.</p>
+            </li>
+            <li>
+              <code>Patients with controlled blood pressure</code> and
+              <code>Patients with uncontrolled blood pressure</code> in a month
+              <p>
+                Controlled blood pressure in most countries is a BP measure
+                &lt;140 mmHg systolic AND &lt;90 mmHg diastolic. In a simple
+                healthcare system, you can use the most recent BP measure in a
+                month to calculate BP control. In more complex health systems
+                where multiple blood pressures are recorded at each visit, you
+                may need to average the measures.
+              </p>
+            </li>
+            <li>
+              <p><code>Screened patients</code> (Aggregate data)</p>
+            </li>
+            <li>
+              <p>
+                <code>Estimated monthly adult OPD patients</code> (Aggregate
+                data)
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- <div class="notes spacer">
+        <aside class="notes-nav">
           <h2>Data building blocks</h2>
           <p>
             The dashboard requires just a handful of core data building blocks
@@ -1589,7 +1657,7 @@
             </li>
           </ol>
         </div>
-      </div>
+      </div> -->
       <div class="notes">
         <aside class="notes-nav">
           <h2>Data definitions</h2>
