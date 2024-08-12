@@ -35,44 +35,42 @@ Adding data on drug stock and functioning BP devices helps round out the dashboa
 
 ---
 
-# Developer guide
+# Developer guide <!-- omit in toc -->
 
 This guide explains the how to recreate the [HEARTS360 dashboard](https://hearts360.org) using example database tables and working SQL queries which can be adapted to work with your own archetecture.
 
 ## Table of contents <!-- omit in toc -->
 
-- [Developer guide](#developer-guide)
-  - [Patient Categorization](#patient-categorization)
-  - [Database structure example](#database-structure-example)
-    - [Patients table](#patients-table)
-    - [BP encounters table](#bp-encounters-table)
-  - [Example queries (detailed)](#example-queries-detailed)
-    - [Cumulative dead patients](#cumulative-dead-patients)
-      - [Definition](#definition)
-      - [Scenario Example](#scenario-example)
-      - [Code Example](#code-example)
-      - [Data Example](#data-example)
-    - [Cumulative registered patients and monthly registrations](#cumulative-registered-patients-and-monthly-registrations)
-      - [Definition](#definition-1)
-      - [Scenario Example](#scenario-example-1)
-      - [Code Example](#code-example-1)
-      - [Data Example](#data-example-1)
-    - [Patients under care \& lost to follow-up](#patients-under-care--lost-to-follow-up)
-      - [Definition](#definition-2)
-      - [Scenario Example](#scenario-example-2)
-      - [Code Example](#code-example-2)
-      - [Data Example](#data-example-2)
-    - [Newly registered / Patients under care registered before the past 3 months ('Controlled BP', 'Uncontrolled BP' \& 'No visit' )](#newly-registered--patients-under-care-registered-before-the-past-3-months-controlled-bp-uncontrolled-bp--no-visit-)
-      - [Definition](#definition-3)
-      - [Scenario Example](#scenario-example-3)
-      - [Code Example](#code-example-3)
-      - [Data Example](#data-example-3)
-  - [Hypertension treatment cascade](#hypertension-treatment-cascade)
-  - [Additional Dimensions](#additional-dimensions)
-  - [Caching results](#caching-results)
-  - [Data Checks](#data-checks)
-  - [Adapting queries to your data](#adapting-queries-to-your-data)
-  - [License](#license)
+- [Patient Categorization](#patient-categorization)
+- [Database structure example](#database-structure-example)
+  - [Patients table](#patients-table)
+  - [BP encounters table](#bp-encounters-table)
+- [Example queries (detailed)](#example-queries-detailed)
+  - [Cumulative dead patients](#cumulative-dead-patients)
+    - [Definition](#definition)
+    - [Scenario Example](#scenario-example)
+    - [Code Example](#code-example)
+    - [Data Example](#data-example)
+  - [Cumulative registered patients and monthly registrations](#cumulative-registered-patients-and-monthly-registrations)
+    - [Definition](#definition-1)
+    - [Scenario Example](#scenario-example-1)
+    - [Code Example](#code-example-1)
+    - [Data Example](#data-example-1)
+  - [Patients under care \& lost to follow-up](#patients-under-care--lost-to-follow-up)
+    - [Definition](#definition-2)
+    - [Scenario Example](#scenario-example-2)
+    - [Code Example](#code-example-2)
+    - [Data Example](#data-example-2)
+  - [Newly registered / Patients under care registered before the past 3 months ('Controlled BP', 'Uncontrolled BP' \& 'No visit' )](#newly-registered--patients-under-care-registered-before-the-past-3-months-controlled-bp-uncontrolled-bp--no-visit-)
+    - [Definition](#definition-3)
+    - [Scenario Example](#scenario-example-3)
+    - [Code Example](#code-example-3)
+    - [Data Example](#data-example-3)
+- [Hypertension treatment cascade](#hypertension-treatment-cascade)
+- [Additional Dimensions](#additional-dimensions)
+- [Caching results](#caching-results)
+- [Data Checks](#data-checks)
+- [Adapting queries to your data](#adapting-queries-to-your-data)
 
 ## Patient Categorization
 
@@ -584,7 +582,7 @@ This is the easiest way to produce valid queries that will work for your data.
 
 ---
 
-## License
+## License <!-- omit in toc -->
 
 The generic dashboard is licensed under an MIT License. Please take this code and use it for your own project in any way.
 
