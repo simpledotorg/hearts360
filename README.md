@@ -35,7 +35,7 @@ Adding data on drug stock and functioning BP devices helps round out the dashboa
 
 ---
 
-# Developer guide <!-- omit in toc -->
+# Developer guide<!-- omit in toc -->
 
 This guide explains the how to recreate the [HEARTS360 dashboard](https://hearts360.org) using example database tables and working SQL queries which can be adapted to work with your own archetecture.
 
