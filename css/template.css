@@ -822,13 +822,13 @@ table {
 /* Display options */
 .desktop-only {
   @media screen and (max-width: 880px) {
-    display: none;
+    display: none !important;
   }
 }
 
 .mobile-only {
   @media screen and (min-width: 880px) {
-    display: none;
+    display: none !important;
   }
 }
 
