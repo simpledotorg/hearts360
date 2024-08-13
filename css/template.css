@@ -40,7 +40,7 @@ h2.columns-header {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  color: rgba(0,0,0,0.5);
+  color: rgba(0, 0, 0, 0.5);
   font-size: 0.8rem;
 }
 
@@ -272,7 +272,8 @@ main {
 
   & .link-list {
     display: flex;
-    gap: 16px;
+    align-items: center;
+    gap: 20px;
   }
 
   .external-link {
@@ -373,7 +374,7 @@ main {
     height: 260px;
     margin: -8px;
   }
-  
+
   & h2 {
     font-size: 1.5rem;
     font-weight: 700;
@@ -821,13 +822,13 @@ table {
 /* Display options */
 .desktop-only {
   @media screen and (max-width: 880px) {
-    display: none;
+    display: none !important;
   }
 }
 
 .mobile-only {
   @media screen and (min-width: 880px) {
-    display: none;
+    display: none !important;
   }
 }
 

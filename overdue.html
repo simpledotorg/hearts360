@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>HEARTS 360: Overdue Patients List</title>
+    <title>HEARTS360: Overdue Patients List</title>
     <meta
       name="description"
       content="A free, open source, template for creating a very useful hypertension and diabetes dashboard to support public health projects."
@@ -15,17 +15,33 @@
     <link rel="stylesheet" href="css/preflight.css?v=1.0" />
     <link rel="stylesheet" href="css/template.css" />
     <link rel="stylesheet" href="css/overdue.css" />
-
   </head>
   <body>
     <div class="banner">
       <div class="banner-body">
         <h1><span>HEARTS</span>360</h1>
 
-        <div class="desktop-only">
+        <div>
           <div class="link-list">
-            <span>v1.3</span>
+            <span
+              class="desktop-only"
+              style="
+                padding: 2px 4px;
+                background: #3063c2;
+                display: inline-block;
+                height: 100%;
+                color: white;
+                border-radius: 3px;
+                font-size: 11px;
+              "
+              >v1.3</span
+            >
             <a href="about.html">About</a>
+            <a
+              class="external-link desktop-only"
+              href="https://github.com/simpledotorg/hearts360/tree/hearts360-psuedocode?tab=readme-ov-file#developer-guide-"
+              >Developer guide</a
+            >
             <a
               class="external-link"
               href="https://github.com/simpledotorg/hypertension-dashboard"
@@ -38,10 +54,10 @@
     <div class="link-dashboards">
       <div>
         <a href="index.html">
-          Hypertension <span class="desktop-only">Dashboard</span>
+          Hypertension <span class="desktop-only">dashboard</span>
         </a>
         <a href="diabetes.html">
-          Diabetes <span class="desktop-only">Dashboard</span>
+          Diabetes <span class="desktop-only">dashboard</span>
         </a>
         <a href="overdue.html" class="active">
           Overdue <span class="desktop-only">patients list</span>
@@ -54,9 +70,7 @@
           <h2>Overdue patients</h2>
           <p>3,250 overdue patients in River District</p>
           <div class="date-updated">
-            <a href="#"
-              >Download list (XLS)</a
-            >
+            <a href="#">Download list (XLS)</a>
           </div>
         </div>
 
@@ -94,7 +108,7 @@
                   <th>
                     Phone
                     <form class="table-filter">
-                      <select style="max-width: 12em;">
+                      <select style="max-width: 12em">
                         <option></option>
                         <option>Only with phone</option>
                         <option>Only without phone</option>
@@ -104,7 +118,7 @@
                   <th>
                     High risk?
                     <form class="table-filter">
-                      <select style="max-width: 8em;">
+                      <select style="max-width: 8em">
                         <option></option>
                         <option>Only high risk</option>
                       </select>
@@ -126,7 +140,7 @@
                   <th>
                     Facility
                     <form class="table-filter">
-                      <select style="max-width: 12em;">
+                      <select style="max-width: 12em">
                         <option></option>
                         <option>CHC Apple Orchard</option>
                         <option>CHC Bramble River</option>
@@ -184,7 +198,11 @@
                   <th>
                     Home village / area
                     <form class="table-filter">
-                      <input type="search" placeholder="Search" style="width: 12em;" />
+                      <input
+                        type="search"
+                        placeholder="Search"
+                        style="width: 12em"
+                      />
                     </form>
                   </th>
                   <th>
