@@ -437,7 +437,7 @@ main {
     position: absolute;
     right: 32px;
     background: #222;
-    width: 200px;
+    width: 220px;
     font-size: 0.75rem;
     font-weight: 400;
     padding: 8px 10px;
@@ -458,6 +458,10 @@ main {
       border-top: 6px solid transparent;
       border-bottom: 6px solid transparent;
       border-left: 6px solid #222;
+    }
+
+    > p {
+      margin: 3px 0;
     }
 
     > p > span {
