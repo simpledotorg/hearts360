@@ -68,13 +68,15 @@ h6 {
   border-radius: 8px;
   padding: 20px;
   color: #333;
-  display: flex;
+  @media screen and (min-width: 820px) {
+    display: flex;
+  }
   gap: 64px;
   position: relative;
   margin-bottom: 24px;
 
   & .notes-nav {
-    width: 50%;
+    flex: 0 0 206px;
 
     & .nav-jump-links {
       display: block;
@@ -97,7 +99,10 @@ h6 {
   }
 
   & .notes-section {
-    display: flex;
+    @media screen and (min-width: 1080px) {
+      display: flex;
+      flex-wrap: wrap;
+    }
     gap: 64px;
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     padding-top: 32px;
@@ -116,12 +121,18 @@ h6 {
     left: 0;
   }
 
-  & .notes-note {
-    width: 50%;
-  }
+  @media screen and (min-width: 1080px) {
+    & .notes-note {
+      width: calc(50% - 32px);
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
 
-  & .notes-details {
-    width: 50%;
+    & .notes-details {
+      width: calc(50% - 32px);
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
   }
 
   & h2 {
@@ -190,7 +201,6 @@ code {
   padding: 0 4px;
   border-radius: 4px;
   color: cadetblue;
-  white-space: nowrap;
 }
 
 hr {
