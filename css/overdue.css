@@ -77,13 +77,18 @@ table select.select-main {
 .modal {
   display: none;
   position: fixed;
-  padding: 42px;
+  padding: 28px;
+  padding-top: 56px;
   white-space: normal;
   top: 0;
   right: 0;
   background: #fff;
   border-left: 1px solid #999;
-  width: 40%;
+  width: 90%;
+  @media screen and (min-width: 540px) {
+    width: 500px;
+    padding: 42px;
+  }
   height: 100%;
   box-shadow: -10px 0 0 rgba(0, 0, 0, 0.3);
   overflow: auto;
@@ -117,7 +122,10 @@ a.modal-close:hover {
 .modal select.mark-result {
   font-size: 1rem;
   background-size: 32px;
+  width: 100%;
+  @media screen and (min-width: 400px) {
   width: 70%;
+  }
 }
 .overdue-patient-details p {
   margin: 0.4rem 0;
