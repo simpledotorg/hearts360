@@ -71,96 +71,20 @@
 
       <h2 class="columns-header">1. Overview indicators</h2>
 
-      <div class="columns-3">
-        <div class="card col-span-2">
-          <div class="heading">
-            <h3>
-              Patients protected from heart attacks and strokes with world-class
-              treatment
-            </h3>
-            <div class="figures">
-              <p class="large-num bp-controlled">4,808 patients</p>
-              <div class="detail">
-                <p>in River District with BP &lt;140/90</p>
-              </div>
-            </div>
-            <div class="chart" style="height: 350px">
-              <canvas id="patientsprotected"></canvas>
+      <div class="card">
+        <div class="heading">
+          <h3>
+            Patients protected from heart attacks and strokes with world-class
+            treatment
+          </h3>
+          <div class="figures">
+            <p class="large-num bp-controlled">4,808 patients</p>
+            <div class="detail">
+              <p>in River District with BP &lt;140/90</p>
             </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="heading">
-            <h3>Hypertension treatment cascade</h3>
-            <p>
-              Estimated adults (&gt;30) in River District with hypertension who
-              are registered, under care, and controlled.
-            </p>
-            <div class="info">
-              <div class="info-hover-text">
-                <p>
-                  <b>Estimated population</b> with hypertension is derived from
-                  a STEPS Community Survey conducted in 2022.
-                </p>
-                <p>
-                  <b>Patients under care</b> are patients with hypertension with
-                  at least 1 visit in the past 12 months
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="body">
-            <div class="coverage">
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div class="coverage-bar-fill" style="height: 100%">
-                    <p class="coverage-estimated">100%</p>
-                  </div>
-                </div>
-                <p>250,800</p>
-                <p class="text-grey label-small">
-                  Estimated people with hypertension
-                </p>
-              </div>
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div
-                    class="coverage-bar-fill registrations-bg"
-                    style="height: 5%"
-                  >
-                    <p class="coverage-number registrations">5%</p>
-                  </div>
-                </div>
-                <p>12,213</p>
-                <p class="text-grey label-small">
-                  Cumulative registered patients
-                </p>
-              </div>
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div
-                    class="coverage-bar-fill under-care-bg"
-                    style="height: 4%"
-                  >
-                    <p class="coverage-number under-care">4%</p>
-                  </div>
-                </div>
-                <p>10,632</p>
-                <p class="text-grey label-small">Patients under care</p>
-              </div>
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div
-                    class="coverage-bar-fill bp-controlled-bg"
-                    style="height: 2%"
-                  >
-                    <p class="coverage-number bp-controlled">2%</p>
-                  </div>
-                </div>
-                <p>4,808</p>
-                <p class="text-grey label-small">Patients with BP controlled</p>
-              </div>
-            </div>
+          <div class="chart" style="height: 350px">
+            <canvas id="patientsprotected"></canvas>
           </div>
         </div>
       </div>
@@ -358,6 +282,91 @@
             </div>
             <div class="chart">
               <canvas id="screenings"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="heading">
+            <h3>Hypertension treatment cascade</h3>
+            <p>
+              Estimated adults (&gt;30) in River District with hypertension who
+              are registered, under care, and controlled.
+            </p>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Estimated population with hypertension:</span> Estimated
+                  population with hypertension is derived from a STEPS Community
+                  Survey conducted in 2022.
+                </p>
+                <p>
+                  <span>Cumulative registered patients:</span> All patients with
+                  hypertension registered. Dead patients (205) are excluded.
+                </p>
+                <p>
+                  <span>Patients under care:</span> Registered patients with
+                  hypertension with at least 1 visit in the past 12 months. Dead
+                  patients (205) and 12 month lost to follow-up patients (1,562)
+                  are excluded.
+                </p>
+                <p>
+                  <span>Patients with controlled BP:</span> Patients with BP
+                  &lt;140/90 at their latest visit in the past 3 months
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="coverage">
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div class="coverage-bar-fill" style="height: 100%">
+                    <p class="coverage-estimated">100%</p>
+                  </div>
+                </div>
+                <p>250,800</p>
+                <p class="text-grey label-small">
+                  Estimated people with hypertension
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill registrations-bg"
+                    style="height: 5%"
+                  >
+                    <p class="coverage-number registrations">5%</p>
+                  </div>
+                </div>
+                <p>12,213</p>
+                <p class="text-grey label-small">
+                  Cumulative registered patients
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill under-care-bg"
+                    style="height: 4%"
+                  >
+                    <p class="coverage-number under-care">4%</p>
+                  </div>
+                </div>
+                <p>10,632</p>
+                <p class="text-grey label-small">Patients under care</p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill bp-controlled-bg"
+                    style="height: 2%"
+                  >
+                    <p class="coverage-number bp-controlled">2%</p>
+                  </div>
+                </div>
+                <p>4,808</p>
+                <p class="text-grey label-small">Patients with BP controlled</p>
+              </div>
             </div>
           </div>
         </div>
