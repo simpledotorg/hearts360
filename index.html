@@ -63,7 +63,134 @@
         </a>
       </div>
     </div>
+
     <main class="main">
+      <div class="region-nav" style="display: inline-block">
+        <div class="hover-button">Select region</div>
+        <div class="card nav-hover-content">
+          <div class="hover-button hover-button-hover-state">Select region</div>
+          <ul id="myUL" class="nav-list">
+            <li><a href="#">National</a></li>
+            <li>
+              <span class="caret"></span><a href="#">Northern Region</a>
+              <ul class="nested">
+                <li>
+                  <span class="caret"></span><a href="#">River District</a>
+                  <ul class="nested">
+                    <li><a href="#">Blue River Facility</a></li>
+                    <li><a href="#">Green River Facility</a></li>
+                    <li><a href="#">Silver Stream Facility</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="caret"></span><a href="#">Highland District</a>
+                  <ul class="nested">
+                    <li><a href="#">Summit Facility</a></li>
+                    <li><a href="#">Peak Facility</a></li>
+                    <li><a href="#">Valley Edge Facility</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="caret"></span><a href="#">Forest District</a>
+                  <ul class="nested">
+                    <li><a href="#">Oakwood Facility</a></li>
+                    <li><a href="#">Pine Hill Facility</a></li>
+                    <li><a href="#">Maple Grove Facility</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="caret"></span><a href="#">Southern Region</a>
+              <ul class="nested">
+                <li>
+                  <span class="caret"></span><a href="#">Marsh District</a>
+                  <ul class="nested">
+                    <li><a href="#">Willow Marsh Facility</a></li>
+                    <li><a href="#">Reed Point Facility</a></li>
+                    <li><a href="#">Cattail Creek Facility</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="caret"></span><a href="#">Coastal District</a>
+                  <ul class="nested">
+                    <li><a href="#">Wavecrest Facility</a></li>
+                    <li><a href="#">Harbor View Facility</a></li>
+                    <li><a href="#">Tidewater Facility</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="caret"></span><a href="#">Desert District</a>
+                  <ul class="nested">
+                    <li><a href="#">Dunes Facility</a></li>
+                    <li><a href="#">Oasis Point Facility</a></li>
+                    <li><a href="#">Sandstone Facility</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="caret"></span><a href="#">Eastern Region</a>
+              <ul class="nested">
+                <li>
+                  <span class="caret"></span><a href="#">Plains District</a>
+                  <ul class="nested">
+                    <li><a href="#">Golden Field Facility</a></li>
+                    <li><a href="#">Prairie View Facility</a></li>
+                    <li><a href="#">Sunrise Facility</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="caret"></span><a href="#">Mountain District</a>
+                  <ul class="nested">
+                    <li><a href="#">Snowcap Facility</a></li>
+                    <li><a href="#">Everest Base Facility</a></li>
+                    <li><a href="#">Cliffside Facility</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="caret"></span><a href="#">Lakes District</a>
+                  <ul class="nested">
+                    <li><a href="#">Clearwater Facility</a></li>
+                    <li><a href="#">Blue Basin Facility</a></li>
+                    <li><a href="#">Crystal Cove Facility</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="caret"></span><a href="#">Western Region</a>
+              <ul class="nested">
+                <li>
+                  <span class="caret"></span><a href="#">Canyon District</a>
+                  <ul class="nested">
+                    <li><a href="#">Red Rock Facility</a></li>
+                    <li><a href="#">Copper Ridge Facility</a></li>
+                    <li><a href="#">Stone Arch Facility</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="caret"></span><a href="#">Bay District</a>
+                  <ul class="nested">
+                    <li><a href="#">Seaside Facility</a></li>
+                    <li><a href="#">Ocean Breeze Facility</a></li>
+                    <li><a href="#">Coastline Facility</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="caret"></span><a href="#">Hills District</a>
+                  <ul class="nested">
+                    <li><a href="#">Rolling Meadows Facility</a></li>
+                    <li><a href="#">Sunset Hill Facility</a></li>
+                    <li><a href="#">Golden Valley Facility</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div class="header">
         <h1>River District</h1>
         <div class="date-updated">Data last updated: 5-Aug-2024</div>
@@ -2205,6 +2332,7 @@
     <!-- Tablesort.js -->
     <script src="js/tablesort.js"></script>
     <script src="js/tablesort.number.js"></script>
+    <script src="js/navigation.js"></script>
     <script>
       new Tablesort(document.getElementById("table-regions"));
       new Tablesort(document.getElementById("table-stock-inventory"));
