@@ -922,29 +922,37 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
   max-width: fit-content;
   display: inline-block;
   color: #777;
+  
+  .hover-button {
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+    padding: 8px 20px;
+    display: inline;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block; 
+  }
+  
+  .hover-button-hover-state {
+    background: none;
+    border: none;
+    color: #777;
+  }
+  
+  a {
+    color: #0175EB;
+  }
+  
+  ul {
+    list-style-type: none;
+    font-size: 14px;
+  }
+  
 }
 
-.hover-button {
-  color: #fff;
-  background: rgba(255,255,255,0.2);
-  padding: 8px 20px;
-  display: inline;
-  border-radius: 4px;
-  font-weight: 600;
-  display: inline-block; 
-}
-
-.hover-button-hover-state {
-  background: none;
-  border: none;
-  color: #777;
-}
-
-.region-nav a {
-  color: #0175EB;
-}
-
-.region-nav:hover .nav-hover-content {
+.region-nav:hover .nav-hover-content,
+.region-nav:focus .nav-hover-content,
+.region-nav:active .nav-hover-content {
   display: block;
 }
 
@@ -962,11 +970,6 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
   display: none;
   padding: 0px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-}
-
-.region-nav ul {
-  list-style-type: none;
-  font-size: 14px;
 }
 
 .nav-list {
@@ -1004,6 +1007,8 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
   height: 24px;
   width: 24px;
   display: inline-block;
+  position: relative;
+  top: -1px;
 }
 
 .caret-down::before {
@@ -1027,6 +1032,7 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
 
 .region-nav .region-national a {
   margin-left: 0;
+  padding-left: 0;
 }
 
 .region-nav .region-facility {
@@ -1043,4 +1049,30 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
   padding: 6px 16px 6px 30px;
   width: 85%;
   margin: 8px 0 0 20px;
+}
+
+.search-results {
+  padding: 20px;
+  
+  dt {
+    padding: 1.5em 0 0.5em 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  dd {
+    a {
+      display: block;
+      padding: 3px 0;
+      font-size: 14px;
+    }
+    em {
+      font-style: normal;
+      background: lightgoldenrodyellow;
+    }
+    span {
+      font-weight: normal;
+    }
+  }
+  
 }
