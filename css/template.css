@@ -1082,18 +1082,25 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
 }
 
 .search-results {
-  padding: 0 20px 20px;
+  padding: 0 0 20px;
 
   dt {
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 1.5em 0 0.5em 0;
+    letter-spacing: 0.09em;
+    padding: 0.4em 20px 0.4em;
+    margin-top: 0.8em;
+    margin-bottom: 0.75em;
+    color: #747474;
+    background: #f4f4f4;
+    border-top: 1px solid #e0e0e0;
   }
 
   dd {
+    padding-left: 20px;
+    padding-right: 20px;
     a {
       display: block;
-      padding: 3px 0;
+      padding: 3px;
       font-size: 14px;
     }
     em {
@@ -1102,6 +1109,7 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
     }
     span {
       font-weight: normal;
+      padding: 0;
     }
   }
 }
