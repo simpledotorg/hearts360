@@ -258,16 +258,41 @@ main {
   font-size: 0.85em;
 
   .banner-body {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @media screen and (min-width: 660px) {
+      grid-template-columns: 1fr 180px 1fr;
+    }
+    justify-content: center;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
     width: 100%;
     max-width: 1600px;
     margin: auto;
     padding: 16px 22px;
     position: relative;
     font-weight: 600;
+    font-size: 0.9em;
+    color: rgba(0, 0, 0, 0.5);
+
+    h1 {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      @media screen and (min-width: 660px) {
+        justify-content: center;
+      }
+
+      font-size: 1.2rem;
+      .logo {
+        width: 22px;
+        display: inline-block;
+      }
+      span {
+        color: #fff;
+      }
+    }
   }
 
   & .section {
@@ -282,8 +307,10 @@ main {
 
   & .link-list {
     display: flex;
+    justify-content: end;
     align-items: center;
     gap: 20px;
+    order: 0;
   }
 
   .external-link {
@@ -330,22 +357,6 @@ main {
   }
 }
 
-.banner-body {
-  font-size: 0.9em;
-  color: rgba(0, 0, 0, 0.5);
-
-  h1 {
-    font-size: 1.2rem;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill-opacity='1.0' fill='white'%3E%3Cpath d='M16.5 3C19.5376 3 22 5.5 22 9C22 16 14.5 20 12 21.5C10.0226 20.3135 4.91699 17.563 2.86894 13.001L1 13V11L2.21045 11.0009C2.07425 10.3633 2 9.69651 2 9C2 5.5 4.5 3 7.5 3C9.35997 3 11 4 12 5C13 4 14.64 3 16.5 3ZM16.5 5C15.4241 5 14.2593 5.56911 13.4142 6.41421L12 7.82843L10.5858 6.41421C9.74068 5.56911 8.5759 5 7.5 5C5.55906 5 4 6.6565 4 9C4 9.68542 4.09035 10.3516 4.26658 11.0004L6.43381 11L8.5 7.55635L11.5 12.5563L12.4338 11H17V13H13.5662L11.5 16.4437L8.5 11.4437L7.56619 13L5.10789 13.0006C5.89727 14.3737 7.09304 15.6681 8.64514 16.9029C9.39001 17.4955 10.1845 18.0485 11.0661 18.6038C11.3646 18.7919 11.6611 18.9729 12 19.1752C12.3389 18.9729 12.6354 18.7919 12.9339 18.6038C13.8155 18.0485 14.61 17.4955 15.3549 16.9029C18.3337 14.533 20 11.9435 20 9C20 6.64076 18.463 5 16.5 5Z'%3E%3C/path%3E%3C/svg%3E");
-    padding-left: 26px;
-    background-repeat: no-repeat;
-    background-position: 0 50%;
-    background-size: 22px;
-    span {
-      color: #fff;
-    }
-  }
-}
 @media screen and (min-width: 880px) {
   .header {
     display: flex;
@@ -919,35 +930,43 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
 
 .region-nav {
   position: relative;
-  max-width: fit-content;
-  display: inline-block;
   color: #777;
-  
+  grid-column: 1 / span 2;
+  order: 1;
+  @media screen and (min-width: 660px) {
+    grid-column: 1;
+    order: 0;
+    max-width: fit-content;
+    display: inline-block;
+  }
   .hover-button {
     color: #fff;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     padding: 8px 20px;
     display: inline;
     border-radius: 4px;
     font-weight: 600;
-    display: inline-block; 
+    display: block;
+    text-align: center;
+    @media screen and (min-width: 660px) {
+      text-align: left;
+    }
   }
-  
+
   .hover-button-hover-state {
     background: none;
     border: none;
     color: #777;
   }
-  
+
   a {
-    color: #0175EB;
+    color: #0175eb;
   }
-  
+
   ul {
     list-style-type: none;
     font-size: 14px;
   }
-  
 }
 
 .region-nav:hover .nav-hover-content,
@@ -961,12 +980,10 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
   top: 0;
   left: 0;
   z-index: 10;
-  width: 300px;
-  @starting-style {
-    opacity: 0;
+  width: 100%;
+  @media screen and (min-width: 660px) {
+    width: 300px;
   }
-  transition: opacity 0.3s ease;
-  opacity: 1;
   display: none;
   padding: 0px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -974,7 +991,7 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
 
 .nav-list {
   padding: 10px 20px 20px 20px;
-  
+
   a {
     display: block;
     margin-left: 28px;
@@ -1001,7 +1018,7 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
 
 .caret::before {
   content: "›";
-  background: #E5E9F8;
+  background: #e5e9f8;
   border-radius: 100px;
   color: #0075eb;
   height: 24px;
@@ -1014,7 +1031,7 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
 .caret-down::before {
   rotate: 90deg;
   position: relative;
-  background: #CBD1E9;
+  background: #cbd1e9;
 }
 
 .nested {
@@ -1041,25 +1058,34 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
   font-weight: normal;
 }
 
+.search-form {
+  padding: 14px 20px 4px 20px;
+}
+
 .region-search {
-  background: #E5E9F8 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>')
-  10px 50% no-repeat;
+  background: #e5e9f8
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>')
+    10px 50% no-repeat;
   background-size: 16px;
   border-radius: 100px;
   padding: 6px 16px 6px 30px;
-  width: 85%;
-  margin: 8px 0 0 20px;
+  display: block;
+  width: 100%;
+  /* margin: 8px 0 0 20px; */
+  label {
+    font-size: 0.9em;
+  }
 }
 
 .search-results {
   padding: 20px;
-  
+
   dt {
     padding: 1.5em 0 0.5em 0;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
-  
+
   dd {
     a {
       display: block;
@@ -1074,5 +1100,4 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
       font-weight: normal;
     }
   }
-  
 }
