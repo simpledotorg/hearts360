@@ -1077,13 +1077,18 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 .search-results {
-  padding: 20px;
+  padding: 0 20px 20px;
 
   dt {
-    padding: 1.5em 0 0.5em 0;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    padding: 1.5em 0 0.5em 0;
+    background: #f8f8f8;
   }
 
   dd {
@@ -1094,7 +1099,7 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
     }
     em {
       font-style: normal;
-      background: lightgoldenrodyellow;
+      background: #fbf168;
     }
     span {
       font-weight: normal;
