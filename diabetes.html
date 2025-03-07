@@ -4982,6 +4982,104 @@
       <div class="columns-3">
         <div class="card">
           <div class="heading">
+            <h3>BP controlled at latest visit in past 3 months</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  Add tooltip info
+                  <!-- <span>Numerator:</span> Patients from the denominator who were
+                  prescribed statins at their most recent visit -->
+                </p>
+                <p>
+                  <!-- <span>Denominator:</span> Registered patients &ge;40 years old
+                  with diabetes with at least 1 visit in the past 12 months.
+                  Dead patients (60) and 12 month lost to follow-up patients
+                  (600) are excluded. -->
+                </p>
+              </div>
+            </div>
+            <p>
+              Patients with diabetes with BP controlled at latest visit in past
+              3 months
+            </p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <div class="detail">
+                <p class="text-grey">
+                  of 3350
+                  <span class="under-care">patients under care</span> registered
+                  before the past 3 months
+                </p>
+                <p>
+                  <b class="bp-controlled">48%</b> &nbsp; 1,608 patients with
+                  controlled BP &lt;140/90
+                </p>
+                <p>
+                  <b class="bp-controlled-dark">38%</b> &nbsp; 1,273 patients
+                  with controlled BP &lt;130/80
+                </p>
+                <!-- <p class="large-num bp-controlled">50%</p>
+                <p>1,000 patients with BP &lt;140/90</p>
+                <p class="text-grey">
+                  of
+                  <span
+                    >3,500 patients with both hypertension and diabetes</span
+                  >
+                </p>
+                -->
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="dmBpControlled"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="heading">
+            <h3>Patients prescribed statins</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients from the denominator who were
+                  prescribed statins at their most recent visit
+                </p>
+                <p>
+                  <span>Denominator:</span> Registered patients &ge;40 years old
+                  with diabetes with at least 1 visit in the past 12 months.
+                  Dead patients (60) and 12 month lost to follow-up patients
+                  (600) are excluded.
+                </p>
+              </div>
+            </div>
+            <p>
+              Patients under care for diabetes &ge;40 years old who were
+              prescribed statins at latest visit in the past 12 months
+            </p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <p class="large-num">66%</p>
+              <div class="detail">
+                <p>
+                  2,300 patients prescribed statins at latest visit in past 12
+                  months
+                </p>
+                <p class="text-grey">
+                  of
+                  <span class="under-care">3,500 patients under care</span>
+                </p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="dmstatins"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="heading">
             <h3>Patients under care</h3>
             <div class="info">
               <div class="info-hover-text">
@@ -5026,43 +5124,7 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="heading">
-            <h3>12 month lost to follow-up</h3>
-            <div class="info">
-              <div class="info-hover-text">
-                <p>
-                  <span>Numerator:</span> Patients with no visit in the past 12
-                  months
-                </p>
-                <p>
-                  <span>Denominator:</span> Registered patients with diabetes.
-                  Dead patients (60) are excluded.
-                </p>
-              </div>
-            </div>
-            <p>Patients with diabetes with no visit in the past 12 months</p>
-          </div>
-          <div class="body">
-            <div class="figures">
-              <p class="large-num twelve-month-ltfu">15%</p>
-              <div class="detail">
-                <p>600 patients with no visit from Aug-2023 to Jul-2024</p>
-                <p class="text-grey">
-                  of
-                  <span class="registrations"
-                    >4,100 cumulative registered patients</span
-                  >
-                </p>
-              </div>
-            </div>
-            <div class="chart">
-              <canvas id="dmltfu12months"></canvas>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
+        <div class="card col-span-2">
           <div class="heading">
             <h3>Diabetes treatment cascade</h3>
             <p>
@@ -5131,6 +5193,73 @@
                   Patients with blood sugar controlled
                 </p>
               </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill bp-controlled-dark-bg"
+                    style="height: 2%"
+                  >
+                    <div class="coverage-number bp-controlled-dark">2%</div>
+                  </div>
+                </div>
+                <p>1,441</p>
+                <p class="text-grey label-small">
+                  Patients with controlled BP &lt;130/80
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill"
+                    style="height: 4%; background: #666666"
+                  >
+                    <div
+                      class="coverage-number bp-controlled"
+                      style="color: #666666"
+                    >
+                      4%
+                    </div>
+                  </div>
+                </div>
+                <p>2,300</p>
+                <p class="text-grey label-small">Patients prescribed statins</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="heading">
+            <h3>12 month lost to follow-up</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients with no visit in the past 12
+                  months
+                </p>
+                <p>
+                  <span>Denominator:</span> Registered patients with diabetes.
+                  Dead patients (60) are excluded.
+                </p>
+              </div>
+            </div>
+            <p>Patients with diabetes with no visit in the past 12 months</p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <p class="large-num twelve-month-ltfu">15%</p>
+              <div class="detail">
+                <p>600 patients with no visit from Aug-2023 to Jul-2024</p>
+                <p class="text-grey">
+                  of
+                  <span class="registrations"
+                    >4,100 cumulative registered patients</span
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="dmltfu12months"></canvas>
             </div>
           </div>
         </div>
@@ -5154,47 +5283,6 @@
             </div>
             <div class="chart">
               <canvas id="dmscreenings"></canvas>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="heading">
-            <h3>Patients prescribed statins</h3>
-            <div class="info">
-              <div class="info-hover-text">
-                <p>
-                  <span>Numerator:</span> Patients from the denominator who were
-                  prescribed statins at their most recent visit
-                </p>
-                <p>
-                  <span>Denominator:</span> Registered patients &ge;40 years old
-                  with diabetes with at least 1 visit in the past 12 months.
-                  Dead patients (60) and 12 month lost to follow-up patients
-                  (600) are excluded.
-                </p>
-              </div>
-            </div>
-            <p>
-              Patients under care for diabetes &ge;40 years old who were
-              prescribed statins at latest visit in the past 12 months
-            </p>
-          </div>
-          <div class="body">
-            <div class="figures">
-              <p class="large-num">66%</p>
-              <div class="detail">
-                <p>
-                  2,300 patients prescribed statins at latest visit in past 12
-                  months
-                </p>
-                <p class="text-grey">
-                  of
-                  <span class="under-care">3,500 patients under care</span>
-                </p>
-              </div>
-            </div>
-            <div class="chart">
-              <canvas id="dmstatins"></canvas>
             </div>
           </div>
         </div>

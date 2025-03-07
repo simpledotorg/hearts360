@@ -787,8 +787,14 @@ table {
 .bp-controlled {
   color: #3bb231;
 }
+.bp-controlled-dark {
+  color: #096301;
+}
 .bp-controlled-bg {
   background: #3bb231;
+}
+.bp-controlled-dark-bg {
+  background: #096301;
 }
 
 .bp-uncontrolled {
