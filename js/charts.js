@@ -1197,6 +1197,75 @@ if (comorbidControlledCanvas) {
   createChart(comorbidControlledCanvas, comorbidControlledConfig);
 }
 
+// Diabetes controlled BP chart
+const dmBPControlledData = {
+  labels: [
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
+  ],
+  datasets: [
+    {
+      label: "BP controlled <140/90",
+      data: [
+        26, 28, 31, 30, 30, 32, 36, 38, 39, 41, 40, 42, 45, 44, 45, 47, 50, 49,
+      ],
+      borderColor: "#3BB231",
+      backgroundColor: "transparent",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+    {
+      label: "BP controlled <130/80",
+      data: [
+        9, 11, 13, 16, 17, 20, 18, 24, 25, 26, 26, 25, 27, 29, 32, 30, 35, 38,
+      ],
+      borderColor: "#096301",
+      backgroundColor: "transparent",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+
+const dmBPControlledConfig = baseLineChartConfig();
+dmBPControlledConfig.data = dmBPControlledData;
+dmBPControlledConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+dmBPControlledConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
+const dmBPControlledCanvas = document.getElementById("dmBpControlled");
+if (dmBPControlledCanvas) {
+  createChart(dmBPControlledCanvas, dmBPControlledConfig);
+}
+
 // Diabetes drug stock
 
 const dmDrugStockData = {

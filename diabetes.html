@@ -4922,7 +4922,7 @@
           <h3>DM treatment outcomes</h3>
 
           <p>
-            Outcomes for 3,500 patients under care (registered before
+            Outcomes for 3,380 patients under care (registered before
             1-May-2024) between 1-May-2024 to 31-Jul-2024
           </p>
 
@@ -4934,7 +4934,7 @@
                 </h4>
                 <p class="large-num bp-controlled">20%</p>
                 <div class="detail">
-                  <p>700 patients with FBS &lt;126 mg/dl or HbA1c &lt;7%</p>
+                  <p>676 patients with FBS &lt;126 mg/dl or HbA1c &lt;7%</p>
                 </div>
               </div>
               <div class="chart">
@@ -4949,11 +4949,11 @@
                 <!--p class="large-num bp-uncontrolled">46%</p-->
                 <div class="detail">
                   <p style="padding-top: 0.8rem">
-                    <b class="bp-uncontrolled">41%</b> &nbsp; 1,435 patients
+                    <b class="bp-uncontrolled">41%</b> &nbsp; 1,386 patients
                     with FBS 126-199 mg/dL or HbA1c 7-8.9%
                   </p>
-                  <p style="padding-top: 0.8rem">
-                    <b class="bp-uncontrolled-dark">17%</b> &nbsp; 595 patients
+                  <p>
+                    <b class="bp-uncontrolled-dark">17%</b> &nbsp; 574 patients
                     with FBS &ge;200 mg/dL or HbA1c &ge;9%
                   </p>
                   <!--p><b class="bp-uncontrolled">10%</b> &nbsp; 350 patients with BS &lt;200 mg/dL in  past 3 months</p-->
@@ -4968,7 +4968,7 @@
                 <h4 class="three-month-ltfu">No visit in past 3 months</h4>
                 <p class="large-num three-month-ltfu">22%</p>
                 <div class="detail">
-                  <p>770 patients with no visit</p>
+                  <p>744 patients with no visit</p>
                 </div>
               </div>
               <div class="chart">
@@ -4980,6 +4980,97 @@
       </div>
 
       <div class="columns-3">
+        <div class="card">
+          <div class="heading">
+            <h3>DM patients with controlled BP</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients with controlled BP at their
+                  latest visit in the past 3 months.
+                </p>
+                <p>
+                  <span>Denominator:</span> Patients under care with diabetes,
+                  registered before the past 3 months. Dead patients (60) and 12
+                  month lost to follow-up patients (600) are excluded.
+                </p>
+              </div>
+            </div>
+            <p>
+              Patients under care for diabetes with controlled BP at their
+              latest visit in the past 3 months
+            </p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <div class="detail">
+                <p>
+                  <b class="bp-controlled">48%</b> &nbsp; 1,622 patients with BP
+                  &lt;140/90
+                </p>
+                <p>
+                  <b class="bp-controlled-dark">38%</b> &nbsp; 1,284 patients
+                  with BP &lt;130/80
+                </p>
+                <p class="text-grey">
+                  of 3,380 patients under care (registered before 1-May-2024)
+                </p>
+                <!-- <p class="large-num bp-controlled">50%</p>
+                <p>1,000 patients with BP &lt;140/90</p>
+                <p class="text-grey">
+                  of
+                  <span
+                    >3,500 patients with both hypertension and diabetes</span
+                  >
+                </p>
+                -->
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="dmBpControlled"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="heading">
+            <h3>DM patients prescribed statins</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients from the denominator who were
+                  prescribed statins at their most recent visit
+                </p>
+                <p>
+                  <span>Denominator:</span> Registered patients &ge;40 years old
+                  with diabetes with at least 1 visit in the past 12 months.
+                  Dead patients (60) and 12 month lost to follow-up patients
+                  (600) are excluded.
+                </p>
+              </div>
+            </div>
+            <p>
+              Patients under care for diabetes &ge;40 years old who were
+              prescribed statins at latest visit in the past 12 months
+            </p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <p class="large-num">66%</p>
+              <div class="detail">
+                <p>2,300 patients prescribed statins</p>
+                <p class="text-grey">
+                  of
+                  <span class="under-care">3,500 patients under care</span>
+                </p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="dmstatins"></canvas>
+            </div>
+          </div>
+        </div>
+
         <div class="card">
           <div class="heading">
             <h3>Patients under care</h3>
@@ -5026,6 +5117,115 @@
           </div>
         </div>
 
+        <div class="card col-span-2">
+          <div class="heading">
+            <h3>Diabetes treatment cascade</h3>
+            <p>
+              Estimated adults (&gt;30) in River District with diabetes who are
+              registered, under care, and controlled.
+            </p>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  Estimated adult (&gt;30) population with diabetes is derived
+                  from a STEPS Community Survey conducted in 2022.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="coverage">
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div class="coverage-bar-fill" style="height: 100%">
+                    <div class="coverage-estimated">100%</div>
+                  </div>
+                </div>
+                <p>60,800</p>
+                <p class="text-grey label-small dm-label-small">
+                  Estimated people with diabetes
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill registrations-bg"
+                    style="height: 7%"
+                  >
+                    <p class="coverage-number registrations">7%</p>
+                  </div>
+                </div>
+                <p>4,100</p>
+                <p class="text-grey label-small dm-label-small">
+                  Cumulative registered patients
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill under-care-bg"
+                    style="height: 6%"
+                  >
+                    <p class="coverage-number under-care">6%</p>
+                  </div>
+                </div>
+                <p>3,500</p>
+                <p class="text-grey label-small dm-label-small">
+                  Patients under care
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill bp-controlled-bg"
+                    style="height: 1%"
+                  >
+                    <p class="coverage-number bp-controlled">1%</p>
+                  </div>
+                </div>
+                <p>676</p>
+                <p class="text-grey label-small dm-label-small">
+                  Patients with blood sugar controlled
+                </p>
+              </div>
+              <div class="coverage-divider"></div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill bp-controlled-dark-bg"
+                    style="height: 2%"
+                  >
+                    <p class="coverage-number bp-controlled-dark">2%</p>
+                  </div>
+                </div>
+                <p>1,284</p>
+                <p class="text-grey label-small dm-label-small">
+                  Patients with controlled BP &lt;130/80
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill"
+                    style="height: 4%; background: #666666"
+                  >
+                    <p
+                      class="coverage-number bp-controlled"
+                      style="color: #666666"
+                    >
+                      4%
+                    </p>
+                  </div>
+                </div>
+                <p>2,300</p>
+                <p class="text-grey label-small dm-label-small">
+                  Patients prescribed statins
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="card">
           <div class="heading">
             <h3>12 month lost to follow-up</h3>
@@ -5064,79 +5264,6 @@
 
         <div class="card">
           <div class="heading">
-            <h3>Diabetes treatment cascade</h3>
-            <p>
-              Estimated adults (&gt;30) in River District with diabetes who are
-              registered, under care, and controlled.
-            </p>
-            <div class="info">
-              <div class="info-hover-text">
-                <p>
-                  Estimated adult (&gt;30) population with diabetes is derived
-                  from a STEPS Community Survey conducted in 2022.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="body">
-            <div class="coverage">
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div class="coverage-bar-fill" style="height: 100%">
-                    <div class="coverage-estimated">100%</div>
-                  </div>
-                </div>
-                <p>60,800</p>
-                <p class="text-grey label-small">
-                  Estimated people with diabetes
-                </p>
-              </div>
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div
-                    class="coverage-bar-fill registrations-bg"
-                    style="height: 7%"
-                  >
-                    <div class="coverage-number registrations">7%</div>
-                  </div>
-                </div>
-                <p>4,100</p>
-                <p class="text-grey label-small">
-                  Cumulative registered patients
-                </p>
-              </div>
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div
-                    class="coverage-bar-fill under-care-bg"
-                    style="height: 6%"
-                  >
-                    <div class="coverage-number under-care">6%</div>
-                  </div>
-                </div>
-                <p>3,500</p>
-                <p class="text-grey label-small">Patients under care</p>
-              </div>
-              <div class="coverage-column">
-                <div class="coverage-bar">
-                  <div
-                    class="coverage-bar-fill bp-controlled-bg"
-                    style="height: 1%"
-                  >
-                    <div class="coverage-number bp-controlled">1%</div>
-                  </div>
-                </div>
-                <p>700</p>
-                <p class="text-grey label-small">
-                  Patients with blood sugar controlled
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="heading">
             <h3>Opportunistic screening</h3>
             <p>% of estimated adult OPD patients screened for diabetes</p>
           </div>
@@ -5154,47 +5281,6 @@
             </div>
             <div class="chart">
               <canvas id="dmscreenings"></canvas>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="heading">
-            <h3>Patients prescribed statins</h3>
-            <div class="info">
-              <div class="info-hover-text">
-                <p>
-                  <span>Numerator:</span> Patients from the denominator who were
-                  prescribed statins at their most recent visit
-                </p>
-                <p>
-                  <span>Denominator:</span> Registered patients &ge;40 years old
-                  with diabetes with at least 1 visit in the past 12 months.
-                  Dead patients (60) and 12 month lost to follow-up patients
-                  (600) are excluded.
-                </p>
-              </div>
-            </div>
-            <p>
-              Patients under care for diabetes &ge;40 years old who were
-              prescribed statins at latest visit in the past 12 months
-            </p>
-          </div>
-          <div class="body">
-            <div class="figures">
-              <p class="large-num">66%</p>
-              <div class="detail">
-                <p>
-                  2,300 patients prescribed statins at latest visit in past 12
-                  months
-                </p>
-                <p class="text-grey">
-                  of
-                  <span class="under-care">3,500 patients under care</span>
-                </p>
-              </div>
-            </div>
-            <div class="chart">
-              <canvas id="dmstatins"></canvas>
             </div>
           </div>
         </div>
@@ -5268,13 +5354,13 @@
                   <td class="number">50</td>
                   <td class="number">2,300</td>
                   <td class="bold">66%</td>
-                  <td class="number">700</td>
+                  <td class="number">676</td>
                   <td class="bp-controlled bold">20%</td>
-                  <td class="number">1,425</td>
+                  <td class="number">1,386</td>
                   <td class="bp-uncontrolled bold">41%</td>
-                  <td class="number">595</td>
+                  <td class="number">574</td>
                   <td class="bp-uncontrolled-dark bold">17%</td>
-                  <td class="number">770</td>
+                  <td class="number">744</td>
                   <td class="three-month-ltfu bold">22%</td>
                 </tr>
                 <tr>
@@ -5298,13 +5384,13 @@
                   <td class="number">10</td>
                   <td class="number">572</td>
                   <td class="bold">52%</td>
-                  <td class="number">286</td>
+                  <td class="number">256</td>
                   <td class="bp-controlled bold">26%</td>
-                  <td class="number">440</td>
+                  <td class="number">387</td>
                   <td class="bp-uncontrolled bold">40%</td>
-                  <td class="number">176</td>
+                  <td class="number">150</td>
                   <td class="bp-uncontrolled-dark bold">60%</td>
-                  <td class="number">198</td>
+                  <td class="number">165</td>
                   <td class="three-month-ltfu bold">18%</td>
                 </tr>
                 <tr>

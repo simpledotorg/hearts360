@@ -724,11 +724,6 @@ table {
   text-align: right;
 }
 
-.label-small {
-  font-size: 0.8rem;
-  line-height: 1.2;
-}
-
 .coverage {
   display: flex;
   margin-top: 32px;
@@ -738,9 +733,33 @@ table {
   padding: 2px 8px;
 }
 
+.label-small {
+  font-size: 0.8rem;
+  line-height: 1.2;
+
+  &.dm-label-small {
+    @media screen and (max-width: 556px) {
+      font-size: 0.66rem;
+    }
+  }
+}
+
 .coverage-column {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   flex: 1;
+}
+
+.coverage-divider {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  width: 8px;
+  flex: 0 0 auto;
+  background: repeating-linear-gradient(
+    45deg,
+    #eee,
+    #eee 2px,
+    #ffffff 0px,
+    #ffffff 4px
+  );
 }
 
 .coverage-bar {
@@ -761,8 +780,10 @@ table {
 
 .coverage-number {
   position: absolute;
-  top: -1.75em;
+  top: -4px;
+  transform: translateY(-100%);
   padding-left: 8px;
+  /* padding-bottom: 16px; */
 }
 
 .coverage-estimated {
@@ -787,8 +808,14 @@ table {
 .bp-controlled {
   color: #3bb231;
 }
+.bp-controlled-dark {
+  color: #096301;
+}
 .bp-controlled-bg {
   background: #3bb231;
+}
+.bp-controlled-dark-bg {
+  background: #096301;
 }
 
 .bp-uncontrolled {
