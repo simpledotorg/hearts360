@@ -33,6 +33,10 @@ Data that shows how much of a region's population has lowered blood pressure is 
 
 Adding data on drug stock and functioning BP devices helps round out the dashboard to make it even more useful.
 
+### Overdue patient data
+
+30-60% of patients miss their scheduled visits each month. Including scheduled appointment data helps track patients who did not follow-up and enables patient outreach.
+
 ---
 
 # Developer guide<!-- omit in toc -->
@@ -579,6 +583,14 @@ After these queries have been adapted to a system, it is a good practice to chec
 If your **PATIENTS** and **EVENTS** tables are structured similar to the database example, it should be possible to adapt the queries by changing only the subqueries.
 
 This is the easiest way to produce valid queries that will work for your data.
+
+---
+
+## Other feature requirements
+
+Links to documents outlining the purpose, functionality and implementation of essential HEARTS360 features:
+
+- Overdue patients list - [Product requirements document](https://docs.google.com/document/d/1ThPhq6Wf6WtxQX3NCB_5s9X15ySJw4-ZMh03RzIma4Y/edit?usp=sharing) (link)
 
 ---
 
