@@ -4916,68 +4916,7 @@
         <h1>River District</h1>
         <div class="date-updated">Data last updated: 5-Aug-2024</div>
       </div>
-
-      <div class="card">
-        <div class="heading">
-          <h3>DM treatment outcomes</h3>
-
-          <p>
-            Outcomes for 3,380 patients under care (registered before
-            1-May-2024) between 1-May-2024 to 31-Jul-2024
-          </p>
-
-          <div class="body columns-3">
-            <div class="inner-card">
-              <div class="figures">
-                <h4 class="bp-controlled">
-                  Blood sugar controlled at latest visit in past 3 months
-                </h4>
-                <p class="large-num bp-controlled">20%</p>
-                <div class="detail">
-                  <p>676 patients with FBS &lt;126 mg/dl or HbA1c &lt;7%</p>
-                </div>
-              </div>
-              <div class="chart">
-                <canvas id="dmcontrolled"></canvas>
-              </div>
-            </div>
-            <div class="inner-card">
-              <div class="figures">
-                <h4 class="bp-uncontrolled">
-                  Blood sugar not controlled at latest visit in past 3 months
-                </h4>
-                <!--p class="large-num bp-uncontrolled">46%</p-->
-                <div class="detail">
-                  <p style="padding-top: 0.8rem">
-                    <b class="bp-uncontrolled">41%</b> &nbsp; 1,386 patients
-                    with FBS 126-199 mg/dL or HbA1c 7-8.9%
-                  </p>
-                  <p>
-                    <b class="bp-uncontrolled-dark">17%</b> &nbsp; 574 patients
-                    with FBS &ge;200 mg/dL or HbA1c &ge;9%
-                  </p>
-                  <!--p><b class="bp-uncontrolled">10%</b> &nbsp; 350 patients with BS &lt;200 mg/dL in  past 3 months</p-->
-                </div>
-              </div>
-              <div class="chart">
-                <canvas id="dmuncontrolled"></canvas>
-              </div>
-            </div>
-            <div class="inner-card">
-              <div class="figures">
-                <h4 class="three-month-ltfu">No visit in past 3 months</h4>
-                <p class="large-num three-month-ltfu">22%</p>
-                <div class="detail">
-                  <p>744 patients with no visit</p>
-                </div>
-              </div>
-              <div class="chart">
-                <canvas id="dmLtfu3Month"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2 class="columns-header">1. Cardiovascular disease + DM indicators</h2>
 
       <div class="columns-3">
         <div class="card">
@@ -5061,7 +5000,71 @@
             </div>
           </div>
         </div>
+      </div>
+      <h2 class="columns-header spacer">2. Program management indicators</h2>
+      <div class="card">
+        <div class="heading">
+          <h3>DM treatment outcomes</h3>
 
+          <p>
+            Outcomes for 3,380 patients under care (registered before
+            1-May-2024) between 1-May-2024 to 31-Jul-2024
+          </p>
+
+          <div class="body columns-3">
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="bp-controlled">
+                  Blood sugar controlled at latest visit in past 3 months
+                </h4>
+                <p class="large-num bp-controlled">20%</p>
+                <div class="detail">
+                  <p>676 patients with FBS &lt;126 mg/dl or HbA1c &lt;7%</p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="dmcontrolled"></canvas>
+              </div>
+            </div>
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="bp-uncontrolled">
+                  Blood sugar not controlled at latest visit in past 3 months
+                </h4>
+                <!--p class="large-num bp-uncontrolled">46%</p-->
+                <div class="detail">
+                  <p style="padding-top: 0.8rem">
+                    <b class="bp-uncontrolled">41%</b> &nbsp; 1,386 patients
+                    with FBS 126-199 mg/dL or HbA1c 7-8.9%
+                  </p>
+                  <p>
+                    <b class="bp-uncontrolled-dark">17%</b> &nbsp; 574 patients
+                    with FBS &ge;200 mg/dL or HbA1c &ge;9%
+                  </p>
+                  <!--p><b class="bp-uncontrolled">10%</b> &nbsp; 350 patients with BS &lt;200 mg/dL in  past 3 months</p-->
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="dmuncontrolled"></canvas>
+              </div>
+            </div>
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="three-month-ltfu">No visit in past 3 months</h4>
+                <p class="large-num three-month-ltfu">22%</p>
+                <div class="detail">
+                  <p>744 patients with no visit</p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="dmLtfu3Month"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns-3">
         <div class="card">
           <div class="heading">
             <h3>Patients under care</h3>
@@ -5108,6 +5111,64 @@
           </div>
         </div>
 
+        <div class="card">
+          <div class="heading">
+            <h3>12 month lost to follow-up</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients with no visit in the past 12
+                  months
+                </p>
+                <p>
+                  <span>Denominator:</span> Registered patients with diabetes.
+                  Dead patients (60) are excluded.
+                </p>
+              </div>
+            </div>
+            <p>Patients with diabetes with no visit in the past 12 months</p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <p class="large-num twelve-month-ltfu">15%</p>
+              <div class="detail">
+                <p>600 patients with no visit from Aug-2023 to Jul-2024</p>
+                <p class="text-grey">
+                  of
+                  <span class="registrations"
+                    >4,100 cumulative registered patients</span
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="dmltfu12months"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="heading">
+            <h3>Opportunistic screening</h3>
+            <p>% of estimated adult OPD patients screened for diabetes</p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <div>
+                <p class="large-num" style="color: #34aea0">16%</p>
+                <div class="detail">
+                  <p>4,800 individuals screened for diabetes in Jul-2024</p>
+                  <p class="text-grey">
+                    of ~30,000 estimated OPD patients &gt;18 years
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="dmscreenings"></canvas>
+            </div>
+          </div>
+        </div>
         <div class="card col-span-2">
           <div class="heading">
             <h3>Diabetes treatment cascade</h3>
@@ -5213,65 +5274,6 @@
                   Patients prescribed statins
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="heading">
-            <h3>12 month lost to follow-up</h3>
-            <div class="info">
-              <div class="info-hover-text">
-                <p>
-                  <span>Numerator:</span> Patients with no visit in the past 12
-                  months
-                </p>
-                <p>
-                  <span>Denominator:</span> Registered patients with diabetes.
-                  Dead patients (60) are excluded.
-                </p>
-              </div>
-            </div>
-            <p>Patients with diabetes with no visit in the past 12 months</p>
-          </div>
-          <div class="body">
-            <div class="figures">
-              <p class="large-num twelve-month-ltfu">15%</p>
-              <div class="detail">
-                <p>600 patients with no visit from Aug-2023 to Jul-2024</p>
-                <p class="text-grey">
-                  of
-                  <span class="registrations"
-                    >4,100 cumulative registered patients</span
-                  >
-                </p>
-              </div>
-            </div>
-            <div class="chart">
-              <canvas id="dmltfu12months"></canvas>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="heading">
-            <h3>Opportunistic screening</h3>
-            <p>% of estimated adult OPD patients screened for diabetes</p>
-          </div>
-          <div class="body">
-            <div class="figures">
-              <div>
-                <p class="large-num" style="color: #34aea0">16%</p>
-                <div class="detail">
-                  <p>4,800 individuals screened for diabetes in Jul-2024</p>
-                  <p class="text-grey">
-                    of ~30,000 estimated OPD patients &gt;18 years
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="chart">
-              <canvas id="dmscreenings"></canvas>
             </div>
           </div>
         </div>
@@ -5778,6 +5780,7 @@
           </div>
         </div>
       </div>
+      <h2 class="columns-header spacer">3. Inventory indicators</h2>
 
       <div class="columns-3">
         <div class="card">
@@ -6059,9 +6062,7 @@
                   <tr>
                     <th class="link"><a href="#">CHC Young Potato</a></th>
                     <td>Vineland County</td>
-                    <td class="number expiry">
-                      <p class="expiry-text">365</p>
-                    </td>
+                    <td class="number expiry expiry-text">365</td>
                     <td class="number warning">12</td>
                     <td class="">Yes</td>
                     <td class="warning">No</td>
@@ -6231,9 +6232,8 @@
                   <tr>
                     <th class="link"><a href="#">PHC Idaho Hills</a></th>
                     <td>Vineland County</td>
-                    <td class="number expiry">
-                      <p class="expiry-text">365</p>
-                    </td>
+                    <td class="number expiry expiry-text">365</td>
+
                     <td class="number warning">12</td>
                     <td class="">Yes</td>
                     <td class="warning">No</td>
@@ -6376,7 +6376,7 @@
           </div>
         </div>
       </div>
-
+      <h2 class="columns-header spacer">4. Comorbidity indicators</h2>
       <div class="columns-3">
         <div class="card col-span-2" style="justify-content: start">
           <div class="heading">
@@ -6432,6 +6432,7 @@
             </div>
           </div>
         </div>
+
         <div class="card">
           <h3>Comorbid patients with BP controlled</h3>
           <p>
@@ -6449,7 +6450,7 @@
           </div>
         </div>
       </div>
-
+      <h2 class="columns-header spacer">5. Age and sex</h2>
       <div class="card">
         <div class="heading">
           <h3>Age and sex of patients under care for diabetes</h3>
