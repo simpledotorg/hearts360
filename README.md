@@ -77,7 +77,7 @@ To help with patient management; differentiate between patients diagnosed with h
 
 ## Patients “assigned” to a facility
 
-“Assign” every patient to a specific facility for continuity of care and monitoring patient care. A patient may register at a Puskesmas and visit a Pustu at their next visit. They are considered the same patient with multiple visits and only “assigned” to one of those facilities. 
+Assign each patient to a primary facility responsible for their ongoing care, even if they receive services at other facilities. For example, a patient may register at a district hospital but later visit a community clinic. These visits should be linked to the same patient record to ensure continuity of care.
 
 💡 Useful to monitor a patient’s immunisation, maternal health, infectious disease treatment.
 
