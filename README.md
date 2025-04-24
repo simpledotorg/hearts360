@@ -677,14 +677,6 @@ This is the easiest way to produce valid queries that will work for your data.
 
 ---
 
-## Other feature requirements
-
-Links to documents outlining the purpose, functionality and implementation of essential HEARTS360 features:
-
-- Overdue patients list - [Product requirements document](https://docs.google.com/document/d/1ThPhq6Wf6WtxQX3NCB_5s9X15ySJw4-ZMh03RzIma4Y/edit?usp=sharing) (link)
-
----
-
 ## License <!-- omit in toc -->
 
 The generic dashboard is licensed under an MIT License. Please take this code and use it for your own project in any way.
