@@ -1,18 +1,109 @@
-# HEARTS360 <!-- omit in toc -->
+# Guidelines for digital systems managing non-communicable disease programs <!-- omit in toc -->
+
+EHRs that factor in the following key features can be used by program managers to monitor large-scale non-communicable disease (NCD) programs and are optimized for use in busy primary care facilities that manage thousands of patients with hypertension and diabetes. These conditions require long-term monitoring, team-based care, and data-driven decision-making — which a good EHR can support.
+
+Most of the key features of EHRs for managing NCD programs effectively are essential for the management of patients in other health programs in primary care (e.g. in an immunisation program, a list of overdue children who missed a vaccination appointment).
+
+📄 [Download the 1-pager summary](https://docs.google.com/document/d/1yV35dgjnnyYvqNZDXQdQjkZrOVuQ57iMI2QoFHFT7rQ/edit?tab=t.0#heading=h.op6l78a503vp)
+
+---
+
+## 🔑 Key Features for EHRs for Hypertension and Diabetes <!-- omit in toc -->
+
+1. **[Data for quality improvement using WHO indicators / HEARTS360 Dashboard](#data-for-quality-improvement-using-who-indicators--hearts360-dashboard)**
+2. **[Overdue patient line lists](#overdue-patient-line-lists)**
+3. **[Longitudinal patient records](#longitudinal-patient-records)**
+4. **[Consistent patient ID](#consistent-patient-id)**
+5. **[Clear patient diagnosis](#clear-patient-diagnosis)**
+6. **[Patients “assigned” to a facility](#patients-assigned-to-a-facility)**
+7. **[Usability for healthcare workers](#usability-for-healthcare-workers)**
+8. **[Custom report generation](#custom-report-generation)**
+
+---
+
+## Data for quality improvement using WHO indicators / HEARTS360 Dashboard
 
 [Hearts360.org](https://hearts360.org)
 
 [![hypertension dashboard](hearts-360-dashboard.png)](https://simpledotorg.github.io/hearts360/)
 
-## About <!-- omit in toc -->
-
 This dashboard is a template that can be used by any team working on a hypertension control project. Our team has learned many lessons while developing the [Simple.org](https://simple.org/) project and we want to share our best practices with the world. A similar dashboard has been used in India, Bangladesh, Sri Lanka, Ethiopia, and Nigeria to successfully manage over 4 million patients with hypertension.
 
 Please feel free to copy any of the code or ideas that you see in this hypertension dashboard (see [open source license](#license) open source license below).
 
-## See a live example <!-- omit in toc -->
+📺 [View a live example](https://hearts360.org)
 
-[View a live example](https://hearts360.org)
+---
+
+## Overdue patient line lists
+
+Get patients to return to care by creating automated line lists of patients that have missed their scheduled follow-up visit and include their phone numbers. Collecting patient consent during registration to call or send reminder messages is important.
+
+💡 Reach out to patients overdue for immunisation or antenatal care appointments.
+
+📄 [Link to PRD](https://docs.google.com/document/d/1ThPhq6Wf6WtxQX3NCB_5s9X15ySJw4-ZMh03RzIma4Y/edit?usp=sharing)
+
+---
+
+## Longitudinal patient records
+
+Maintain a single patient record across multiple visits. At each follow-up, record only a minimum dataset—blood pressure, blood glucose, medications and follow-up appointment date. This data is sufficient to manage patients over time and monitor a large program. 
+
+💡 Scheduling follow-up appointments by default is useful to monitor follow-up care for antenatal care, tuberculosis, immunisation and other health programs.
+
+📄 [Link to PRD](https://docs.google.com/document/d/1JmH3y-6Q2VG-IHpEA2QnlUMivWGpN0ceJziM7LyYtwQ/edit?usp=sharing)
+
+---
+
+## Consistent patient ID
+
+Use a consistent patient ID, National Health ID, to identify and track a patient across facilities. At a minimum, within the same software system, the patient has a single longitudinal health record that follows the patient regardless where they seek care. 
+
+💡 Useful for all health programs for managing a person’s health from young to elderly.
+
+📄 PRD coming soon
+
+---
+
+## Clear patient diagnosis
+
+To help with patient management; differentiate between patients diagnosed with hypertension from those screened with an elevated BP reading (e.g. specific ICD-10 codes). This enables program managers to trust the data and effectively monitor hypertension indicators (e.g. BP controlled monitoring for patients diagnosed with hypertension).
+
+💡 Infectious disease programs can distinguish between suspected and confirmed cases.
+
+📄 [Link to PRD](https://docs.google.com/document/d/1JmH3y-6Q2VG-IHpEA2QnlUMivWGpN0ceJziM7LyYtwQ/edit?usp=sharing)
+
+---
+
+## Patients “assigned” to a facility
+
+“Assign” every patient to a specific facility for continuity of care and monitoring patient care. A patient may register at a Puskesmas and visit a Pustu at their next visit. They are considered the same patient with multiple visits and only “assigned” to one of those facilities. 
+
+💡 Useful to monitor a patient’s immunisation, maternal health, infectious disease treatment.
+
+📄 PRD coming soon
+
+---
+
+## Usability for healthcare workers 
+
+EHRs must be fast and simple to use during clinical care. A healthcare worker should be able to enrol a new Hypertension patient in under 90 seconds and record a follow-up visit in under 45 seconds. Longitudinal health records (incl. BP history and medications) should be accessible from the main patient profile.
+
+💡 EHRs that are fast and easy to use during clinical care improves program outcomes.
+
+📄 PRD coming soon
+
+---
+
+## Custom report generation
+
+EHRs that support custom reports are useful to drive further insights from the dashboard. Reports that can be downloaded in a simple format helps program managers to assess trends.
+
+💡 Helps managers spot trends and respond quickly.
+
+📄 PRD coming soon
+
+---
 
 ## Data & definitions <!-- omit in toc -->
 
