@@ -5592,6 +5592,119 @@
           </div>
         </div>
       </div>
+      <div class="columns-3">
+        <div class="card">
+          <div class="heading">
+            <h3>Overdue patients</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients that a overdue on the 1st of
+                  the month.
+                </p>
+                <p>
+                  <span>Denominator:</span> Patients under care. Dead patients
+                  (205) and 12 months lost to follow-up (1,562) are excluded.
+                </p>
+                <p>
+                  <span>Overdue patient:</span> Patient with a scheduled visit
+                  date which has passed with no visit.
+                </p>
+              </div>
+            </div>
+            <p>Patients that are overdue at the start of the month.</p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <div>
+                <p class="large-num overdue">26%</p>
+                <div class="detail">
+                  <p>2,800 patients were overdue at the start of Aug-2024</p>
+                  <p class="text-grey">
+                    of
+                    <span class="under-care">10,800 patients under care</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="overdue"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="heading">
+            <h3>Overdue patients contacted</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients with no visit in the past 12
+                  months
+                </p>
+                <p>
+                  <span>Denominator:</span> Registered patients with
+                  hypertension. Dead patients (205) are excluded.
+                </p>
+              </div>
+            </div>
+            <p>Overdue patients contacted during the month.</p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <p class="large-num overdue-contacted">42%</p>
+              <div class="detail">
+                <p>1,176 patients contacted in Aug-2024</p>
+                <p class="text-grey">
+                  of
+                  <span class="overdue">2,800 overdue patients</span>
+                </p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="overdueContacted"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="heading">
+            <h3>Contacted overdue patients that returned to care</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients screened for hypertension
+                  months
+                </p>
+                <p>
+                  <span>Denominator:</span> Approximate adult patients OPD per
+                  month
+                </p>
+              </div>
+            </div>
+            <p>
+              Overdue patients that returned to care within 15 days of being
+              contacted
+            </p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <div>
+                <p class="large-num overdue-returned">58%</p>
+                <div class="detail">
+                  <p>682 patients returned to care within 15 days</p>
+                  <p class="text-grey">
+                    of 1,176 patients contacted during Aug-2024
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="overdueReturned"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <h2 class="columns-header spacer">3. Inventory indicators</h2>
 

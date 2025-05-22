@@ -173,6 +173,241 @@ intersectDataVerticalLine = {
   },
 };
 
+const todayVerticalLinePlugin = {
+  id: "todayVerticalLine",
+  beforeDraw: (chart) => {
+    const ctx = chart.ctx;
+    const chartArea = chart.chartArea;
+
+    // Get the last data point (today's point)
+    const datasets = chart.data.datasets;
+    if (datasets.length === 0 || datasets[0].data.length === 0) return;
+
+    // Find the last data point's x position
+    const meta = chart.getDatasetMeta(0);
+    const lastIndex = meta.data.length - 1;
+    if (lastIndex < 0) return;
+
+    const lastPoint = meta.data[lastIndex];
+    const xPosition = lastPoint.x;
+
+    // Save context state
+    ctx.save();
+
+    // Draw vertical line
+    ctx.beginPath();
+    ctx.moveTo(xPosition, chartArea.top - 4);
+    ctx.lineTo(xPosition, chartArea.bottom);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgba(0,0,0, 0.7)"; // Slightly darker than hover line
+    ctx.stroke();
+
+    // Add "Today" text above the chart
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#444";
+    ctx.font = "11px sans-serif";
+    ctx.fillText("Today", xPosition, chartArea.top - 10);
+
+    // Restore context
+    ctx.restore();
+  },
+};
+
+/**
+ * Chart.js Weekend Highlight Plugin
+ *
+ * This plugin creates diagonal striped patterns for weekend highlights in Chart.js.
+ * You can specify the first Saturday index, and it will calculate all weekends based on that.
+ *
+ * @param {Object} options Configuration options for the plugin
+ * @param {number} options.firstSaturdayIndex Index of the first Saturday in your data points
+ * @param {string} options.backgroundColor Background color for weekend highlights (default: '#f5f5f5')
+ * @param {string} options.stripeColor Stripe color for weekend highlights (default: '#cccccc')
+ * @param {number} options.stripeWidth Width of diagonal stripes (default: 1)
+ * @param {number} options.patternSize Size of the diagonal pattern (default: 10)
+ * @returns {Object} Chart.js plugin object
+ */
+function createWeekendHighlightPlugin(options = {}) {
+  // Default options
+  const defaults = {
+    firstSaturdayIndex: 0,
+    backgroundColor: "#f8f8f8",
+    stripeColor: "#ddd",
+    stripeWidth: 1,
+    patternSize: 15,
+  };
+
+  // Merge defaults with provided options
+  const config = { ...defaults, ...options };
+
+  // Create diagonal stripe pattern
+  const createDiagonalPattern = () => {
+    const canvas = document.createElement("canvas");
+    const patternCtx = canvas.getContext("2d");
+    const patternSize = config.patternSize;
+
+    canvas.width = patternSize;
+    canvas.height = patternSize;
+
+    // Fill background
+    patternCtx.fillStyle = config.backgroundColor;
+    patternCtx.fillRect(0, 0, patternSize, patternSize);
+
+    // Draw diagonal stripes
+    patternCtx.strokeStyle = config.stripeColor;
+    patternCtx.lineWidth = config.stripeWidth;
+
+    // Main diagonal
+    patternCtx.beginPath();
+    patternCtx.moveTo(0, 0);
+    patternCtx.lineTo(patternSize, patternSize);
+    patternCtx.stroke();
+
+    // Top half diagonal
+    patternCtx.beginPath();
+    patternCtx.moveTo(0, patternSize / 2);
+    patternCtx.lineTo(patternSize / 2, patternSize);
+    patternCtx.stroke();
+
+    // Bottom half diagonal
+    patternCtx.beginPath();
+    patternCtx.moveTo(patternSize / 2, 0);
+    patternCtx.lineTo(patternSize, patternSize / 2);
+    patternCtx.stroke();
+
+    return patternCtx.createPattern(canvas, "repeat");
+  };
+
+  // Calculate whether an index is a weekend based on the firstSaturdayIndex
+  const isWeekend = (index) => {
+    // Normalize the index relative to the first Saturday
+    const normalizedIndex = index - config.firstSaturdayIndex;
+    // Get the day of week (0 = Saturday, 1 = Sunday, etc.)
+    const dayOfWeek = normalizedIndex % 7;
+    // Return true if it's Saturday (0) or Sunday (1)
+    return dayOfWeek === 0 || dayOfWeek === 1;
+  };
+
+  // Return the Chart.js plugin definition
+  return {
+    id: "weekendHighlighter",
+
+    beforeDraw: (chart) => {
+      const { ctx, scales } = chart;
+
+      // If we don't have necessary scales, exit early
+      if (!scales.x || !scales.y) return;
+
+      const xAxis = scales.x;
+      const yAxis = scales.y;
+
+      // Get the pattern once (or create it if not already created)
+      const pattern = createDiagonalPattern();
+
+      // For each data point, check if it's a weekend
+      for (let i = 0; i < chart.data.labels.length; i++) {
+        if (isWeekend(i)) {
+          // Calculate the x position and width
+          const x = xAxis.getPixelForValue(i);
+          // If this is the last data point, estimate width based on previous points
+          const nextIndex = i + 1 < chart.data.labels.length ? i + 1 : i;
+          const nextX = xAxis.getPixelForValue(nextIndex);
+          const width =
+            nextIndex === i
+              ? (xAxis.right - xAxis.left) / chart.data.labels.length
+              : nextX - x;
+
+          // Draw the weekend highlight rectangle
+          ctx.save();
+          ctx.fillStyle = pattern;
+          ctx.fillRect(x, yAxis.top, width, yAxis.bottom - yAxis.top);
+          ctx.restore();
+        }
+      }
+    },
+  };
+}
+
+// Example usage:
+/*
+const myChart = new Chart(ctx, {
+  type: 'line',
+  data: { ... },
+  options: { ... },
+  plugins: [
+    createWeekendHighlightPlugin({
+      firstSaturdayIndex: 4  // Specify which data point is the first Saturday
+    })
+  ]
+});
+*/
+
+/**
+ * Distributes a value evenly across weekdays in a period
+ *
+ * @param {number} totalValue - The value to distribute
+ * @param {number} daysBeforeFirstSaturday - Number of days before the first Saturday (0-6)
+ * @param {number} totalDays - Total days in the period
+ * @returns {number} - Value per weekday
+ */
+function distributeValueAcrossWeekdays(
+  totalValue,
+  daysBeforeFirstSaturday,
+  totalDays
+) {
+  // Count weekdays before the first Saturday (only consider Mon-Fri)
+  let weekdaysBefore = 0;
+  for (let i = 0; i < daysBeforeFirstSaturday; i++) {
+    // If current day is not Saturday (6) or Sunday (0)
+    // Note: We're assuming a week starts with Sunday as 0
+    const dayOfWeek = (i + 1) % 7; // +1 because we're counting backward from Saturday
+    if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+      weekdaysBefore++;
+    }
+  }
+
+  // Calculate number of complete weeks (Saturday to Friday) in the period
+  const remainingDays = totalDays - daysBeforeFirstSaturday;
+  const completeWeeks = Math.floor(remainingDays / 7);
+
+  // Each complete week has 5 weekdays
+  const weekdaysInCompleteWeeks = completeWeeks * 5;
+
+  // Count weekdays in the remaining partial week
+  const daysInPartialWeek = remainingDays % 7;
+  let weekdaysInPartialWeek = 0;
+  for (let i = 0; i < daysInPartialWeek; i++) {
+    const dayOfWeek = (i + 6) % 7; // +6 because we start counting from Saturday (6)
+    if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+      weekdaysInPartialWeek++;
+    }
+  }
+
+  // Total number of weekdays
+  const totalWeekdays =
+    weekdaysBefore + weekdaysInCompleteWeeks + weekdaysInPartialWeek;
+
+  // Value per weekday
+  const valuePerWeekday = totalWeekdays > 0 ? totalValue / totalWeekdays : 0;
+
+  return {
+    valuePerWeekday: valuePerWeekday,
+    totalWeekdays: totalWeekdays,
+    breakdown: {
+      weekdaysBefore: weekdaysBefore,
+      weekdaysInCompleteWeeks: weekdaysInCompleteWeeks,
+      weekdaysInPartialWeek: weekdaysInPartialWeek,
+    },
+  };
+}
+
+// Example usage:
+// Distribute $1000 across weekdays where:
+// - 3 days before first Saturday
+// - 14 total days in period
+// const result = distributeValueAcrossWeekdays(1000, 3, 14);
+// console.log(result);
+
 function createChart(ctx, config) {
   new Chart(ctx, config);
 }
@@ -1414,4 +1649,463 @@ patientsProtectedConfig.options.scales.y.ticks.stepSize = 500;
 const patientsProtectedCanvas = document.getElementById("patientsprotected");
 if (patientsProtectedCanvas) {
   createChart(patientsProtectedCanvas, patientsProtectedConfig);
+}
+
+// -- Overdue dashboard
+
+// Overdue: At start of month
+const overdueData = {
+  labels: [
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
+  ],
+  datasets: [
+    {
+      label: "Overdue patients",
+      data: [
+        58, 54, 53, 52, 44, 39, 37, 40, 38, 37, 31, 28, 25, 28, 29, 30, 28, 26,
+      ],
+      borderColor: "#E77215",
+      backgroundColor: "#E7721525",
+      yAxisID: "y",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+    // {
+    //   type: "bar",
+    //   label: "Overdue patients",
+    //   data: [
+    //     5100, 5000, 4600, 4450, 4300, 4123, 4000, 4150, 4200, 4000, 3400, 3000,
+    //     2750, 3000, 3150, 3250, 2980, 2800,
+    //   ],
+    //   borderColor: "#FFE5D0",
+    //   backgroundColor: "#FFE5D0",
+    //   yAxisID: "yMonthlyRegistrations",
+    // },
+  ],
+};
+
+const overdueConfig = baseLineChartConfig();
+overdueConfig.data = overdueData;
+// overdueConfig.options.scales.y.grid = { drawTicks: false };
+// overdueConfig.options.scales.y.ticks.display = false;
+overdueConfig.options.scales.y.ticks.count = 3;
+overdueConfig.options.scales.y.max = 100;
+// overdueConfig.options.scales.y.ticks.stepSize = 6052;
+
+overdueConfig.options.scales.yMonthlyRegistrations = {
+  display: false,
+  beginAtZero: true,
+  max: 1156,
+};
+
+overdueConfig.options.plugins.tooltip.displayColors = true;
+overdueConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
+const overdueCanvas = document.getElementById("overdue");
+if (overdueCanvas) {
+  createChart(overdueCanvas, overdueConfig);
+}
+
+// Overdue: Contacted
+const overdueContactedData = {
+  labels: [
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
+  ],
+  datasets: [
+    {
+      label: "Overdue patients contacted",
+      data: [0, 5, 0, 0, 8, 12, 16, 22, 12, 10, 14, 25, 30, 22, 20, 16, 35, 42],
+      borderColor: "#edbe00",
+      backgroundColor: "#edbe0025",
+      yAxisID: "y",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+    {
+      // label: "Overdue patients",
+      // data: [
+      //   3063, 3716, 3984, 4301, 4903, 5217, 5505, 5678, 5895, 6223, 6438, 6768,
+      //   7146, 7882, 8649, 9648, 10539, 10632,
+      // ],
+      // borderColor: "#edbe00",
+      // backgroundColor: "#edbe0025",
+      // yAxisID: "y",
+      // segment: {
+      //   borderDash: (ctx) =>
+      //     dynamicChartSegementDashed(
+      //       ctx,
+      //       18 // number of data elements
+      //     ),
+      // },
+    },
+    // {
+    //   type: "bar",
+    //   label: "Monthly registrations",
+    //   data: [
+    //     786, 303, 270, 319, 650, 380, 285, 270, 309, 362, 257, 504, 520, 604,
+    //     965, 1156, 1043, 236,
+    //   ],
+    //   borderColor: "#edbe0040",
+    //   backgroundColor: "#edbe0040",
+    //   yAxisID: "overdueCalledType",
+    // },
+    // {
+    //   type: "bar",
+    //   label: "Monthly registrations",
+    //   data: [
+    //     786, 303, 270, 319, 650, 380, 285, 270, 309, 362, 257, 504, 520, 604,
+    //     965, 1156, 1043, 236,
+    //   ],
+    //   borderColor: "#edbe0040",
+    //   backgroundColor: "#edbe0040",
+    //   yAxisID: "overdueCalledType",
+    // },
+  ],
+};
+
+const overdueContactedConfig = baseLineChartConfig();
+overdueContactedConfig.data = overdueContactedData;
+overdueContactedConfig.options.scales.y.grid = { drawTicks: false };
+// overdueContactedConfig.options.scales.y.ticks.display = false;
+// overdueContactedConfig.options.scales.y.ticks.count = 3;
+overdueContactedConfig.options.scales.y.max = 100;
+// overdueContactedConfig.options.scales.y.ticks.stepSize = 6052;
+// overdueContactedConfig.options.scales.y.overdueCalledType = true;
+
+// overdueContactedConfig.options.scales.overdueCalledType = {
+//   display: false,
+//   beginAtZero: true,
+//   max: 1156,
+// };
+
+bpControlledConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+bpControlledConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
+overdueContactedConfig.options.plugins.tooltip.displayColors = true;
+overdueContactedConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
+const overdueContactedCanvas = document.getElementById("overdueContacted");
+if (overdueContactedCanvas) {
+  createChart(overdueContactedCanvas, overdueContactedConfig);
+}
+
+// Overdue: Returned to care
+const overdueReturnedData = {
+  labels: [
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
+  ],
+  datasets: [
+    {
+      label: "Overdue patients",
+      data: [
+        0, 25, 0, 0, 10, 12, 22, 40, 24, 55, 60, 62, 44, 50, 33, 36, 43, 58,
+      ],
+      borderColor: "#5300e0",
+      backgroundColor: "#5300e010",
+      yAxisID: "y",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18, // number of data elements,
+            2
+          ),
+      },
+    },
+  ],
+};
+
+const overdueReturnedConfig = baseLineChartConfig();
+overdueReturnedConfig.data = overdueReturnedData;
+// overdueReturnedConfig.options.scales.y.grid = { drawTicks: false };
+// overdueReturnedConfig.options.scales.y.ticks.display = false;
+// overdueReturnedConfig.options.scales.y.ticks.count = 3;
+// overdueReturnedConfig.options.scales.y.max = 12105;
+// overdueReturnedConfig.options.scales.y.ticks.stepSize = 6052;
+
+overdueReturnedConfig.options.scales.yMonthlyRegistrations = {
+  display: false,
+  beginAtZero: true,
+  max: 1156,
+};
+
+overdueReturnedConfig.options.plugins.tooltip.displayColors = true;
+overdueReturnedConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
+
+bpControlledConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+bpControlledConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
+const overdueReturnedCanvas = document.getElementById("overdueReturned");
+if (overdueReturnedCanvas) {
+  createChart(overdueReturnedCanvas, overdueReturnedConfig);
+}
+
+// burndown chart
+// Overdue: At start of month
+const result = distributeValueAcrossWeekdays(2800, 3, 31);
+console.log(result);
+const dataThing = [2800];
+for (let index = 0; index < 31; index++) {
+  if (index > 0) {
+    console.log(dataThing[index]);
+    console.log(result.valuePerWeekday);
+
+    dataThing.push(dataThing[index] - result.valuePerWeekday);
+  }
+  // dataThing.push(2800 - result.valuePerWeekday);
+}
+console.log(dataThing);
+
+const overdueBurndownData = {
+  labels: [
+    "1-May",
+    "2-May",
+    "3-May",
+    "4-May",
+    "5-May",
+    "6-May",
+    "7-May",
+    "8-May",
+    "9-May",
+    "10-May",
+    "11-May",
+    "12-May",
+    "13-May",
+    "14-May",
+    "15-May",
+    "16-May",
+    "17-May",
+    "18-May",
+    "19-May",
+    "20-May",
+    "21-May",
+    "22-May",
+    "23-May",
+    "24-May",
+    "25-May",
+    "26-May",
+    "27-May",
+    "28-May",
+    "29-May",
+    "30-May",
+    "31-May",
+  ],
+  datasets: [
+    {
+      label: "Patients to contact",
+      data: [
+        2800, 2662, 2589, 2589, 2589, 2466, 2510, 2490, 2241, 2398, 2390, 2382,
+        2245, 2209, 2209, 2209, 2187, 2156, 2142, 2100,
+      ],
+      borderColor: "blue",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+    {
+      label: "Target workflow",
+      data: [
+        2800, 2678, 2557, 2557, 2557, 2434, 2313, 2192, 2070, 1948, 1948, 1948,
+        1826, 1705, 1583, 1461, 1340, 1340, 1340, 1218, 1097, 976, 854, 732,
+        732, 732, 609, 488, 350, 190, 0,
+      ],
+      borderColor: "#888",
+      backgroundColor: "transparent",
+      yAxisID: "y1",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18, // number of data elements
+            18
+          ),
+      },
+    },
+    // {
+    //   type: "bar",
+    //   label: "Monthly registrations",
+    //   data: [
+    //     786, 303, 270, 319, 650, 380, 285, 270, 309, 362, 257, 504, 520, 604,
+    //     965, 1156, 1043, 236,
+    //   ],
+    //   borderColor: "#edbe00",
+    //   backgroundColor: "#edbe00",
+    //   yAxisID: "yMonthlyRegistrations",
+    // },
+  ],
+};
+
+const overdueBurndownConfig = baseLineChartConfig();
+overdueBurndownConfig.data = overdueBurndownData;
+overdueBurndownConfig.options.scales.y.grid = { drawTicks: false };
+overdueBurndownConfig.options.scales.y.ticks.display = false;
+overdueBurndownConfig.options.scales.y.ticks.count = 3;
+overdueBurndownConfig.options.scales.y.max = 2800;
+overdueBurndownConfig.options.scales.y.ticks.stepSize = 700;
+// overdueBurndownConfig.options.scales.y1.ticks.display = false;
+
+overdueBurndownConfig.options.scales.yMonthlyRegistrations = {
+  display: false,
+  beginAtZero: true,
+  max: 1156,
+};
+
+overdueBurndownConfig.options.plugins.tooltip.displayColors = true;
+overdueBurndownConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
+overdueBurndownConfig.options.elements.line.tension = 0;
+overdueBurndownConfig.plugins.push(
+  createWeekendHighlightPlugin({
+    firstSaturdayIndex: 2, // Specify which data point is the first Saturday
+  })
+);
+overdueBurndownConfig.plugins.push(todayVerticalLinePlugin);
+const overdueBurndownCanvas = document.getElementById("overdueBurndown");
+if (overdueBurndownCanvas) {
+  createChart(overdueBurndownCanvas, overdueBurndownConfig);
+}
+
+// ------
+const overdueBurndownPieData = {
+  labels: ["Agreed to visit", "Remind to call", "Removed from overdue list"],
+  datasets: [
+    {
+      label: "Data",
+      data: [150, 250, 440],
+      backgroundColor: ["#44BF25", "#F1BD0F", "#C61420"],
+    },
+  ],
+};
+
+const overdueBurndownPieConfig = baseLineChartConfig();
+overdueBurndownPieConfig.data = overdueBurndownPieData;
+overdueBurndownPieConfig.type = "pie";
+overdueBurndownPieConfig.options.scales.y.grid = {};
+overdueBurndownPieConfig.options.scales.y.ticks.display = false;
+overdueBurndownPieConfig.options.scales.y.ticks.count = 3;
+overdueBurndownPieConfig.options.scales.y.max = 2800;
+overdueBurndownPieConfig.options.scales.y.ticks.stepSize = 700;
+// overdueBurndownConfig.options.scales.y1.ticks.display = false;
+
+overdueBurndownPieConfig.options.scales.yMonthlyRegistrations = {
+  display: false,
+  beginAtZero: true,
+  max: 1156,
+};
+
+overdueBurndownPieConfig.options.plugins.tooltip.displayColors = true;
+// overdueBurndownPieConfig.options.plugins.tooltip.callbacks = {
+//   labelColor: function (context) {
+//     return {
+//       borderColor: "#fff",
+//       backgroundColor: context.dataset.borderColor,
+//       borderWidth: 1,
+//     };
+//   },
+// };
+const overdueBurndownPieCanvas = document.getElementById("overdueBurndownPie");
+if (overdueBurndownPieCanvas) {
+  createChart(overdueBurndownPieCanvas, overdueBurndownPieConfig);
 }

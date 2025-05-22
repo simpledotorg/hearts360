@@ -4913,6 +4913,285 @@
       </div>
     </div>
     <main class="main">
+      <h2 class="columns-header spacer">Worklist summary</h2>
+
+      <div class="columns-3">
+        <!-- <div class="rows-3">
+          <div class="card">
+            <div class="heading">
+              <h3>Overdue patients</h3>
+              <div class="info">
+                <div class="info-hover-text">
+                  <p>
+                    <span>Numerator:</span> Patients that a overdue on the 1st
+                    of the month.
+                  </p>
+                  <p>
+                    <span>Denominator:</span> Patients under care. Dead patients
+                    (205) and 12 months lost to follow-up (1,562) are excluded.
+                  </p>
+                  <p>
+                    <span>Overdue patient:</span> Patient with a scheduled visit
+                    date which has passed with no visit.
+                  </p>
+                </div>
+              </div>
+              <p>Patients that are overdue at the start of the month.</p>
+            </div>
+            <div class="body">
+              <div class="figures">
+                <div>
+                  <p class="large-num overdue">2,800</p>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="heading">
+              <h3>Overdue patients contated</h3>
+              <div class="info">
+                <div class="info-hover-text">
+                  <p>
+                    <span>Numerator:</span> Patients that a overdue on the 1st
+                    of the month.
+                  </p>
+                  <p>
+                    <span>Denominator:</span> Patients under care. Dead patients
+                    (205) and 12 months lost to follow-up (1,562) are excluded.
+                  </p>
+                  <p>
+                    <span>Overdue patient:</span> Patient with a scheduled visit
+                    date which has passed with no visit.
+                  </p>
+                </div>
+              </div>
+              <p>Overdue patients contacted during the month.</p>
+            </div>
+            <div class="body">
+              <div class="figures">
+                <div style="display: flex; gap: 16px">
+                  <p class="large-num large-num-row overdue-contacted">700</p>
+                  <span style="font-weight: bold">(30%)</span>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="heading">
+              <h3>Returned to care</h3>
+              <div class="info">
+                <div class="info-hover-text">
+                  <p>
+                    <span>Numerator:</span> Patients that a overdue on the 1st
+                    of the month.
+                  </p>
+                  <p>
+                    <span>Denominator:</span> Patients under care. Dead patients
+                    (205) and 12 months lost to follow-up (1,562) are excluded.
+                  </p>
+                  <p>
+                    <span>Overdue patient:</span> Patient with a scheduled visit
+                    date which has passed with no visit.
+                  </p>
+                </div>
+              </div>
+              <p>Overdue patients contacted during the month.</p>
+            </div>
+            <div class="body">
+              <div class="figures">
+                <div>
+                  <p class="large-num overdue-returned">350</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="card col-span-2">
+          <div class="heading">
+            <h3>Overdue contact burndown</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients with no visit in the past 12
+                  months
+                </p>
+                <p>
+                  <span>Denominator:</span> Registered patients with
+                  hypertension. Dead patients (205) are excluded.
+                </p>
+              </div>
+            </div>
+            <p>Overdue patients to contact in Aug-2024.</p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <p class="large-num" style="color: blue">2100</p>
+              <div class="detail">
+                <p>remaining overdue patients require a call in Aug-2024</p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="overdueBurndown"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="heading">
+            <h3>Call outcomes</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients with no visit in the past 12
+                  months
+                </p>
+                <p>
+                  <span>Denominator:</span> Registered patients with
+                  hypertension. Dead patients (205) are excluded.
+                </p>
+              </div>
+            </div>
+            <p>Call outcomes for patient calls in Aug-2024</p>
+          </div>
+          <div class="body">
+            <!-- <div class="figures">
+              <p class="large-num overdue-contacted">10%</p>
+              <div class="detail">
+                <p>1,562 patients with no visit from Aug-2023 to Jul-2024</p>
+                <p class="text-grey">
+                  of
+                  <span class="registrations"
+                    >12,213 cumulative registered patients</span
+                  >
+                </p>
+              </div>
+            </div> -->
+            <div class="chart">
+              <canvas id="overdueBurndownPie"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="columns-3">
+        <div class="card">
+          <div class="heading">
+            <h3>Overdue patients</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients that a overdue on the 1st of
+                  the month.
+                </p>
+                <p>
+                  <span>Denominator:</span> Patients under care. Dead patients
+                  (205) and 12 months lost to follow-up (1,562) are excluded.
+                </p>
+                <p>
+                  <span>Overdue patient:</span> Patient with a scheduled visit
+                  date which has passed with no visit.
+                </p>
+              </div>
+            </div>
+            <p>Patients that are overdue at the start of the month.</p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <div>
+                <p class="large-num overdue">34%</p>
+                <div class="detail">
+                  <p>2,800 patients were overdue at the start of Jul-2024</p>
+                  <p class="text-grey">
+                    of
+                    <span class="under-care">10,800 patients under care</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="overdue"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="heading">
+            <h3>Overdue patients contacted</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients with no visit in the past 12
+                  months
+                </p>
+                <p>
+                  <span>Denominator:</span> Registered patients with
+                  hypertension. Dead patients (205) are excluded.
+                </p>
+              </div>
+            </div>
+            <p>Overdue patients contacted during the month.</p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <p class="large-num overdue-contacted">10%</p>
+              <div class="detail">
+                <p>1,562 patients with no visit from Aug-2023 to Jul-2024</p>
+                <p class="text-grey">
+                  of
+                  <span class="registrations"
+                    >12,213 cumulative registered patients</span
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="overdueContacted"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="heading">
+            <h3>Contacted overdue patients that returned to care</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients screened for hypertension
+                  months
+                </p>
+                <p>
+                  <span>Denominator:</span> Approximate adult patients OPD per
+                  month
+                </p>
+              </div>
+            </div>
+            <p>
+              Overdue patients that returned to care within 15 days of being
+              contacted
+            </p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <div>
+                <p class="large-num" style="color: #34aea0">23%</p>
+                <div class="detail">
+                  <p>6,900 individuals screened for hypertension in Jul-2024</p>
+                  <p class="text-grey">
+                    of ~30,000 estimated OPD patients &gt;18 years
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="screenings"></canvas>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <h2 class="columns-header spacer">Overdue worklist</h2>
+
       <div class="card">
         <div class="heading">
           <h2>Overdue patients</h2>
