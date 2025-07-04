@@ -1415,3 +1415,209 @@ const patientsProtectedCanvas = document.getElementById("patientsprotected");
 if (patientsProtectedCanvas) {
   createChart(patientsProtectedCanvas, patientsProtectedConfig);
 }
+
+// -- Overdue dashboard
+
+// Overdue: At start of month
+const overdueData = {
+  labels: [
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
+  ],
+  datasets: [
+    {
+      label: "Overdue patients",
+      data: [
+        58, 54, 53, 52, 44, 39, 37, 40, 38, 37, 31, 28, 25, 28, 29, 30, 26, 25,
+      ],
+      borderColor: "#E77215",
+      backgroundColor: "#E7721525",
+      yAxisID: "y",
+    },
+  ],
+};
+
+const overdueConfig = baseLineChartConfig();
+overdueConfig.data = overdueData;
+// overdueConfig.options.scales.y.grid = { drawTicks: false };
+// overdueConfig.options.scales.y.ticks.display = false;
+overdueConfig.options.scales.y.ticks.count = 3;
+overdueConfig.options.scales.y.max = 100;
+// overdueConfig.options.scales.y.ticks.stepSize = 6052;
+
+overdueConfig.options.scales.yMonthlyRegistrations = {
+  display: false,
+  beginAtZero: true,
+  max: 1156,
+};
+
+overdueConfig.options.plugins.tooltip.displayColors = true;
+overdueConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
+const overdueCanvas = document.getElementById("overdue");
+if (overdueCanvas) {
+  createChart(overdueCanvas, overdueConfig);
+}
+
+// Overdue: Contacted
+const overdueContactedData = {
+  labels: [
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
+  ],
+  datasets: [
+    {
+      label: "Overdue patients contacted",
+      data: [0, 5, 0, 0, 8, 12, 16, 22, 12, 10, 14, 25, 30, 22, 20, 21, 42, 10],
+      borderColor: "#edbe00",
+      backgroundColor: "#edbe0025",
+      yAxisID: "y",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+
+const overdueContactedConfig = baseLineChartConfig();
+overdueContactedConfig.data = overdueContactedData;
+overdueContactedConfig.options.scales.y.grid = { drawTicks: false };
+overdueContactedConfig.options.scales.y.max = 100;
+
+bpControlledConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+bpControlledConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
+overdueContactedConfig.options.plugins.tooltip.displayColors = true;
+overdueContactedConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
+const overdueContactedCanvas = document.getElementById("overdueContacted");
+if (overdueContactedCanvas) {
+  createChart(overdueContactedCanvas, overdueContactedConfig);
+}
+
+// Overdue: Returned to care
+const overdueReturnedData = {
+  labels: [
+    "Mar-2023",
+    "Apr-2023",
+    "May-2023",
+    "Jun-2023",
+    "Jul-2023",
+    "Aug-2023",
+    "Sep-2023",
+    "Oct-2023",
+    "Nov-2023",
+    "Dec-2023",
+    "Jan-2024",
+    "Feb-2024",
+    "Mar-2024",
+    "Apr-2024",
+    "May-2024",
+    "Jun-2024",
+    "Jul-2024",
+    "Aug-2024",
+  ],
+  datasets: [
+    {
+      label: "Overdue patients returned to care",
+      data: [
+        0, 25, 0, 0, 10, 12, 22, 40, 24, 55, 60, 62, 44, 50, 33, 36, 58, 15,
+      ],
+      borderColor: "#5300e0",
+      backgroundColor: "#5300e010",
+      yAxisID: "y",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18, // number of data elements,
+            2
+          ),
+      },
+    },
+  ],
+};
+
+const overdueReturnedConfig = baseLineChartConfig();
+overdueReturnedConfig.data = overdueReturnedData;
+
+overdueReturnedConfig.options.scales.yMonthlyRegistrations = {
+  display: false,
+  beginAtZero: true,
+  max: 1156,
+};
+
+overdueReturnedConfig.options.plugins.tooltip.displayColors = true;
+overdueReturnedConfig.options.plugins.tooltip.callbacks = {
+  labelColor: function (context) {
+    return {
+      borderColor: "#fff",
+      backgroundColor: context.dataset.borderColor,
+      borderWidth: 1,
+    };
+  },
+};
+
+bpControlledConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+bpControlledConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
+const overdueReturnedCanvas = document.getElementById("overdueReturned");
+if (overdueReturnedCanvas) {
+  createChart(overdueReturnedCanvas, overdueReturnedConfig);
+}
