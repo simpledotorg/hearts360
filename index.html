@@ -5592,7 +5592,144 @@
         </div>
       </div>
 
-      <h2 class="columns-header spacer">3. Inventory indicators</h2>
+      <h2 class="columns-header spacer">3. Overdue patients</h2>
+      <div class="columns-3">
+        <div class="card normal-flow">
+          <div class="heading overdue-min-height">
+            <h3>Overdue patients</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients that are overdue on the 1st
+                  of the month. Patients marked 'Removed from list' are excluded
+                  (647).
+                </p>
+                <p>
+                  <span>Denominator:</span> Patients under care. Dead patients
+                  (205) and 12 months lost to follow-up (1,562) are excluded.
+                </p>
+                <p>
+                  <span>Overdue patient:</span> Patient with a scheduled visit
+                  date which has passed with no visit.
+                </p>
+              </div>
+            </div>
+            <p>Patients that are overdue at the start of the month.</p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <div>
+                <p class="large-num overdue">26%</p>
+                <div class="detail">
+                  <p>2,800 patients were overdue at the start of Jul-2024</p>
+                  <p class="text-grey">
+                    of
+                    <span class="under-care">10,800 patients under care</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="overdue"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card normal-flow">
+          <div class="heading overdue-min-height">
+            <h3>Overdue patients contacted</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Unique overdue patients contacted
+                  during the month.
+                </p>
+                <p class="italic">
+                  Note: This number includes patients who became overdue during
+                  the month and were contacted. These patients may not part of
+                  the denominator.
+                </p>
+                <p>
+                  <span>Denominator:</span> Patients that are overdue on the 1st
+                  of the month. Patients marked 'Remove from list' are excluded
+                  (647).
+                </p>
+              </div>
+            </div>
+            <p>Overdue patients contacted during the month.</p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <p class="large-num overdue-contacted">42%</p>
+              <div class="detail">
+                <p>1,176 patients contacted in Jul-2024</p>
+                <p class="text-grey">
+                  of
+                  <span class="overdue">2,800 overdue patients</span>
+                </p>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="overdueContacted"></canvas>
+            </div>
+            <div class="extra">
+              <p><span class="agreed">47%</span> (552) agreed to visit</p>
+              <p><span class="remind">28%</span> (329) to be contacted later</p>
+              <p>
+                <span class="removed">25%</span> (294) removed from contact list
+              </p>
+              <p class="text-grey">of 1,176 patients contacted in Jul-2024</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card normal-flow">
+          <div class="heading overdue-min-height">
+            <h3>Contacted overdue patients that returned to care</h3>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> Patients that returned to care within
+                  15 days of their first contact.
+                </p>
+                <p class="italic">
+                  Note: For patients contacted multiple times during the month,
+                  15 days begins from the first contact.
+                </p>
+                <p>
+                  <span>Denominator:</span> Unique overdue patients contacted
+                  during the month.
+                </p>
+              </div>
+            </div>
+            <p>
+              Overdue patients that returned to care within 15 days of being
+              contacted.
+            </p>
+          </div>
+          <div class="body">
+            <div class="figures">
+              <div>
+                <p class="large-num overdue-returned">58%</p>
+                <div class="detail">
+                  <p>682 patients returned to care within 15 days</p>
+                  <p class="text-grey">
+                    of
+                    <span class="overdue-contacted-denominator"
+                      >1,176 overdue patients contacted
+                    </span>
+                    in Jul-2024
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="overdueReturned"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="columns-header spacer">4. Inventory indicators</h2>
 
       <div class="columns-3">
         <div class="card">
@@ -6512,6 +6649,15 @@
           <span class="nav-section">Cohorts</span>
           <a href="#note-bp-cohorts" class="nav-jump-links">Cohort reports</a>
 
+          <span class="nav-section">Overdue</span>
+          <a href="#note-bp-overdue" class="nav-jump-links">Overdue patients</a>
+          <a href="#note-bp-overdue-contacted" class="nav-jump-links"
+            >Overdue patients contacted</a
+          >
+          <a href="#note-bp-overdue-contacted-returned" class="nav-jump-links"
+            >Overdue patients contacted that returned to care</a
+          >
+
           <span class="nav-section">Stock</span>
           <a href="#note-bp-drug-stock" class="nav-jump-links"
             >Anti-hypertensive drug stock</a
@@ -6944,6 +7090,116 @@
                 <p>
                   <i>Adult OPD patients</i> with a blood pressure measure taken
                   in a month
+                </p>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="notes-section">
+            <div class="notes-note" id="bp-screening">
+              <h5>Overdue patients</h5>
+              <p>
+                Overdue patient reports allows provides facility staff
+                visibility on how many patients did not attend their scheduled
+                visit and the effectiveness of patient out reach systems.
+              </p>
+              <p>
+                Getting patients to attend for regular care is a major challenge
+                for hypertension control programs.
+              </p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Overdue patient</h6>
+                <p>
+                  A patient with a scheduled visit date that has passed with no
+                  visit.
+                </p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-overdue">
+              <h6>Overdue patients</h6>
+              <p>
+                The percentage of patients that are overdue on the first of the
+                month.
+              </p>
+              <p>
+                <b>Note:</b> This number is set on the 1st of the month does not
+                change during the month.
+              </p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Numerator</h6>
+                <p>
+                  The number of <i>Overdue patients</i> on the 1st of the month,
+                  excluding patients that were previously contacted and marked
+                  'Remove from overdue list'.
+                </p>
+
+                <h6>Denominator</h6>
+                <p>
+                  <i>Patients under care</i> excluding dead patients and 12
+                  month lost to follow-up patients.
+                </p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-overdue-contacted">
+              <h6>Overdue patients contacted</h6>
+              <p>
+                The percentage of overdue patients that were contacted during
+                the month.
+              </p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Numerator</h6>
+                <p>
+                  The number of unique <i>Overdue patients contacted</i> during
+                  the month.
+                </p>
+                <p>
+                  <b>Note:</b> This number includes patients that became overdue
+                  during the month and were contacted, these patients may not be
+                  counted in the denominator.
+                </p>
+                <h6>Denominator</h6>
+                <p>
+                  The number of <i>Overdue patients</i> on the 1st of the month,
+                  excluding patients that were previously contacted and marked
+                  'Remove from overdue list'.
+                </p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="notes-section">
+            <div class="notes-note" id="note-bp-overdue-contacted-returned">
+              <h6>Overdue patients contacted that returned to care</h6>
+              <p>
+                The percentage of overdue patients that were contacted during
+                the month and returned to care within 15 days.
+              </p>
+            </div>
+            <div class="notes-details">
+              <blockquote>
+                <h6>Numerator</h6>
+                <p>
+                  The number of overdue patients that returned to care within 15
+                  days of their first contact.
+                </p>
+                <p>
+                  <b>Note:</b> For patients contacted multiple times during a
+                  month, 15 days begins from the date the patient was first
+                  contacted during a month.
+                </p>
+                <h6>Denominator</h6>
+                <p>
+                  The number of unique <i>Overdue patients contacted</i> during
+                  the month.
                 </p>
               </blockquote>
             </div>
