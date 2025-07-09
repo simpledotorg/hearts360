@@ -5595,14 +5595,14 @@
       <h2 class="columns-header spacer">3. Overdue patients</h2>
       <div class="columns-3">
         <div class="card normal-flow">
-          <div class="heading overdue-min-height">
+          <div class="heading">
             <h3>Overdue patients</h3>
             <div class="info">
               <div class="info-hover-text">
                 <p>
                   <span>Numerator:</span> Patients that are overdue on the 1st
-                  of the month. Patients marked 'Removed from list' are excluded
-                  (647).
+                  of the month. Patients marked 'Removed from list' (647) and
+                  patients with no phone number (241) are excluded.
                 </p>
                 <p>
                   <span>Denominator:</span> Patients under care. Dead patients
@@ -5636,33 +5636,33 @@
         </div>
 
         <div class="card normal-flow">
-          <div class="heading overdue-min-height">
-            <h3>Overdue patients contacted</h3>
+          <div class="heading">
+            <h3>Overdue patients called</h3>
             <div class="info">
               <div class="info-hover-text">
                 <p>
-                  <span>Numerator:</span> Unique overdue patients contacted
-                  during the month.
+                  <span>Numerator:</span> Unique overdue patients called during
+                  the month.
                 </p>
                 <p class="italic">
                   Note: This number includes patients who became overdue during
-                  the month and were contacted. These patients may not be part
-                  of the denominator.
+                  the month and were called. These patients may not be part of
+                  the denominator.
                 </p>
                 <p>
                   <span>Denominator:</span> Patients that are overdue on the 1st
-                  of the month. Patients marked 'Remove from list' are excluded
-                  (647).
+                  of the month. Patients marked 'Removed from list' (647) and
+                  patients with no phone number (241) are excluded.
                 </p>
               </div>
             </div>
-            <p>Overdue patients contacted during the month.</p>
+            <p>Patients called during the month.</p>
           </div>
           <div class="body">
             <div class="figures">
-              <p class="large-num overdue-contacted">42%</p>
+              <p class="large-num overdue-called">42%</p>
               <div class="detail">
-                <p>1,176 patients contacted in Jul-2024</p>
+                <p>1,176 patients called in Jul-2024</p>
                 <p class="text-grey">
                   of
                   <span class="overdue">2,800 overdue patients</span>
@@ -5670,42 +5670,36 @@
               </div>
             </div>
             <div class="chart">
-              <canvas id="overdueContacted"></canvas>
+              <canvas id="overdueCalled"></canvas>
             </div>
             <div class="extra">
               <p><span class="agreed">47%</span> (552) agreed to visit</p>
-              <p><span class="remind">28%</span> (329) to be contacted later</p>
-              <p>
-                <span class="removed">25%</span> (294) removed from contact list
-              </p>
-              <p class="text-grey">of 1,176 patients contacted in Jul-2024</p>
+              <p><span class="remind">28%</span> (329) to be called later</p>
+              <p><span class="removed">25%</span> (294) removed from list</p>
             </div>
           </div>
         </div>
 
         <div class="card normal-flow">
-          <div class="heading overdue-min-height">
-            <h3>Contacted overdue patients that returned to care</h3>
+          <div class="heading">
+            <h3>Overdue patients that returned to care</h3>
             <div class="info">
               <div class="info-hover-text">
                 <p>
                   <span>Numerator:</span> Patients that returned to care within
-                  15 days of their first contact.
+                  15 days of their first call.
                 </p>
                 <p class="italic">
-                  Note: For patients contacted multiple times during the month,
-                  15 days begins from the first contact.
+                  Note: For patients called multiple times during the month, 15
+                  days begins from the first call.
                 </p>
                 <p>
-                  <span>Denominator:</span> Unique overdue patients contacted
+                  <span>Denominator:</span> Unique overdue patients called
                   during the month.
                 </p>
               </div>
             </div>
-            <p>
-              Overdue patients that returned to care within 15 days of being
-              contacted.
-            </p>
+            <p>Patients that returned to care within 15 days of call.</p>
           </div>
           <div class="body">
             <div class="figures">
@@ -5715,8 +5709,8 @@
                   <p>682 patients returned to care within 15 days</p>
                   <p class="text-grey">
                     of
-                    <span class="overdue-contacted-denominator"
-                      >1,176 overdue patients contacted
+                    <span class="overdue-called-denominator"
+                      >1,176 overdue patients called
                     </span>
                     in Jul-2024
                   </p>
@@ -6651,11 +6645,11 @@
 
           <span class="nav-section">Overdue</span>
           <a href="#note-bp-overdue" class="nav-jump-links">Overdue patients</a>
-          <a href="#note-bp-overdue-contacted" class="nav-jump-links"
-            >Overdue patients contacted</a
+          <a href="#note-bp-overdue-called" class="nav-jump-links"
+            >Overdue patients called</a
           >
-          <a href="#note-bp-overdue-contacted-returned" class="nav-jump-links"
-            >Overdue patients contacted that returned to care</a
+          <a href="#note-bp-overdue-called-returned" class="nav-jump-links"
+            >Overdue that returned to care</a
           >
 
           <span class="nav-section">Stock</span>
@@ -7099,13 +7093,13 @@
             <div class="notes-note" id="bp-screening">
               <h5>Overdue patients</h5>
               <p>
-                Overdue patient reports allows provides facility staff
-                visibility on how many patients did not attend their scheduled
-                visit and the effectiveness of patient out reach systems.
-              </p>
-              <p>
                 Getting patients to attend for regular care is a major challenge
                 for hypertension control programs.
+              </p>
+              <p>
+                Overdue patients reports provide facility staff visibility on
+                how many patients did not attend their scheduled visit and the
+                effectiveness of patient outreach systems.
               </p>
             </div>
             <div class="notes-details">
@@ -7135,8 +7129,8 @@
                 <h6>Numerator</h6>
                 <p>
                   The number of <i>Overdue patients</i> on the 1st of the month,
-                  excluding patients that were previously contacted and marked
-                  'Remove from overdue list'.
+                  patients that were previously called and marked 'Remove from
+                  overdue list' and patients with no phone number are excluded.
                 </p>
 
                 <h6>Denominator</h6>
@@ -7148,40 +7142,45 @@
             </div>
           </div>
           <div class="notes-section">
-            <div class="notes-note" id="note-bp-overdue-contacted">
-              <h6>Overdue patients contacted</h6>
+            <div class="notes-note" id="note-bp-overdue-called">
+              <h6>Overdue patients called</h6>
               <p>
-                The percentage of overdue patients that were contacted during
-                the month.
+                The percentage of overdue patients that were called during the
+                month.
+              </p>
+              <p>
+                <b>Note:</b> The numerator is not a subset of the denominator
+                and as a result may exceed 100%. The value shown is capped at
+                100%.
               </p>
             </div>
             <div class="notes-details">
               <blockquote>
                 <h6>Numerator</h6>
                 <p>
-                  The number of unique <i>Overdue patients contacted</i> during
-                  the month.
+                  The number of unique <i>Overdue patients called</i> during the
+                  month.
                 </p>
                 <p>
                   <b>Note:</b> This number includes patients that became overdue
-                  during the month and were contacted, these patients may not be
+                  during the month and were called, these patients may not be
                   counted in the denominator.
                 </p>
                 <h6>Denominator</h6>
                 <p>
                   The number of <i>Overdue patients</i> on the 1st of the month,
-                  excluding patients that were previously contacted and marked
-                  'Remove from overdue list'.
+                  patients that were previously called and marked 'Remove from
+                  overdue list' and patients with no phone number are excluded.
                 </p>
               </blockquote>
             </div>
           </div>
           <div class="notes-section">
-            <div class="notes-note" id="note-bp-overdue-contacted-returned">
-              <h6>Overdue patients contacted that returned to care</h6>
+            <div class="notes-note" id="note-bp-overdue-called-returned">
+              <h6>Overdue patients called that returned to care</h6>
               <p>
-                The percentage of overdue patients that were contacted during
-                the month and returned to care within 15 days.
+                The percentage of overdue patients that were called during the
+                month and returned to care within 15 days.
               </p>
             </div>
             <div class="notes-details">
@@ -7189,17 +7188,17 @@
                 <h6>Numerator</h6>
                 <p>
                   The number of overdue patients that returned to care within 15
-                  days of their first contact.
+                  days of their first call.
                 </p>
                 <p>
-                  <b>Note:</b> For patients contacted multiple times during a
-                  month, 15 days begins from the date the patient was first
-                  contacted during a month.
+                  <b>Note:</b> For patients called multiple times during the
+                  month, 15 days begins from the date of the first call during
+                  the month.
                 </p>
                 <h6>Denominator</h6>
                 <p>
-                  The number of unique <i>Overdue patients contacted</i> during
-                  the month.
+                  The number of unique <i>Overdue patients called</i> during the
+                  month.
                 </p>
               </blockquote>
             </div>

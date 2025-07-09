@@ -1467,8 +1467,8 @@ if (overdueCanvas) {
   createChart(overdueCanvas, overdueConfig);
 }
 
-// Overdue contacted
-const overdueContactedData = {
+// Overdue called
+const overdueCalledData = {
   labels: [
     "Mar-2023",
     "Apr-2023",
@@ -1491,7 +1491,7 @@ const overdueContactedData = {
   ],
   datasets: [
     {
-      label: "Overdue patients contacted",
+      label: "Overdue patients called",
       data: [0, 5, 0, 0, 8, 12, 16, 22, 12, 10, 14, 25, 30, 22, 20, 21, 42, 10],
       borderColor: "#edbe00",
       backgroundColor: "#edbe0025",
@@ -1507,19 +1507,19 @@ const overdueContactedData = {
   ],
 };
 
-const overdueContactedConfig = baseLineChartConfig();
-overdueContactedConfig.data = overdueContactedData;
+const overdueCalledConfig = baseLineChartConfig();
+overdueCalledConfig.data = overdueCalledData;
 
-overdueContactedConfig.options.scales.y.ticks.callback = (val) => {
+overdueCalledConfig.options.scales.y.ticks.callback = (val) => {
   return val + "%";
 };
-overdueContactedConfig.options.plugins.tooltip.callbacks = {
+overdueCalledConfig.options.plugins.tooltip.callbacks = {
   label: percentageLabel,
 };
 
-const overdueContactedCanvas = document.getElementById("overdueContacted");
-if (overdueContactedCanvas) {
-  createChart(overdueContactedCanvas, overdueContactedConfig);
+const overdueCalledCanvas = document.getElementById("overdueCalled");
+if (overdueCalledCanvas) {
+  createChart(overdueCalledCanvas, overdueCalledConfig);
 }
 
 // Returned to care
@@ -1546,7 +1546,7 @@ const overdueReturnedData = {
   ],
   datasets: [
     {
-      label: "Overdue patients returned to care",
+      label: "Called overdue patients that returned to care",
       data: [
         0, 25, 0, 0, 10, 12, 22, 40, 24, 55, 60, 62, 44, 50, 33, 36, 58, 15,
       ],

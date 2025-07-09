@@ -397,12 +397,6 @@ main {
     justify-content: flex-start;
   }
 
-  .overdue-min-height {
-    @media screen and (min-width: 1200px) {
-      min-height: 120px;
-    }
-  }
-
   .chart {
     height: 260px;
     margin: -8px;
@@ -437,7 +431,7 @@ main {
 
     & .detail p {
       font-size: 0.9rem;
-      margin: 0 0 1rem 0;
+      margin: 0.2rem 0;
     }
   }
 
@@ -914,11 +908,11 @@ table {
   color: #e77215;
 }
 
-.overdue-contacted {
+.overdue-called {
   color: #edbe00;
 }
 
-.overdue-contacted-denominator {
+.overdue-called-denominator {
   color: rgb(214, 159, 6);
 }
 
