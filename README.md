@@ -60,7 +60,8 @@ Use a consistent patient ID, National Health ID, to identify and track a patient
 
 💡 Useful for all health programs for managing a person’s health from young to elderly.
 
-📄 PRD coming soon
+📄 [Link to PRD](https://docs.google.com/document/d/1LjeATTqzdiWo7uUZvLpwbBncBuRaEzjrkQcmLXkeTT4/edit?usp=sharing)
+
 
 ---
 
