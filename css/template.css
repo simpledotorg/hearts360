@@ -273,6 +273,9 @@ main {
     max-width: 1600px;
     margin: auto;
     padding: 16px 22px;
+    @media screen and (max-width: 660px) {
+      padding: 10px 16px 16px;
+    }
     position: relative;
     font-weight: 600;
     font-size: 0.9em;
@@ -335,27 +338,40 @@ main {
 
 .link-dashboards {
   font-size: 0.9rem;
-  padding: 12px 0;
   margin: 0 0 2rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 
-  & div {
-    margin: 0 auto;
-    padding: 0 12px;
+  & ul {
+    display: flex;
+    gap: 4px;
+    margin: auto;
+    padding: 0 24px;
+    @media screen and (max-width: 660px) {
+      padding: 0 16px;
+    }
     max-width: 1600px;
   }
+  & li {
+    padding: 6px 0 3px;
+    display: block;
+  }
+  & li.active-link {
+    border-bottom: 3px solid cornflowerblue;
+  }
   & a {
-    color: #333;
-    padding: 12px;
-    margin-right: 8px;
+    color: #555;
+    padding: 6px 14px;
     white-space: nowrap;
+    display: block;
+    border-radius: 6px;
+    transition: 50ms all ease-in-out;
+  }
+  & li.active-link a {
+    color: #000;
   }
   & a:hover {
     text-decoration: none;
-  }
-  & a.active {
-    border-bottom: 3px solid cornflowerblue;
-    color: #000;
+    background: rgba(0, 0, 0, 0.075);
   }
 }
 
