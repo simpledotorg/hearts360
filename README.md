@@ -2,7 +2,7 @@
 
 EHRs that factor in the following key features can be used by program managers to monitor large-scale non-communicable disease (NCD) programs and are optimized for use in busy primary care facilities that manage thousands of patients with hypertension and diabetes. These conditions require long-term monitoring, team-based care, and data-driven decision-making — which a good EHR can support.
 
-Most of the key features of EHRs for managing NCD programs effectively are essential for the management of patients in other health programs in primary care (e.g. in an immunisation program, a list of overdue children who missed a vaccination appointment).
+Many EHR features that help manage NCD programs are just as vital in other areas of primary care. For instance, tracking patients who miss follow-up visits is crucial in a hypertension program to ensure continuity of care, and in an immunisation program to identify children who miss their vaccination appointments.
 
 📄 [Download the 1-pager summary](https://docs.google.com/document/d/1yV35dgjnnyYvqNZDXQdQjkZrOVuQ57iMI2QoFHFT7rQ/edit?tab=t.0#heading=h.op6l78a503vp)
 
@@ -16,8 +16,7 @@ Most of the key features of EHRs for managing NCD programs effectively are essen
 4. **[Consistent patient ID](#consistent-patient-id)**
 5. **[Clear patient diagnosis](#clear-patient-diagnosis)**
 6. **[Patients “assigned” to a facility](#patients-assigned-to-a-facility)**
-7. **[Usability for healthcare workers](#usability-for-healthcare-workers)**
-8. **[Custom report generation](#custom-report-generation)**
+7. **[Custom report generation](#custom-report-generation)**
 
 ---
 
@@ -29,7 +28,7 @@ Most of the key features of EHRs for managing NCD programs effectively are essen
 
 This dashboard is a template that can be used by any team working on a hypertension control project. Our team has learned many lessons while developing the [Simple.org](https://simple.org/) project and we want to share our best practices with the world. A similar dashboard has been used in India, Bangladesh, Sri Lanka, Ethiopia, and Nigeria to successfully manage over 4 million patients with hypertension.
 
-Please feel free to copy any of the code or ideas that you see in this hypertension dashboard (see [open source license](#license) open source license below).
+Please feel free to copy any of the code or ideas that you see in this hypertension dashboard (see [open source license](#license) below).
 
 📺 [View a live example](https://hearts360.org)
 
@@ -37,7 +36,7 @@ Please feel free to copy any of the code or ideas that you see in this hypertens
 
 ## Overdue patient line lists
 
-Get patients to return to care by creating automated line lists of patients that have missed their scheduled follow-up visit and include their phone numbers. Collecting patient consent during registration to call or send reminder messages is important.
+Automatically generate lists of patients who miss follow-up visits, including their phone numbers, so health workers can quickly reach out and bring them back into care.
 
 💡 Reach out to patients overdue for immunisation or antenatal care appointments.
 
@@ -61,7 +60,8 @@ Use a consistent patient ID, National Health ID, to identify and track a patient
 
 💡 Useful for all health programs for managing a person’s health from young to elderly.
 
-📄 PRD coming soon
+📄 [Link to PRD](https://docs.google.com/document/d/1LjeATTqzdiWo7uUZvLpwbBncBuRaEzjrkQcmLXkeTT4/edit?usp=sharing)
+
 
 ---
 
@@ -71,7 +71,7 @@ To help with patient management; differentiate between patients diagnosed with h
 
 💡 Infectious disease programs can distinguish between suspected and confirmed cases.
 
-📄 [Link to PRD](https://docs.google.com/document/d/1JmH3y-6Q2VG-IHpEA2QnlUMivWGpN0ceJziM7LyYtwQ/edit?usp=sharing)
+📄 [Link to PRD](https://docs.google.com/document/d/1DGfhYECUZ8xNjINqPIsVVqcVU1Zy08tgpsWj2tBt_kM/edit?tab=t.0#heading=h.lngqzefnq9go)
 
 ---
 
@@ -81,17 +81,7 @@ Assign each patient to a primary facility responsible for their ongoing care, ev
 
 💡 Useful to monitor a patient’s immunisation, maternal health, infectious disease treatment.
 
-📄 PRD coming soon
-
----
-
-## Usability for healthcare workers 
-
-EHRs must be fast and simple to use during clinical care. A healthcare worker should be able to enrol a new Hypertension patient in under 90 seconds and record a follow-up visit in under 45 seconds. Longitudinal health records (incl. BP history and medications) should be accessible from the main patient profile.
-
-💡 EHRs that are fast and easy to use during clinical care improves program outcomes.
-
-📄 PRD coming soon
+📄 [Link to PRD](https://docs.google.com/document/d/1oMl1HDpbYVVTV3eoIEQ610o8CrWYNUcWF3c2CVMXQKw/edit?tab=t.0#heading=h.mnqcukfr4pr)
 
 ---
 
@@ -101,7 +91,7 @@ EHRs that support custom reports are useful to drive further insights from the d
 
 💡 Helps managers spot trends and respond quickly.
 
-📄 PRD coming soon
+[📄 Link to PRD](https://docs.google.com/document/d/1daNrJu16aCXpkjPfn_GnjetUfM5YPLR-W5JqXXjiVYc/edit?tab=t.0#heading=h.mnqcukfr4pr)
 
 ---
 
