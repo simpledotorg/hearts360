@@ -211,6 +211,9 @@ Data can be organized differently.
 | death_date        | date        |                 |
 | facility          |             |                 |
 | region            |             |                 |
+| contact_number    |             |                 |
+
+Update: `contact_number` added with overdue patient section.
 
 ### BP encounters table
 
@@ -623,7 +626,332 @@ The estimated patients with hypertension in the region can be found from STEPs s
 > [!TIP]
 > The corresponding values for the month of **May 2024** are highlighted in their respective colors in the data example tables.
 
-## Additional Dimensions
+## Overdue patients
+#### Definition
+A patient with a scheduled visit date that has passed with no visit.
+
+_Consideration: For systems where scheduling a follow-up visit is not mandatory, an additional method is to mark patients overdue when their most recent visit is >30 days in the past._
+
+#### Additional tables
+Reports for overdue patients require the introduction of two new tables:
+
+##### Scheduled visits table
+
+| Column name    | Column type | Possible values |
+| ---            | ---         | ---             |
+| scheduled_date | date        |                 |
+| patient_id     | number      | References a patient, can be a Foreign Key |
+| facility       | string      |                 |
+| region         | string      |                 |
+
+##### Call results table
+
+| Column name   | Column type | Possible values |
+| ---           | ---         | ---             |
+| call_date     | date        |                 |
+| patient_id    | number      | References a patient, can be a Foreign Key |
+| result_type   | enum        | `agreed_to_visit`, `remind_to_call_later`, `removed_from_overdue_list` |
+|               |             |               |
+| removed_reason|             |                                           |
+
+##### `removed_reason` values and outcomes
+
+| result_type Value           | removed_reason       | Count as called        | Remove From list |
+| ---                         | ---                  | ---                    | ---    | 
+| Agreed to visit             |                      | Y                      |        |           
+| Remind to call later        |                      | Y                      |        |           
+| Removed from overdue list   | Already visited      | Y                      | Y      | 
+| Removed from overdue list   | Unavailable          | Y                      | Y      | 
+| Removed from overdue list   | Wrong phone number   | Y                      | Y      | 
+| Removed from overdue list   | Changed facilities   | Y                      | Y      | 
+| Removed from overdue list   | Moved                | Y                      | Y      | 
+| Removed from overdue list   | Died                 | N, Patient marked dead | Y      | 
+| Removed from overdue list   | Refused to return    | Y                      | Y      | 
+| Removed from overdue list   | Other                | Y                      | Y      |
+
+### Overdue at the start of the month
+#### Definition
+
+The number of patients that are overdue on the 1st of the month.
+
+> [!IMPORTANT]
+> This number is calculated on the first day of the month and does not change, even if more patients become overdue during the month. This is different to the other dashboard indicators, which are updated daily.
+
+> [!TIP]
+> Patients that received a call before the 1st of the month with a call result ‘Remove from overdue list’ are not counted.
+
+#### Scenario examples
+**Example 1: Overdue at the start of the month**
+
+A patient has a scheduled visit on 5-Jan, and did not attend for care in January. This patient is counted as _**overdue at the start of the month**_ for February. 
+
+*Note: This patient became overdue on 6-Jan and will not be counted in Jan as they were not overdue on 1-Jan.*
+
+**Example 2: ‘Removed from overdue list’ before the 1st of the month**
+
+A patient has a scheduled visit on 5-Jan, and did not attend for care in January. The patient was called on 15-Jan with an outcome ‘Refused to return’, part of the ‘Remove from overdue list’ outcomes. This patient is _**not**_ counted as _**overdue at the start of the month**_ for February.
+
+### Overdue patients called
+#### Definition
+The number of _**unique**_ overdue patients that were called at least once during the month.
+
+*Patients called multiple times during the month are only counted once.*
+
+> [!IMPORTANT]
+> If a patient is called multiple times in a month, the outcome of the first call is used, not the most recent call.
+
+#### Scenario examples
+**Example 1: Called during the month**
+
+A patient had a scheduled visit for 5-Jan and did not attend. They were called on 7-Jan. This patient is counted as _**overdue patient called**_ in January.
+
+**Example 2: Multiple calls**
+
+A patient had a scheduled visit on 30-Jan, and did not attend. The patient was called on 8-Feb with a call result ‘Remind to call later’. The same patient was called again on 15-Feb with a call result ‘Agreed to visit’. This patient is counted as _**overdue patient called**_ in Feb with a call result ‘Remind to call later’ (The first call during the month).
+
+### Overdue patients that returned to care
+#### Definition
+Overdue patients that were called and returned to care within 15 days.
+> [!IMPORTANT]
+> The first call during the month begins the 15-day return to care window, additional calls do not start another 15-day window nor alter the existing window. The 15-day window includes the day of the first call and 15 days after, day 0 to day 15. 16 days in total.
+
+> [!TIP]
+> Patients called near the end of a month may return to care in the following month, while still being within the 15 day window. These patients are counted as returned to care for the month they were called. The return to care count updates until the 15th of the following month, the latest date that a 15-day window can close.
+
+#### Scenario examples
+**Example 1: Returned within 15-days**
+
+A patient received a call on 1-Jan and attends for care on 16-Jan. This patient is counted as _**returned to care**_ for January.
+
+**Example 2: Returned after 15-days**
+
+A patient received a call on 1-Jan and attends for care on 17-Jan. This patient is _**not**_ counted as _**returned to care**_ for January.
+
+**Example 3: Crosses into next month**
+
+A patient received a call on 31-Jan and attends for care on 5-Feb. This patient is counted as _**returned to care**_ for January. (15-day window: 31-Jan to 15-Feb).
+
+**Example 4: Multiple calls**
+
+A patient received a call on 10-Jan and a second call on 20-Jan. Patient attends for care on 27-Jan. This patient is _**not**_ counted as _**returned to care**_ for January. (15-day window: 10-Jan to 26-Jan). The 15-day window begins from the first call during the month.
+
+**Example 5: Multiple calls crossing to next month**
+
+A patient received a call on 30-Jan and another call on 3-Feb. Patient attends for care on 5-Feb. This patient is counted as _**returned to care**_ for both January and February. (15-day window for Jan: 30-Jan to 14-Feb. 15-day window for Feb: 3-Feb to 18-Feb). The first call during the month begins a 15-day window. The 15-day windows from different months can overlap.
+
+```sql
+WITH
+-- Reference month based on query execution time
+KNOWN_MONTHS AS (
+  SELECT DATE_TRUNC('month', CURRENT_DATE) AS REF_MONTH
+),
+
+-- All alive patients with a valid phone number
+ALIVE_PATIENTS_WITH_VALID_PHONE AS (
+  SELECT
+    PATIENT_ID,
+    CONTACT_NUMBER
+  FROM patients
+  WHERE PATIENT_STATUS <> 'dead'
+    AND CONTACT_NUMBER IS NOT NULL
+    AND LENGTH(REGEXP_REPLACE(CONTACT_NUMBER, '[^0-9]', '', 'g')) >= 8
+),
+
+-- All BP encounters with truncated month
+BP_ENCOUNTERS AS (
+  SELECT
+    PATIENT_ID,
+    ENCOUNTER_DATE,
+    DATE_TRUNC('month', ENCOUNTER_DATE) AS BP_ENCOUNTER_MONTH
+  FROM bp_encounters
+),
+
+-- Most recent encounter per patient before REF_MONTH
+RECENT_BP_ENCOUNTERS AS (
+  SELECT DISTINCT ON (PATIENT_ID)
+    PATIENT_ID,
+    ENCOUNTER_DATE
+  FROM bp_encounters, KNOWN_MONTHS
+  WHERE ENCOUNTER_DATE < REF_MONTH
+  ORDER BY PATIENT_ID, ENCOUNTER_DATE DESC
+),
+
+-- Most recent scheduled visit before REF_MONTH
+RECENT_SCHEDULED_VISITS AS (
+  SELECT DISTINCT ON (PATIENT_ID)
+    PATIENT_ID,
+    SCHEDULED_DATE
+  FROM scheduled_visits, KNOWN_MONTHS
+  WHERE SCHEDULED_DATE < REF_MONTH
+  ORDER BY PATIENT_ID, SCHEDULED_DATE DESC
+),
+
+-- Most recent call result before REF_MONTH
+RECENT_CALL_RESULTS AS (
+  SELECT DISTINCT ON (PATIENT_ID)
+    PATIENT_ID,
+    RESULT_TYPE
+  FROM call_results, KNOWN_MONTHS
+  WHERE CALL_DATE < REF_MONTH
+  ORDER BY PATIENT_ID, CALL_DATE DESC
+),
+
+-- Patients under care (seen in the past 12 months)
+PATIENTS_UNDER_CARE AS (
+  SELECT DISTINCT AP.PATIENT_ID
+  FROM ALIVE_PATIENTS_WITH_VALID_PHONE AP
+  LEFT JOIN BP_ENCOUNTERS BE ON BE.PATIENT_ID = AP.PATIENT_ID
+  CROSS JOIN KNOWN_MONTHS
+  WHERE BE.BP_ENCOUNTER_MONTH <= REF_MONTH
+    AND BE.BP_ENCOUNTER_MONTH + INTERVAL '12 months' > REF_MONTH
+),
+
+-- Patients overdue as of 1st of the month
+OVERDUE_ON_FIRST AS (
+  SELECT
+    AP.PATIENT_ID
+  FROM ALIVE_PATIENTS_WITH_VALID_PHONE AP
+  INNER JOIN PATIENTS_UNDER_CARE PUC ON AP.PATIENT_ID = PUC.PATIENT_ID
+  INNER JOIN RECENT_SCHEDULED_VISITS RSV ON AP.PATIENT_ID = RSV.PATIENT_ID
+  LEFT JOIN RECENT_BP_ENCOUNTERS RBE ON AP.PATIENT_ID = RBE.PATIENT_ID
+  LEFT JOIN RECENT_CALL_RESULTS RCR ON AP.PATIENT_ID = RCR.PATIENT_ID
+  WHERE (RCR.RESULT_TYPE IS NULL OR RCR.RESULT_TYPE NOT IN ('Remove from list'))
+    AND (RBE.ENCOUNTER_DATE IS NULL OR RBE.ENCOUNTER_DATE < RSV.SCHEDULED_DATE)
+),
+
+-- First call during the month for each patient
+FIRST_CALLS_IN_MONTH AS (
+  SELECT DISTINCT ON (CR.PATIENT_ID)
+    CR.PATIENT_ID,
+    CR.CALL_DATE,
+    CR.RESULT_TYPE,
+    CR.CALL_DATE + INTERVAL '15 days' AS WINDOW_END_DATE
+  FROM call_results CR
+  INNER JOIN KNOWN_MONTHS KM ON TRUE
+  WHERE CR.CALL_DATE >= KM.REF_MONTH
+    AND CR.CALL_DATE < KM.REF_MONTH + INTERVAL '1 month'
+  ORDER BY CR.PATIENT_ID, CR.CALL_DATE ASC
+),
+
+-- Patients called
+CALLED_PATIENTS AS (
+  SELECT DISTINCT FC.PATIENT_ID
+  FROM FIRST_CALLS_IN_MONTH FC
+  INNER JOIN ALIVE_PATIENTS_WITH_VALID_PHONE AP ON FC.PATIENT_ID = AP.PATIENT_ID
+),
+
+-- Patients who returned to care within 15-day window
+RETURNED_TO_CARE AS (
+  SELECT DISTINCT FC.PATIENT_ID
+  FROM FIRST_CALLS_IN_MONTH FC
+  INNER JOIN ALIVE_PATIENTS_WITH_VALID_PHONE AP ON FC.PATIENT_ID = AP.PATIENT_ID
+  INNER JOIN bp_encounters BE ON BE.PATIENT_ID = FC.PATIENT_ID
+  WHERE BE.ENCOUNTER_DATE BETWEEN FC.CALL_DATE AND FC.WINDOW_END_DATE
+)
+
+-- Final aggregation
+SELECT
+  KM.REF_MONTH AS REF_MONTH,
+  COUNT(DISTINCT OOF.PATIENT_ID) AS OVERDUE_ON_FIRST,
+  COUNT(DISTINCT CP.PATIENT_ID) AS OVERDUE_PATIENTS_CALLED,
+  COUNT(DISTINCT RTC.PATIENT_ID) AS OVERDUE_RETURNED_TO_CARE
+FROM KNOWN_MONTHS KM
+LEFT JOIN OVERDUE_ON_FIRST OOF ON TRUE
+LEFT JOIN CALLED_PATIENTS CP ON TRUE
+LEFT JOIN RETURNED_TO_CARE RTC ON TRUE;
+```
+#### Subqueries Detail
+
+`KNOWN_MONTHS`
+
+This is a list of months known by the system. It can be obtained in a variety of ways, but can be derived from the months explicitly existing in the database, as in the example.
+
+`ALIVE_PATIENTS_WITH_VALID_PHONE`
+
+This is a list of patients who are marked as alive and have a valid contact number. Only patients with numeric contact numbers of 8 digits or more are included. The registration date is truncated to the month level for consistency in monthly cohort analysis.
+
+`BP_ENCOUNTERS`
+
+This is a list of all BP readings taken for each patient based on the visit month.
+
+`RECENT_BP_ENCOUNTERS`
+
+This is a list of the most recent blood pressure encounter before the start of the reference month for each patient. It is used to determine whether the patient attended a visit after their last scheduled visit.
+
+`RECENT_SCHEDULED_VISITS`
+
+This is a list of the most recent scheduled visit before the start of the reference month for each patient. It is used to assess if a patient had a missed appointment.
+
+`RECENT_CALL_RESULTS`
+
+This is a list of the most recent call result recorded before the reference month. It helps exclude patients who were removed from the follow-up list or marked as deceased based on call outcomes.
+
+`PATIENTS_UNDER_CARE`
+
+This is a list of patients who had at least one blood pressure encounter within the past 12 months from the reference month. These patients are considered “under care” for the purposes of reporting and are not classified as lost to follow-up.
+
+`OVERDUE_ON_FIRST`
+
+This identifies patients who were overdue as of the 1st of the reference month. Patients are considered overdue if:
+- They had a scheduled visit before the month started,
+- They either did not attend any visit after that scheduled date or had no recent encounter,
+- They were not marked as “Removed from overdue list” via call outcomes
+- They are not lost to follow-up or dead.
+
+`FIRST_CALLS_IN_MONTH`
+This returns the first call per patient within the reference month, along with the outcome and a calculated 15-day follow-up window. 
+
+`CALLED_PATIENTS`
+This includes patients who had at least one valid call during the reference month. Only the first call is used to count a patient as called.
+
+`RETURNED_TO_CARE`
+This identifies patients who returned for a BP visit within 15 days (inclusive) of their first call during the reference month, linking each patient’s first call with subsequent BP encounter to determine if they returned.
+
+#### Data example
+
+| ref_month | overdue_on_first | overdue_patients_called |overdue_returned_to_care |
+| --- | --- | --- | --- |
+| 2025-07-01 | 264,557 | 39,881 | 18894 |
+
+
+### Overdue indicators
+#### % Overdue patients
+
+**Numerator**: `overdue_on_first`
+
+**Denominator** : `patients_under_care`
+
+##### Why show only patients overdue on the first of the month?
+The number of overdue patients varies during the month, making it hard to track consistently. Fixing the value at the start of each month allows trend analysis over time. Short-term overdue cases that resolve quickly don’t affect this fixed value, giving staff a clearer view while day-to-day follow-up continues.
+
+#### % Overdue patients called
+
+**Numerator**: `overdue_patients_called`
+
+**Denominator**: `overdue_on_first`
+
+##### Why is the numerator not a subset of the denominator?
+This indicator is an estimate. Patients overdue at the start of the month need to be called. Using this as the base, facilities can see a fixed, “minimum”, number of overdue patients that need calling during the month.
+
+The number of patients called (numerator) may exceed the number overdue at the start of the month (denominator). This happens because patients who became overdue during the month and were called are also counted. For context, calling 100% of overdue patients during the month is uncommon. This number is capped at 100%.
+
+#### Why focus on the first call?
+Most patients are called only once during the month. Using the first call during the month ensures the indicators are consistent.
+
+#### % Overdue returned
+**Numerator**: `overdue_returned_to_care`
+
+**Denominator**: `overdue_patients_called`
+
+##### Why focus on the first call?
+Most patients are called only once during the month. The 15-day window begins on the first call to keep indicators consistent.
+
+### Overdue patient assumptions
+**Only overdue patients can be called**: Calling lists should only display patients that are overdue; alternatively, calls made specifically for overdue calling should be encoded to identify them from other calls being made to patients.
+
+**Death date when call outcome is ‘Died’**: When ‘Remove from overdue list’ reason ‘Died’ is selected as a call outcome the patient `death_date` is updated. Where a death date exists patients are filtered from dashboard figures.
+
+## Additional dimensions
 
 In order to aggregate by region/state, queries can be modified easily to take this in account by adding the correct level of aggregation in:
 
@@ -636,7 +964,7 @@ Depending on the size of the different tables, these queries may be too resource
 
 It is a good practice to cache the results and refresh the tables daily. For example, using Materialized Views that refresh once a day. Caching can also be done at application level, or through a variety of other mechanisms.
 
-## Data Checks
+## Data checks
 
 After these queries have been adapted to a system, it is a good practice to check that values obtained through the different queries are consistent:
 
