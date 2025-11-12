@@ -152,6 +152,15 @@ This guide explains the how to recreate the [HEARTS360 dashboard](https://hearts
     - [Code Example](#code-example-3)
     - [Data Example](#data-example-3)
 - [Hypertension treatment cascade](#hypertension-treatment-cascade)
+- [Overdue patients](#overdue-patients)
+    - [Definition](#definition-4)
+    - [Overdue at the start of the month](#overdue-at-the-start-of-the-month)
+    - [Overdue patients called](#overdue-patients-called)
+    - [Overdue patients that returned to care](#overdue-patients-that-returned-to-care)
+    - [Code example](#code-example-4)
+    - [Data example](#data-example-4)
+    - [Overdue indicators](#overdue-indicators)
+    - [Overdue patient assumptions](#overdue-patient-assumptions)
 - [Additional Dimensions](#additional-dimensions)
 - [Caching results](#caching-results)
 - [Data Checks](#data-checks)
@@ -739,6 +748,7 @@ A patient received a call on 10-Jan and a second call on 20-Jan. Patient attends
 
 A patient received a call on 30-Jan and another call on 3-Feb. Patient attends for care on 5-Feb. This patient is counted as _**returned to care**_ for both January and February. (15-day window for Jan: 30-Jan to 14-Feb. 15-day window for Feb: 3-Feb to 18-Feb). The first call during the month begins a 15-day window. The 15-day windows from different months can overlap.
 
+### Code example
 ```sql
 WITH
 -- Reference month based on query execution time
