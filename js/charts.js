@@ -1223,7 +1223,7 @@ const dmBPControlledData = {
     {
       label: "BP controlled <140/90",
       data: [
-        26, 28, 31, 30, 30, 32, 36, 38, 39, 41, 40, 42, 45, 44, 45, 47, 50, 49,
+        26, 28, 31, 30, 30, 32, 36, 38, 39, 41, 40, 42, 45, 44, 45, 47, 48, 44,
       ],
       borderColor: "#3BB231",
       backgroundColor: "transparent",
@@ -1238,7 +1238,7 @@ const dmBPControlledData = {
     {
       label: "BP controlled <130/80",
       data: [
-        9, 11, 13, 16, 17, 20, 18, 24, 25, 26, 26, 25, 27, 29, 32, 30, 35, 38,
+        9, 11, 13, 16, 17, 20, 18, 24, 25, 26, 26, 25, 27, 29, 32, 30, 36, 33,
       ],
       borderColor: "#096301",
       backgroundColor: "transparent",
