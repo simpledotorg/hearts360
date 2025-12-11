@@ -180,12 +180,6 @@ function createChart(ctx, config) {
 // BP Controlled
 const bpControlledData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -202,16 +196,14 @@ const bpControlledData = {
   datasets: [
     {
       label: "BP controlled",
-      data: [
-        28, 23, 32, 34, 43, 34, 43, 44, 46, 43, 52, 57, 57, 59, 56, 60, 61, 55,
-      ],
+      data: [43, 44, 46, 43, 52, 57, 57, 59, 56, 60, 61, 55],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -237,12 +229,6 @@ if (bpControlledCanvas) {
 // Hypertension: BP Uncontrolled
 const bpUncontrolledData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -259,16 +245,14 @@ const bpUncontrolledData = {
   datasets: [
     {
       label: "BP uncontrolled",
-      data: [
-        54, 51, 46, 45, 44, 47, 37, 33, 36, 37, 30, 28, 24, 24, 18, 17, 17, 20,
-      ],
+      data: [37, 33, 36, 37, 30, 28, 24, 24, 18, 17, 17, 20],
       borderColor: "#D19600",
       backgroundColor: "rgba(255, 201, 63, 0.1)",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -291,12 +275,6 @@ if (bpUncontrolledCanvas) {
 // Hypertension: No visit in 3 months
 const ltfu3MonthData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -313,16 +291,14 @@ const ltfu3MonthData = {
   datasets: [
     {
       label: "No visit in past 3 months",
-      data: [
-        18, 26, 22, 21, 13, 19, 20, 23, 18, 20, 18, 15, 19, 17, 26, 21, 22, 25,
-      ],
+      data: [20, 23, 18, 20, 18, 15, 19, 17, 26, 21, 22, 25],
       borderColor: "#ed6300",
       backgroundColor: "rgba(230, 137, 70, 0.1)",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -344,12 +320,6 @@ if (ltfu3MonthCanvas) {
 // Hypertension: Registrations
 const registrationsData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -367,8 +337,8 @@ const registrationsData = {
     {
       label: "Cumulative registrations",
       data: [
-        3074, 3719, 3989, 4308, 4958, 5338, 5705, 5975, 6284, 6762, 7019, 7523,
-        8043, 8941, 9906, 11062, 12105, 12213,
+        5705, 5975, 6284, 6762, 7019, 7523, 8043, 8941, 9906, 11062, 12105,
+        12213,
       ],
       borderColor: "#007ee4",
       backgroundColor: "transparent",
@@ -377,8 +347,8 @@ const registrationsData = {
     {
       label: "Patients under care",
       data: [
-        3063, 3716, 3984, 4301, 4903, 5217, 5505, 5678, 5895, 6223, 6438, 6768,
-        7146, 7882, 8649, 9648, 10539, 10632,
+        5505, 5678, 5895, 6223, 6438, 6768, 7146, 7882, 8649, 9648, 10539,
+        10632,
       ],
       borderColor: "#b51bdc",
       backgroundColor: "transparent",
@@ -387,10 +357,7 @@ const registrationsData = {
     {
       type: "bar",
       label: "Monthly registrations",
-      data: [
-        786, 303, 270, 319, 650, 380, 285, 270, 309, 362, 257, 504, 520, 604,
-        965, 1156, 1043, 236,
-      ],
+      data: [285, 270, 309, 362, 257, 504, 520, 604, 965, 1156, 1043, 236],
       borderColor: "#BEDFF9",
       backgroundColor: "#BEDFF9",
       yAxisID: "yMonthlyRegistrations",
@@ -430,12 +397,6 @@ if (registrationsCanvas) {
 // Hypertension: Lost to follow-up
 const ltfu12MonthsData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -452,14 +413,14 @@ const ltfu12MonthsData = {
   datasets: [
     {
       label: "12 month lost to follow-up",
-      data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 4, 6, 6, 7, 8, 9, 10, 10],
+      data: [1, 2, 2, 3, 4, 6, 6, 7, 8, 9, 10, 10],
       borderColor: "#FF3355",
       backgroundColor: "rgba(255, 51, 85, 0.1)",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -483,12 +444,6 @@ if (ltfu12MonthsCanvas) {
 // Hypertension opportunistic screening
 const screeningsData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
     "Sep-2022",
     "Oct-2022",
     "Nov-2022",
@@ -505,14 +460,12 @@ const screeningsData = {
   datasets: [
     {
       label: "% of patients screened",
-      data: [
-        10, 15, 16, 12, 11, 10, 9, 11, 14, 20, 22, 23, 23, 24, 23, 24, 23, 6,
-      ],
+      data: [9, 11, 14, 20, 22, 23, 23, 24, 23, 24, 23, 6],
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
       borderColor: "#34AEA0",
@@ -523,8 +476,7 @@ const screeningsData = {
       type: "bar",
       label: "Monthly screenings",
       data: [
-        2000, 2200, 2300, 2200, 1600, 1800, 3400, 3600, 3900, 5800, 5700, 5600,
-        6600, 6200, 6000, 6500, 6900, 500,
+        3400, 3600, 3900, 5800, 5700, 5600, 6600, 6200, 6000, 6500, 6900, 500,
       ],
       borderColor: "#C5E5E2",
       backgroundColor: "#C5E5E2",
@@ -570,12 +522,6 @@ if (screeningsCanvas) {
 
 const drugStockData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -592,46 +538,40 @@ const drugStockData = {
   datasets: [
     {
       label: "Facilities with >30 days of Step 1 drugs",
-      data: [
-        96, 94, 90, 80, 70, 70, 71, 72, 73, 74, 75, 76, 78, 86, 96, 95, 94, 94,
-      ],
+      data: [71, 72, 73, 74, 75, 76, 78, 86, 96, 95, 94, 94],
       borderColor: "#222",
       backgroundColor: "transparent",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
     {
       label: "Facilities with >30 days of Step 2 drugs",
-      data: [
-        86, 84, 80, 70, 40, 30, 31, 32, 33, 34, 30, 46, 48, 46, 56, 55, 64, 64,
-      ],
+      data: [31, 32, 33, 34, 30, 46, 48, 46, 56, 55, 64, 64],
       borderColor: "#D8DB56",
       backgroundColor: "transparent",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
     {
       label: "Facilities with >30 days of Step 3 drugs",
-      data: [
-        90, 92, 92, 90, 90, 90, 91, 92, 93, 94, 90, 96, 98, 92, 94, 92, 92, 90,
-      ],
+      data: [91, 92, 93, 94, 90, 96, 98, 92, 94, 92, 92, 90],
       borderColor: "#18D6A8",
       backgroundColor: "transparent",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -669,12 +609,6 @@ if (drugStockCanvas) {
 // DM Controlled
 const dmControlledData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -691,16 +625,14 @@ const dmControlledData = {
   datasets: [
     {
       label: "Blood sugar controlled",
-      data: [
-        12, 18, 19, 14, 10, 12, 13, 14, 16, 18, 20, 22, 20, 16, 14, 17, 20, 22,
-      ],
+      data: [13, 14, 16, 18, 20, 22, 20, 16, 14, 17, 20, 22],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -723,12 +655,6 @@ if (dmControlledCanvas) {
 //DM: Uncontrolled
 const dmUncontrolledData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -745,9 +671,7 @@ const dmUncontrolledData = {
   datasets: [
     {
       label: "Blood sugar not controlled (total)",
-      data: [
-        50, 46, 49, 56, 62, 61, 61, 64, 61, 60, 56, 56, 60, 58, 64, 62, 58, 56,
-      ],
+      data: [61, 64, 61, 60, 56, 56, 60, 58, 64, 62, 58, 56],
       borderColor: "#D19600",
       backgroundColor: "transparent",
       yAxisID: "y",
@@ -755,16 +679,14 @@ const dmUncontrolledData = {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
     {
       type: "bar",
       label: "FBS ≥200 mg/dL or HbA1c ≥9%",
-      data: [
-        15, 14, 15, 17, 19, 18, 18, 19, 18, 18, 17, 17, 18, 17, 19, 19, 17, 17,
-      ],
+      data: [18, 19, 18, 18, 17, 17, 18, 17, 19, 19, 17, 17],
       borderColor: "rgba(249, 191, 45, 0.8)",
       backgroundColor: "rgba(249, 191, 45, 0.8)",
       yAxisID: "y",
@@ -772,9 +694,7 @@ const dmUncontrolledData = {
     {
       type: "bar",
       label: "FBS 126-199 mg/dL or HbA1c 7-8.9%",
-      data: [
-        35, 32, 34, 39, 43, 43, 43, 45, 43, 42, 39, 39, 42, 41, 45, 43, 41, 39,
-      ],
+      data: [43, 45, 43, 42, 39, 39, 42, 41, 45, 43, 41, 39],
       borderColor: "rgba(244, 212, 128, 0.6)",
       backgroundColor: "rgba(244, 212, 128, 0.6)",
       yAxisID: "y",
@@ -811,12 +731,6 @@ if (dmUncontrolledCanvas) {
 // DM: No visit in 3 months
 const dmLtfu3MonthData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -833,16 +747,14 @@ const dmLtfu3MonthData = {
   datasets: [
     {
       label: "No visit in past 3 months",
-      data: [
-        38, 36, 32, 30, 28, 27, 26, 22, 23, 22, 24, 22, 20, 26, 22, 21, 22, 22,
-      ],
+      data: [26, 22, 23, 22, 24, 22, 20, 26, 22, 21, 22, 22],
       borderColor: "#ed6300",
       backgroundColor: "rgba(230, 137, 70, 0.1)",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -867,12 +779,6 @@ if (dmLtfu3MonthCanvas) {
 
 const dmRegistrationsData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -890,8 +796,7 @@ const dmRegistrationsData = {
     {
       label: "Cumulative registrations",
       data: [
-        900, 1000, 1100, 1200, 1400, 1500, 2000, 2500, 2750, 3000, 3200, 3500,
-        3750, 3900, 4000, 4050, 4100, 4150,
+        2000, 2500, 2750, 3000, 3200, 3500, 3750, 3900, 4000, 4050, 4100, 4150,
       ],
       borderColor: "#007ee4",
       backgroundColor: "transparent",
@@ -900,8 +805,7 @@ const dmRegistrationsData = {
     {
       label: "Patients under care",
       data: [
-        720, 810, 900, 990, 1180, 1250, 1700, 2150, 2350, 2580, 2750, 3030,
-        3250, 3380, 3440, 3470, 3500, 3500,
+        1700, 2150, 2350, 2580, 2750, 3030, 3250, 3380, 3440, 3470, 3500, 3500,
       ],
       borderColor: "#b51bdc",
       backgroundColor: "transparent",
@@ -910,10 +814,7 @@ const dmRegistrationsData = {
     {
       type: "bar",
       label: "Monthly registrations",
-      data: [
-        150, 100, 100, 100, 200, 100, 500, 500, 250, 250, 200, 300, 250, 150,
-        100, 50, 50, 50,
-      ],
+      data: [500, 500, 250, 250, 200, 300, 250, 150, 100, 50, 50, 50],
       borderColor: "#BEDFF9",
       backgroundColor: "#BEDFF9",
       yAxisID: "yMonthlyRegistrations",
@@ -953,12 +854,6 @@ if (dmRegistrationsCanvas) {
 // DM: Lost to follow-up
 const dmLtfu12MonthsData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -975,17 +870,14 @@ const dmLtfu12MonthsData = {
   datasets: [
     {
       label: "12 month lost to follow-up",
-      data: [
-        20, 19, 18, 18, 18, 16, 17, 15, 14, 15, 14, 14, 13, 13, 13, 14, 14, 15,
-        16,
-      ],
+      data: [17, 15, 14, 15, 14, 14, 13, 13, 13, 14, 14, 15, 16],
       borderColor: "#FF3355",
       backgroundColor: "rgba(255, 51, 85, 0.1)",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -1009,12 +901,6 @@ if (dmLtfu12MonthsCanvas) {
 // DM opportunistic screening
 const dmScreeningsData = {
   labels: [
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
     "Sep-2022",
     "Oct-2022",
     "Nov-2022",
@@ -1031,12 +917,12 @@ const dmScreeningsData = {
   datasets: [
     {
       label: "% of patients screened",
-      data: [8, 6, 8, 7, 8, 6, 7, 7, 8, 9, 10, 10, 10, 9, 10, 12, 16, 2],
+      data: [7, 7, 8, 9, 10, 10, 10, 9, 10, 12, 16, 2],
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
       borderColor: "#34AEA0",
@@ -1047,8 +933,7 @@ const dmScreeningsData = {
       type: "bar",
       label: "Monthly screenings",
       data: [
-        2400, 1500, 1500, 1800, 1500, 1800, 1800, 2100, 2400, 2700, 3000, 3000,
-        3000, 2700, 3000, 3600, 4800, 600,
+        1800, 2100, 2400, 2700, 3000, 3000, 3000, 2700, 3000, 3600, 4800, 600,
       ],
       borderColor: "#C5E5E2",
       backgroundColor: "#C5E5E2",
@@ -1093,12 +978,6 @@ if (dmScreeningsCanvas) {
 // DM: Statins
 const dmStatinsData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -1115,16 +994,14 @@ const dmStatinsData = {
   datasets: [
     {
       label: "Prescribed statins",
-      data: [
-        30, 32, 35, 42, 38, 36, 37, 38, 40, 36, 40, 42, 50, 45, 60, 64, 66, 64,
-      ],
+      data: [37, 38, 40, 36, 40, 42, 50, 45, 60, 64, 66, 64],
       borderColor: "#666666",
       backgroundColor: "rgba(100, 100, 100, 0.1)",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -1146,12 +1023,6 @@ if (dmStatinsCanvas) {
 // Co-morbid Hypertension and Diabetes: BP Uncontrolled
 const comorbidControlledData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -1168,16 +1039,14 @@ const comorbidControlledData = {
   datasets: [
     {
       label: "BP controlled",
-      data: [
-        26, 28, 31, 30, 30, 32, 36, 38, 39, 41, 40, 42, 45, 44, 45, 47, 50, 48,
-      ],
+      data: [36, 38, 39, 41, 40, 42, 45, 44, 45, 47, 50, 48],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -1200,12 +1069,6 @@ if (comorbidControlledCanvas) {
 // Diabetes controlled BP chart
 const dmBPControlledData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -1222,31 +1085,27 @@ const dmBPControlledData = {
   datasets: [
     {
       label: "BP controlled <140/90",
-      data: [
-        26, 28, 31, 30, 30, 32, 36, 38, 39, 41, 40, 42, 45, 44, 45, 47, 48, 44,
-      ],
+      data: [36, 38, 39, 41, 40, 42, 45, 44, 45, 47, 48, 44],
       borderColor: "#3BB231",
       backgroundColor: "transparent",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
     {
       label: "BP controlled <130/80",
-      data: [
-        9, 11, 13, 16, 17, 20, 18, 24, 25, 26, 26, 25, 27, 29, 32, 30, 36, 33,
-      ],
+      data: [18, 24, 25, 26, 26, 25, 27, 29, 32, 30, 36, 33],
       borderColor: "#096301",
       backgroundColor: "transparent",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -1270,12 +1129,6 @@ if (dmBPControlledCanvas) {
 
 const dmDrugStockData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -1292,31 +1145,27 @@ const dmDrugStockData = {
   datasets: [
     {
       label: "Facilities with >30 days of Metformin",
-      data: [
-        96, 94, 90, 80, 70, 70, 71, 72, 73, 74, 75, 76, 78, 86, 96, 95, 94, 94,
-      ],
+      data: [71, 72, 73, 74, 75, 76, 78, 86, 96, 95, 94, 94],
       borderColor: "#222",
       backgroundColor: "transparent",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
     {
       label: "Facilities with >30 days of Glimeperide",
-      data: [
-        86, 84, 80, 70, 40, 30, 31, 32, 33, 34, 30, 46, 48, 46, 56, 55, 64, 64,
-      ],
+      data: [31, 32, 33, 34, 30, 46, 48, 46, 56, 55, 64, 64],
       borderColor: "#D8DB56",
       backgroundColor: "transparent",
       segment: {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -1421,12 +1270,6 @@ if (patientsProtectedCanvas) {
 // Overdue at start of month
 const overdueData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -1443,9 +1286,7 @@ const overdueData = {
   datasets: [
     {
       label: "Overdue patients",
-      data: [
-        58, 54, 53, 52, 44, 39, 37, 40, 38, 37, 31, 28, 25, 28, 29, 30, 26, 25,
-      ],
+      data: [37, 40, 38, 37, 31, 28, 25, 28, 29, 30, 26, 25],
       borderColor: "#E77215",
       backgroundColor: "#E7721525",
       yAxisID: "y",
@@ -1470,12 +1311,6 @@ if (overdueCanvas) {
 // Overdue called
 const overdueCalledData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -1492,7 +1327,7 @@ const overdueCalledData = {
   datasets: [
     {
       label: "Overdue patients called",
-      data: [0, 5, 0, 0, 8, 12, 16, 22, 12, 10, 14, 25, 30, 22, 20, 21, 42, 10],
+      data: [16, 22, 12, 10, 14, 25, 30, 22, 20, 21, 42, 10],
       borderColor: "#edbe00",
       backgroundColor: "#edbe0025",
       yAxisID: "y",
@@ -1500,7 +1335,7 @@ const overdueCalledData = {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            12 // number of data elements
           ),
       },
     },
@@ -1525,12 +1360,6 @@ if (overdueCalledCanvas) {
 // Returned to care
 const overdueReturnedData = {
   labels: [
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
     "Sep-2023",
     "Oct-2023",
     "Nov-2023",
@@ -1547,9 +1376,7 @@ const overdueReturnedData = {
   datasets: [
     {
       label: "Called overdue patients that returned to care",
-      data: [
-        0, 25, 0, 0, 10, 12, 22, 40, 24, 55, 60, 62, 44, 50, 33, 36, 58, 15,
-      ],
+      data: [22, 40, 24, 55, 60, 62, 44, 50, 33, 36, 58, 15],
       borderColor: "#5300e0",
       backgroundColor: "#5300e010",
       yAxisID: "y",
@@ -1557,7 +1384,7 @@ const overdueReturnedData = {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18, // number of data elements,
+            12, // number of data elements,
             2
           ),
       },
