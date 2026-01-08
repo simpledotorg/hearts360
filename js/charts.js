@@ -468,7 +468,21 @@ const screeningsData = {
             12 // number of data elements
           ),
       },
-      borderColor: "#34AEA0",
+      borderColor: "#e6a842",
+      backgroundColor: "transparent",
+      yAxisID: "y",
+    },
+    {
+      label: "% of people suspected",
+      data: [2, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 1],
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            12 // number of data elements
+          ),
+      },
+      borderColor: "#df680f",
       backgroundColor: "transparent",
       yAxisID: "y",
     },
@@ -478,9 +492,21 @@ const screeningsData = {
       data: [
         3400, 3600, 3900, 5800, 5700, 5600, 6600, 6200, 6000, 6500, 6900, 500,
       ],
-      borderColor: "#C5E5E2",
-      backgroundColor: "#C5E5E2",
+      borderColor: "#fde8b3",
+      backgroundColor: "#fde8b3",
       yAxisID: "yMonthlyscreenings",
+      stack: "monthly",
+    },
+    {
+      type: "bar",
+      label: "Monthly suspected",
+      data: [
+        610, 650, 700, 1040, 1030, 1010, 1190, 1120, 1080, 1170, 1240, 90,
+      ],
+      borderColor: "#ff9d4d",
+      backgroundColor: "#ff9d4d",
+      yAxisID: "yMonthlyscreenings",
+      stack: "monthly",
     },
   ],
 };
@@ -499,7 +525,8 @@ screeningsConfig.options.scales.y.max = 100;
 screeningsConfig.options.scales.yMonthlyscreenings = {
   display: false,
   beginAtZero: true,
-  max: 7000,
+  max: 8200,
+  stacked: true,
 };
 
 screeningsConfig.options.plugins.tooltip.displayColors = true;
