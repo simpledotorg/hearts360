@@ -794,6 +794,10 @@ table {
   flex: 1;
 }
 
+.coverage-column:last-child {
+  border-right: none;
+}
+
 .coverage-divider {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   width: 8px;
@@ -908,6 +912,28 @@ table {
 }
 .registrations-bg {
   background: #007ee4;
+}
+
+.opd-visits-bg {
+  background: #adb2b8;
+}
+.people-screened {
+  color: #fabe46;
+}
+.people-screened-bg {
+  background: #fabe46;
+}
+.people-suspected {
+  color: #0075eb;
+}
+.people-suspected-bg {
+  background: #0075eb;
+}
+.diagnosed-care {
+  color: #5300e0;
+}
+.diagnosed-care-bg {
+  background: #5300e0;
 }
 
 .step-one-drugs {
