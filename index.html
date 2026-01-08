@@ -5182,7 +5182,10 @@
             <div class="info">
               <div class="info-hover-text">
                 <p>
-                  <span>Numerator:</span> Patients screened for hypertension.
+                  <span>Numerator for screened:</span> Patients screened for hypertension.
+                </p>
+                <p>
+                  <span>Numerator for suspected:</span> Patients suspected of having hypertension based on screening results.
                 </p>
                 <p>
                   <span>Denominator:</span> Approximate adult patients OPD per
@@ -5190,12 +5193,12 @@
                 </p>
               </div>
             </div>
-            <p>% of estimated adult OPD patients screened for hypertension</p>
+            <p>% of estimated adult OPD patients screened and suspected for hypertension</p>
           </div>
           <div class="body">
             <div class="figures">
               <div>
-                <p class="large-num" style="color: #34aea0">23%</p>
+                <p class="large-num" style="color: #faba46">23%</p>
                 <div class="detail">
                   <p>6,900 individuals screened for hypertension in Jul-2024</p>
                   <p class="text-grey">
@@ -5206,6 +5209,86 @@
             </div>
             <div class="chart">
               <canvas id="screenings"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns-3">
+        <div class="card">
+          <div class="heading">
+            <h3>Screening to diagnosis cascade</h3>
+            <p>
+              Estimated adults (>30) in River District who visited OPD who are screened, suspected, under care, and controlled.
+            </p>
+          </div>
+          <div class="body">
+            <div class="coverage">
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div class="coverage-bar-fill opd-visits-bg" style="height: 100%">
+                    <p class="coverage-estimated">100%</p>
+                  </div>
+                </div>
+                <p>250,800</p>
+                <p class="text-grey label-small">
+                  OPD visits
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill people-screened-bg"
+                    style="height: 62%"
+                  >
+                    <p class="coverage-number people-screened">62%</p>
+                  </div>
+                </div>
+                <p>155,496</p>
+                <p class="text-grey label-small">
+                  People screened
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill people-suspected-bg"
+                    style="height: 20%"
+                  >
+                    <p class="coverage-number people-suspected">20%</p>
+                  </div>
+                </div>
+                <p>50,160</p>
+                <p class="text-grey label-small">
+                  People suspected
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill diagnosed-care-bg"
+                    style="height: 5%"
+                  >
+                    <p class="coverage-number diagnosed-care">5%</p>
+                  </div>
+                </div>
+                <p>12,540</p>
+                <p class="text-grey label-small">
+                  Diagnosed and under care
+                </p>
+              </div>
+              <div class="coverage-column">
+                <div class="coverage-bar">
+                  <div
+                    class="coverage-bar-fill bp-controlled-bg"
+                    style="height: 2%"
+                  >
+                    <p class="coverage-number bp-controlled">2%</p>
+                  </div>
+                </div>
+                <p>5,016</p>
+                <p class="text-grey label-small">Patients with BP controlled</p>
+              </div>
             </div>
           </div>
         </div>
