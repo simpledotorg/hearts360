@@ -494,7 +494,7 @@ const htnStartedTreatmentData = {
         52, 48, 54, 51, 58, 55, 49, 57, 53, 59, 56, 62, 58, 54, 61, 59, 63, 60,
       ],
       borderColor: "#3BB231",
-      backgroundColor: "transparent",
+      backgroundColor: "#3BB23110",
       yAxisID: "y",
       segment: {
         borderDash: (ctx) =>
@@ -504,26 +504,26 @@ const htnStartedTreatmentData = {
           ),
       },
     },
-    {
-      type: "bar",
-      label: "Started on Step 1 treatment",
-      data: [
-        33, 30, 34, 32, 37, 35, 31, 36, 34, 38, 36, 40, 37, 34, 39, 38, 40, 38,
-      ],
-      borderColor: "rgba(69, 205, 57, 0.8)",
-      backgroundColor: "rgba(69, 205, 57, 0.8)",
-      yAxisID: "y",
-    },
-    {
-      type: "bar",
-      label: "Started on other treatment",
-      data: [
-        19, 18, 20, 19, 21, 20, 18, 21, 19, 21, 20, 22, 21, 20, 22, 21, 23, 22,
-      ],
-      borderColor: "rgba(69, 205, 57, 0.4)",
-      backgroundColor: "rgba(69, 205, 57, 0.4)",
-      yAxisID: "y",
-    },
+    // {
+    //   type: "bar",
+    //   label: "Started on Step 1 treatment",
+    //   data: [
+    //     33, 30, 34, 32, 37, 35, 31, 36, 34, 38, 36, 40, 37, 34, 39, 38, 40, 38,
+    //   ],
+    //   borderColor: "rgba(69, 205, 57, 0.8)",
+    //   backgroundColor: "rgba(69, 205, 57, 0.8)",
+    //   yAxisID: "y",
+    // },
+    // {
+    //   type: "bar",
+    //   label: "Started on other treatment",
+    //   data: [
+    //     19, 18, 20, 19, 21, 20, 18, 21, 19, 21, 20, 22, 21, 20, 22, 21, 23, 22,
+    //   ],
+    //   borderColor: "rgba(69, 205, 57, 0.4)",
+    //   backgroundColor: "rgba(69, 205, 57, 0.4)",
+    //   yAxisID: "y",
+    // },
   ],
 };
 
