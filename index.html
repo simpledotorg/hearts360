@@ -5051,7 +5051,7 @@
                 <h4 class="bp-controlled">
                   BP controlled at latest visit in past 3 months
                 </h4>
-                <p class="large-num bp-controlled">61%</p>
+                <p class="large-num bp-controlled">45%</p>
                 <div class="detail">
                   <p>17,099 patients with BP &lt;140/90</p>
                 </div>
@@ -5065,7 +5065,7 @@
                 <h4 class="bp-uncontrolled">
                   BP not controlled at latest visit in past 3 months
                 </h4>
-                <p class="large-num bp-uncontrolled">17%</p>
+                <p class="large-num bp-uncontrolled">20%</p>
                 <div class="detail">
                   <p>7,401 patients with BP &ge;140/90</p>
                 </div>
@@ -5077,13 +5077,87 @@
             <div class="inner-card">
               <div class="figures">
                 <h4 class="three-month-ltfu">No visit in past 3 months</h4>
-                <p class="large-num three-month-ltfu">22%</p>
+                <p class="large-num three-month-ltfu">35%</p>
                 <div class="detail">
-                  <p>12,359 patients with no visit</p>
+                  <p>13,276 patients with no visit</p>
                 </div>
               </div>
               <div class="chart">
                 <canvas id="ltfu3Month"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="heading">
+          <h3>Hypertension treatment outcomes</h3>
+          <div class="info">
+            <div class="info-hover-text">
+              <p>
+                <span>Numerator for BP controlled:</span> Patients with BP
+                &lt;140 AND &lt;90 at their latest visit in the past 3 months.
+              </p>
+              <p>
+                <span>Numerator for BP uncontrolled:</span> Patients with BP
+                &ge;140 OR &ge;90 at their latest visit in the past 3 months.
+              </p>
+              <p>
+                <span>Numerator for No visit in 3 months:</span> Patients with
+                no visit in the past 3 months.
+              </p>
+              <p>
+                <span>Denominator:</span> Patients with hypertension registered
+                before the past 3 months. Dead patients (205) and 12 month lost
+                to follow-up patients (1,562) are excluded.
+              </p>
+            </div>
+          </div>
+          <p>
+            Outcomes for 41,205 patients under care (registered before
+            1-Sep-2025) between 1-Sep-2025 to 30-Nov-2025
+          </p>
+
+          <div class="body columns-3">
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="bp-controlled">
+                  BP controlled at latest visit in past 3 months
+                </h4>
+                <p class="large-num bp-controlled">43%</p>
+                <div class="detail">
+                  <p>17,718 patients with BP &lt;140/90</p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="bpcontrolled-dec"></canvas>
+              </div>
+            </div>
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="bp-uncontrolled">
+                  BP not controlled at latest visit in past 3 months
+                </h4>
+                <p class="large-num bp-uncontrolled">22%</p>
+                <div class="detail">
+                  <p>9,065 patients with BP &ge;140/90</p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="bpuncontrolled-dec"></canvas>
+              </div>
+            </div>
+            <div class="inner-card">
+              <div class="figures">
+                <h4 class="three-month-ltfu">No visit in past 3 months</h4>
+                <p class="large-num three-month-ltfu">34%</p>
+                <div class="detail">
+                  <p>14,009 patients with no visit</p>
+                </div>
+              </div>
+              <div class="chart">
+                <canvas id="ltfu3Month-dec"></canvas>
               </div>
             </div>
           </div>
@@ -5137,178 +5211,178 @@
               <tbody>
                 <tr class="totals" data-sort-method="none">
                   <th class="link"><b>River District</b></th>
-                  <td class="number under-care bold">37,814</td>
+                  <td class="number under-care bold">40,943</td>
                   <td class="number">1,043</td>
-                  <td class="number">20,760</td>
-                  <td class="bp-controlled bold">61%</td>
-                  <td class="number">5,786</td>
-                  <td class="bp-uncontrolled bold">17%</td>
-                  <td class="number">7,487</td>
-                  <td class="three-month-ltfu bold">22%</td>
-                </tr>
-                <tr>
-                  <th class="link"><a href="#">Cherry Blossom County</a></th>
-                  <td class="number under-care bold">3,947</td>
-                  <td class="number">139</td>
-                  <td class="number">1,776</td>
-                  <td class="bp-controlled bold">50%</td>
-                  <td class="number">568</td>
-                  <td class="bp-uncontrolled bold">16%</td>
-                  <td class="number">1,208</td>
-                  <td class="three-month-ltfu bold">34%</td>
-                </tr>
-                <tr>
-                  <th class="link"><a href="#">Fern Grove County</a></th>
-                  <td class="number under-care bold">1,812</td>
-                  <td class="number">106</td>
-                  <td class="number">1,370</td>
-                  <td class="bp-controlled bold">84%</td>
-                  <td class="number">65</td>
-                  <td class="bp-uncontrolled bold">4%</td>
-                  <td class="number">196</td>
-                  <td class="three-month-ltfu bold">12%</td>
-                </tr>
-                <tr>
-                  <th class="link"><a href="#">Grasslands County</a></th>
-                  <td class="number under-care bold">1,152</td>
-                  <td class="number">6</td>
-                  <td class="number">404</td>
-                  <td class="bp-controlled bold">39%</td>
-                  <td class="number">73</td>
-                  <td class="bp-uncontrolled bold">7%</td>
-                  <td class="number">560</td>
-                  <td class="three-month-ltfu bold">54%</td>
-                </tr>
-                <tr>
-                  <th class="link"><a href="#">Hillside County</a></th>
-                  <td class="number under-care bold">11,493</td>
-                  <td class="number">305</td>
-                  <td class="number">7,241</td>
-                  <td class="bp-controlled bold">69%</td>
-                  <td class="number">1,138</td>
-                  <td class="bp-uncontrolled bold">11%</td>
-                  <td class="number">1,965</td>
-                  <td class="three-month-ltfu bold">19%</td>
-                </tr>
-                <tr>
-                  <th class="link"><a href="#">Ice Caps County</a></th>
-                  <td class="number under-care bold">3,111</td>
-                  <td class="number">65</td>
-                  <td class="number">1,876</td>
-                  <td class="bp-controlled bold">68%</td>
-                  <td class="number">392</td>
-                  <td class="bp-uncontrolled bold">14%</td>
-                  <td class="number">532</td>
-                  <td class="three-month-ltfu bold">19%</td>
-                </tr>
-                <tr>
-                  <th class="link"><a href="#">Mangrove County</a></th>
-                  <td class="number under-care bold">1,238</td>
-                  <td class="number">100</td>
-                  <td class="number">557</td>
-                  <td class="bp-controlled bold">50%</td>
-                  <td class="number">167</td>
-                  <td class="bp-uncontrolled bold">15%</td>
-                  <td class="number">390</td>
+                  <td class="number">17,099</td>
+                  <td class="bp-controlled bold">45%</td>
+                  <td class="number">7,401</td>
+                  <td class="bp-uncontrolled bold">20%</td>
+                  <td class="number">13,276</td>
                   <td class="three-month-ltfu bold">35%</td>
                 </tr>
                 <tr>
+                  <th class="link"><a href="#">Cherry Blossom County</a></th>
+                  <td class="number under-care bold">4,364</td>
+                  <td class="number">139</td>
+                  <td class="number">1,776</td>
+                  <td class="bp-controlled bold">45%</td>
+                  <td class="number">768</td>
+                  <td class="bp-uncontrolled bold">19%</td>
+                  <td class="number">1,403</td>
+                  <td class="three-month-ltfu bold">36%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Fern Grove County</a></th>
+                  <td class="number under-care bold">2,130</td>
+                  <td class="number">106</td>
+                  <td class="number">1,370</td>
+                  <td class="bp-controlled bold">76%</td>
+                  <td class="number">236</td>
+                  <td class="bp-uncontrolled bold">13%</td>
+                  <td class="number">206</td>
+                  <td class="three-month-ltfu bold">11%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Grasslands County</a></th>
+                  <td class="number under-care bold">1,170</td>
+                  <td class="number">6</td>
+                  <td class="number">404</td>
+                  <td class="bp-controlled bold">35%</td>
+                  <td class="number">188</td>
+                  <td class="bp-uncontrolled bold">16%</td>
+                  <td class="number">560</td>
+                  <td class="three-month-ltfu bold">49%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Hillside County</a></th>
+                  <td class="number under-care bold">12,408</td>
+                  <td class="number">305</td>
+                  <td class="number">6,241</td>
+                  <td class="bp-controlled bold">54%</td>
+                  <td class="number">3,287</td>
+                  <td class="bp-uncontrolled bold">29%</td>
+                  <td class="number">1,965</td>
+                  <td class="three-month-ltfu bold">15%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Ice Caps County</a></th>
+                  <td class="number under-care bold">3,306</td>
+                  <td class="number">65</td>
+                  <td class="number">1,876</td>
+                  <td class="bp-controlled bold">60%</td>
+                  <td class="number">392</td>
+                  <td class="bp-uncontrolled bold">13%</td>
+                  <td class="number">843</td>
+                  <td class="three-month-ltfu bold">27%</td>
+                </tr>
+                <tr>
+                  <th class="link"><a href="#">Mangrove County</a></th>
+                  <td class="number under-care bold">1,538</td>
+                  <td class="number">100</td>
+                  <td class="number">557</td>
+                  <td class="bp-controlled bold">44%</td>
+                  <td class="number">217</td>
+                  <td class="bp-uncontrolled bold">18%</td>
+                  <td class="number">464</td>
+                  <td class="three-month-ltfu bold">38%</td>
+                </tr>
+                <tr>
                   <th class="link"><a href="#">Mountain County</a></th>
-                  <td class="number under-care bold">3,229</td>
+                  <td class="number under-care bold">3,397</td>
                   <td class="number">56</td>
                   <td class="number">872</td>
-                  <td class="bp-controlled bold">30%</td>
-                  <td class="number">407</td>
-                  <td class="bp-uncontrolled bold">14%</td>
-                  <td class="number">1,627</td>
-                  <td class="three-month-ltfu bold">56%</td>
+                  <td class="bp-controlled bold">27%</td>
+                  <td class="number">607</td>
+                  <td class="bp-uncontrolled bold">19%</td>
+                  <td class="number">1,750</td>
+                  <td class="three-month-ltfu bold">54%</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">Oceanside County</a></th>
-                  <td class="number under-care bold">441</td>
+                  <td class="number under-care bold">759</td>
                   <td class="number">106</td>
                   <td class="number">95</td>
-                  <td class="bp-controlled bold">24%</td>
-                  <td class="number">48</td>
-                  <td class="bp-uncontrolled bold">12%</td>
-                  <td class="number">254</td>
+                  <td class="bp-controlled bold">22%</td>
+                  <td class="number">58</td>
+                  <td class="bp-uncontrolled bold">13%</td>
+                  <td class="number">288</td>
                   <td class="three-month-ltfu bold">65%</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">Peaks County</a></th>
-                  <td class="number under-care bold">7,549</td>
+                  <td class="number under-care bold">7,909</td>
                   <td class="number">120</td>
-                  <td class="number">3,532</td>
-                  <td class="bp-controlled bold">52%</td>
-                  <td class="number">1,563</td>
-                  <td class="bp-uncontrolled bold">23%</td>
-                  <td class="number">1,699</td>
-                  <td class="three-month-ltfu bold">25%</td>
+                  <td class="number">2,501</td>
+                  <td class="bp-controlled bold">33%</td>
+                  <td class="number">1,010</td>
+                  <td class="bp-uncontrolled bold">13%</td>
+                  <td class="number">4,038</td>
+                  <td class="three-month-ltfu bold">53%</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">Rain Forest County</a></th>
-                  <td class="number under-care bold">201</td>
+                  <td class="number under-care bold">215</td>
                   <td class="number">0</td>
                   <td class="number">65</td>
-                  <td class="bp-controlled bold">36%</td>
-                  <td class="number">20</td>
-                  <td class="bp-uncontrolled bold">11%</td>
-                  <td class="number">96</td>
-                  <td class="three-month-ltfu bold">54%</td>
+                  <td class="bp-controlled bold">32%</td>
+                  <td class="number">30</td>
+                  <td class="bp-uncontrolled bold">15%</td>
+                  <td class="number">106</td>
+                  <td class="three-month-ltfu bold">53%</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">Rivers Edge County</a></th>
-                  <td class="number under-care bold">520</td>
+                  <td class="number under-care bold">551</td>
                   <td class="number">10</td>
                   <td class="number">168</td>
-                  <td class="bp-controlled bold">36%</td>
+                  <td class="bp-controlled bold">32%</td>
                   <td class="number">70</td>
-                  <td class="bp-uncontrolled bold">15%</td>
-                  <td class="number">230</td>
-                  <td class="three-month-ltfu bold">49%</td>
+                  <td class="bp-uncontrolled bold">13%</td>
+                  <td class="number">282</td>
+                  <td class="three-month-ltfu bold">54%</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">Sunshine Coast County</a></th>
-                  <td class="number under-care bold">728</td>
+                  <td class="number under-care bold">743</td>
                   <td class="number">5</td>
                   <td class="number">347</td>
-                  <td class="bp-controlled bold">53%</td>
+                  <td class="bp-controlled bold">48%</td>
                   <td class="number">72</td>
-                  <td class="bp-uncontrolled bold">11%</td>
-                  <td class="number">236</td>
-                  <td class="three-month-ltfu bold">36%</td>
+                  <td class="bp-uncontrolled bold">10%</td>
+                  <td class="number">309</td>
+                  <td class="three-month-ltfu bold">42%</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">Tree Top County</a></th>
-                  <td class="number under-care bold">115</td>
+                  <td class="number under-care bold">133</td>
                   <td class="number">6</td>
-                  <td class="number">52</td>
-                  <td class="bp-controlled bold">50%</td>
+                  <td class="number">62</td>
+                  <td class="bp-controlled bold">54%</td>
                   <td class="number">21</td>
-                  <td class="bp-uncontrolled bold">20%</td>
-                  <td class="number">31</td>
-                  <td class="three-month-ltfu bold">30%</td>
+                  <td class="bp-uncontrolled bold">18%</td>
+                  <td class="number">32</td>
+                  <td class="three-month-ltfu bold">28%</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">Vineland County</a></th>
-                  <td class="number under-care bold">793</td>
+                  <td class="number under-care bold">826</td>
                   <td class="number">11</td>
                   <td class="number">429</td>
-                  <td class="bp-controlled bold">60%</td>
-                  <td class="number">71</td>
+                  <td class="bp-controlled bold">54%</td>
+                  <td class="number">81</td>
                   <td class="bp-uncontrolled bold">10%</td>
-                  <td class="number">214</td>
-                  <td class="three-month-ltfu bold">30%</td>
+                  <td class="number">283</td>
+                  <td class="three-month-ltfu bold">36%</td>
                 </tr>
                 <tr>
                   <th class="link"><a href="#">Wind Canyon County</a></th>
-                  <td class="number under-care bold">1,485</td>
+                  <td class="number under-care bold">1,509</td>
                   <td class="number">8</td>
                   <td class="number">347</td>
-                  <td class="bp-controlled bold">26%</td>
-                  <td class="number">334</td>
-                  <td class="bp-uncontrolled bold">25%</td>
-                  <td class="number">656</td>
+                  <td class="bp-controlled bold">23%</td>
+                  <td class="number">364</td>
+                  <td class="bp-uncontrolled bold">24%</td>
+                  <td class="number">720</td>
                   <td class="three-month-ltfu bold">48%</td>
                 </tr>
               </tbody>

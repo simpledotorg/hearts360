@@ -232,6 +232,57 @@ if (bpControlledCanvas) {
   createChart(bpControlledCanvas, bpControlledConfig);
 }
 
+// BP Controlled - Dec
+const bpControlledDecData = {
+  labels: [
+    "Jul-2024",
+    "Aug-2024",
+    "Sep-2024",
+    "Oct-2024",
+    "Nov-2024",
+    "Dec-2024",
+    "Jan-2025",
+    "Feb-2025",
+    "Mar-2025",
+    "Apr-2025",
+    "May-2025",
+    "Jun-2025",
+    "Jul-2025",
+    "Aug-2025",
+    "Sep-2025",
+    "Oct-2025",
+    "Nov-2025",
+    "Dec-2025",
+  ],
+  datasets: [
+    {
+      label: "BP controlled",
+      data: [60, 59, 57, 55, 57, 56, 54, 52, 50, 51, 49, 48, 45, 45, 44, 44, 43, 44],
+      borderColor: "#3BB231",
+      backgroundColor: "rgba(69, 205, 57, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+const bpControlledDecConfig = baseLineChartConfig();
+bpControlledDecConfig.data = bpControlledDecData;
+bpControlledDecConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+bpControlledDecConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
+const bpControlledDecCanvas = document.getElementById("bpcontrolled-dec");
+if (bpControlledDecCanvas) {
+  createChart(bpControlledDecCanvas, bpControlledDecConfig);
+}
+
 // Hypertension: BP Uncontrolled
 const bpUncontrolledData = {
   labels: [
@@ -284,6 +335,57 @@ if (bpUncontrolledCanvas) {
   createChart(bpUncontrolledCanvas, bpUncontrolledConfig);
 }
 
+// BP Uncontrolled - Dec
+const bpUncontrolledDecData = {
+  labels: [
+    "Jul-2024",
+    "Aug-2024",
+    "Sep-2024",
+    "Oct-2024",
+    "Nov-2024",
+    "Dec-2024",
+    "Jan-2025",
+    "Feb-2025",
+    "Mar-2025",
+    "Apr-2025",
+    "May-2025",
+    "Jun-2025",
+    "Jul-2025",
+    "Aug-2025",
+    "Sep-2025",
+    "Oct-2025",
+    "Nov-2025",
+    "Dec-2025",
+  ],
+  datasets: [
+    {
+      label: "BP uncontrolled",
+      data: [ 16, 15, 16, 18, 14, 14, 11, 11, 12, 8, 11, 12, 20, 20, 23, 23, 22, 23],
+      borderColor: "#D19600",
+      backgroundColor: "rgba(255, 201, 63, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+const bpUncontrolledDecConfig = baseLineChartConfig();
+bpUncontrolledDecConfig.data = bpUncontrolledDecData;
+bpUncontrolledDecConfig.options.plugins.tooltip.callbacks = {
+  label: percentageLabel,
+};
+bpUncontrolledDecConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+const bpUncontrolledDecCanvas = document.getElementById("bpuncontrolled-dec");
+if (bpUncontrolledDecCanvas) {
+  createChart(bpUncontrolledDecCanvas, bpUncontrolledDecConfig);
+}
+
 // Hypertension: No visit in 3 months
 const ltfu3MonthData = {
   labels: [
@@ -333,6 +435,55 @@ ltfu3MonthConfig.options.scales.y.ticks.callback = (val) => {
 const ltfu3MonthCanvas = document.getElementById("ltfu3Month");
 if (ltfu3MonthCanvas) {
   createChart(ltfu3MonthCanvas, ltfu3MonthConfig);
+}
+
+// No visit in 3 months - Dec
+const ltfu3MonthDecData = {
+  labels: [
+    "Jul-2024",
+    "Aug-2024",
+    "Sep-2024",
+    "Oct-2024",
+    "Nov-2024",
+    "Dec-2024",
+    "Jan-2025",
+    "Feb-2025",
+    "Mar-2025",
+    "Apr-2025",
+    "May-2025",
+    "Jun-2025",
+    "Jul-2025",
+    "Aug-2025",
+    "Sep-2025",
+    "Oct-2025",
+    "Nov-2025",
+    "Dec-2025",
+  ],
+  datasets: [
+    {
+      label: "No visit in past 3 months",
+      data: [ 24, 26, 27, 27, 29, 30, 35, 37, 38, 41, 40, 40, 35, 35, 33, 33, 34, 33],
+      borderColor: "#ed6300",
+      backgroundColor: "rgba(230, 137, 70, 0.1)",
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            18 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+const ltfu3MonthDecConfig = baseLineChartConfig();
+ltfu3MonthDecConfig.data = ltfu3MonthDecData;
+ltfu3MonthDecConfig.options.plugins.tooltip.callbacks = { label: percentageLabel };
+ltfu3MonthDecConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+const ltfu3MonthDecCanvas = document.getElementById("ltfu3Month-dec");
+if (ltfu3MonthDecCanvas) {
+  createChart(ltfu3MonthDecCanvas, ltfu3MonthDecConfig);
 }
 
 // Hypertension: Registrations
