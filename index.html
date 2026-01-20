@@ -5597,27 +5597,35 @@
           </div>
         </div>
       </div>
-      <h2 class="columns-header spacer">Screening</h2>
+      <h2 class="columns-header spacer">Opportunistic Screening</h2>
       <div class="columns-3">
         <div class="card grid-cols-3">
           <div class="heading">
-            <h3>Patients screened for hypertention</h3>
-            <p>OPD patients screened for hypertension during the month.</p>
+            <h3>Screened adults</h3>
+            <p>Estimated adult OPD visitors who had their BP checked during the month.</p>
+            <div class="info">
+              <div class="info-hover-text">
+                <p>
+                  <span>Numerator:</span> OPD patients screened for hypertension
+                  during the month.
+                </p>
+                <p>
+                  <span>Denominator:</span> Estimated OPD patients &gt;18 years
+                  for the month.
+                </p>
+              </div>
+            </div>
           </div>
           <div class="body">
             <div class="figures">
-              <div class="detail">
-                <p>
-                  <b class="bp-controlled" style="color: #d19600">58%</b>
-                  &nbsp; 6,322 patients screened for hypertension
-                </p>
-                <p>
-                  <b style="color: rgba(231, 114, 21, 0.8)">17%</b> &nbsp; 2,100
-                  screened patients with suspected hypertension
-                </p>
-                <p class="text-grey">
-                  of 10,900 OPD patient visits in Jul-2024
-                </p>
+              <div class="figures">
+                <p class="large-num" style="color: rgba(231, 114, 21, 0.8)">23%</p>
+                <div class="detail">
+                  <p>6,900 adults screened</p>
+                  <p class="text-grey">
+                    of ~30,900 estimated OPD patients &gt;18 years in Jul-2024
+                  </p>
+                </div>
               </div>
             </div>
             <div class="chart">
@@ -5638,69 +5646,48 @@
         </div>
         <div class="card grid-cols-3">
           <div class="heading">
-            <h3>Suspected patients diagnosed</h3>
+            <h3>Suspected adults</h3>
             <p>
-              Screened patients with suspected hypertension that received a
-              diagnosis during the month.
+              Adults screened with high BP during the month.
             </p>
           </div>
           <div class="body">
             <div class="figures">
-              <div class="detail">
-                <p>
-                  <b class="bp-controlled" style="color: #d19600">29%</b>
-                  &nbsp; 609 patients received a diagnosis (yes or no)
-                </p>
-                <p>
-                  <b style="color: rgba(249, 191, 45, 0.8)">18%</b> &nbsp; 336
-                  patients diagnosed with hypertension
-                </p>
-                <p class="text-grey">
-                  of 2,100 patients screened with suspected hypertension in
-                  Jul-2024
-                </p>
+              <div class="figures">
+                <p class="large-num" style="color: #d19600">35%</p>
+                <div class="detail">
+                  <p>2,415 adults with high BP</p>
+                  <p class="text-grey">
+                    of 6,900 adults screened in Jul-2024
+                  </p>
+                </div>
               </div>
             </div>
             <div class="chart">
               <canvas id="htnscreeningdiagnosed"></canvas>
             </div>
-            <!-- <p
-              style="
-                margin-bottom: -12px;
-                margin-top: 6px;
-                font-weight: semibold;
-                font-size: 10px;
-                text-align: center;
-              "
-            >
-              95,670 cumulative patients screened for HTN (Jan-Dec 2024)
-            </p> -->
           </div>
         </div>
         <div class="card grid-cols-3">
           <div class="heading">
-            <h3>Diagnosed patients started on treatment</h3>
+            <h3>Suspected adults diagnosed</h3>
             <p>
-              Screened patients diagnosed with hypertension that were started on
-              treatment during the month.
+              Adults diagnosed within 3 months of being suspected.
             </p>
           </div>
           <div class="body">
             <div class="figures">
-              <b class="large-num" style="color: #3bb231">63%</b>
+              <b class="large-num" style="color: #3bb231">45%</b>
               <div class="detail">
-                <p>212 patients initiated on treatment</p>
-                <!-- <p>
-                  <b style="color: rgba(69, 205, 57, 0.8)">40%</b> &nbsp; 134
-                  Initiated on treatment with controlled BP
-                </p> -->
+                <p>1,068 adults diagnosed</p>
                 <p class="text-grey">
-                  of 336 patients diagnosed with hypertension in Jul-2024
+                  of 2,415 suspected adults in Jul-2024
                 </p>
               </div>
             </div>
+            </div>
             <div class="chart">
-              <canvas id="htnstartedtreatment"></canvas>
+              <canvas id="htnscreenedadultsdiagnosed"></canvas>
             </div>
             <!-- <p
               style="

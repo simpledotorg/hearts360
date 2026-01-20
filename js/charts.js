@@ -312,9 +312,9 @@ const htnScreeningData = {
   ],
   datasets: [
     {
-      label: "% Screened for HTN",
+      label: "% Adults screened for hypertension",
       data: [
-        50, 46, 49, 56, 62, 61, 61, 64, 61, 60, 56, 56, 60, 58, 64, 62, 58, 56,
+        22, 20, 21, 23, 26, 25, 25, 27, 25, 24, 23, 22, 24, 23, 26, 25, 23, 22,
       ],
       borderColor: "#E77215",
       backgroundColor: "transparent",
@@ -329,23 +329,14 @@ const htnScreeningData = {
     },
     {
       type: "bar",
-      label: "Screened with suspected hypertension",
+      label: "# Adults screened for hypertension",
       data: [
-        15, 14, 15, 17, 19, 18, 18, 19, 18, 18, 17, 17, 18, 17, 19, 19, 17, 17,
-      ],
-      borderColor: "rgba(231, 114, 21, 0.6)",
-      backgroundColor: "rgba(231, 114, 21, 0.6)",
-      yAxisID: "y",
-    },
-    {
-      type: "bar",
-      label: "Screened no hypertension",
-      data: [
-        35, 32, 34, 39, 43, 43, 43, 45, 43, 42, 39, 39, 42, 41, 45, 43, 41, 39,
+        16500, 17800, 18600, 17600, 15800, 16900, 21400, 22800, 24100, 28900,
+        28400, 27600, 30100, 29200, 28100, 29500, 30900, 15200,
       ],
       borderColor: "#E77215",
       backgroundColor: "#E7721550",
-yAxisID: "y",
+      yAxisID: "yMonthlyscreenings",
     },
   ],
 };
@@ -355,9 +346,14 @@ htnScreeningConfig.data = htnScreeningData;
 htnScreeningConfig.options.scales.y.ticks.callback = (val) => {
   return val + "%";
 };
-
 htnScreeningConfig.options.scales.x.stacked = true;
 htnScreeningConfig.options.scales.y.stacked = true;
+htnScreeningConfig.options.scales.y.ticks.display = false;
+htnScreeningConfig.options.scales.yMonthlyscreenings = {
+  display: false,
+  beginAtZero: true,
+  max: 32000,
+};
 
 htnScreeningConfig.options.plugins.tooltip.displayColors = true;
 htnScreeningConfig.options.plugins.tooltip.callbacks = {
@@ -400,9 +396,9 @@ const htnScreeningDiagnosedData = {
   ],
   datasets: [
     {
-      label: "% Suspected patients diagnosed",
+      label: "% Suspected adults",
       data: [
-        24, 27, 23, 26, 29, 25, 28, 22, 30, 21, 24, 27, 25, 23, 28, 26, 29, 24,
+        24, 27, 23, 26, 31, 28, 30, 27, 33, 35, 32, 32, 36, 34, 37, 38, 35, 34,
       ],
       borderColor: "#D19600",
       backgroundColor: "transparent",
@@ -415,34 +411,47 @@ const htnScreeningDiagnosedData = {
           ),
       },
     },
+    // {
+    //   type: "bar",
+    //   label: "Has hypertension",
+    //   data: [
+    //     16, 17, 16, 17, 18, 17, 18, 15, 18, 15, 16, 17, 17, 16, 18, 17, 18, 16,
+    //   ],
+    //   borderColor: "rgba(249, 191, 45, 0.8)",
+    //   backgroundColor: "rgba(249, 191, 45, 0.8)",
+    //   yAxisID: "y",
+    // },
     {
       type: "bar",
-      label: "Has hypertension",
+      label: "# Suspected adults",
       data: [
-        16, 17, 16, 17, 18, 17, 18, 15, 18, 15, 16, 17, 17, 16, 18, 17, 18, 16,
-      ],
-      borderColor: "rgba(249, 191, 45, 0.8)",
-      backgroundColor: "rgba(249, 191, 45, 0.8)",
-      yAxisID: "y",
-    },
-    {
-      type: "bar",
-      label: "No hypertension",
-      data: [
-        8, 10, 7, 9, 11, 8, 10, 7, 12, 6, 8, 10, 8, 7, 10, 9, 11, 8,
-
+        4100, 4350, 4200, 4500, 4700, 4600, 4900, 4450, 5200, 4300, 4800, 5100,
+        4950, 4700, 5300, 5600, 6900, 500,
       ],
       borderColor: "rgba(244, 212, 128, 0.5)",
       backgroundColor: "rgba(244, 212, 128, 0.5)",
-      yAxisID: "y",
+      yAxisID: "yMonthlyscreenings",
     },
   ],
 };
 
 const htnScreeningDiagnosedConfig = baseLineChartConfig();
 htnScreeningDiagnosedConfig.data = htnScreeningDiagnosedData;
-htnScreeningDiagnosedConfig.options.scales.y.ticks.callback = (val) => {
-  return val + "%";
+htnScreeningDiagnosedConfig.options.scales.yMonthlyscreenings = {
+  display: false,
+  ticks: {
+    display: false,
+    callback: (val) => val,
+  },
+  beginAtZero: true,
+  max: 7000,
+};
+
+htnScreeningDiagnosedConfig.options.scales.y.ticks = {
+  display: false,
+  callback: (val) => {
+    return val + "%";
+  },
 };
 
 htnScreeningDiagnosedConfig.options.scales.x.stacked = true;
@@ -460,13 +469,15 @@ htnScreeningDiagnosedConfig.options.plugins.tooltip.callbacks = {
   },
 };
 
-const htnScreeningDiagnosedCanvas = document.getElementById("htnscreeningdiagnosed");
+const htnScreeningDiagnosedCanvas = document.getElementById(
+  "htnscreeningdiagnosed"
+);
 if (htnScreeningDiagnosedCanvas) {
   createChart(htnScreeningDiagnosedCanvas, htnScreeningDiagnosedConfig);
 }
 
-// HTN: Started on treatment
-const htnStartedTreatmentData = {
+// HTN: Suspected adults diagnosed
+const htnScreenedAdultsDiagnosedData = {
   labels: [
     "Mar-2023",
     "Apr-2023",
@@ -489,9 +500,9 @@ const htnStartedTreatmentData = {
   ],
   datasets: [
     {
-      label: "% Diagnosed patients started on treatment",
+      label: "% Suspected adults diagnosed",
       data: [
-        52, 48, 54, 51, 58, 55, 49, 57, 53, 59, 56, 62, 58, 54, 61, 59, 63, 60,
+        52, 48, 54, 51, 58, 55, 49, 57, 53, 59, 56, 62, 58, 54, 61, 59, 45, 10,
       ],
       borderColor: "#3BB231",
       backgroundColor: "#3BB23110",
@@ -500,44 +511,59 @@ const htnStartedTreatmentData = {
         borderDash: (ctx) =>
           dynamicChartSegementDashed(
             ctx,
-            18 // number of data elements
+            16 // number of data elements
           ),
       },
     },
-    // {
-    //   type: "bar",
-    //   label: "Started on Step 1 treatment",
-    //   data: [
-    //     33, 30, 34, 32, 37, 35, 31, 36, 34, 38, 36, 40, 37, 34, 39, 38, 40, 38,
-    //   ],
-    //   borderColor: "rgba(69, 205, 57, 0.8)",
-    //   backgroundColor: "rgba(69, 205, 57, 0.8)",
-    //   yAxisID: "y",
-    // },
-    // {
-    //   type: "bar",
-    //   label: "Started on other treatment",
-    //   data: [
-    //     19, 18, 20, 19, 21, 20, 18, 21, 19, 21, 20, 22, 21, 20, 22, 21, 23, 22,
-    //   ],
-    //   borderColor: "rgba(69, 205, 57, 0.4)",
-    //   backgroundColor: "rgba(69, 205, 57, 0.4)",
-    //   yAxisID: "y",
-    // },
+    {
+      type: "bar",
+      label: "# Diagnosed with hypertension",
+      data: [
+        620, 640, 610, 660, 700, 680, 650, 720, 690, 740, 710, 760, 880, 1000,
+        1150, 1200, 820, 170,
+      ],
+      borderColor: "rgba(69, 205, 57, 0.5)",
+      backgroundColor: "rgba(69, 205, 57, 0.5)",
+      yAxisID: "yNumberDiagnosed",
+    },
+    {
+      type: "bar",
+      label: "# Diagnosed no hypertension",
+      data: [
+        120, 135, 110, 145, 160, 150, 130, 170, 140, 175, 155, 185, 165, 150,
+        190, 200, 248, 25,
+      ],
+      borderColor: "rgba(69, 205, 57, 0.25)",
+      backgroundColor: "rgba(69, 205, 57, 0.25)",
+      yAxisID: "yNumberDiagnosed",
+    },
   ],
 };
 
-const htnStartedTreatmentConfig = baseLineChartConfig();
-htnStartedTreatmentConfig.data = htnStartedTreatmentData;
-htnStartedTreatmentConfig.options.scales.y.ticks.callback = (val) => {
-  return val + "%";
+const htnScreenedAdultsDiagnosedConfig = baseLineChartConfig();
+htnScreenedAdultsDiagnosedConfig.data = htnScreenedAdultsDiagnosedData;
+htnScreenedAdultsDiagnosedConfig.options.scales.y.ticks = {
+  display: false,
+  callback: (val) => {
+    return val + "%";
+  },
+};
+htnScreenedAdultsDiagnosedConfig.options.scales.y.grid = { drawTicks: false };
+
+htnScreenedAdultsDiagnosedConfig.options.scales.x.stacked = true;
+htnScreenedAdultsDiagnosedConfig.options.scales.y.stacked = false;
+htnScreenedAdultsDiagnosedConfig.options.scales.yNumberDiagnosed = {
+  stacked: true,
+  display: false,
+  beginAtZero: true,
+  ticks: {
+    callback: (val) => val,
+  },
+  max: 1300,
 };
 
-htnStartedTreatmentConfig.options.scales.x.stacked = true;
-htnStartedTreatmentConfig.options.scales.y.stacked = true;
-
-htnStartedTreatmentConfig.options.plugins.tooltip.displayColors = true;
-htnStartedTreatmentConfig.options.plugins.tooltip.callbacks = {
+htnScreenedAdultsDiagnosedConfig.options.plugins.tooltip.displayColors = true;
+htnScreenedAdultsDiagnosedConfig.options.plugins.tooltip.callbacks = {
   label: percentageLabel,
   labelColor: function (context) {
     return {
@@ -548,9 +574,14 @@ htnStartedTreatmentConfig.options.plugins.tooltip.callbacks = {
   },
 };
 
-const htnStartedTreatmentCanvas = document.getElementById("htnstartedtreatment");
-if (htnStartedTreatmentCanvas) {
-  createChart(htnStartedTreatmentCanvas, htnStartedTreatmentConfig);
+const htnScreenedAdultsDiagnosedCanvas = document.getElementById(
+  "htnscreenedadultsdiagnosed"
+);
+if (htnScreenedAdultsDiagnosedCanvas) {
+  createChart(
+    htnScreenedAdultsDiagnosedCanvas,
+    htnScreenedAdultsDiagnosedConfig
+  );
 }
 
 // Hypertension: No visit in 3 months
