@@ -559,7 +559,7 @@ htnScreenedAdultsDiagnosedConfig.options.scales.yNumberDiagnosed = {
   ticks: {
     callback: (val) => val,
   },
-  max: 1300,
+  max: 1450,
 };
 
 htnScreenedAdultsDiagnosedConfig.options.plugins.tooltip.displayColors = true;
