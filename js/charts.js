@@ -257,7 +257,7 @@ const bpControlledDecData = {
   datasets: [
     {
       label: "BP controlled",
-      data: [60, 59, 57, 55, 57, 56, 54, 52, 50, 51, 49, 48, 45, 45, 44, 44, 43, 44],
+      data: [60, 59, 57, 55, 57, 56, 54, 52, 50, 51, 49, 48, 45, 45, 44, 44, 44, 44],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
       segment: {
