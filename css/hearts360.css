@@ -1,0 +1,453 @@
+/* ============================================================
+   Hearts360 Design System
+   Link from any page:
+     <link rel="stylesheet" href="hearts360.css">
+   Also add to <head>:
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+   ============================================================ */
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Design tokens ── */
+:root {
+  --h360-bg:            #F5F5F3;
+  --h360-surface:       #FFFFFF;
+  --h360-surface-sunken:#EDEDE9;
+  --h360-fg:            #1C1C1C;
+  --h360-muted-fg:      #666666;
+  --h360-border:        #DCDCD6;
+  --h360-border-strong: #BEBEBB;
+  --h360-bad:           #C53030;
+  --h360-bad-soft:      #FEF0F0;
+  --h360-bad-soft-fg:   #9B2424;
+  --h360-good:          #276749;
+  --h360-good-soft:     #EBF5EF;
+  --h360-good-soft-fg:  #1E5239;
+  --h360-amber-bg:      #FFFBEB;
+  --h360-amber-border:  #FDE68A;
+  --h360-amber-fg:      #92400E;
+  --h360-purple-bg:     #F3E8FF;
+  --h360-purple-fg:     #6B21A8;
+  --h360-radius:        8px;
+}
+
+/* ── Base ── */
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  /* background: var(--h360-bg);
+  color: var(--h360-fg);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh; */
+}
+
+/* ── App shell ── */
+.h360-app {
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: 420px;
+  /* background: var(--h360-surface); */
+  /* border-left: 1px solid var(--h360-border);
+  border-right: 1px solid var(--h360-border); */
+  padding: 20px 18px 80px;
+  overflow-y: scroll;
+}
+
+@media (min-width: 480px) {
+  body { padding: 24px 0; }
+  .h360-app {
+    min-height: auto;
+    /* border: 1px solid var(--h360-border); */
+    border-radius: 12px;
+  }
+}
+
+/* ── View switching ── */
+.h360-view        { display: none; }
+.h360-view.active { display: block; }
+
+/* ── Page header ── */
+.h360-page-header    { margin-bottom: 20px; }
+.h360-page-header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+  margin-bottom: 3px;
+}
+.h360-page-header p {
+  font-size: 12.5px;
+  color: var(--h360-muted-fg);
+  line-height: 1.4;
+}
+
+/* ── Section heading ── */
+.h360-section-heading {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 4px;
+}
+
+/* ── Stat grid ── */
+.h360-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--h360-border);
+  border: 1px solid var(--h360-border);
+  border-radius: var(--h360-radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.h360-stat-cell      { background: var(--h360-surface); padding: 12px; }
+.h360-stat-label     { font-size: 11px; color: var(--h360-muted-fg); line-height: 1.3; margin-bottom: 4px; }
+.h360-stat-value-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 8px; }
+.h360-stat-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+.h360-stat-delta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+}
+.h360-delta-good { color: var(--h360-good); }
+.h360-delta-bad  { color: var(--h360-bad); }
+.h360-delta-flat { color: rgba(102,102,102,0.7); }
+.h360-sparkline  { display: block; width: 100%; height: 22px; }
+
+/* ── District insights list ── */
+.h360-insights-list  { margin-bottom: 18px; }
+.h360-insight-item {
+  position: relative;
+  padding: 4px 0 4px 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(28,28,28,0.8);
+}
+.h360-insight-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.h360-insight-item.bad::before  { background: var(--h360-bad); }
+.h360-insight-item.good::before { background: var(--h360-good); }
+
+/* ── Status tags ── */
+.h360-status-tag {
+  display: inline-block;
+  white-space: nowrap;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+.h360-status-action     { background: var(--h360-bad-soft);  color: var(--h360-bad-soft-fg); }
+.h360-status-risk       { background: var(--h360-amber-bg);  color: var(--h360-amber-fg); border: 1px solid var(--h360-amber-border); }
+.h360-status-target     { background: var(--h360-good-soft); color: var(--h360-good-soft-fg); }
+.h360-status-improving  { background: var(--h360-good-soft); color: var(--h360-good-soft-fg); }
+.h360-status-stagnating { background: var(--h360-purple-bg); color: var(--h360-purple-fg); }
+.h360-status-top        { background: var(--h360-good-soft); color: var(--h360-good-soft-fg); border: 1px solid rgba(39,103,73,0.4); }
+
+/* ── Facility card ── */
+.h360-facility-card {
+  display: block;
+  position: relative;
+  border: 1px solid var(--h360-border);
+  border-radius: var(--h360-radius);
+  background: var(--h360-surface);
+  padding: 14px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  text-decoration: none;
+  color: inherit;
+}
+.h360-facility-card:hover   { border-color: var(--h360-border-strong); }
+.h360-facility-card.pinned  { border-color: var(--h360-border-strong); }
+.h360-facility-card.visited { opacity: 0.55; }
+
+.h360-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.h360-card-meta      { flex: 1; min-width: 0; }
+.h360-card-name-row  { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 2px; }
+.h360-card-name      { font-size: 14px; font-weight: 600; line-height: 1.3; }
+.h360-card-patients  { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--h360-muted-fg); }
+.h360-visited-badge {
+  background: var(--h360-good-soft);
+  color: var(--h360-good-soft-fg);
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.h360-card-actions { display: flex; gap: 4px; flex-shrink: 0; }
+.h360-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 4px;
+  color: rgba(102,102,102,0.7);
+  transition: background 0.12s, color 0.12s;
+  flex-shrink: 0;
+}
+.h360-icon-btn:hover  { background: var(--h360-surface-sunken); color: var(--h360-fg); }
+.h360-icon-btn.active { color: var(--h360-fg); }
+
+.h360-card-insights { list-style: none; }
+.h360-card-insight-item {
+  position: relative;
+  padding: 1px 0 1px 14px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(28,28,28,0.8);
+}
+.h360-card-insight-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--h360-border-strong);
+}
+.h360-card-chevron {
+  position: absolute;
+  bottom: 10px; right: 10px;
+  color: rgba(102,102,102,0.6);
+}
+
+/* ── Filter chips ── */
+.h360-filter-row {
+  margin: 0 -18px 12px;
+  overflow-x: auto;
+  padding: 0 18px;
+  scrollbar-width: none;
+}
+.h360-filter-row::-webkit-scrollbar { display: none; }
+.h360-filter-chips { display: flex; gap: 6px; }
+.h360-chip {
+  flex-shrink: 0;
+  border: 1px solid var(--h360-border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 11.5px;
+  font-weight: 500;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--h360-surface);
+  color: var(--h360-fg);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+  white-space: nowrap;
+}
+.h360-chip:hover { background: var(--h360-surface-sunken); }
+.h360-chip.active {
+  background: var(--h360-fg);
+  color: var(--h360-surface);
+  border-color: var(--h360-fg);
+}
+.h360-chip-count { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; }
+.h360-chip.active .h360-chip-count       { opacity: 0.8; }
+.h360-chip:not(.active) .h360-chip-count { color: var(--h360-muted-fg); }
+
+/* ── Empty state ── */
+.h360-empty-state {
+  border: 1px solid var(--h360-border);
+  border-radius: var(--h360-radius);
+  background: var(--h360-surface);
+  padding: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--h360-muted-fg);
+}
+
+/* ── Detail: header ── */
+.h360-detail-header      { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.h360-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border: 1px solid var(--h360-border);
+  border-radius: 6px;
+  background: var(--h360-surface);
+  cursor: pointer;
+  color: rgba(28,28,28,0.7);
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+.h360-back-btn:hover     { background: var(--h360-surface-sunken); }
+.h360-detail-title-area  { flex: 1; min-width: 0; }
+.h360-detail-name-row    { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 2px; }
+.h360-detail-name        { font-size: 16px; font-weight: 700; }
+.h360-detail-patients    { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--h360-muted-fg); }
+
+/* ── Detail: summary bullets ── */
+.h360-detail-summary      { margin-bottom: 20px; }
+.h360-detail-summary-item {
+  position: relative;
+  padding: 3px 0 3px 16px;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+.h360-detail-summary-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(28,28,28,0.7);
+}
+
+/* ── Detail: insight blocks ── */
+.h360-insight-blocks   { margin-bottom: 18px; }
+.h360-insight-block    { margin-bottom: 18px; }
+.h360-insight-block h4 { font-size: 13.5px; font-weight: 700; margin-bottom: 4px; }
+.h360-insight-block p  { font-size: 13px; line-height: 1.55; color: rgba(28,28,28,0.8); }
+
+/* ── Detail: verify list ── */
+.h360-verify-section    { margin: 18px 0; }
+.h360-verify-section h4 { font-size: 13.5px; font-weight: 700; margin-bottom: 6px; }
+.h360-verify-item {
+  position: relative;
+  padding: 3px 0 3px 16px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(28,28,28,0.8);
+}
+.h360-verify-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--h360-muted-fg);
+}
+
+/* ── Detail: drug stock chip ── */
+.h360-drug-stock-chip {
+  display: inline-block;
+  border: 1px solid var(--h360-border);
+  border-radius: 5px;
+  background: var(--h360-surface);
+  padding: 6px 10px;
+  font-size: 12px;
+  color: rgba(28,28,28,0.8);
+  margin-bottom: 16px;
+}
+.h360-drug-stock-chip strong {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  color: var(--h360-fg);
+}
+
+/* ── Detail: field context ── */
+.h360-field-context-box    { margin-bottom: 16px; }
+.h360-field-context-box h4 { font-size: 13.5px; font-weight: 700; margin-bottom: 6px; }
+.h360-context-note {
+  border: 1px solid var(--h360-amber-border);
+  background: var(--h360-amber-bg);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(28,28,28,0.85);
+}
+
+/* ── Detail: add context form ── */
+.h360-add-context    { margin-bottom: 16px; }
+.h360-add-context h4 { font-size: 13.5px; font-weight: 700; margin-bottom: 6px; }
+.h360-add-context textarea {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  border: 1px solid var(--h360-border);
+  border-radius: 6px;
+  background: var(--h360-surface);
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1.5;
+  color: rgba(28,28,28,0.85);
+  outline: none;
+  transition: border-color 0.12s;
+}
+.h360-add-context textarea:focus { border-color: var(--h360-border-strong); }
+.h360-save-context-row { display: flex; justify-content: flex-end; margin-top: 8px; }
+.h360-save-btn {
+  border: 1px solid var(--h360-border);
+  background: var(--h360-surface);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.h360-save-btn:hover { background: var(--h360-surface-sunken); }
+
+/* ── Detail: visited button ── */
+.h360-visited-row { display: flex; justify-content: flex-end; margin-top: 20px; }
+.h360-mark-visited-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  cursor: pointer;
+  transition: opacity 0.12s;
+}
+.h360-mark-visited-btn.unvisited  { background: var(--h360-fg); color: var(--h360-surface); }
+.h360-mark-visited-btn.is-visited { background: var(--h360-good); color: #fff; }
+.h360-mark-visited-btn:hover      { opacity: 0.85; }
+
+/* ── Toast ── */
+.h360-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--h360-fg);
+  color: var(--h360-surface);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s;
+  opacity: 0;
+  z-index: 1000;
+}
+.h360-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+svg { display: block; }
