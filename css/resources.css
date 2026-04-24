@@ -1,0 +1,67 @@
+/* resources.html-only styles */
+
+.region-nav.region-nav-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.region-nav.region-nav-disabled .hover-button {
+  cursor: default;
+}
+
+/* resources.html placeholders:
+   - mobile: show only main card
+   - tablet (2 col): show 1 placeholder
+   - desktop (3 col): show 2 placeholders */
+.resource-placeholder {
+  display: none !important;
+}
+
+@media screen and (min-width: 880px) {
+  .resource-placeholder--primary {
+    display: flex !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .resource-placeholder--secondary {
+    display: flex !important;
+  }
+}
+
+.button-blue {
+  background: #0075eb;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 12px;
+  margin-bottom: -12px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  &:hover {
+    background: rgb(15, 133, 252);
+    color: white;
+  }
+}
+
+@media screen and (min-width: 880px) {
+  .resource-placeholder--primary {
+    display: flex !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .resource-placeholder--secondary {
+    display: flex !important;
+  }
+}

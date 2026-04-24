@@ -227,6 +227,7 @@ main {
 }
 
 @media screen and (min-width: 880px) {
+
   main {
     padding: 0 24px 16px;
 
@@ -239,6 +240,7 @@ main {
 }
 
 @media screen and (min-width: 1200px) {
+
   main {
     .columns-2 {
       flex: 0 0 50%;
@@ -1230,31 +1232,5 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
       padding: 2em 0 0;
       text-align: center;
     }
-  }
-}
-
-
-.button-blue {
-  background: #0075eb;
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 12px;
-  margin-bottom: -12px;
-  text-align: center;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  &:hover {
-    background:rgb(15, 133, 252);
-    color:white;
   }
 }
