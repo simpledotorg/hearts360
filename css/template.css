@@ -240,6 +240,10 @@ main {
 
 @media screen and (min-width: 1200px) {
   main {
+    .columns-2 {
+      flex: 0 0 50%;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
     .columns-3 {
       flex: 0 0 50%;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1075,6 +1079,15 @@ th[role="columnheader"] div:not(.no-sort):hover:after {
 .region-nav:focus .nav-hover-content,
 .region-nav:active .nav-hover-content {
   display: block;
+}
+
+.region-nav.region-nav-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.region-nav.region-nav-disabled .hover-button {
+  cursor: default;
 }
 
 .nav-hover-content {
