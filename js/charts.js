@@ -441,6 +441,146 @@ if (ltfu12MonthsCanvas) {
   createChart(ltfu12MonthsCanvas, ltfu12MonthsConfig);
 }
 
+// Screening and diagnosis — River District sample counts (Aug-2023 to Aug-2024)
+const screeningDiagnosisEligibleAdults = 96000;
+const screeningDiagnosisMonthlyTarget = 8000;
+const screeningDiagnosisMonthLabels = [
+  "Aug-2023",
+  "Sep-2023",
+  "Oct-2023",
+  "Nov-2023",
+  "Dec-2023",
+  "Jan-2024",
+  "Feb-2024",
+  "Mar-2024",
+  "Apr-2024",
+  "May-2024",
+  "Jun-2024",
+  "Jul-2024",
+  "Aug-2024",
+];
+const screeningDiagnosisScreenedCounts = [
+  6300, 6500, 6700, 6600, 5400, 6100, 6800, 7100, 6400, 7000, 6800, 6900, 2100,
+];
+const screeningDiagnosisSuspectedCounts = [
+  2180, 2250, 2330, 2300, 1920, 2170, 2390, 2470, 2250, 2420, 2370, 2415, 730,
+];
+const screeningDiagnosisDiagnosedCounts = [
+  880, 930, 980, 1000, 760, 1020, 1030, 1050, 940, 1090, 1040, 1068, 250,
+];
+
+const screeningDiagnosisChartLabels = screeningDiagnosisMonthLabels.slice(1);
+const screenedAdultsChartCounts = screeningDiagnosisScreenedCounts.slice(1);
+const suspectedAdultsChartCounts = screeningDiagnosisSuspectedCounts.slice(1);
+const diagnosedAdultsChartCounts = screeningDiagnosisDiagnosedCounts.slice(1);
+
+function screeningDiagnosisRoundPct(numerator, denominator) {
+  return Math.round((numerator / denominator) * 100);
+}
+
+const screenedAdultsPctData = screenedAdultsChartCounts.map((n) =>
+  screeningDiagnosisRoundPct(n, screeningDiagnosisMonthlyTarget)
+);
+const suspectedAdultsDiagnosedPctData = diagnosedAdultsChartCounts.map(
+  (n, i) => screeningDiagnosisRoundPct(n, suspectedAdultsChartCounts[i])
+);
+
+const screeningDiagnosisColors = dashboardReportsChartJSColors();
+
+const screenedAdultsData = {
+  labels: screeningDiagnosisChartLabels,
+  datasets: [
+    {
+      label: "Screened adults",
+      data: screenedAdultsPctData,
+      borderColor: screeningDiagnosisColors.orange,
+      backgroundColor: screeningDiagnosisColors.lightOrange,
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            12 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+
+const screenedAdultsConfig = baseLineChartConfig();
+screenedAdultsConfig.data = screenedAdultsData;
+screenedAdultsConfig.options.plugins.tooltip.callbacks = {
+  title: (items) => items[0].label,
+  label: (context) => {
+    const i = context.dataIndex;
+    const screened = screenedAdultsChartCounts[i].toLocaleString("en-US");
+    const target = screeningDiagnosisMonthlyTarget.toLocaleString("en-US");
+    const lines = [
+      `${context.parsed.y}% of monthly target`,
+      `${screened} screened of ${target}`,
+    ];
+    if (i === screeningDiagnosisChartLabels.length - 1) {
+      lines.push("Month in progress");
+    }
+    return lines;
+  },
+};
+screenedAdultsConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+
+const screenedAdultsCanvas = document.getElementById("screenedAdults");
+if (screenedAdultsCanvas) {
+  createChart(screenedAdultsCanvas, screenedAdultsConfig);
+}
+
+const suspectedAdultsDiagnosedData = {
+  labels: screeningDiagnosisChartLabels,
+  datasets: [
+    {
+      label: "Suspected adults diagnosed",
+      data: suspectedAdultsDiagnosedPctData,
+      borderColor: screeningDiagnosisColors.mediumGreen,
+      backgroundColor: screeningDiagnosisColors.lightGreen,
+      segment: {
+        borderDash: (ctx) =>
+          dynamicChartSegementDashed(
+            ctx,
+            12 // number of data elements
+          ),
+      },
+    },
+  ],
+};
+
+const suspectedAdultsDiagnosedConfig = baseLineChartConfig();
+suspectedAdultsDiagnosedConfig.data = suspectedAdultsDiagnosedData;
+suspectedAdultsDiagnosedConfig.options.plugins.tooltip.callbacks = {
+  title: (items) => items[0].label,
+  label: (context) => {
+    const i = context.dataIndex;
+    const diagnosed = diagnosedAdultsChartCounts[i].toLocaleString("en-US");
+    const suspected = suspectedAdultsChartCounts[i].toLocaleString("en-US");
+    const lines = [
+      `${context.parsed.y}% diagnosed`,
+      `${diagnosed} diagnosed of ${suspected} suspected`,
+    ];
+    if (i === screeningDiagnosisChartLabels.length - 1) {
+      lines.push("Month in progress");
+    }
+    return lines;
+  },
+};
+suspectedAdultsDiagnosedConfig.options.scales.y.ticks.callback = (val) => {
+  return val + "%";
+};
+
+const suspectedAdultsDiagnosedCanvas = document.getElementById(
+  "suspectedAdultsDiagnosed"
+);
+if (suspectedAdultsDiagnosedCanvas) {
+  createChart(suspectedAdultsDiagnosedCanvas, suspectedAdultsDiagnosedConfig);
+}
+
 // Hypertension opportunistic screening
 const screeningsData = {
   labels: [
