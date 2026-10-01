@@ -625,7 +625,7 @@ const dmControlledData = {
   datasets: [
     {
       label: "Blood sugar controlled",
-      data: [13, 14, 16, 18, 20, 22, 22, 23, 20, 17, 16, 14],
+      data: [50, 50, 50, 48, 46, 47, 44, 42, 39, 36, 34, 33],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
       segment: {
@@ -671,7 +671,7 @@ const dmUncontrolledData = {
   datasets: [
     {
       label: "Blood sugar not controlled (total)",
-      data: [61, 64, 61, 60, 56, 56, 56, 58, 60, 62, 58, 56],
+      data: [42, 42, 42, 43, 44, 43, 45, 46, 43, 41, 38, 38],
       borderColor: "#D19600",
       backgroundColor: "transparent",
       yAxisID: "y",
@@ -686,7 +686,7 @@ const dmUncontrolledData = {
     {
       type: "bar",
       label: "FBS ≥200 mg/dL or HbA1c ≥9%",
-      data: [18, 19, 18, 18, 17, 17, 18, 17, 19, 19, 17, 17],
+      data: [12, 12, 12, 13, 13, 13, 13, 14, 13, 12, 12, 11],
       borderColor: "rgba(249, 191, 45, 0.8)",
       backgroundColor: "rgba(249, 191, 45, 0.8)",
       yAxisID: "y",
@@ -694,7 +694,7 @@ const dmUncontrolledData = {
     {
       type: "bar",
       label: "FBS 126-199 mg/dL or HbA1c 7-8.9%",
-      data: [43, 45, 43, 42, 39, 39, 38, 41, 43, 42, 41, 39],
+      data: [30, 30, 30, 30, 31, 30, 32, 32, 30, 29, 26, 27],
       borderColor: "rgba(244, 212, 128, 0.6)",
       backgroundColor: "rgba(244, 212, 128, 0.6)",
       yAxisID: "y",
@@ -747,7 +747,7 @@ const dmLtfu3MonthData = {
   datasets: [
     {
       label: "No visit in past 3 months",
-      data: [26, 22, 23, 22, 24, 22, 22, 19, 20, 21, 26, 30],
+      data: [8, 8, 8, 9, 10, 10, 11, 12, 18, 23, 28, 29],
       borderColor: "#ed6300",
       backgroundColor: "rgba(230, 137, 70, 0.1)",
       segment: {
