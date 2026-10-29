@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS in Grafana · HEARTS360 Toolkit demo</title>
+<meta name="description" content="What custom HTML, CSS and chart code can do inside Grafana, shown on the HEARTS360 Toolkit demo dashboard.">
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --bg: #f5f5f3; --card: #fff; --fg: #1c1c1c; --muted: #666; --line: #dcdcd6;
+    --blue: #0075eb; --green: #3bb231; --chip: #eef5ff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111317; --card: #1b1e24; --fg: #e8e8e6; --muted: #a2a6ad; --line: #2c3038; --blue: #4ea1ff; --chip: #1d2a3b; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .top { background: #0075eb; color: #fff; padding: 14px 24px; font-weight: 700; letter-spacing: 0.02em; }
+  .top span { opacity: 0.75; font-weight: 400; }
+  main { max-width: 1120px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 2.4rem; line-height: 1.15; margin: 0 0 10px; }
+  .lede { font-size: 1.15rem; color: var(--muted); margin: 0 0 22px; max-width: 760px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 12px; }
+  .fact { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+  .fact b { display: block; font-size: 1.35rem; color: var(--blue); }
+  .note { font-size: 0.85rem; color: var(--muted); }
+  h2.section { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; color: var(--muted); margin: 44px 0 12px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin: 0 0 18px; }
+  .card h3 { margin: 0 0 6px; font-size: 1.3rem; }
+  .card > p { margin: 0 0 12px; color: var(--muted); }
+  ul.changes { margin: 0 0 16px; padding-left: 20px; }
+  ul.changes li { margin: 2px 0; }
+  figure { margin: 0 0 14px; }
+  figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+  figcaption { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 6px; color: var(--muted); }
+  figcaption.after { color: var(--green); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .grid .card { margin: 0; }
+  .grid h3 { font-size: 1.05rem; }
+  .grid p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .tag { display: inline-block; font-size: 0.75rem; background: var(--chip); color: var(--blue); border-radius: 100px; padding: 1px 9px; margin-bottom: 6px; }
+  .tablewrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 9px 8px; border-top: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-size: 0.8rem; font-weight: 600; }
+  ol.steps { margin: 0; padding-left: 20px; }
+  ol.steps li { margin: 4px 0; }
+  code { font-size: 0.9em; background: var(--chip); padding: 1px 5px; border-radius: 4px; }
+  footer { margin-top: 40px; font-size: 0.9rem; color: var(--muted); }
+  a { color: var(--blue); }
+  @media (max-width: 600px) { h1 { font-size: 1.8rem; } .card { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="top">HEARTS360 Toolkit <span>&middot; demo notes</span></div>
+<main>
+  <h1>What CSS can do in Grafana</h1>
+  <p class="lede">The HEARTS360 Toolkit dashboard runs on Grafana. With a little HTML, CSS and chart code inside ordinary Grafana panels, it now reads much more like hearts360.org &mdash; same data, same Grafana, no new services.</p>
+  <div class="facts">
+    <div class="fact"><b>6.6&nbsp;KB</b>of CSS for the whole dashboard</div>
+    <div class="fact"><b>0</b>extra network requests</div>
+    <div class="fact"><b>2</b>Grafana plugins already installed</div>
+    <div class="fact"><b>0</b>changes to data or ingest</div>
+  </div>
+  <p class="note">All screenshots use generated demo data; names, IDs and phone numbers are not real people.</p>
+
+  <h2 class="section">Before and after</h2>
+
+  <section class="card">
+    <h3>Overview: screening-to-treatment cascade</h3>
+    <p>One section with two horizontal cascades and a headline &ldquo;patients protected&rdquo; card.</p>
+    <ul class="changes">
+      <li>Percent and patient count on every bar, each side with its own denominator</li>
+      <li>Screening target drawn as a dashed line with a label</li>
+      <li>A big, readable headline number instead of a count axis</li>
+    </ul>
+    <figure><figcaption>Before</figcaption><img src="img/before-overview.webp" alt="Before: vertical screened-adults card and a vertical treatment cascade" loading="lazy" width="1177" height="380"></figure>
+    <figure><figcaption class="after">After</figcaption><img src="img/after-overview.webp" alt="After: horizontal screening and treatment cascades with a patients protected headline" loading="lazy" width="1400" height="330"></figure>
+  </section>
+
+  <section class="card">
+    <h3>Hypertension treatment outcomes</h3>
+    <p>Three trend charts and six number tiles became one hearts360-style card.</p>
+    <ul class="changes">
+      <li>&ldquo;Outcomes for N patients under care &hellip;&rdquo; states the denominator and period</li>
+      <li>hearts360 colours, latest completed month in the headline, running month dashed</li>
+      <li>No per-point labels; hover shows month, percent and patient count</li>
+    </ul>
+    <figure><figcaption>Before</figcaption><img src="img/before-outcomes.webp" alt="Before: three line charts crowded with value labels plus six stat tiles" loading="lazy" width="1400" height="444"></figure>
+    <figure><figcaption class="after">After</figcaption><img src="img/after-outcomes.webp" alt="After: one card with three outcome columns, headline percentages and clean trends" loading="lazy" width="1400" height="398"></figure>
+    <figure><figcaption class="after">Hover</figcaption><img src="img/after-tooltip.webp" alt="Tooltip showing Dec-2025, BP controlled 25%, 790 of 3,119 patients" loading="lazy" width="900" height="302" style="max-width:640px"></figure>
+  </section>
+
+  <section class="card">
+    <h3>Diabetes treatment outcomes</h3>
+    <p>The same pattern on the Diabetes tab, with hearts360&rsquo;s exact colours.</p>
+    <ul class="changes">
+      <li>Blood sugar not controlled split into its two definitions, with a total line</li>
+      <li>Colour keys in the tooltip match the bars</li>
+    </ul>
+    <figure><figcaption>Before</figcaption><img src="img/before-dm.webp" alt="Before: three diabetes charts with value labels and six stat tiles" loading="lazy" width="1177" height="424"></figure>
+    <figure><figcaption class="after">After</figcaption><img src="img/after-dm-outcomes.webp" alt="After: diabetes outcomes card with headline figures and stacked bars" loading="lazy" width="1400" height="398"></figure>
+  </section>
+
+  <section class="card">
+    <h3>Quarterly cohort reports</h3>
+    <p>Grafana&rsquo;s bar chart can&rsquo;t centre labels or show captions under bars, so this one is drawn in HTML and CSS.</p>
+    <ul class="changes">
+      <li>Slim bars, centred white percentages, controlled on top</li>
+      <li>&ldquo;Q2-2026 cohort &middot; 1,003 patients &middot; result from latest visit in Q3-2026&rdquo; under each bar</li>
+      <li>Unfinished cohorts hidden instead of showing a false 100% &ldquo;no visit&rdquo;</li>
+    </ul>
+    <figure><figcaption>Before</figcaption><img src="img/before-cohort.webp" alt="Before: wide stacked bars with tiny labels and a 0 to 1.1 axis" loading="lazy" width="1400" height="446"></figure>
+    <figure><figcaption class="after">After</figcaption><img src="img/after-cohort.webp" alt="After: hearts360-style cohort bars with captions" loading="lazy" width="1400" height="435"></figure>
+  </section>
+
+  <section class="card">
+    <h3>Overdue patients list</h3>
+    <p>A call queue that saves as you work &mdash; the biggest step beyond what Grafana panels do out of the box.</p>
+    <ul class="changes">
+      <li>Pick a call result in the row and it saves; removing a patient asks to confirm</li>
+      <li>Status chips (Pending to call, No visit in 1 year, &hellip;), search, facility and phone filters</li>
+      <li>HTN / DM tags, readable dates, and a one-click XLSX download of the current view</li>
+    </ul>
+    <figure><figcaption>Before</figcaption><img src="img/before-overdue.webp" alt="Before: plain table with timestamps and an edit pencil per row" loading="lazy" width="1400" height="876"></figure>
+    <figure><figcaption class="after">After</figcaption><img src="img/after-overdue.webp" alt="After: overdue list with status dropdowns, chips, filters and download link" loading="lazy" width="1400" height="724"></figure>
+  </section>
+
+  <h2 class="section">How it&rsquo;s done</h2>
+  <div class="grid">
+    <div class="card"><span class="tag">Business Text panel</span><h3>HTML + CSS panels</h3><p>A text panel renders an HTML template with its own CSS, filled from a SQL query. Used for the cascade, cohort bars and overdue list.</p></div>
+    <div class="card"><span class="tag">ECharts panel</span><h3>Charts in code</h3><p>A short JavaScript function builds each chart: headline text, multiple mini-charts in one card, dashed running month.</p></div>
+    <div class="card"><span class="tag">Shared helpers</span><h3>One look everywhere</h3><p>hearts360 colours, the tooltip and number formatting live in one shared helper, so every chart behaves the same.</p></div>
+    <div class="card"><span class="tag">Grafana query API</span><h3>Interactive, with care</h3><p>The overdue list saves through Grafana&rsquo;s own data API using the existing SQL, with values checked before sending.</p></div>
+  </div>
+
+  <h2 class="section">Trade-offs</h2>
+  <div class="card tablewrap">
+    <table>
+      <thead><tr><th>Good for</th><th>Watch out for</th></tr></thead>
+      <tbody>
+        <tr><td>Layouts native panels can&rsquo;t do (cascades, cohort captions, headline cards)</td><td>CSS only styles our own HTML panels &mdash; Grafana&rsquo;s built-in charts keep their look</td></tr>
+        <tr><td>Exact brand colours, type and spacing</td><td>Each custom panel is code to maintain; native panels improve with Grafana for free</td></tr>
+        <tr><td>Interactive tools: auto-save, filters, downloads</td><td>Anything that writes data needs validation and permissions thought through</td></tr>
+        <tr><td>Tiny cost: a few KB inside the dashboard file</td><td>Pin Grafana and plugin versions, and run a quick check before upgrading</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section">Try it yourself</h2>
+  <div class="card">
+    <ol class="steps">
+      <li>Open the demo dashboard and go to <b>Overdue list</b>; pick a facility such as PHC-A.</li>
+      <li>Open the panel menu &rarr; <b>Edit</b> &rarr; <b>Styles</b>.</li>
+      <li>Change a colour (for example <code>#0075eb</code>) and watch the panel update instantly &mdash; no deploy.</li>
+    </ol>
+  </div>
+
+  <footer>
+    Source: <a href="https://github.com/simpledotorg/h360tk_grafana_core/tree/demo/cascade-cohort">simpledotorg/h360tk_grafana_core &middot; demo/cascade-cohort</a> (demo branch, not a release).
+  </footer>
+</main>
+</body>
+</html>
