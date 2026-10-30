@@ -180,32 +180,34 @@ function createChart(ctx, config) {
 // BP Controlled
 const bpControlledData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
   ],
   datasets: [
     {
       label: "BP controlled",
-      data: [43, 44, 46, 43, 52, 57, 57, 59, 56, 60, 61, 55],
+      data:
+        document.body.dataset.htnDenominator === "cumulative"
+          ? [41, 41, 40, 35, 42, 45, 44, 42, 38, 39, 40]
+          : [43, 44, 46, 43, 52, 57, 57, 59, 56, 60, 61],
       borderColor: "#3BB231",
       backgroundColor: "rgba(69, 205, 57, 0.1)",
-      segment: {
-        borderDash: (ctx) =>
-          dynamicChartSegementDashed(
-            ctx,
-            12 // number of data elements
-          ),
-      },
+      // segment: {
+      //   borderDash: (ctx) =>
+      //     dynamicChartSegementDashed(
+      //       ctx,
+      //       12 // number of data elements
+      //     ),
+      // },
     },
   ],
 };
@@ -229,32 +231,34 @@ if (bpControlledCanvas) {
 // Hypertension: BP Uncontrolled
 const bpUncontrolledData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
   ],
   datasets: [
     {
       label: "BP uncontrolled",
-      data: [37, 33, 36, 37, 30, 28, 24, 24, 18, 17, 17, 20],
+      data:
+        document.body.dataset.htnDenominator === "cumulative"
+          ? [36, 30, 32, 30, 24, 22, 19, 17, 12, 11, 11]
+          : [37, 33, 36, 37, 30, 28, 24, 24, 18, 17, 17],
       borderColor: "#D19600",
       backgroundColor: "rgba(255, 201, 63, 0.1)",
-      segment: {
-        borderDash: (ctx) =>
-          dynamicChartSegementDashed(
-            ctx,
-            12 // number of data elements
-          ),
-      },
+      // segment: {
+      //   borderDash: (ctx) =>
+      //     dynamicChartSegementDashed(
+      //       ctx,
+      //       12 // number of data elements
+      //     ),
+      // },
     },
   ],
 };
@@ -275,32 +279,34 @@ if (bpUncontrolledCanvas) {
 // Hypertension: No visit in 3 months
 const ltfu3MonthData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
   ],
   datasets: [
     {
-      label: "No visit in past 3 months",
-      data: [20, 23, 18, 20, 18, 15, 19, 17, 26, 21, 22, 25],
+      label: "Missed to follow-up in past 3 months",
+      data:
+        document.body.dataset.htnDenominator === "cumulative"
+          ? [23, 29, 28, 35, 34, 33, 37, 41, 50, 50, 49]
+          : [20, 23, 18, 20, 18, 15, 19, 17, 26, 23, 22],
       borderColor: "#ed6300",
       backgroundColor: "rgba(230, 137, 70, 0.1)",
-      segment: {
-        borderDash: (ctx) =>
-          dynamicChartSegementDashed(
-            ctx,
-            12 // number of data elements
-          ),
-      },
+      // segment: {
+      //   borderDash: (ctx) =>
+      //     dynamicChartSegementDashed(
+      //       ctx,
+      //       12 // number of data elements
+      //     ),
+      // },
     },
   ],
 };
@@ -318,38 +324,40 @@ if (ltfu3MonthCanvas) {
 }
 
 // Hypertension: Registrations
+const monthlyRegistrations = [285, 270, 309, 362, 257, 504, 520, 604, 965, 1156, 1043];
+const patientsUnderTreatment =
+  document.body.dataset.htnDenominator === "cumulative"
+    ? [5505, 5678, 5895, 6223, 6438, 6768, 7146, 7882, 8649, 9648, 12105]
+    : [5505, 5678, 5895, 6223, 6438, 6768, 7146, 7882, 8649, 9648, 10539];
+const patientsDiagnosed = patientsUnderTreatment.map(
+  (patients, month) => patients + monthlyRegistrations[month]
+);
+
 const registrationsData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
   ],
   datasets: [
     {
-      label: "Cumulative registrations",
-      data: [
-        5705, 5975, 6284, 6762, 7019, 7523, 8043, 8941, 9906, 11062, 12105,
-        12213,
-      ],
+      label: "Patients diagnosed",
+      data: patientsDiagnosed,
       borderColor: "#007ee4",
       backgroundColor: "transparent",
       yAxisID: "y",
     },
     {
-      label: "Patients under care",
-      data: [
-        5505, 5678, 5895, 6223, 6438, 6768, 7146, 7882, 8649, 9648, 10539,
-        10632,
-      ],
+      label: "Patients under treatment",
+      data: patientsUnderTreatment,
       borderColor: "#b51bdc",
       backgroundColor: "transparent",
       yAxisID: "y",
@@ -357,7 +365,7 @@ const registrationsData = {
     {
       type: "bar",
       label: "Monthly registrations",
-      data: [285, 270, 309, 362, 257, 504, 520, 604, 965, 1156, 1043, 236],
+      data: monthlyRegistrations,
       borderColor: "#BEDFF9",
       backgroundColor: "#BEDFF9",
       yAxisID: "yMonthlyRegistrations",
@@ -370,7 +378,7 @@ registrationsConfig.data = registrationsData;
 registrationsConfig.options.scales.y.grid = { drawTicks: false };
 registrationsConfig.options.scales.y.ticks.display = false;
 registrationsConfig.options.scales.y.ticks.count = 3;
-registrationsConfig.options.scales.y.max = 12105;
+registrationsConfig.options.scales.y.max = 14000;
 registrationsConfig.options.scales.y.ticks.stepSize = 6052;
 
 registrationsConfig.options.scales.yMonthlyRegistrations = {
@@ -397,18 +405,18 @@ if (registrationsCanvas) {
 // Hypertension: Lost to follow-up
 const ltfu12MonthsData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -444,18 +452,18 @@ if (ltfu12MonthsCanvas) {
 // Hypertension opportunistic screening
 const screeningsData = {
   labels: [
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
+    "Nov-2024",
+    "Dec-2024",
+    "Jan-2025",
+    "Feb-2025",
+    "Mar-2025",
+    "Apr-2025",
+    "May-2025",
+    "Jun-2025",
+    "Jul-2025",
+    "Aug-2025",
+    "Sep-2025",
+    "Oct-2025",
   ],
   datasets: [
     {
@@ -522,18 +530,18 @@ if (screeningsCanvas) {
 
 const drugStockData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -609,18 +617,18 @@ if (drugStockCanvas) {
 // DM Controlled
 const dmControlledData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -655,18 +663,18 @@ if (dmControlledCanvas) {
 //DM: Uncontrolled
 const dmUncontrolledData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -731,18 +739,18 @@ if (dmUncontrolledCanvas) {
 // DM: No visit in 3 months
 const dmLtfu3MonthData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -779,18 +787,18 @@ if (dmLtfu3MonthCanvas) {
 
 const dmRegistrationsData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -854,18 +862,18 @@ if (dmRegistrationsCanvas) {
 // DM: Lost to follow-up
 const dmLtfu12MonthsData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -901,18 +909,18 @@ if (dmLtfu12MonthsCanvas) {
 // DM opportunistic screening
 const dmScreeningsData = {
   labels: [
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
+    "Nov-2024",
+    "Dec-2024",
+    "Jan-2025",
+    "Feb-2025",
+    "Mar-2025",
+    "Apr-2025",
+    "May-2025",
+    "Jun-2025",
+    "Jul-2025",
+    "Aug-2025",
+    "Sep-2025",
+    "Oct-2025",
   ],
   datasets: [
     {
@@ -978,18 +986,18 @@ if (dmScreeningsCanvas) {
 // DM: Statins
 const dmStatinsData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -1023,18 +1031,18 @@ if (dmStatinsCanvas) {
 // Co-morbid Hypertension and Diabetes: BP Uncontrolled
 const comorbidControlledData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -1082,18 +1090,18 @@ if (comorbidControlledCanvas) {
 // Diabetes controlled BP chart
 const dmBPControlledData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -1142,18 +1150,18 @@ if (dmBPControlledCanvas) {
 
 const dmDrugStockData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -1214,32 +1222,6 @@ if (dmDrugStockCanvas) {
 // Patients protected
 const patientsProtectedData = {
   labels: [
-    "Aug-2021",
-    "Sep-2021",
-    "Oct-2021",
-    "Nov-2021",
-    "Dec-2021",
-    "Jan-2022",
-    "Feb-2022",
-    "Mar-2022",
-    "Apr-2022",
-    "May-2022",
-    "Jun-2022",
-    "Jul-2022",
-    "Aug-2022",
-    "Sep-2022",
-    "Oct-2022",
-    "Nov-2022",
-    "Dec-2022",
-    "Jan-2023",
-    "Feb-2023",
-    "Mar-2023",
-    "Apr-2023",
-    "May-2023",
-    "Jun-2023",
-    "Jul-2023",
-    "Aug-2023",
-    "Sep-2023",
     "Oct-2023",
     "Nov-2023",
     "Dec-2023",
@@ -1250,6 +1232,32 @@ const patientsProtectedData = {
     "May-2024",
     "Jun-2024",
     "Jul-2024",
+    "Aug-2024",
+    "Sep-2024",
+    "Oct-2024",
+    "Nov-2024",
+    "Dec-2024",
+    "Jan-2025",
+    "Feb-2025",
+    "Mar-2025",
+    "Apr-2025",
+    "May-2025",
+    "Jun-2025",
+    "Jul-2025",
+    "Aug-2025",
+    "Sep-2025",
+    "Oct-2025",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
   ],
   datasets: [
     {
@@ -1283,18 +1291,18 @@ if (patientsProtectedCanvas) {
 // Overdue at start of month
 const overdueData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -1324,18 +1332,18 @@ if (overdueCanvas) {
 // Overdue called
 const overdueCalledData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
@@ -1373,18 +1381,18 @@ if (overdueCalledCanvas) {
 // Returned to care
 const overdueReturnedData = {
   labels: [
-    "Sep-2023",
-    "Oct-2023",
-    "Nov-2023",
-    "Dec-2023",
-    "Jan-2024",
-    "Feb-2024",
-    "Mar-2024",
-    "Apr-2024",
-    "May-2024",
-    "Jun-2024",
-    "Jul-2024",
-    "Aug-2024",
+    "Nov-2025",
+    "Dec-2025",
+    "Jan-2026",
+    "Feb-2026",
+    "Mar-2026",
+    "Apr-2026",
+    "May-2026",
+    "Jun-2026",
+    "Jul-2026",
+    "Aug-2026",
+    "Sep-2026",
+    "Oct-2026",
   ],
   datasets: [
     {
